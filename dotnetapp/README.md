@@ -2,7 +2,7 @@
 
 -       [`dotnetapp`, `latest` (*dotnetapp/Dockerfile*)](https://github.com/dotnet/dotnet-docker-samples/blob/dockerhub/dotnetapp/Dockerfile)
 
-For more information about these images and their history, please see [the relevant Dockerfile (`dotnet/dotnet-docker`)](https://github.com/dotnet/dotnet-docker/search?utf8=%E2%9C%93&q=FROM&type=Code). These images are updated via [pull requests to the `dotnet/dotnet-docker` GitHub repo](https://github.com/dotnet/dotnet-docker/pulls?utf8=%E2%9C%93&q=).
+For more information about these images and their history, please see [the relevant Dockerfile (`dotnet/dotnet-docker-samples`)](https://github.com/dotnet/dotnet-docker-samples/search?utf8=%E2%9C%93&q=FROM&type=Code). These images are updated via [pull requests to the `dotnet/dotnet-docker-samples` GitHub repo](https://github.com/dotnet/dotnet-docker-samples/pulls?utf8=%E2%9C%93&q=).
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/microsoft/dotnet-samples.svg)](https://hub.docker.com/r/microsoft/dotnet-samples)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/microsoft/dotnet-samples.svg)](https://hub.docker.com/r/microsoft/dotnet-samples)
@@ -11,7 +11,7 @@ For more information about these images and their history, please see [the relev
 
 This repo contains samples (one so far) that demonstrate various .NET Core Docker configurations.
 
-You can see the source for these samples at [dotnet/dotnet-core-samples](https://github.com/dotnet/dotnet-docker-samples/tree/dockerhub) on GitHub.
+You can see the source for these samples at [dotnet/dotnet-docker-samples](https://github.com/dotnet/dotnet-docker-samples/tree/dockerhub) on GitHub.
 
 # What is .NET Core?
 
@@ -76,8 +76,6 @@ If you have any problems with or questions about this image, please contact us t
 
 You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
 
-Before you start to code, please read the [.NET Core contribution guidelines](https://github.com/dotnet/coreclr/blob/master/CONTRIBUTING.md).
-
 ## Documentation
 
-You can read documentation for .NET Core, including Docker usage in the [.NET Core docs](https://docs.microsoft.com/en-us/dotnet/articles/core/). The docs are [open source on GitHub](https://github.com/dotnet/core-docs). Contributions are welcome!
+You can read documentation for .NET Core, including Docker usage in the [.NET Core docs](https://docs.microsoft.com/dotnet/articles/core/). The docs are [open source on GitHub](https://github.com/dotnet/core-docs). Contributions are welcome!
