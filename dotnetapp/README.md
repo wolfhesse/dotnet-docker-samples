@@ -1,7 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
--       [`dotnetapp`, `latest` (*dotnetapp/Dockerfile*)](https://github.com/dotnet/dotnet-docker-samples/blob/dockerhub/dotnetapp/Dockerfile)
--       [`dotnetapp-nanoserver` (*dotnetapp/Dockerfile.nano*)](https://github.com/dotnet/dotnet-docker-samples/blob/dockerhub/dotnetapp/Dockerfile.nano)
+- [`dotnetapp`, `latest` (*dotnetapp/Dockerfile*)](https://github.com/dotnet/dotnet-docker-samples/blob/dockerhub/dotnetapp/Dockerfile)
+- [`dotnetapp-nanoserver` (*dotnetapp/Dockerfile.nano*)](https://github.com/dotnet/dotnet-docker-samples/blob/dockerhub/dotnetapp/Dockerfile.nano)
 
 For more information about these images and their history, please see [the relevant Dockerfile (`dotnet/dotnet-docker-samples`)](https://github.com/dotnet/dotnet-docker-samples/search?utf8=%E2%9C%93&q=FROM&type=Code). These images are updated via [pull requests to the `dotnet/dotnet-docker-samples` GitHub repo](https://github.com/dotnet/dotnet-docker-samples/pulls?utf8=%E2%9C%93&q=).
 
