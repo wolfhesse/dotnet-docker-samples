@@ -60,7 +60,7 @@ You can publish an application locally that is ready to deploy to production usi
 
 ```console
 dotnet publish -c release -r linux-x64 -o selfcontained-linux-x64
-./selfcontained-linux-x64\dotnetapp
+./selfcontained-linux-x64/dotnetapp
 ```
 
 Note: The `-r` argument specifies which runtime target the application should be built and published for. See the [dotnet run reference](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) for more information on commandline parameters.
@@ -73,7 +73,7 @@ You can publish an application locally that is ready to deploy to production usi
 
 ```console
 dotnet publish -c release -r osx-x64 -o selfcontained-osx-x64
-./selfcontained-osx-x64\dotnetapp
+./selfcontained-osx-x64/dotnetapp
 ```
 
 ## Docker Images used in this sample
