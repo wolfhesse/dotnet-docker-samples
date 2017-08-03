@@ -21,7 +21,7 @@ You can build and run the sample in Docker using Linux containers using the foll
 ```console
 cd dotnetapp-selfcontained
 docker build -t dotnetapp .
-docker run dotnetapp Hello .NET Core from Docker
+docker run --rm dotnetapp Hello .NET Core from Docker
 ```
 
 ## Build and run the sample with Docker for Windows containers
