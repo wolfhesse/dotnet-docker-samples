@@ -1,8 +1,8 @@
-# ASP.NET Core Docker Sample
+# ASP.NET Core Docker Production Sample
 
 This ASP.NET Core Docker sample demonstrates how to use ASP.NET Core apps in Docker. It works with both Linux and Windows containers.
 
-The [sample Dockerfile](Dockerfile) creates an ASP.NET Core application container based off of the [ASP.NET Core Runtime Docker base image](https://hub.docker.com/r/microsoft/aspnetcore/). It uses the [Docker multi-stage build feature](https://github.com/dotnet/announcements/issues/18) to build the sample with the larger [ASP.NET Core Build Docker base image](https://hub.docker.com/r/microsoft/aspnetcore-build/) and then copy the final build result into a Docker image based on smaller [ASP.NET Core Docker Runtime base image](https://hub.docker.com/r/microsoft/aspnetcore/). The build image contains tools that are required to build applications while the runtime image does not.
+The [sample Dockerfile](Dockerfile) creates an ASP.NET Core application container based off of the [ASP.NET Core Runtime Docker base image](https://hub.docker.com/r/microsoft/aspnetcore/). This is the type of container you would want to use in production. It uses the [Docker multi-stage build feature](https://github.com/dotnet/announcements/issues/18) to build the sample with the larger [ASP.NET Core Build Docker base image](https://hub.docker.com/r/microsoft/aspnetcore-build/) and then copies the final build result into a Docker image based on the smaller [ASP.NET Core Docker Runtime base image](https://hub.docker.com/r/microsoft/aspnetcore/). The build image contains tools that are required to build applications while the runtime image does not.
 
 This sample requires [Docker 17.05](https://docs.docker.com/release-notes/docker-ce/#17050-ce-2017-05-04) or later of the [Docker client](https://www.docker.com/products/docker). You need the latest Windows 10 or Windows Server 2016 to use [Windows containers](http://aka.ms/windowscontainers). The instructions assume you have the [Git](https://git-scm.com/downloads) client installed.
 
@@ -16,20 +16,20 @@ git clone https://github.com/dotnet/dotnet-docker-samples/
 
 ## Build and run the sample locally
 
-You can build and run the sample locally with the [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/core) using the following instructions. They assume that you are in the root of the repository.
+You can build and run the sample locally with the [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/core) using the following instructions. The instructions assume that you are in the root of the repository.
 
 ```console
 cd aspnetapp
-docker run -c release
+dotnet run -c release
 ```
 
 After the application starts, visit `http://localhost:8000` in your web browser.
 
-Note: The `-c release` argument builds the application in release mode. See the [dotnet run reference](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) for more information on commandline paramaters.
+Note: The `-c release` argument builds the application in release mode (the default is debug mode). See the [dotnet run reference](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) for more information on commandline parameters.
 
 ## Build and run the sample with Docker for Linux containers
 
-You can build and run the sample in Docker using Linux containers with the following commands. They assume that you are in the root of the repository.
+You can build and run the sample in Docker using Linux containers with the following commands. The instructions assume that you are in the root of the repository.
 
 ```console
 cd aspnetapp
@@ -43,7 +43,7 @@ Note: The `-p` argument maps port 8000 on you local machine to port 80 in the co
 
 ## Build and run the sample with Docker for Windows containers
 
-You can build and run the sample in Docker using Windows containers with the following commands. They assume that you are in the root of the repository.
+You can build and run the sample in Docker using Windows containers with the following commands. The instructions assume that you are in the root of the repository.
 
 ```console
 cd aspnetapp
@@ -90,4 +90,5 @@ The following Docker images are used in this sample
 ## Related Resources
 
 * [ASP.NET Core Getting Started Tutorials](https://www.asp.net/get-started)
+* [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker-samples/blob/master/README.md)
 * [.NET Framework Docker samples](https://github.com/Microsoft/dotnet-framework-docker-samples)
