@@ -39,7 +39,7 @@ docker run -it --rm -p 8000:80 aspnetapp
 
 After the application starts, visit `http://localhost:8000` in your web browser.
 
-Note: The `-p` argument maps port 8000 on you local machine to port 80 in the container (the form is `host:container`). See the [Docker run reference](https://docs.docker.com/engine/reference/commandline/run/) for more information on commandline paramaters.
+Note: The `-p` argument maps port 8000 on you local machine to port 80 in the container (the form of the port mapping is `host:container`). See the [Docker run reference](https://docs.docker.com/engine/reference/commandline/run/) for more information on commandline paramaters.
 
 ## Build and run the sample with Docker for Windows containers
 
@@ -54,8 +54,8 @@ docker run -d --rm aspnetapp
 You must navigate to the container IP (as opposed to http://localhost) in your browser directly when using Windows containers. You can get the IP address of your container with the following steps:
 
 1. Run `docker ps` to get the hash for the sample container.
-1. Run `docker exec HASH ipconfig` where `HASH` is replaced with your container hash.
-1. Copy the container IP address and paste into your browser (for example, 172.29.245.43).
+1. Run `docker exec HASH ipconfig` where `HASH` is replaced with your container hash (for example, `bb9eb9446863`).
+1. Copy the container IP address and paste into your browser (for example, `172.29.245.43`).
 
 See the example below of how to use Docker commands to get the IP address of a container.
 
@@ -90,5 +90,6 @@ The following Docker images are used in this sample
 ## Related Resources
 
 * [ASP.NET Core Getting Started Tutorials](https://www.asp.net/get-started)
-* [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker-samples/blob/master/README.md)
+* [.NET Core Production Docker sample](../dotnetapp-prod/README.md)
+* [.NET Core Docker samples](../README.md)
 * [.NET Framework Docker samples](https://github.com/Microsoft/dotnet-framework-docker-samples)

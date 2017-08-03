@@ -56,7 +56,7 @@ The following Docker images are used in this sample
 ## Related Resources
 
 * [Self-contained .NET Core applications](https://docs.microsoft.com/dotnet/core/deploying/)
-* [ASP.NET Core Production Docker sample](https://github.com/dotnet/dotnet-docker-samples/blob/master/aspnetapp/README.md)
-* [.NET Core Production Docker sample](https://github.com/dotnet/dotnet-docker-samples/blob/master/dotnetapp-prod/README.md)
-* [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker-samples/blob/master/README.md)
+* [ASP.NET Core Production Docker sample](../aspnetapp/README.md)
+* [.NET Core Production Docker sample](../dotnetapp-prod/README.md)
+* [.NET Core Docker samples](../README.md)
 * [.NET Framework Docker samples](https://github.com/Microsoft/dotnet-framework-docker-samples)

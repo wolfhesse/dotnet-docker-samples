@@ -45,6 +45,6 @@ The following Docker images are used in this sample
 
 ## Related Resources
 
-* [.NET Core Docker samples](https://github.com/dotnet/dotnet-docker-samples/blob/master/README.md)
+* [.NET Core Docker samples](../README.md)
 * [.NET Framework Docker samples](https://github.com/Microsoft/dotnet-framework-docker-samples)
 
