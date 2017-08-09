@@ -1,6 +1,6 @@
 # .NET Core Development Sample
 
-This .NET Core Docker sample demonstrates how to use Docker in your .NET Core development process. It works with both Linux and Windows containers.
+This .NET Core Docker sample demonstrates how to use Docker in your .NET Core development process. The sample works with both Linux and Windows containers.
 
 The [sample Dockerfile](Dockerfile) creates a .NET Core application image based off of the [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/). It builds and runs the application in the same image, which is a useful strategy for interative development but not an optimal option for production. Take a look at the [.NET Core Production Sample](../dotnetapp-prod/README.md) or [ASP.NET Core Production Sample](../aspnetapp/README.md) for production-oriented samples.
 

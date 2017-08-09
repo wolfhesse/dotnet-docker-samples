@@ -1,8 +1,10 @@
 # .NET Core self-contained application Docker Production Sample
 
-This .NET Core Docker sample demonstrates a best practice pattern for building Docker images for [self-contained .NET Core applications](https://docs.microsoft.com/dotnet/core/deploying/). It works with both Linux and Windows containers.
+This .NET Core Docker sample demonstrates a best practice pattern for building Docker images for [self-contained .NET Core applications](https://docs.microsoft.com/dotnet/core/deploying/). This is the type of image you would want to use in production if you want the smallest possible container and do not see a [benefit from sharing .NET base images between containers](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) (you would still potentially share lower Docker layers). The sample works with both Linux and Windows containers.
 
-The [sample Dockerfile](Dockerfile) creates an .NET Core application image based off of the [.NET Core Runtime Dependencies Docker base image](https://hub.docker.com/r/microsoft/dotnet/). This is the type of image you would want to use in production if you want the smallest possible container and do not see a [benefit from sharing .NET base images between containers](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) (you would still potentially share lower Docker layers). It uses the [Docker multi-stage build feature](https://github.com/dotnet/announcements/issues/18) to build the sample in a container based on the larger [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/) and then copies the final build result into a Docker image based on the smaller [.NET Core Docker Runtime Depedendencies base image](https://hub.docker.com/r/microsoft/dotnet/) in the case of Linux, and the [Windows Server 2016 Nano Server base OS image](https://hub.docker.com/r/microsoft/nanoserver/) in the case of Windows.
+This [sample Dockerfile for Linux](Dockerfile) creates an .NET Core application image based off the [.NET Core Runtime Dependencies Docker base image](https://hub.docker.com/r/microsoft/dotnet/), which is based on [Debian 9 (Stretch) base image](https://hub.docker.com/_/debian/). 
+
+In the case of Linux, the base image is the [.NET Core Runtime Dependencies Docker base image](https://hub.docker.com/r/microsoft/dotnet/). In the case of Windows, the base image is the   It uses the [Docker multi-stage build feature](https://github.com/dotnet/announcements/issues/18) to build the sample in a container based on the larger [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/) and then copies the final build result into a Docker image based on the smaller [.NET Core Docker Runtime Depedendencies base image](https://hub.docker.com/r/microsoft/dotnet/) in the case of Linux, and the [Windows Server 2016 Nano Server base OS image](https://hub.docker.com/r/microsoft/nanoserver/) in the case of Windows.
 
 This sample requires [Docker 17.05](https://docs.docker.com/release-notes/docker-ce/#17050-ce-2017-05-04) or later of the [Docker client](https://www.docker.com/products/docker). You need the latest Windows 10 or Windows Server 2016 to use [Windows containers](http://aka.ms/windowscontainers). The instructions assume you have the [Git](https://git-scm.com/downloads) client installed.
 
@@ -82,6 +84,7 @@ The following Docker images are used in this sample
 
 * [microsoft/dotnet:2.0-sdk](https://hub.docker.com/r/microsoft/dotnet)
 * [microsoft/dotnet:2.0-runtime-deps](https://hub.docker.com/r/microsoft/dotnet)
+* [microsoft/nanoserver](https://hub.docker.com/r/microsoft/nanoserver)
 
 ## Related Resources
 

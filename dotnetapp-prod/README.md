@@ -1,6 +1,6 @@
 # .NET Core Docker Production Sample
 
-This .NET Core Docker sample demonstrates a best practice pattern for building Docker images for .NET Core apps. It works with both Linux and Windows containers.
+This .NET Core Docker sample demonstrates a best practice pattern for building Docker images for .NET Core apps. The sample works with both Linux and Windows containers.
 
 The [sample Dockerfile](Dockerfile) creates an .NET Core application Docker image based off of the [.NET Core Runtime Docker base image](https://hub.docker.com/r/microsoft/dotnet/). This is the type of image you would want to use in production. It uses the [Docker multi-stage build feature](https://github.com/dotnet/announcements/issues/18) to build the sample in a container based on the larger [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/) and then copies the final build result into a Docker image based on the smaller [.NET Core Docker Runtime base image](https://hub.docker.com/r/microsoft/dotnet/). The SDK image contains tools that are required to build applications while the runtime image does not.
 

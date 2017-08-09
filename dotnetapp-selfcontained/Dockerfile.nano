@@ -2,6 +2,7 @@ FROM microsoft/dotnet:2.0-sdk AS build-env
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
+COPY nuget.config ./
 COPY *.csproj ./
 RUN dotnet restore
 
