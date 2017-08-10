@@ -2,9 +2,9 @@
 
 This .NET Core Docker sample demonstrates how to use Docker in your .NET Core development process. The sample works with both Linux and Windows containers.
 
-The [sample Dockerfile](Dockerfile) creates a .NET Core application image based off of the [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/). It builds and runs the application in the same image, which is a useful strategy for interative development but not an optimal option for production. Take a look at the [.NET Core Production Sample](../dotnetapp-prod/README.md) or [ASP.NET Core Production Sample](../aspnetapp/README.md) for production-oriented samples.
+The [sample Dockerfile](Dockerfile) creates a .NET Core application image based off of the [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/). It builds and runs the application with the same image, which is a useful strategy for interative development but not optimal for production. Take a look at the [.NET Core Production Sample](../dotnetapp-prod/README.md) or [ASP.NET Core Production Sample](../aspnetapp/README.md) for production-oriented samples.
 
-This sample requires a recent [Docker client](https://www.docker.com/products/docker). You need the latest Windows 10 or Windows Server 2016 to use [Windows containers](http://aka.ms/windowscontainers). The instructions assume you have the [Git](https://git-scm.com/downloads) client installed.
+This sample requires [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) or later of the [Docker client](https://www.docker.com/products/docker). You need the latest Windows 10 or Windows Server 2016 to use [Windows containers](http://aka.ms/windowscontainers). The instructions assume you have the [Git](https://git-scm.com/downloads) client installed.
 
 ## Getting the sample
 
@@ -35,18 +35,22 @@ cd dotnetapp-dev
 dotnet run Hello .NET Core
 ```
 
-You can produce an application on **Windows** that is ready to deploy to production locally using the following commands.
+You can produce an application that is ready to deploy to production locally using the following command.
 
 ```console
 dotnet publish -c release -o published
-dotnet published/dotnetapp.dll
 ```
 
-You can produce an application on **Linux or macOS** that is ready to deploy to production locally using the following commands.
+You can run the application on **Windows** using the following command.
 
 ```console
-dotnet publish -c release -o published
 dotnet published\dotnetapp.dll
+```
+
+You can run the application on **Linux or macOS** using the following command.
+
+```console
+dotnet published/dotnetapp.dll
 ```
 
 Note: The `-c release` argument builds the application in release mode (the default is debug mode). See the [dotnet run reference](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) for more information on commandline parameters.

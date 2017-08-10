@@ -1,6 +1,6 @@
 # .NET Core self-contained application Docker Production Sample
 
-This .NET Core Docker sample demonstrates a best practice pattern for building Docker images for [self-contained .NET Core applications](https://docs.microsoft.com/dotnet/core/deploying/). This is the type of image you would want to use in production if you want the smallest possible container and do not see a [benefit from sharing .NET base images between containers](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) (you would still potentially share lower Docker layers). The sample works with both Linux and Windows containers.
+This .NET Core Docker sample demonstrates a best practice pattern for building Docker images for [self-contained .NET Core applications](https://docs.microsoft.com/dotnet/core/deploying/). This is the type of image you would want to use if you want the smallest possible container in production and do not see a [benefit from sharing .NET base images between containers](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) (you would still potentially share lower Docker layers). The sample works with both Linux and Windows containers.
 
 This [sample Dockerfile for Linux](Dockerfile) creates an .NET Core application image based off the [.NET Core Runtime Dependencies Docker base image](https://hub.docker.com/r/microsoft/dotnet/), which is based on [Debian 9 (Stretch) base image](https://hub.docker.com/_/debian/).
 
@@ -8,9 +8,9 @@ This [sample Dockerfile for Windows Nanoserver](Dockerfile.nano) creates an .NET
 
 The sample uses the [Docker multi-stage build feature](https://github.com/dotnet/announcements/issues/18) for Linux and Windows to build the sample in a container based on the larger [.NET Core SDK Docker base image](https://hub.docker.com/r/microsoft/dotnet/) and then copies the final build result into a smaller Docker image based on the appropriate base image mentioned above (based whether you are using Windows or Linux containers).
 
-This sample requires [Docker 17.05](https://docs.docker.com/release-notes/docker-ce/#17050-ce-2017-05-04) or later of the [Docker client](https://www.docker.com/products/docker). You need the latest Windows 10 or Windows Server 2016 to use [Windows containers](http://aka.ms/windowscontainers). The instructions assume you have the [Git](https://git-scm.com/downloads) client installed.
+This sample requires [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) or later of the [Docker client](https://www.docker.com/products/docker). You need the latest Windows 10 or Windows Server 2016 to use [Windows containers](http://aka.ms/windowscontainers). The instructions assume you have the [Git](https://git-scm.com/downloads) client installed.
 
-The sample uses an experimental linker for removing code that your final application does not need. The final Docker images are singificantly smaller. The linker is not required and can be removed from the sample or disabled on the commandline if you do not want to use it.
+The sample uses an experimental linker for removing code that your final application does not need. The linker helps to produce Docker images that are significantly smaller. The linker is not required and can be removed from the sample or disabled on the commandline if you do not want to use it.
 
 ## Getting the sample
 
@@ -22,7 +22,7 @@ git clone https://github.com/dotnet/dotnet-docker-samples/
 
 ## Build and run the sample with Docker for Linux containers
 
-You can build and run the sample in Docker using Linux containers using the following commands. They assume that you are in the root of the repository.
+You can build and run the sample in Docker using Linux containers using the following commands. The instructions assume that you are in the root of the repository.
 
 ```console
 cd dotnetapp-selfcontained
