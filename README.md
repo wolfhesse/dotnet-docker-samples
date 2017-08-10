@@ -6,9 +6,9 @@ Docker uses [docker/whalesay](https://hub.docker.com/r/docker/whalesay/) as a ge
 
 You can pick the sample that best fits the scenario you are interested in. The instructions for each sample describe how to target [Windows](http://aka.ms/windowscontainers) or Linux Docker images, from Windows, Linux or macOS.
 
-You need to have the [.NET Core SDK](https://www.microsoft.com/net/download/core#/sdk) and [Git](https://git-scm.com/downloads) and [Docker client 17.06 or newer](https://www.docker.com/products/docker) clients installed to use these samples.
-
 The samples use .NET Core 2.0. They use Docker [multi-stage build](https://github.com/dotnet/announcements/issues/18) and [multi-arch tags](https://github.com/dotnet/announcements/issues/14) where appropriate.
+
+You need to have the [.NET Core SDK](https://www.microsoft.com/net/download/core#/sdk) and [Git](https://git-scm.com/downloads) and [Docker client 17.06 or newer](https://www.docker.com/products/docker) clients installed to use these samples.
 
 ## Getting Started
 

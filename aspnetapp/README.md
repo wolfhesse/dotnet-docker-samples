@@ -44,7 +44,7 @@ You must navigate to the container IP (as opposed to http://localhost) in your b
 
 1. Open up another command prompt.
 1. Run `docker ps` to see your running containers. The "aspnetcore_sample" container should be there.
-1. Run `docker exec aspnetapp ipconfig`.
+1. Run `docker exec aspnetcore_sample ipconfig`.
 1. Copy the container IP address and paste into your browser (for example, `172.29.245.43`).
 
 Note: `docker exec` supports identifying containers with name or hash. The name is used above.

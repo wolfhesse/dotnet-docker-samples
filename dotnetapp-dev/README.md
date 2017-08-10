@@ -20,8 +20,8 @@ You can build and run the sample in Docker using the following commands. The ins
 
 ```console
 cd dotnetapp-dev
-docker build -t dotnetapp .
-docker run --rm dotnetapp Hello .NET Core from Docker
+docker build -t dotnetapp-dev .
+docker run --rm dotnetapp-dev Hello .NET Core from Docker
 ```
 
 Note: The instructions above work for both Linux and Windows containers. The .NET Core docker images use [multi-arch tags](https://github.com/dotnet/announcements/issues/14), which abstract away different operating system choices for most use-cases.

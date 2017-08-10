@@ -26,8 +26,8 @@ You can build and run the sample in Docker using Linux containers using the foll
 
 ```console
 cd dotnetapp-selfcontained
-docker build -t dotnetapp .
-docker run --rm dotnetapp Hello .NET Core from Docker
+docker build -t dotnetapp-selfcontained .
+docker run --rm dotnetapp-selfcontained Hello .NET Core from Docker
 ```
 
 ## Build and run the sample with Docker for Windows containers
@@ -36,8 +36,8 @@ You can build and run the sample in Docker using Windows containers using the fo
 
 ```console
 cd dotnetapp-selfcontained
-docker build -t dotnetapp -f Dockerfile.nano .
-docker run dotnetapp Hello .NET Core from Docker
+docker build -t dotnetapp-selfcontained -f Dockerfile.nano .
+docker run dotnetapp-selfcontained Hello .NET Core from Docker
 ```
 
 ## Build, Run and Publish the sample locally
