@@ -28,6 +28,32 @@ docker run --rm dotnetapp-prod Hello .NET Core from Docker
 
 Note: The instructions above work for both Linux and Windows containers. The .NET Core docker images use [multi-arch tags](https://github.com/dotnet/announcements/issues/14), which abstract away different operating system choices for most use-cases.
 
+## Build on Windows and run the sample with Docker on Linux + ARM32 (Raspberry Pi)
+
+The goal of this section is to create and run a Docker .NET Core runtime-based image on a Raspberry Pi running Linux. The .NET Core SDK does not run on Linux + ARM32 configuration. As a result, the instructions used for X64 don't work. There are multiple ways to get around this limitation, primarily:
+
+* Build app on X64 and copy via scp (or pscp) to ARM32 device and then build and run a Docker runtime image on the ARM32 device, or
+* Build final ARM32 image on Windows, push image to a Docker registry and then pull and run from the ARM32 device.
+
+The second option is only supported on Windows. Linux and macOS user must use the first option. For simplicity, the Windows option is provided below.
+
+The instructions assume that you are in the root of the repository.
+
+Type the following commands in Docker "Linux mode" on Windows. The instructions assume that you have a personal Docker user account called `myname`. You will need to change that to your actual docker account name. You will also need to create a Docker repo called `dotnetapp-prod-arm32`. You can create new repos in the Docker web UI.
+
+```console
+cd dotnetapp-prod
+docker build -t dotnetapp-prod-arm32 -f Dockerfile.arm32 .
+docker tag dotnetapp-prod-arm32 mydockername/dotnetapp-prod-arm32
+docker push
+```
+
+Switch to your Raspberry Pi, with Linux and Docker installed. Type the following command.
+
+```console
+docker run --rm mydockername/dotnetapp-prod-arm32 Hello .NET Core from Docker
+```
+
 ## Build and run the sample locally
 
 You can build and run the sample locally with the [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/core) using the following instructions. The instructions assume that you are in the root of the repository.
