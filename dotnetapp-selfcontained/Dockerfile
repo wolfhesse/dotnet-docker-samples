@@ -14,4 +14,6 @@ RUN dotnet publish -c Release -r linux-x64 -o out
 FROM microsoft/dotnet:2.0-runtime-deps
 WORKDIR /app
 COPY --from=build-env /app/out ./
+
+ENV DEBUG "x-debug-default__Dockerfile"
 ENTRYPOINT ["./dotnetapp"]

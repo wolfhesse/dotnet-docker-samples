@@ -1,0 +1,2 @@
+sh s_build.sh
+sh s_start.sh "sbr running"
