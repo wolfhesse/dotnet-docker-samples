@@ -71,6 +71,11 @@ namespace DotNetApp
        .........                        ..............
         .....
 
+
+---
+x-ase-sect-PAT_ANF
+x-ase-sect-PAT_END
+---
 ";
             return bot;
         }
