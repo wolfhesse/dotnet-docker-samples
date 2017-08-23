@@ -113,15 +113,12 @@ namespace DotNetApp
         /// <returns>
         /// The <see cref="Dictionary"/>.
         /// </returns>
-        private static Dictionary<string, string> EnvironmentDict()
+        private static Dictionary<string, string> EnvironmentDict() => new Dictionary<string, string>
         {
-            return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
-        }
+            ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+            ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+            ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+        };
 
         /// <summary>
         ///     The get environment variable with options.
