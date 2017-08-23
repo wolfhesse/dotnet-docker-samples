@@ -10,7 +10,6 @@
 namespace DotNetApp
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
@@ -34,9 +33,6 @@ namespace DotNetApp
         {
             var bot = $"\n        {message}";
             bot += Environment.NewLine;
-            bot += "line";
-            bot += Environment.NewLine;
-            bot += "line";
             bot += Environment.NewLine;
             bot += @"
     __________________
@@ -90,31 +86,70 @@ namespace DotNetApp
         public static void Main(string[] args)
         {
             // setup environmentDict
-            var flgDebug = Environment.GetEnvironmentVariable("DEBUG");
+            IDictionary<string, string> environmentDict = EnvironmentDict();
 
-            if (flgDebug == null)
-            {
-                flgDebug = "OFF";
-            }
-
-            if (string.Empty == flgDebug.ToString())
-            {
-                flgDebug = "OFF";
-            }
-
-            IDictionary<string, string> environmentDict = new Dictionary<string, string>() { ["DEBUG"] = flgDebug };
-            
             // data
             var message = "Dotnet-bot: Welcome to using .NET Core!";
 
-            if (args.Length > 0) message = string.Join(" ", args);
+            if (args.Length > 0)
+            {
+                message = string.Join(" ", args);
+            }
 
             WriteLine(GetBot(message));
+            WriteEnvironmentDescription(environmentDict);
+        }
+
+        /// <summary>
+        /// The write environment description.
+        /// </summary>
+        /// <param name="environmentDict">
+        /// The environment dict.
+        /// </param>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        private static void WriteEnvironmentDescription(IDictionary<string, string> environmentDict)
+        {
             WriteLine("**Environment**");
             WriteLine($"Platform: .NET Core 2.0");
             WriteLine($"OS: {RuntimeInformation.OSDescription}");
             WriteLine();
-            WriteLine($"Flags: flgDebug: {environmentDict["DEBUG"]}");
+            WriteLine(
+                $"Flags: " + Environment.NewLine + $"\t flgDebug  : \t {environmentDict["DEBUG"]}" + Environment.NewLine
+                + $"\t flgEins   : \t {environmentDict["eins"]}" + Environment.NewLine
+                + $"\t flgZwo    : \t {environmentDict["zwo"]}");
+        }
+
+        /// <summary>
+        /// The environment dict.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IDictionary{TKey,TValue}"/>.
+        /// </returns>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        private static Dictionary<string, string> EnvironmentDict() => new Dictionary<string, string>
+        {
+            ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+            ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+            ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+        };
+
+        /// <summary>
+        ///     The get environment variable with options.
+        /// </summary>
+        /// <param name="variable">
+        ///     The variable.
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value.
+        /// </param>
+        /// <returns>
+        ///     The <see cref="string" />.
+        /// </returns>
+        private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
+        {
+            var flgDebug = Environment.GetEnvironmentVariable(variable) ?? defaultValue;
+            flgDebug = string.Empty == flgDebug ? defaultValue : flgDebug;
+            return flgDebug;
         }
 
         /// <summary>
