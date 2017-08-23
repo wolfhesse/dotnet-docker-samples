@@ -18,7 +18,7 @@ namespace DotNetApp
     /// <summary>
     ///     The program.
     /// </summary>
-    public static class Program
+    public class Program
     {
         /// <summary>
         ///     The get bot.
@@ -31,9 +31,7 @@ namespace DotNetApp
         /// </returns>
         public static string GetBot(string message)
         {
-            var bot = $"\n        {message}";
-            bot += Environment.NewLine;
-            bot += Environment.NewLine;
+            var bot = GetBotHeader(message);
             bot += @"
     __________________
                       \
@@ -85,9 +83,26 @@ namespace DotNetApp
         /// </param>
         public static void Main(string[] args)
         {
+            var message = BuildMessage(args);
+
             // setup environmentDict
             IDictionary<string, string> environmentDict = EnvironmentDict();
 
+            WriteLine(GetBot(message));
+            WriteEnvironmentDescription(environmentDict);
+        }
+
+        /// <summary>
+        ///     The build message.
+        /// </summary>
+        /// <param name="args">
+        ///     The args.
+        /// </param>
+        /// <returns>
+        ///     The <see cref="string" />.
+        /// </returns>
+        private static string BuildMessage(string[] args)
+        {
             // data
             var message = "Dotnet-bot: Welcome to using .NET Core!";
 
@@ -96,42 +111,45 @@ namespace DotNetApp
                 message = string.Join(" ", args);
             }
 
-            WriteLine(GetBot(message));
-            WriteEnvironmentDescription(environmentDict);
+            return message;
         }
 
         /// <summary>
-        /// The write environment description.
-        /// </summary>
-        /// <param name="environmentDict">
-        /// The environment dict.
-        /// </param>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        private static void WriteEnvironmentDescription(IDictionary<string, string> environmentDict)
-        {
-            WriteLine("**Environment**");
-            WriteLine($"Platform: .NET Core 2.0");
-            WriteLine($"OS: {RuntimeInformation.OSDescription}");
-            WriteLine();
-            WriteLine(
-                $"Flags: " + Environment.NewLine + $"\t flgDebug  : \t {environmentDict["DEBUG"]}" + Environment.NewLine
-                + $"\t flgEins   : \t {environmentDict["eins"]}" + Environment.NewLine
-                + $"\t flgZwo    : \t {environmentDict["zwo"]}");
-        }
-
-        /// <summary>
-        /// The environment dict.
+        ///     The environment dict.
         /// </summary>
         /// <returns>
-        /// The <see cref="IDictionary{TKey,TValue}"/>.
+        ///     The <see cref="IDictionary{TKey,TValue}" />.
         /// </returns>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        private static Dictionary<string, string> EnvironmentDict() => new Dictionary<string, string>
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed. Suppression is OK here.")]
+        private static Dictionary<string, string> EnvironmentDict()
         {
-            ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-            ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-            ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-        };
+            return new Dictionary<string, string>
+                       {
+                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+                       };
+        }
+
+        /// <summary>
+        ///     The get bot header.
+        /// </summary>
+        /// <param name="message">
+        ///     The message.
+        /// </param>
+        /// <returns>
+        ///     The <see cref="string" />.
+        /// </returns>
+        private static string GetBotHeader(string message)
+        {
+            var bot = $"\n        {message}";
+            bot += Environment.NewLine;
+            bot += Environment.NewLine;
+            return bot;
+        }
 
         /// <summary>
         ///     The get environment variable with options.
@@ -150,6 +168,28 @@ namespace DotNetApp
             var flgDebug = Environment.GetEnvironmentVariable(variable) ?? defaultValue;
             flgDebug = string.Empty == flgDebug ? defaultValue : flgDebug;
             return flgDebug;
+        }
+
+        /// <summary>
+        ///     The write environment description.
+        /// </summary>
+        /// <param name="environmentDict">
+        ///     The environment dict.
+        /// </param>
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed. Suppression is OK here.")]
+        private static void WriteEnvironmentDescription(IDictionary<string, string> environmentDict)
+        {
+            WriteLine("**Environment**");
+            WriteLine($"Platform: .NET Core 2.0");
+            WriteLine($"OS: {RuntimeInformation.OSDescription}");
+            WriteLine();
+            WriteLine(
+                $"Flags: " + Environment.NewLine + $"\t flgDebug  : \t {environmentDict["DEBUG"]}" + Environment.NewLine
+                + $"\t flgEins   : \t {environmentDict["eins"]}" + Environment.NewLine
+                + $"\t flgZwo    : \t {environmentDict["zwo"]}");
         }
 
         /// <summary>
