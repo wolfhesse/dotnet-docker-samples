@@ -15,11 +15,15 @@ namespace DotNetApp
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
 
+    using Newtonsoft.Json;
+
     /// <summary>
     ///     The program.
     /// </summary>
     public class Program
     {
+        private static string serializedEnvironment;
+
         /// <summary>
         ///     The get bot.
         /// </summary>
@@ -96,6 +100,9 @@ x-ase-sect-PAT_END
 
             WriteLine(GetBot(message));
             WriteEnvironmentDescription(environmentDict);
+
+            serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict());
+            WriteLine(serializedEnvironment);
         }
 
         /// <summary>
