@@ -130,7 +130,7 @@ x-ase-sect-PAT_END
             "StyleCop.CSharp.DocumentationRules",
             "SA1650:ElementDocumentationMustBeSpelledCorrectly",
             Justification = "Reviewed. Suppression is OK here.")]
-        private static Dictionary<string, string> EnvironmentDict()
+        public static Dictionary<string, string> EnvironmentDict()
         {
             return new Dictionary<string, string>
                        {
