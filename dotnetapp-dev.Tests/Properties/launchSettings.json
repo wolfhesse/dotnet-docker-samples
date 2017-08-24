@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "dotnetapp-dev.Tests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DEBUG": "dotnetapp-dev.here"
+      }
+    }
+  }
+}

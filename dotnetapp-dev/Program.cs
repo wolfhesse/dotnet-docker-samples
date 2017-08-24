@@ -25,6 +25,26 @@ namespace DotNetApp
         private static string serializedEnvironment;
 
         /// <summary>
+        ///     The environment dict.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="IDictionary{TKey,TValue}" />.
+        /// </returns>
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed. Suppression is OK here.")]
+        public static Dictionary<string, string> EnvironmentDict()
+        {
+            return new Dictionary<string, string>
+                       {
+                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+                       };
+        }
+
+        /// <summary>
         ///     The get bot.
         /// </summary>
         /// <param name="message">
@@ -101,8 +121,23 @@ x-ase-sect-PAT_END
             WriteLine(GetBot(message));
             WriteEnvironmentDescription(environmentDict);
 
-            serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict());
+            RWriteSerializedEnv();
+        }
+
+        /// <summary>
+        /// The r write serialized env.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public static string RWriteSerializedEnv()
+        {
+            var env = EnvironmentDict();
+            env.Add("ts-now", DateTimeOffset.Now.ToString());
+
+            serializedEnvironment = JsonConvert.SerializeObject(env);
             WriteLine(serializedEnvironment);
+            return serializedEnvironment;
         }
 
         /// <summary>
@@ -119,32 +154,9 @@ x-ase-sect-PAT_END
             // data
             var message = "Dotnet-bot: Welcome to using .NET Core!";
 
-            if (args.Length > 0)
-            {
-                message = string.Join(" ", args);
-            }
+            if (args.Length > 0) message = string.Join(" ", args);
 
             return message;
-        }
-
-        /// <summary>
-        ///     The environment dict.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="IDictionary{TKey,TValue}" />.
-        /// </returns>
-        [SuppressMessage(
-            "StyleCop.CSharp.DocumentationRules",
-            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
-            Justification = "Reviewed. Suppression is OK here.")]
-        public static Dictionary<string, string> EnvironmentDict()
-        {
-            return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
         }
 
         /// <summary>

@@ -31,6 +31,9 @@ namespace DotnetappDev.Tests
             Assert.False(1 == 2);
         }
 
+        /// <summary>
+        ///     The test program feature environment.
+        /// </summary>
         [Fact]
         public void TestProgramFeatureEnvironment()
         {
@@ -42,6 +45,19 @@ namespace DotnetappDev.Tests
 
             Debug.WriteLine("x-ase-debug-line");
             Trace.WriteLine("x-ase-trace-line", "test");
+        }
+
+        /// <summary>
+        ///     The test program feature write serialized environment.
+        /// </summary>
+        [Fact]
+        public void TestProgramFeatureWriteSerializedEnvironment()
+        {
+            // it does it and it returns the result
+            var actual = Program.RWriteSerializedEnv();
+            Assert.NotEmpty(actual);
+
+            // Assert.False(true);
         }
     }
 }
