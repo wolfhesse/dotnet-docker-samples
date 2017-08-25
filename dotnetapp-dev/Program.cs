@@ -118,22 +118,23 @@ x-ase-sect-PAT_END
             // setup environmentDict
             IDictionary<string, string> environmentDict = EnvironmentDict();
 
-            WriteLine(GetBot(message));
+            WriteLineWithSignifier(GetBot(message));
             WriteEnvironmentDescription(environmentDict);
 
             RWriteSerializedEnv();
         }
 
         /// <summary>
-        /// The r write serialized env.
+        ///     The r write serialized env.
         /// </summary>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string RWriteSerializedEnv()
         {
             var env = EnvironmentDict();
-            env.Add("ts-now", DateTimeOffset.Now.ToString());
+            env.Add("TS_NOW", DateTimeOffset.Now.ToString());
+            env.Add("PAT_RECORD",".here");
 
             serializedEnvironment = JsonConvert.SerializeObject(env);
             WriteLine(serializedEnvironment);
@@ -207,11 +208,11 @@ x-ase-sect-PAT_END
             Justification = "Reviewed. Suppression is OK here.")]
         private static void WriteEnvironmentDescription(IDictionary<string, string> environmentDict)
         {
-            WriteLine("**Environment**");
-            WriteLine($"Platform: .NET Core 2.0");
-            WriteLine($"OS: {RuntimeInformation.OSDescription}");
-            WriteLine();
-            WriteLine(
+            WriteLineWithSignifier("**Environment**");
+            WriteLineWithSignifier($"Platform: .NET Core 2.0");
+            WriteLineWithSignifier($"OS: {RuntimeInformation.OSDescription}");
+            WriteLineWithSignifier();
+            WriteLineWithSignifier(
                 $"Flags: " + Environment.NewLine + $"\t flgDebug  : \t {environmentDict["DEBUG"]}" + Environment.NewLine
                 + $"\t flgEins   : \t {environmentDict["eins"]}" + Environment.NewLine
                 + $"\t flgZwo    : \t {environmentDict["zwo"]}");
@@ -227,11 +228,18 @@ x-ase-sect-PAT_END
             "StyleCop.CSharp.LayoutRules",
             "SA1503:CurlyBracketsMustNotBeOmitted",
             Justification = "Reviewed. Suppression is OK here.")]
-        private static void WriteLine(string s = null)
+        private static void WriteLineWithSignifier(string s = null)
         {
             if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
             Debug.WriteLine(string.Format("s = {0}", s));
             Console.Out.WriteLine("s = {0}", s);
+        }
+
+        private static void WriteLine(string s = null)
+        {
+            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
+            Debug.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
+            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
         }
     }
 }
