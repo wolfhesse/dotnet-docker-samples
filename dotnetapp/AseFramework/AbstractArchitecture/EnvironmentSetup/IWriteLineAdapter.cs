@@ -2,7 +2,6 @@
 {
     #region using directives
 
-    using System.Diagnostics;
     using System.IO;
 
     using Xunit.Abstractions;
@@ -57,6 +56,7 @@
             EnvManager.TestOutputHelper = testOutputHelper;
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     The write line.
         /// </summary>
@@ -69,7 +69,7 @@
             else if (null != this._textWriter) this._textWriter.WriteLine(message);
             else this._writeLineSupportImplementation?.WriteLine(message);
 
-            Debug.WriteLine(message);
+            EnvManager.WriteLine(message.ToString());
         }
     }
 }

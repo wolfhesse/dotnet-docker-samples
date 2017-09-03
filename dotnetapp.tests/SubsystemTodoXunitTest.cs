@@ -3,14 +3,11 @@ namespace DotnetAppDev.Tests
     #region using directives
 
     using System;
-    using System.Diagnostics;
 
     using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using DotnetApp.AseFramework.Core.TodoComponent;
     using DotnetApp.AseFramework.Core.TodoComponent.Entities;
     using DotnetApp.AseFramework.Core.TodoComponent.Storage;
-
-    using DotnetAppDev.Tests.Unittests;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -27,7 +24,8 @@ namespace DotnetAppDev.Tests
     /// </summary>
     public class SubsystemTodoXunitTest : AseXunitTestBase
     {
-        /// <summary>Initializes a new instance of the <see cref="SubsystemTodoXunitTest" /> class.</summary>
+        /// <inheritdoc />
+        /// <summary>Initializes a new instance of the <see cref="T:DotnetAppDev.Tests.SubsystemTodoXunitTest" /> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTodoXunitTest(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
@@ -46,7 +44,7 @@ namespace DotnetAppDev.Tests
                     EnvManager.WriteLine(
                         $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                     Console.Out.WriteLine("con: task created");
-                    Debug.WriteLine("dbg: task created");
+                    EnvManager.WriteLine("dbg: task created");
                 };
 
             TodoController.AddTask(new TodoTask("eins").Title);
@@ -68,7 +66,7 @@ namespace DotnetAppDev.Tests
                     EnvManager.WriteLine(
                         $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                     Console.Out.WriteLine("con: task created");
-                    Debug.WriteLine("dbg: task created");
+                    EnvManager.WriteLine("dbg: task created");
                 };
 
             testTodoEngine.AddTask(inMemoryTaskRepository, new TodoTask("eins"));

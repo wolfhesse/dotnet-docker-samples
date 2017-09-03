@@ -2,7 +2,6 @@
 {
     #region using directives
 
-    using System;
     using System.Collections.Generic;
 
     using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
@@ -40,7 +39,7 @@
 
             if (true != response.ApiCall.Success)
             {
-                GeneralOperations.err_handling_bail_out(Console.Out, "ApiCall.Success != true");
+                GeneralOperations.ErrHandlingBailOut("ApiCall.Success != true");
             }
             else
             {

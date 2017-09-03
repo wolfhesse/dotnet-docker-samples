@@ -4,9 +4,10 @@ namespace DotnetApp
 
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
+
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     using Newtonsoft.Json;
 
@@ -35,11 +36,11 @@ namespace DotnetApp
         public static Dictionary<string, string> EnvironmentDict()
         {
             return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
+            {
+                ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+            };
         }
 
         /// <summary>
@@ -119,7 +120,7 @@ x-ase-sect-PAT_END
             WriteLineWithSignifier(GetBot(message));
             WriteEnvironmentDescription(environmentDict);
 
-            RWriteSerializedEnv();
+            EnvManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
         }
 
         /// <summary>
@@ -128,14 +129,13 @@ x-ase-sect-PAT_END
         /// <returns>
         ///     The <see cref="string" />.
         /// </returns>
-        public static string RWriteSerializedEnv()
+        public static string PreparedSerializedEnvironmentSingleLine()
         {
             var env = EnvironmentDict();
             env.Add("TS_NOW", DateTimeOffset.Now.ToString());
             env.Add("PAT_RECORD", ".here");
 
-            serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.Indented);
-            WriteLine(serializedEnvironment);
+            serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
             return serializedEnvironment;
         }
 
@@ -225,8 +225,8 @@ x-ase-sect-PAT_END
         private static void WriteLine(string s = null)
         {
             if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            Debug.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
-            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
+            EnvManager.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
+            //            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ x-ase-sect-PAT_END
         private static void WriteLineWithSignifier(string s = null)
         {
             if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            Debug.WriteLine(string.Format("s = {0}", s));
+            EnvManager.WriteLine(string.Format("s = {0}", s));
             Console.Out.WriteLine("s = {0}", s);
         }
     }

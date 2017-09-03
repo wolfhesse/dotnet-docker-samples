@@ -6,6 +6,8 @@
     using System.Collections.Generic;
     using System.Diagnostics;
 
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+
     #endregion
 
     /// <summary>
@@ -43,7 +45,7 @@
         /// </summary>
         public void CreateDates()
         {
-            Debug.WriteLine($"{this}.CreateDates");
+            EnvManager.WriteLine($"{this}.CreateDates");
             this.Dates =
                 new MySortedSet<DateTimeOffset>
                     {
@@ -59,7 +61,7 @@
         /// </summary>
         public void InsertTimestamp()
         {
-            Debug.WriteLine($"{this}.InsertTimestamp");
+            EnvManager.WriteLine($"{this}.InsertTimestamp");
             var ts0 = DateTimeOffset.Now.LocalDateTime;
             var ts1 = DateTimeOffset.Now;
             this.Dates.Add(ts0);
@@ -83,7 +85,7 @@
         /// </summary>
         public void Sort()
         {
-            Debug.WriteLine($"{this}.Sort");
+            EnvManager.WriteLine($"{this}.Sort");
 
             // TODO need deprecation notice; this.Dates is now SortedSet
             this.Dates.Sort();

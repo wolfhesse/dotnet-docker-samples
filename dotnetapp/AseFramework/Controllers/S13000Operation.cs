@@ -34,7 +34,7 @@ namespace DotnetApp.AseFramework.Controllers
 
         // internal static void fetch_s13000(string requestUriString, string dataDResultTxt, string callParams = null)
         // {
-        // Debug.WriteLine($"fetch_s13000 w/ {requestUriString} .. {dataDResultTxt} .. {callParams}");
+        // EnvManager.WriteLine($"fetch_s13000 w/ {requestUriString} .. {dataDResultTxt} .. {callParams}");
         // var r1 = "";
         // var r2 = "n/a";
         // var r3 = "n/a";

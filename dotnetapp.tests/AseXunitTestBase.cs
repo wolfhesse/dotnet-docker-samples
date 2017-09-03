@@ -1,4 +1,13 @@
-﻿namespace DotnetAppDev.Tests.Unittests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AseXunitTestBase.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The xuit test base.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetAppDev.Tests
 {
     #region using directives
 
@@ -22,6 +31,8 @@
         /// </summary>
         private string serializedEnvironment;
 
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
+        /// <param name="testOutputHelper">The test output helper.</param>
         public AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
             EnvManager.TestOutputHelper = testOutputHelper;
@@ -69,7 +80,7 @@
         public void TestProgramFeatureWriteSerializedEnvironment()
         {
             // it does it and it returns the result
-            var actual = Program.RWriteSerializedEnv();
+            var actual = Program.PreparedSerializedEnvironmentSingleLine();
             Assert.NotEmpty(actual);
 
             // Assert.False(true);

@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Diagnostics;
 
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases;
     using DotnetApp.AseFramework.Controllers;
     using DotnetApp.AseFramework.Models;
@@ -96,8 +97,8 @@
                         "rtest")); // returns an IGetResponse mapped 1-to-1 with the Elasticsearch JSON response
 
             if (true != response2.ApiCall.Success)
-                GeneralOperations.err_handling_bail_out(Console.Out, "ApiCall.Success != true");
-            else Debug.WriteLine("es call successful");
+                GeneralOperations.ErrHandlingBailOut("ApiCall.Success != true");
+            else EnvManager.WriteLine("es call successful");
             return response2;
         }
     }

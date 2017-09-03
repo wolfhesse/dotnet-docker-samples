@@ -1,16 +1,17 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
+﻿#region using directives
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+using Xunit.Abstractions;
+
+#endregion
+
+namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-    using DotnetApp.AseFramework.Controllers;
-
-    using Xunit.Abstractions;
 
     #endregion
 
@@ -63,17 +64,19 @@
         /// </returns>
         public static IDictionary<Enum, IDictionary<Enum, List<string>>> GetEnumRegistry()
         {
-            if (null == EnumRegistry)
+            switch (EnumRegistry)
             {
-                SetEnumRegistry(new Dictionary<Enum, IDictionary<Enum, List<string>>>());
-                var enumRegistry =
-                    new Dictionary<Enum, List<string>>
+                case null:
+                    SetEnumRegistry(new Dictionary<Enum, IDictionary<Enum, List<string>>>());
+                    var enumRegistry =
+                        new Dictionary<Enum, List<string>>
                         {
                             [EnumRegistryKeys.Base] =
-                            new List<string> { DateTimeOffset.Now.ToString() }
+                            new List<string> {DateTimeOffset.Now.ToString()}
                         };
-                Debug.Assert(EnumRegistry != null, nameof(EnumRegistry) + " != null");
-                EnumRegistry[EnumRegistryKeys.Self] = enumRegistry;
+                    Debug.Assert(EnumRegistry != null, nameof(EnumRegistry) + " != null");
+                    EnumRegistry[EnumRegistryKeys.Self] = enumRegistry;
+                    break;
             }
 
             return EnumRegistry;
@@ -95,13 +98,16 @@
             Justification = "Reviewed. Suppression is OK here.")]
         public static IDictionary<string, IDictionary<string, object>> GetRegistry()
         {
-            if (null == Registry)
+            switch (Registry)
             {
-                SetRegistry(new Dictionary<string, IDictionary<string, object>>());
+                case null:
+                    SetRegistry(new Dictionary<string, IDictionary<string, object>>());
 
-                var registryRegistry = new Dictionary<string, object> { ["/0/tags/registry-create-ts"] = DateTime.Now };
-                Debug.Assert(Registry != null, nameof(Registry) + " != null");
-                Registry["/root/rel/registry"] = registryRegistry;
+                    var registryRegistry =
+                        new Dictionary<string, object> {["/0/tags/registry-create-ts"] = DateTime.Now};
+                    Debug.Assert(Registry != null, nameof(Registry) + " != null");
+                    Registry["/root/rel/registry"] = registryRegistry;
+                    break;
             }
 
             return Registry;
@@ -114,7 +120,7 @@
         {
             var registry = GetRegistry();
             registry["/root/rel/view/testing"] =
-                new SortedDictionary<string, object> { ["/0/tags/registry-create-ts"] = DateTime.Now };
+                new SortedDictionary<string, object> {["/0/tags/registry-create-ts"] = DateTime.Now};
         }
 
         /// <summary>
@@ -122,7 +128,7 @@
         /// </summary>
         public static void NewLine()
         {
-            Console.Out.Write(Environment.NewLine);
+            WriteLine();
         }
 
         /// <summary>
@@ -154,9 +160,12 @@
         ///     The s.
         /// </param>
         /// <param name="category"></param>
-        public static void WriteLine(string s, string category = "")
+        public static void WriteLine(string s = null, string category = "")
         {
-            if (null != DefaultOut) DefaultOut.WriteLine(s);
+            s = s ?? Environment.NewLine;
+            s += category.Trim().Length == 0 ? string.Empty : $", {category}";
+            if (TestOutputHelper != null) TestOutputHelper.WriteLine(s);
+            else if (DefaultOut != null) DefaultOut.WriteLine(s);
             else Console.Out.WriteLine(s);
         }
     }

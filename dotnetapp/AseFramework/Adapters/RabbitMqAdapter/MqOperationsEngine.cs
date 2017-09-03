@@ -40,7 +40,7 @@
                 new ConnectionFactory { HostName = config.Hostname, UserName = "test", Password = "test" };
 
             // Console.WriteLine(ConnectionFactory);
-            // Debug.WriteLine(ConnectionFactory);
+            // EnvManager.WriteLine(ConnectionFactory);
             this.ConfiguredState = true;
         }
 

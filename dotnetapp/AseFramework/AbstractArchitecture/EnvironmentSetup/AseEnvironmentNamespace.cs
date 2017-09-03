@@ -45,20 +45,20 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
                 var sw = new StringWriter(new StringBuilder());
                 try
                 {
-                    GeneralOperations.err_handling_bail_out(sw, "get env var ASE_DATA_D");
+                    GeneralOperations.ErrHandlingBailOut("get env var ASE_DATA_D");
                 }
                 catch (Exception e)
                 {
                     sw.WriteLine($"exception: {e.Message}");
                 }
 
-                Debug.WriteLine(sw.ToString());
+                EnvManager.WriteLine(sw.ToString());
 
                 s = EnvManager.AseDataDWin;
                 Environment.SetEnvironmentVariable(EnvManager.EnvVarAseDataD, s);
             }
 
-            Debug.WriteLine($"ASE_DATA_D env var set to {s}");
+            EnvManager.WriteLine($"ASE_DATA_D env var set to {s}");
             return s;
         }
     }
