@@ -51,7 +51,7 @@ namespace DotnetappDev.Tests
             var p = new Program();
             Program.Main(new[] {"eins", "zwo", "drei"});
 
-            _serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(),Formatting.Indented);
+            _serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
             oh.WriteLine(_serializedEnvironment);
 
             oh.WriteLine("x-ase-debug-line");
@@ -78,11 +78,40 @@ namespace DotnetappDev.Tests
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
             {
-                Console.Out.WriteLine("task created");
-                Debug.WriteLine("task created");
+                oh.WriteLine($"oh: task created" +
+                             Environment.NewLine +
+                             $" at {DateTimeOffset.Now}" +
+                             Environment.NewLine +
+                             $" by {sender}" +
+                             Environment.NewLine +
+                             $" with args {args}");
+                Console.Out.WriteLine("con: task created");
+                Debug.WriteLine("dbg: task created");
             };
 
             testTodoEngine.AddTask(inMemoryTaskRepository, new Task("eins"));
+            Assert.Empty(string.Empty);
+        }
+
+        [Fact]
+        public void TestTodoController()
+        {
+            
+            var inMemoryTaskRepository = TodoController.TaskRepository;
+            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
+            {
+                oh.WriteLine($"oh: task created" +
+                             Environment.NewLine +
+                             $" at {DateTimeOffset.Now}" +
+                             Environment.NewLine +
+                             $" by {sender}" +
+                             Environment.NewLine +
+                             $" with args {args}");
+                Console.Out.WriteLine("con: task created");
+                Debug.WriteLine("dbg: task created");
+            };
+
+            TodoController.AddTask( new Task("eins").Title);
             Assert.Empty(string.Empty);
         }
     }
