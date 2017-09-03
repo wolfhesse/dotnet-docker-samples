@@ -2,10 +2,10 @@
 
 using System;
 using System.Diagnostics;
-using ClassLibrary.TodoComponent;
-using ClassLibrary.TodoComponent.Entities;
-using ClassLibrary.TodoComponent.Storage;
-using DotNetApp;
+using dotnetapp;
+using dotnetapp.TodoComponent;
+using dotnetapp.TodoComponent.Entities;
+using dotnetapp.TodoComponent.Storage;
 using Newtonsoft.Json;
 using Xunit;
 using Xunit.Abstractions;
@@ -90,7 +90,7 @@ namespace DotnetappDev.Tests
                 Debug.WriteLine("dbg: task created");
             };
 
-            testTodoEngine.AddTask(inMemoryTaskRepository, new Task("eins"));
+            testTodoEngine.AddTask(inMemoryTaskRepository, new TodoTask("eins"));
             Assert.Empty(string.Empty);
         }
 
@@ -112,7 +112,7 @@ namespace DotnetappDev.Tests
                 Debug.WriteLine("dbg: task created");
             };
 
-            TodoController.AddTask( new Task("eins").Title);
+            TodoController.AddTask( new TodoTask("eins").Title);
             Assert.Empty(string.Empty);
         }
     }

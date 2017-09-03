@@ -1,22 +1,16 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="ase">
-//   mit
-// </copyright>
-// <summary>
-//   Defines the Program type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+#region
 
-namespace DotNetApp
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using Newtonsoft.Json;
+
+#endregion
+
+namespace dotnetapp
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.InteropServices;
-
-    using Newtonsoft.Json;
-
     /// <summary>
     ///     The program.
     /// </summary>
@@ -37,11 +31,11 @@ namespace DotNetApp
         public static Dictionary<string, string> EnvironmentDict()
         {
             return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
+            {
+                ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+            };
         }
 
         /// <summary>
@@ -134,9 +128,9 @@ x-ase-sect-PAT_END
         {
             var env = EnvironmentDict();
             env.Add("TS_NOW", DateTimeOffset.Now.ToString());
-            env.Add("PAT_RECORD",".here");
+            env.Add("PAT_RECORD", ".here");
 
-            serializedEnvironment = JsonConvert.SerializeObject(env,Formatting.Indented);
+            serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.Indented);
             WriteLine(serializedEnvironment);
             return serializedEnvironment;
         }
