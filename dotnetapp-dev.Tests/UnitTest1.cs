@@ -14,9 +14,9 @@ using Xunit.Abstractions;
 
 namespace DotnetappDev.Tests
 {
-    public class UnitTest1
+    public class SubsystemTodo
     {
-        public UnitTest1(ITestOutputHelper oh)
+        public SubsystemTodo(ITestOutputHelper oh)
         {
             this._oh = oh;
         }

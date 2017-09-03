@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
-using dotnetapp.RabbitMqAdapter;
+using dotnetapp.AseFramework.Definitions;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace ClassLibrary.RabbitMqAdapter.UseCases
+namespace dotnetapp.RabbitMqAdapter.UseCases
 {
     public class ConsumeMqMessagesLoopUseCase
     {
@@ -81,15 +81,5 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
         {
             EvRqTweetMessage?.Invoke(null, eventargs);
         }
-    }
-
-    public class AseMessageEventArgs : EventArgs
-    {
-        public AseMessageEventArgs(string s)
-        {
-            Message = s;
-        }
-
-        public string Message { get; }
     }
 }

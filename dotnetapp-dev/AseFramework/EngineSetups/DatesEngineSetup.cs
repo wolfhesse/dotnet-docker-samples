@@ -10,7 +10,7 @@
 using dotnetapp.AbstractArchitecture;
 using dotnetapp.AseFramework.Models;
 
-namespace ClassLibrary.AseFramework.EngineSetups
+namespace dotnetapp.AseFramework.EngineSetups
 {
     #region
 

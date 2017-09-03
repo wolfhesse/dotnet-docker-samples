@@ -1,7 +1,7 @@
 using dotnetapp.TodoComponent;
 using dotnetapp.TodoComponent.Storage;
 
-namespace ClassLibrary.EnvironmentSetup
+namespace dotnetapp.EnvironmentSetup
 {
     public class InMemoryTestConfiguration
     {

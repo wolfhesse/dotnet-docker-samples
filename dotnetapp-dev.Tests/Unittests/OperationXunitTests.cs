@@ -1,19 +1,27 @@
 ﻿#region
 
-using ClassLibrary.EnvironmentSetup;
 using dotnetapp.AseFramework.Controllers;
 using dotnetapp.AseFramework.Models;
 using dotnetapp.ElasticSearchAdapter;
+using dotnetapp.EnvironmentSetup;
 using Xunit;
+using Xunit.Abstractions;
 
 #endregion
 
 namespace dotnetapp.ClassLibrary
 {
-    public class OperationTests
+    public class OperationXunitTests
 
     {
-        private static readonly string DataDResultTxtF = EnvManager.AseDataDWin + "/OperationTests.res.txt";
+        public OperationXunitTests(ITestOutputHelper oh)
+        {
+            _oh = oh;
+            EnvManager.TestOutputHelper = _oh;
+        }
+
+        private static readonly string DataDResultTxtF = EnvManager.AseDataDWin + "/OperationXunitTests.res.txt";
+        private readonly ITestOutputHelper _oh;
         private const string RequestUriString = "http://10.0.0.21:13000/";
 
 //        [Fact]
@@ -43,6 +51,7 @@ namespace dotnetapp.ClassLibrary
         [Fact]
         public void mkidx_test()
         {
+            EnvManager.DefaultOut = new IWriteLineAdapter(_oh);
             var pTweet = SampleDataProvider.GetSampleTweet();
             var tweets = EsOperationsEngine.EsWriteAndReadbackTweet(pTweet);
             Assert.Equal(tweets[0].User, tweets[1].User);

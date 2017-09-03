@@ -1,8 +1,8 @@
-﻿using ClassLibrary.AseFramework.Definitions;
+﻿using dotnetapp.AseFramework.Definitions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace DNS.Programs
+namespace dotnetapp.RabbitMqAdapter
 {
     public class MessageQueueConfigEntry : IConfigEntry
     {

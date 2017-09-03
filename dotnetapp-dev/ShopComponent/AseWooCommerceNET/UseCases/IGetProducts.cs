@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using WooCommerceNET;
 using WooCommerceNET.WooCommerce.v2;
 
-namespace ClassLibrary.ShopComponent.AseWooCommerceNET.UseCases
+namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
 {
     #region
 

@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.AseFramework.Definitions
+﻿namespace dotnetapp.AseFramework.Definitions
 {
     public interface AseFrameworkDefinitionsHead
     {

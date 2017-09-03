@@ -13,10 +13,11 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
-using ClassLibrary.AseFramework.Definitions;
 using dotnetapp.AseFramework.Controllers;
+using dotnetapp.AseFramework.Definitions;
+using Xunit.Abstractions;
 
-namespace ClassLibrary.EnvironmentSetup
+namespace dotnetapp.EnvironmentSetup
 {
     #region
 
@@ -49,6 +50,8 @@ namespace ClassLibrary.EnvironmentSetup
         private static IDictionary<string, IDictionary<string, object>> Registry { get; set; }
 
         private static IDictionary<Enum, IDictionary<Enum, List<string>>> EnumRegistry { get; set; }
+        public static ITestOutputHelper TestOutputHelper { get; set; }
+        public static IWriteLineSupport DefaultOut { get; set; }
 
         /// <summary>
         ///     The get registry.

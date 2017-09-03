@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary.AseFramework.Definitions
+namespace dotnetapp.AseFramework.Definitions
 {
     public class AseGeneratorAttribute : Attribute, AseFrameworkDefinitionsHead
     {

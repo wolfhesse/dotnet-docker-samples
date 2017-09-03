@@ -1,8 +1,8 @@
-﻿using ClassLibrary.AseFramework.Definitions;
+﻿using dotnetapp.AseFramework.Definitions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace ClassLibrary.EnvironmentSetup
+namespace dotnetapp.EnvironmentSetup
 {
     public class MessageQueueConfigEntry : IConfigEntry, AseFrameworkDefinitionsHead
     {

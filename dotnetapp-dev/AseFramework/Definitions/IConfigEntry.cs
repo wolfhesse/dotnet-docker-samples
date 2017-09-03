@@ -1,4 +1,4 @@
-﻿namespace DNS.Programs
+﻿namespace dotnetapp.AseFramework.Definitions
 {
     public interface IConfigEntry
     {

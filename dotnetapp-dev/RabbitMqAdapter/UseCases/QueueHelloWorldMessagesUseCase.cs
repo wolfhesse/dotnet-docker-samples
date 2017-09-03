@@ -1,11 +1,9 @@
-using ClassLibrary.EnvironmentSetup;
-using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using dotnetapp.RabbitMqAdapter;
+using RabbitMQ.Client;
 
-namespace ClassLibrary.RabbitMqAdapter.UseCases
+namespace dotnetapp.RabbitMqAdapter.UseCases
 {
     public class QueueHelloWorldMessagesUseCase
     {
@@ -17,7 +15,7 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
             if (null == engine)
             {
                 engine = new MqOperationsEngine();
-                engine.ConfigureTestTest(new MessageQueueConfigEntry("s0.wolfslab.wolfspool.at"));
+                engine.ConfigureTestTest(new EnvironmentSetup.MessageQueueConfigEntry("s0.wolfslab.wolfspool.at"));
             }
             //            var factory = //  new ConnectionFactory {HostName = hostName, UserName = "test", Password = "test"};
             using (var connection = engine.CreateConnection())

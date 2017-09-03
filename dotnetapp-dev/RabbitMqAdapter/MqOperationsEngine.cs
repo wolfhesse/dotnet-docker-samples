@@ -2,9 +2,8 @@
 
 using System;
 using System.Diagnostics;
-using ClassLibrary.AseFramework.Definitions;
-using ClassLibrary.EnvironmentSetup;
-using ClassLibrary.RabbitMqAdapter.UseCases;
+using dotnetapp.AseFramework.Definitions;
+using dotnetapp.RabbitMqAdapter.UseCases;
 using RabbitMQ.Client;
 
 #endregion
@@ -16,7 +15,7 @@ namespace dotnetapp.RabbitMqAdapter
         public bool ConfiguredState { get; private set; }
         public ConnectionFactory ConnectionFactory { get; set; }
 
-        public void ConfigureTestTest(MessageQueueConfigEntry config)
+        public void ConfigureTestTest(EnvironmentSetup.MessageQueueConfigEntry config)
         {
             Debug.Assert(config.Purpose == ProgramConfigKeys.MessageQueue);
             ConnectionFactory = new ConnectionFactory

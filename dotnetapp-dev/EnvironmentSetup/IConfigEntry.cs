@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.EnvironmentSetup
+﻿namespace dotnetapp.EnvironmentSetup
 {
     public interface IConfigEntry
     {

@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using ClassLibrary.ShopComponent.AseWooCommerceNET.UseCases;
 using WooCommerceNET.WooCommerce.v2;
 
 #endregion
