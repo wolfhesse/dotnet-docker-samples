@@ -1,16 +1,14 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="">
-//   
+// <copyright file="Program.cs" company="ase">
+//   mit
 // </copyright>
 // <summary>
-//   The program.
+//   Defines the Program type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp
+namespace DotNetApp
 {
-    #region
-
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -19,16 +17,11 @@ namespace DotnetApp
 
     using Newtonsoft.Json;
 
-    #endregion
-
     /// <summary>
     ///     The program.
     /// </summary>
     public class Program
     {
-        /// <summary>
-        /// The serialized environment.
-        /// </summary>
         private static string serializedEnvironment;
 
         /// <summary>
@@ -44,21 +37,21 @@ namespace DotnetApp
         public static Dictionary<string, string> EnvironmentDict()
         {
             return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
+            {
+                ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+            };
         }
 
         /// <summary>
-        /// The get bot.
+        ///     The get bot.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string GetBot(string message)
         {
@@ -113,10 +106,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The main.
+        ///     The main.
         /// </summary>
         /// <param name="args">
-        /// The args.
+        ///     The args.
         /// </param>
         public static void Main(string[] args)
         {
@@ -149,13 +142,13 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The build message.
+        ///     The build message.
         /// </summary>
         /// <param name="args">
-        /// The args.
+        ///     The args.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         private static string BuildMessage(string[] args)
         {
@@ -168,13 +161,13 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The get bot header.
+        ///     The get bot header.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         private static string GetBotHeader(string message)
         {
@@ -185,16 +178,16 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The get environment variable with options.
+        ///     The get environment variable with options.
         /// </summary>
         /// <param name="variable">
-        /// The variable.
+        ///     The variable.
         /// </param>
         /// <param name="defaultValue">
-        /// The default value.
+        ///     The default value.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
         {
@@ -204,10 +197,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The write environment description.
+        ///     The write environment description.
         /// </summary>
         /// <param name="environmentDict">
-        /// The environment dict.
+        ///     The environment dict.
         /// </param>
         [SuppressMessage(
             "StyleCop.CSharp.DocumentationRules",
@@ -226,23 +219,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The write line.
+        ///     The write line.
         /// </summary>
         /// <param name="s">
-        /// The s.
-        /// </param>
-        private static void WriteLine(string s = null)
-        {
-            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            Debug.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
-            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
-        }
-
-        /// <summary>
-        /// The write line.
-        /// </summary>
-        /// <param name="s">
-        /// The s.
+        ///     The s.
         /// </param>
         [SuppressMessage(
             "StyleCop.CSharp.LayoutRules",
@@ -253,6 +233,13 @@ x-ase-sect-PAT_END
             if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
             Debug.WriteLine(string.Format("s = {0}", s));
             Console.Out.WriteLine("s = {0}", s);
+        }
+
+        private static void WriteLine(string s = null)
+        {
+            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
+            Debug.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
+            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
         }
     }
 }
