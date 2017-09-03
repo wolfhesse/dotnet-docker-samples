@@ -1,6 +1,4 @@
 ﻿using WooCommerceNET.WooCommerce.v2;
-using WordPressPCL;
-using WordPressPCL.Models;
 
 namespace ClassLibrary.ShopComponent.AseWordPressPCL
 {

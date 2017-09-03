@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using ClassLibrary.AseFramework;
 using ClassLibrary.AseFramework.Controllers;
 using ClassLibrary.AseFramework.Models;
 using ClassLibrary.ElasticSearchAdapter.UseCases;
