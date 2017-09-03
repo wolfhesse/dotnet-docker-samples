@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp-dev.Tests", "dotnetapp-dev.Tests.csproj", "{DDBF3A2B-4439-406D-A961-FF07AA205438}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp.Tests", ".\dotnetapp.tests\dotnetapp.Tests.csproj", "{DDBF3A2B-4439-406D-A961-FF07AA205438}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp", "..\dotnetapp-dev\dotnetapp.csproj", "{D7A6837F-0CEE-4B6D-BD6B-B22B485AC744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp", ".\dotnetapp\dotnetapp.csproj", "{D7A6837F-0CEE-4B6D-BD6B-B22B485AC744}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
