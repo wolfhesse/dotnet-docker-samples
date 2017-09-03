@@ -42,6 +42,7 @@ namespace DotnetappDev.Tests
         }
 
 
+
         /// <summary>
         ///     The test program feature environment.
         /// </summary>
@@ -51,7 +52,7 @@ namespace DotnetappDev.Tests
             var p = new Program();
             Program.Main(new[] {"eins", "zwo", "drei"});
 
-            _serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
+            _serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(),Formatting.Indented);
             oh.WriteLine(_serializedEnvironment);
 
             oh.WriteLine("x-ase-debug-line");
