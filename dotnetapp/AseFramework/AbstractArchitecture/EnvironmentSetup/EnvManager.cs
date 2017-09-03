@@ -162,9 +162,10 @@ namespace DotnetApp.EnvironmentSetup
         /// The write line.
         /// </summary>
         /// <param name="s">
-        /// The s.
+        ///     The s.
         /// </param>
-        public static void WriteLine(string s)
+        /// <param name="category"></param>
+        public static void WriteLine(string s, string category = "")
         {
             if (null != DefaultOut) DefaultOut.WriteLine(s);
             else Console.Out.WriteLine(s);
