@@ -33,7 +33,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// <summary>
             ///     The dates engine setup.
             /// </summary>
-            private readonly DatesEngineSetup datesEngineSetup;
+            private readonly DatesEngineSetup _datesEngineSetup;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="Controller" /> class.
@@ -49,7 +49,7 @@ namespace dotnetapp.AseFramework.Controllers
                 Port = new Presenter {TextWriter = textWriter};
                 Port.TextWriter.WriteLine("controller initialization...");
 
-                this.datesEngineSetup = datesEngineSetup;
+                _datesEngineSetup = datesEngineSetup;
 
                 Port.TextWriter.WriteLine("controller initialized...");
             }
@@ -87,7 +87,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             public void StartActionBatch()
             {
-                datesEngineSetup.ActionBatch();
+                _datesEngineSetup.ActionBatch();
                 OnEvAfterActionHookEventHandler();
             }
 
@@ -173,11 +173,12 @@ namespace dotnetapp.AseFramework.Controllers
                     foreach (var modelSysWarning in _datesContainerModel.SysWarnings)
                     {
                         Port.TextWriter.WriteLine(modelSysWarning);
+                        // ReSharper disable once ObjectCreationAsStatement
                         new WarningWrittenHook(this);
                     }
 
                     _datesContainerModel.SysWarnings.Clear();
-                    new SysWarningsClearedHook(this);
+                    var unused = new SysWarningsClearedHook(this);
                 };
             }
 

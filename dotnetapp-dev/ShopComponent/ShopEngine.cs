@@ -8,6 +8,7 @@ namespace dotnetapp.ShopComponent
 {
     public class ShopEngine
     {
+        // ReSharper disable once UnusedMember.Local
         private ShopEngine()
         {
         }

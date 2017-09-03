@@ -18,17 +18,17 @@ namespace DotnetappDev.Tests
     {
         public UnitTest1(ITestOutputHelper oh)
         {
-            this.oh = oh;
+            this._oh = oh;
         }
 
         private string _serializedEnvironment;
-        private readonly ITestOutputHelper oh;
+        private readonly ITestOutputHelper _oh;
 
         [Fact]
         public void Test1()
         {
-            oh.WriteLine(1.ToString());
-            oh.WriteLine(DateTimeOffset.Now.ToString());
+            _oh.WriteLine(1.ToString());
+            _oh.WriteLine(DateTimeOffset.Now.ToString());
             Assert.Equal(1, 1);
 
             // Assert.Equal(1,2);
@@ -37,7 +37,7 @@ namespace DotnetappDev.Tests
         [Fact]
         public void Test2()
         {
-            oh.WriteLine(DateTimeOffset.Now.ToString());
+            _oh.WriteLine(DateTimeOffset.Now.ToString());
             Assert.False(bool.TrueString == "1");
         }
 
@@ -49,14 +49,14 @@ namespace DotnetappDev.Tests
         [Fact]
         public void TestProgramFeatureEnvironment()
         {
-            var p = new Program();
+        
             Program.Main(new[] {"eins", "zwo", "drei"});
 
             _serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
-            oh.WriteLine(_serializedEnvironment);
+            _oh.WriteLine(_serializedEnvironment);
 
-            oh.WriteLine("x-ase-debug-line");
-            oh.WriteLine("x-ase-trace-line", "test");
+            _oh.WriteLine("x-ase-debug-line");
+            _oh.WriteLine("x-ase-trace-line", "test");
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace DotnetappDev.Tests
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
             {
-                oh.WriteLine($"oh: task created" +
+                _oh.WriteLine($"oh: task created" +
                              Environment.NewLine +
                              $" at {DateTimeOffset.Now}" +
                              Environment.NewLine +
@@ -101,7 +101,7 @@ namespace DotnetappDev.Tests
             var inMemoryTaskRepository = TodoController.TaskRepository;
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
             {
-                oh.WriteLine($"oh: task created" +
+                _oh.WriteLine($"oh: task created" +
                              Environment.NewLine +
                              $" at {DateTimeOffset.Now}" +
                              Environment.NewLine +
