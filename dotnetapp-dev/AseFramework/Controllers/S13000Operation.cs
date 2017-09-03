@@ -8,7 +8,7 @@ namespace dotnetapp.AseFramework.Controllers
 {
     public static class S13000Operation
     {
-        public static string get_statement_1()
+        public static string Get_statement_1()
         {
             const string stmt = "200 rq/s ist 17 mio rq/d";
             return stmt;

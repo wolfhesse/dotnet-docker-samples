@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EnvManager.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The env manager.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+﻿#region
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +9,8 @@ using System.Text;
 using dotnetapp.AseFramework.Controllers;
 using dotnetapp.AseFramework.Definitions;
 using Xunit.Abstractions;
+
+#endregion
 
 namespace dotnetapp.EnvironmentSetup
 {
@@ -86,7 +81,10 @@ namespace dotnetapp.EnvironmentSetup
             if (null == EnumRegistry)
             {
                 SetEnumRegistry(new Dictionary<Enum, IDictionary<Enum, List<string>>>());
-                var enumRegistry = new Dictionary<Enum, List<string>> {[EnumRegistryKeys.Base]=new List<string> {DateTimeOffset.Now.ToString()}};
+                var enumRegistry = new Dictionary<Enum, List<string>>
+                {
+                    [EnumRegistryKeys.Base] = new List<string> {DateTimeOffset.Now.ToString()}
+                };
                 Debug.Assert(EnumRegistry != null, nameof(EnumRegistry) + " != null");
                 EnumRegistry[EnumRegistryKeys.Self] = enumRegistry;
             }
@@ -117,6 +115,17 @@ namespace dotnetapp.EnvironmentSetup
             var registry = GetRegistry();
             registry["/root/rel/view/testing"] =
                 new SortedDictionary<string, object> {["/0/tags/registry-create-ts"] = DateTime.Now};
+        }
+
+        public static void NewLine()
+        {
+            Console.Out.Write(Environment.NewLine);
+        }
+
+        public static void WriteLine(string s)
+        {
+            if (null != DefaultOut) DefaultOut.WriteLine(s);
+            else Console.Out.WriteLine(s);
         }
 
         /// <summary>
@@ -159,11 +168,6 @@ namespace dotnetapp.EnvironmentSetup
                 Debug.WriteLine($"ASE_DATA_D env var set to {s}");
                 return s;
             }
-        }
-
-        public static void NewLine()
-        {
-            Console.Out.Write(Environment.NewLine);
         }
     }
 }

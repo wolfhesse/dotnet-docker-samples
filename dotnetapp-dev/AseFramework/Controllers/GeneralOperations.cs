@@ -1,6 +1,7 @@
 #region
 
 using System.IO;
+using dotnetapp.EnvironmentSetup;
 
 #endregion
 
@@ -10,8 +11,7 @@ namespace dotnetapp.AseFramework.Controllers
     {
         public static void err_handling_bail_out(TextWriter textWriter, string reason = null)
         {
-            textWriter.WriteLine($"bailing out: rc .. {reason} // ");
-////            throw new NotImplementedException();
+            EnvManager.WriteLine($"bailing out: rc .. {reason} // ");
         }
     }
 }

@@ -43,13 +43,13 @@ namespace dotnetapp.ClassLibrary
 //        }
 
         [Fact]
-        public void get_stmt_test()
+        public void Get_stmt_test()
         {
-            Assert.NotEmpty(S13000Operation.get_statement_1());
+            Assert.NotEmpty(S13000Operation.Get_statement_1());
         }
 
         [Fact]
-        public void mkidx_test()
+        public void Mkidx_test()
         {
             EnvManager.DefaultOut = new IWriteLineAdapter(_oh);
             var pTweet = SampleDataProvider.GetSampleTweet();
