@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp-dev.Tests", "dotnetapp-dev.Tests.csproj", "{DDBF3A2B-4439-406D-A961-FF07AA205438}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp", "..\dotnetapp-dev\dotnetapp.csproj", "{D7A6837F-0CEE-4B6D-BD6B-B22B485AC744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "..\..\DotnetStd\ClassLibrary\ClassLibrary.csproj", "{684F612E-41FC-4991-BDA0-AC342F8DFDB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "..\ClassLibrary\ClassLibrary.csproj", "{684F612E-41FC-4991-BDA0-AC342F8DFDB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
