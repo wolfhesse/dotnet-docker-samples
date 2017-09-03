@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DatesContainerModel.cs" company="ase">
-//   mit
+// <copyright file="DatesContainerModel.cs" company="">
+//   
 // </copyright>
 // <summary>
 //   The dates container model.

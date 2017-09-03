@@ -1,15 +1,20 @@
-#region
-
-#endregion
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetProducts.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The get products.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    #region
+
     using System;
     using System.Collections.Generic;
 
     using WooCommerceNET.WooCommerce.v2;
-
-    #region
 
     #endregion
 
@@ -19,10 +24,10 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
     public class GetProducts : GetProductsBase
     {
         /// <summary>
-        ///     The product list write.
+        /// The product list write.
         /// </summary>
         /// <param name="p">
-        ///     The p.
+        /// The p.
         /// </param>
         public override void ProductListWrite(List<Product> p)
         {

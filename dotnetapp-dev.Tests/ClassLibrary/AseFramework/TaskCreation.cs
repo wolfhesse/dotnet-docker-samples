@@ -1,9 +1,16 @@
-﻿#region
-
-#endregion
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TaskCreation.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The task creation.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
+    #region
+
     using System;
 
     using DotnetApp.EnvironmentSetup;
@@ -11,9 +18,17 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 
     using NUnit.Framework;
 
+    #endregion
+
+    /// <summary>
+    /// The task creation.
+    /// </summary>
     [TestFixture]
     public class TaskCreation
     {
+        /// <summary>
+        /// The test task created at.
+        /// </summary>
         [Test]
         public void TestTaskCreatedAt()
         {

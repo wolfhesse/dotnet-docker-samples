@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="S13000Operation.cs" company="ase">
-//   mit
+// <copyright file="S13000Operation.cs" company="">
+//   
 // </copyright>
 // <summary>
 //   The s 13000 operation.
@@ -16,7 +16,7 @@ namespace DotnetApp.Controllers
     #endregion
 
     /// <summary>
-    /// The s 13000 operation.
+    ///     The s 13000 operation.
     /// </summary>
     public static class S13000Operation
     {
@@ -30,15 +30,15 @@ namespace DotnetApp.Controllers
         private const string RequestUriString = "http://10.0.0.21:13000/";
 
         /// <summary>
-        /// The get statement 1.
+        ///     The get statement 1.
         /// </summary>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string GetStatement1()
         {
             const string stmt = "200 rq/s ist 17 mio rq/d";
-            return stmt+" @ future: fetch from "+RequestUriString;
+            return stmt + " @ future: fetch from " + RequestUriString;
         }
 
         // internal static void fetch_s13000(string requestUriString, string dataDResultTxt, string callParams = null)
@@ -149,22 +149,22 @@ namespace DotnetApp.Controllers
         }
 
         /// <summary>
-        /// The api.
+        ///     The api.
         /// </summary>
         public class Api
         {
             /// <summary>
-            /// The call params key.
+            ///     The call params key.
             /// </summary>
             public const string CallParamsKey = "call_params_key";
 
             /// <summary>
-            /// The result file path key.
+            ///     The result file path key.
             /// </summary>
             public const string ResultFilePathKey = "result_file_path_key";
 
             /// <summary>
-            /// The uri key.
+            ///     The uri key.
             /// </summary>
             public const string UriKey = "uri_key";
 

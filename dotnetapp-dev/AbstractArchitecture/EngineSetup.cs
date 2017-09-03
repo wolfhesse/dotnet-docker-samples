@@ -16,17 +16,17 @@ namespace DotnetApp.AbstractArchitecture
     #endregion
 
     /// <summary>
-    /// The engine setup.
+    ///     The engine setup.
     /// </summary>
     public class EngineSetup
     {
         /// <summary>
-        /// The dates container model.
+        ///     The dates container model.
         /// </summary>
         public readonly DatesContainerModel DatesContainerModel;
 
         /// <summary>
-        /// The view.
+        ///     The view.
         /// </summary>
         public readonly IView View;
 

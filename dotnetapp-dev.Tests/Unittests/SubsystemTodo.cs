@@ -1,9 +1,16 @@
-#region
-
-#endregion
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SubsystemTodo.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The subsystem todo.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetAppDev.Tests.Unittests
 {
+    #region
+
     using System;
     using System.Diagnostics;
 
@@ -17,16 +24,37 @@ namespace DotnetAppDev.Tests.Unittests
     using Xunit;
     using Xunit.Abstractions;
 
+    #endregion
+
+    /// <summary>
+    /// The subsystem todo.
+    /// </summary>
     public class SubsystemTodo
     {
+        /// <summary>
+        /// The _oh.
+        /// </summary>
+        private readonly ITestOutputHelper _oh;
+
+        /// <summary>
+        /// The _serialized environment.
+        /// </summary>
+        private string _serializedEnvironment;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubsystemTodo"/> class.
+        /// </summary>
+        /// <param name="oh">
+        /// The oh.
+        /// </param>
         public SubsystemTodo(ITestOutputHelper oh)
         {
             this._oh = oh;
         }
 
-        private string _serializedEnvironment;
-        private readonly ITestOutputHelper _oh;
-
+        /// <summary>
+        /// The test 1.
+        /// </summary>
         [Fact]
         public void Test1()
         {
@@ -37,6 +65,9 @@ namespace DotnetAppDev.Tests.Unittests
             // Assert.Equal(1,2);
         }
 
+        /// <summary>
+        /// The test 2.
+        /// </summary>
         [Fact]
         public void Test2()
         {
@@ -44,16 +75,13 @@ namespace DotnetAppDev.Tests.Unittests
             Assert.False(bool.TrueString == "1");
         }
 
-
-
         /// <summary>
         ///     The test program feature environment.
         /// </summary>
         [Fact]
         public void TestProgramFeatureEnvironment()
         {
-        
-            Program.Main(new[] {"eins", "zwo", "drei"});
+            Program.Main(new[] { "eins", "zwo", "drei" });
 
             this._serializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
             this._oh.WriteLine(this._serializedEnvironment);
@@ -75,47 +103,44 @@ namespace DotnetAppDev.Tests.Unittests
             // Assert.False(true);
         }
 
+        /// <summary>
+        /// The test todo controller.
+        /// </summary>
+        [Fact]
+        public void TestTodoController()
+        {
+            var inMemoryTaskRepository = TodoController.TaskRepository;
+            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
+                {
+                    this._oh.WriteLine(
+                        $"oh: task created" + Environment.NewLine + $" at {DateTimeOffset.Now}" + Environment.NewLine
+                        + $" by {sender}" + Environment.NewLine + $" with args {args}");
+                    Console.Out.WriteLine("con: task created");
+                    Debug.WriteLine("dbg: task created");
+                };
+
+            TodoController.AddTask(new TodoTask("eins").Title);
+            Assert.Empty(string.Empty);
+        }
+
+        /// <summary>
+        /// The test todo engine and component.
+        /// </summary>
         [Fact]
         public void TestTodoEngineAndComponent()
         {
             var testTodoEngine = new TodoEngine();
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
-            {
-                this._oh.WriteLine($"oh: task created" +
-                             Environment.NewLine +
-                             $" at {DateTimeOffset.Now}" +
-                             Environment.NewLine +
-                             $" by {sender}" +
-                             Environment.NewLine +
-                             $" with args {args}");
-                Console.Out.WriteLine("con: task created");
-                Debug.WriteLine("dbg: task created");
-            };
+                {
+                    this._oh.WriteLine(
+                        $"oh: task created" + Environment.NewLine + $" at {DateTimeOffset.Now}" + Environment.NewLine
+                        + $" by {sender}" + Environment.NewLine + $" with args {args}");
+                    Console.Out.WriteLine("con: task created");
+                    Debug.WriteLine("dbg: task created");
+                };
 
             testTodoEngine.AddTask(inMemoryTaskRepository, new TodoTask("eins"));
-            Assert.Empty(string.Empty);
-        }
-
-        [Fact]
-        public void TestTodoController()
-        {
-            
-            var inMemoryTaskRepository = TodoController.TaskRepository;
-            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
-            {
-                this._oh.WriteLine($"oh: task created" +
-                             Environment.NewLine +
-                             $" at {DateTimeOffset.Now}" +
-                             Environment.NewLine +
-                             $" by {sender}" +
-                             Environment.NewLine +
-                             $" with args {args}");
-                Console.Out.WriteLine("con: task created");
-                Debug.WriteLine("dbg: task created");
-            };
-
-            TodoController.AddTask( new TodoTask("eins").Title);
             Assert.Empty(string.Empty);
         }
     }

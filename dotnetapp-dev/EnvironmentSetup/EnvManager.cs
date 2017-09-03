@@ -1,9 +1,16 @@
-﻿#region
-
-#endregion
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EnvManager.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The env manager.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetApp.EnvironmentSetup
 {
+    #region
+
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -15,8 +22,6 @@ namespace DotnetApp.EnvironmentSetup
     using DotnetApp.Controllers;
 
     using Xunit.Abstractions;
-
-    #region
 
     #endregion
 
@@ -32,6 +37,11 @@ namespace DotnetApp.EnvironmentSetup
             Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/data.d";
 
         /// <summary>
+        /// Gets or sets the default out.
+        /// </summary>
+        public static IWriteLineSupport DefaultOut { get; set; }
+
+        /// <summary>
         ///     Gets the env var ase data d.
         /// </summary>
         public static string EnvVarAseDataD { get; } = "ASE_DATA_D";
@@ -42,13 +52,43 @@ namespace DotnetApp.EnvironmentSetup
         public static string FlgNotAvailableS { get; } = "n/a";
 
         /// <summary>
+        /// Gets or sets the test output helper.
+        /// </summary>
+        public static ITestOutputHelper TestOutputHelper { get; set; }
+
+        /// <summary>
+        /// Gets or sets the enum registry.
+        /// </summary>
+        private static IDictionary<Enum, IDictionary<Enum, List<string>>> EnumRegistry { get; set; }
+
+        /// <summary>
         ///     Gets or sets the registry.
         /// </summary>
         private static IDictionary<string, IDictionary<string, object>> Registry { get; set; }
 
-        private static IDictionary<Enum, IDictionary<Enum, List<string>>> EnumRegistry { get; set; }
-        public static ITestOutputHelper TestOutputHelper { get; set; }
-        public static IWriteLineSupport DefaultOut { get; set; }
+        /// <summary>
+        /// The get enum registry.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IDictionary"/>.
+        /// </returns>
+        public static IDictionary<Enum, IDictionary<Enum, List<string>>> GetEnumRegistry()
+        {
+            if (null == EnumRegistry)
+            {
+                SetEnumRegistry(new Dictionary<Enum, IDictionary<Enum, List<string>>>());
+                var enumRegistry =
+                    new Dictionary<Enum, List<string>>
+                        {
+                            [EnumRegistryKeys.Base] =
+                            new List<string> { DateTimeOffset.Now.ToString() }
+                        };
+                Debug.Assert(EnumRegistry != null, nameof(EnumRegistry) + " != null");
+                EnumRegistry[EnumRegistryKeys.Self] = enumRegistry;
+            }
+
+            return EnumRegistry;
+        }
 
         /// <summary>
         ///     The get registry.
@@ -70,43 +110,12 @@ namespace DotnetApp.EnvironmentSetup
             {
                 SetRegistry(new Dictionary<string, IDictionary<string, object>>());
 
-                var registryRegistry = new Dictionary<string, object> {["/0/tags/registry-create-ts"] = DateTime.Now};
+                var registryRegistry = new Dictionary<string, object> { ["/0/tags/registry-create-ts"] = DateTime.Now };
                 Debug.Assert(Registry != null, nameof(Registry) + " != null");
                 Registry["/root/rel/registry"] = registryRegistry;
             }
 
             return Registry;
-        }
-
-        public static IDictionary<Enum, IDictionary<Enum, List<string>>> GetEnumRegistry()
-        {
-            if (null == EnumRegistry)
-            {
-                SetEnumRegistry(new Dictionary<Enum, IDictionary<Enum, List<string>>>());
-                var enumRegistry = new Dictionary<Enum, List<string>>
-                {
-                    [EnumRegistryKeys.Base] = new List<string> {DateTimeOffset.Now.ToString()}
-                };
-                Debug.Assert(EnumRegistry != null, nameof(EnumRegistry) + " != null");
-                EnumRegistry[EnumRegistryKeys.Self] = enumRegistry;
-            }
-            return EnumRegistry;
-        }
-
-        /// <summary>
-        ///     The set registry.
-        /// </summary>
-        /// <param name="value">
-        ///     The value.
-        /// </param>
-        public static void SetRegistry(IDictionary<string, IDictionary<string, object>> value)
-        {
-            Registry = value;
-        }
-
-        public static void SetEnumRegistry(IDictionary<Enum, IDictionary<Enum, List<string>>> value)
-        {
-            EnumRegistry = value;
         }
 
         /// <summary>
@@ -116,14 +125,45 @@ namespace DotnetApp.EnvironmentSetup
         {
             var registry = GetRegistry();
             registry["/root/rel/view/testing"] =
-                new SortedDictionary<string, object> {["/0/tags/registry-create-ts"] = DateTime.Now};
+                new SortedDictionary<string, object> { ["/0/tags/registry-create-ts"] = DateTime.Now };
         }
 
+        /// <summary>
+        /// The new line.
+        /// </summary>
         public static void NewLine()
         {
             Console.Out.Write(Environment.NewLine);
         }
 
+        /// <summary>
+        /// The set enum registry.
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        public static void SetEnumRegistry(IDictionary<Enum, IDictionary<Enum, List<string>>> value)
+        {
+            EnumRegistry = value;
+        }
+
+        /// <summary>
+        /// The set registry.
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        public static void SetRegistry(IDictionary<string, IDictionary<string, object>> value)
+        {
+            Registry = value;
+        }
+
+        /// <summary>
+        /// The write line.
+        /// </summary>
+        /// <param name="s">
+        /// The s.
+        /// </param>
         public static void WriteLine(string s)
         {
             if (null != DefaultOut) DefaultOut.WriteLine(s);

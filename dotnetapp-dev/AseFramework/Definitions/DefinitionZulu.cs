@@ -1,11 +1,23 @@
-﻿#region
-
-#endregion
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DefinitionZulu.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The definition zulu.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetApp.AseFramework.Definitions
 {
+    #region
+
     using System;
 
+    #endregion
+
+    /// <summary>
+    /// The definition zulu.
+    /// </summary>
     public class DefinitionZulu
     {
         /// <summary>

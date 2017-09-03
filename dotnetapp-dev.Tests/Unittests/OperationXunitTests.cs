@@ -27,11 +27,6 @@ namespace DotnetAppDev.Tests.Unittests
     public class OperationXunitTests
     {
         /// <summary>
-        ///     The data d result txt f.
-        /// </summary>
-        public static string DataDResultTxtF { get; } = EnvManager.AseDataDWin + "/OperationXunitTests.res.txt";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="OperationXunitTests"/> class.
         /// </summary>
         /// <param name="outputHelper">
@@ -41,6 +36,11 @@ namespace DotnetAppDev.Tests.Unittests
         {
             EnvManager.TestOutputHelper = outputHelper;
         }
+
+        /// <summary>
+        ///     The data d result txt f.
+        /// </summary>
+        public static string DataDResultTxtF { get; } = EnvManager.AseDataDWin + "/OperationXunitTests.res.txt";
 
         // [Fact]
         // public void ApiTestS13K()

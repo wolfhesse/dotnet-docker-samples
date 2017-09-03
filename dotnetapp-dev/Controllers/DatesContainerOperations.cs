@@ -1,9 +1,16 @@
-#region
-
-#endregion
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DatesContainerOperations.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The dates container operations.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetApp.Controllers
 {
+    #region
+
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -11,8 +18,6 @@ namespace DotnetApp.Controllers
     using DotnetApp.AbstractArchitecture;
     using DotnetApp.AseFramework.EngineSetups;
     using DotnetApp.AseFramework.Models;
-
-    #region
 
     #endregion
 
@@ -37,32 +42,22 @@ namespace DotnetApp.Controllers
             private readonly DatesEngineSetup _datesEngineSetup;
 
             /// <summary>
-            ///     Initializes a new instance of the <see cref="Controller" /> class.
+            /// Initializes a new instance of the <see cref="Controller"/> class.
             /// </summary>
             /// <param name="datesEngineSetup">
-            ///     The dates engine setup.
+            /// The dates engine setup.
             /// </param>
             /// <param name="textWriter">
-            ///     The text writer.
+            /// The text writer.
             /// </param>
             public Controller(DatesEngineSetup datesEngineSetup, TextWriter textWriter)
             {
-                Port = new Presenter {TextWriter = textWriter};
+                Port = new Presenter { TextWriter = textWriter };
                 Port.TextWriter.WriteLine("controller initialization...");
 
                 this._datesEngineSetup = datesEngineSetup;
 
                 Port.TextWriter.WriteLine("controller initialized...");
-            }
-
-            public DateTime TsStart { get; set; }
-
-            /// <summary>
-            ///     The dispose.
-            /// </summary>
-            public void Dispose()
-            {
-                Console.Write("disposing " + this);
             }
 
             /// <summary>
@@ -74,6 +69,19 @@ namespace DotnetApp.Controllers
             ///     The ev post processing hook.
             /// </summary>
             public event EventHandler EvPostProcessingHook;
+
+            /// <summary>
+            /// Gets or sets the ts start.
+            /// </summary>
+            public DateTime TsStart { get; set; }
+
+            /// <summary>
+            ///     The dispose.
+            /// </summary>
+            public void Dispose()
+            {
+                Console.Write("disposing " + this);
+            }
 
             /// <summary>
             ///     The fire post processing.
@@ -115,13 +123,13 @@ namespace DotnetApp.Controllers
         public class Helper
         {
             /// <summary>
-            ///     The fn out separator 72.
+            /// The fn out separator 72.
             /// </summary>
             /// <param name="textWriter">
-            ///     The text writer.
+            /// The text writer.
             /// </param>
             /// <param name="character">
-            ///     The character.
+            /// The character.
             /// </param>
             public static void FnOutSeparator72(TextWriter textWriter, char character = '_')
             {
@@ -145,57 +153,43 @@ namespace DotnetApp.Controllers
             private int _counter;
 
             /// <summary>
-            ///     Initializes a new instance of the <see cref="View" /> class.
+            /// Initializes a new instance of the <see cref="View"/> class.
             /// </summary>
             /// <param name="datesContainerModel">
-            ///     The dates container model.
+            /// The dates container model.
             /// </param>
             public View(DatesContainerModel datesContainerModel)
             {
                 this._datesContainerModel = datesContainerModel;
 
                 this._datesContainerModel.ModelChanged += (sender, args) =>
-                {
-                    Port.TextWriter.WriteLine("Ev DatesContainerModel.ModelChanged Handling");
-                    this.Render();
-                    Port.TextWriter.WriteLine(Environment.NewLine);
-                };
+                    {
+                        Port.TextWriter.WriteLine("Ev DatesContainerModel.ModelChanged Handling");
+                        this.Render();
+                        Port.TextWriter.WriteLine(Environment.NewLine);
+                    };
 
                 this._datesContainerModel.ModelSorted += (sender, args) =>
-                {
-                    Port.TextWriter.WriteLine("Ev DatesContainerModel.ModelSorted Handling");
-                    Port.TextWriter.WriteLine("=== datesContainerModel Dates are SortedSet ===");
-                    Port.TextWriter.WriteLine(Environment.NewLine);
-                };
-                this._datesContainerModel.EvWarning += (sender, args) =>
-                {
-                    // datesContainerModel fired a warning; dump it to Port and cleanup
-                    // if (_datesContainerModel.SysWarnings == null) return;
-                    foreach (var modelSysWarning in this._datesContainerModel.SysWarnings)
                     {
-                        Port.TextWriter.WriteLine(modelSysWarning);
-                        // ReSharper disable once ObjectCreationAsStatement
-                        new WarningWrittenHook(this);
-                    }
+                        Port.TextWriter.WriteLine("Ev DatesContainerModel.ModelSorted Handling");
+                        Port.TextWriter.WriteLine("=== datesContainerModel Dates are SortedSet ===");
+                        Port.TextWriter.WriteLine(Environment.NewLine);
+                    };
+                this._datesContainerModel.EvWarning += (sender, args) =>
+                    {
+                        // datesContainerModel fired a warning; dump it to Port and cleanup
+                        // if (_datesContainerModel.SysWarnings == null) return;
+                        foreach (var modelSysWarning in this._datesContainerModel.SysWarnings)
+                        {
+                            Port.TextWriter.WriteLine(modelSysWarning);
 
-                    this._datesContainerModel.SysWarnings.Clear();
-                    var unused = new SysWarningsClearedHook(this);
-                };
-            }
+                            // ReSharper disable once ObjectCreationAsStatement
+                            new WarningWrittenHook(this);
+                        }
 
-            /// <summary>
-            ///     The render.
-            /// </summary>
-            public void Render()
-            {
-                Helper.FnOutSeparator72(Port.TextWriter, '=');
-                Port.TextWriter.WriteLine(DateTimeOffset.Now.LocalDateTime);
-                Port.TextWriter.WriteLine($"{this}.Render # {this._counter++}");
-                Port.TextWriter.WriteLine($"{this}.Render ->  {this._datesContainerModel}");
-
-                this.DumpDates(Port.TextWriter, this._datesContainerModel.Dates);
-
-                Helper.FnOutSeparator72(Port.TextWriter);
+                        this._datesContainerModel.SysWarnings.Clear();
+                        var unused = new SysWarningsClearedHook(this);
+                    };
             }
 
             // private View()
@@ -211,6 +205,21 @@ namespace DotnetApp.Controllers
             ///     The ev warning written.
             /// </summary>
             public event EventHandler EvWarningWritten;
+
+            /// <summary>
+            ///     The render.
+            /// </summary>
+            public void Render()
+            {
+                Helper.FnOutSeparator72(Port.TextWriter, '=');
+                Port.TextWriter.WriteLine(DateTimeOffset.Now.LocalDateTime);
+                Port.TextWriter.WriteLine($"{this}.Render # {this._counter++}");
+                Port.TextWriter.WriteLine($"{this}.Render ->  {this._datesContainerModel}");
+
+                this.DumpDates(Port.TextWriter, this._datesContainerModel.Dates);
+
+                Helper.FnOutSeparator72(Port.TextWriter);
+            }
 
             /// <summary>
             ///     The on ev sys warnings cleard.
@@ -229,13 +238,13 @@ namespace DotnetApp.Controllers
             }
 
             /// <summary>
-            ///     The dump dates.
+            /// The dump dates.
             /// </summary>
             /// <param name="textWriter">
-            ///     The text writer.
+            /// The text writer.
             /// </param>
             /// <param name="dates">
-            ///     The dates.
+            /// The dates.
             /// </param>
             private void DumpDates(TextWriter textWriter, IEnumerable<DateTimeOffset> dates)
             {
@@ -251,10 +260,10 @@ namespace DotnetApp.Controllers
             public class SysWarningsClearedHook
             {
                 /// <summary>
-                ///     Initializes a new instance of the <see cref="SysWarningsClearedHook" /> class.
+                /// Initializes a new instance of the <see cref="SysWarningsClearedHook"/> class.
                 /// </summary>
                 /// <param name="view">
-                ///     The view.
+                /// The view.
                 /// </param>
                 /// <exception cref="NotImplementedException">
                 /// </exception>
@@ -270,10 +279,10 @@ namespace DotnetApp.Controllers
             public class WarningWrittenHook
             {
                 /// <summary>
-                ///     Initializes a new instance of the <see cref="WarningWrittenHook" /> class.
+                /// Initializes a new instance of the <see cref="WarningWrittenHook"/> class.
                 /// </summary>
                 /// <param name="view">
-                ///     The view.
+                /// The view.
                 /// </param>
                 /// <exception cref="NotImplementedException">
                 /// </exception>

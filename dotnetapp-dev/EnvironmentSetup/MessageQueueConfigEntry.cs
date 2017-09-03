@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MessageQueueConfigEntry.cs" company="ase">
-//   mit
+// <copyright file="MessageQueueConfigEntry.cs" company="">
+//   
 // </copyright>
 // <summary>
 //   The message queue config entry.

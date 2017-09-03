@@ -9,12 +9,12 @@
 
 namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    #region
+
     using System.Collections.Generic;
 
     using WooCommerceNET;
     using WooCommerceNET.WooCommerce.v2;
-
-    #region
 
     #endregion
 
@@ -24,22 +24,22 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
     public interface IGetProducts
     {
         /// <summary>
-        ///     The execute.
+        /// The execute.
         /// </summary>
         /// <param name="restApi">
-        ///     The rest api.
+        /// The rest api.
         /// </param>
         /// <param name="pPage">
-        ///     The p page.
+        /// The p page.
         /// </param>
         /// <param name="pPerPage">
-        ///     The p per page.
+        /// The p per page.
         /// </param>
         /// <param name="pIncludeProductIds">
-        ///     The p include product ids.
+        /// The p include product ids.
         /// </param>
         /// <returns>
-        ///     The <see cref="List" />.
+        /// The <see cref="List"/>.
         /// </returns>
         List<Product> Execute(RestAPI restApi, int pPage = 1, int pPerPage = 10, string pIncludeProductIds = null);
     }

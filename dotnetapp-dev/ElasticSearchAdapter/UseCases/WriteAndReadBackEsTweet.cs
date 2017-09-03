@@ -1,9 +1,16 @@
-﻿#region
-
-#endregion
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="WriteAndReadBackEsTweet.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The write and read back es tweet.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DotnetApp.ElasticSearchAdapter.UseCases
 {
+    #region
+
     using System;
     using System.Collections.Generic;
 
@@ -13,9 +20,27 @@ namespace DotnetApp.ElasticSearchAdapter.UseCases
 
     using Nest;
 
+    #endregion
+
+    /// <summary>
+    /// The write and read back es tweet.
+    /// </summary>
     internal class WriteAndReadBackEsTweet
     {
-        public static List<InteropTypes.V1.TweetModel> Execute(InteropTypes.V1.TweetModel pTweetModel,
+        /// <summary>
+        /// The execute.
+        /// </summary>
+        /// <param name="pTweetModel">
+        /// The p tweet model.
+        /// </param>
+        /// <param name="client">
+        /// The client.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public static List<InteropTypes.V1.TweetModel> Execute(
+            InteropTypes.V1.TweetModel pTweetModel,
             ElasticClient client)
         {
             var tweet = pTweetModel;
@@ -33,7 +58,7 @@ namespace DotnetApp.ElasticSearchAdapter.UseCases
             }
 
             var tweet2 = tweet;
-            return new List<InteropTypes.V1.TweetModel> {tweet, tweet2};
+            return new List<InteropTypes.V1.TweetModel> { tweet, tweet2 };
         }
     }
 }
