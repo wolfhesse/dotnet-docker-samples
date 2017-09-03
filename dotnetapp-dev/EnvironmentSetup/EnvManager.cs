@@ -1,19 +1,21 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Text;
-using dotnetapp.AseFramework.Controllers;
-using dotnetapp.AseFramework.Definitions;
-using Xunit.Abstractions;
-
 #endregion
 
-namespace dotnetapp.EnvironmentSetup
+namespace DotnetApp.EnvironmentSetup
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Text;
+
+    using DotnetApp.AseFramework.Definitions;
+    using DotnetApp.Controllers;
+
+    using Xunit.Abstractions;
+
     #region
 
     #endregion

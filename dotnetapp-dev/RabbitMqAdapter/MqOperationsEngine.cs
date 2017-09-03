@@ -1,15 +1,17 @@
 ﻿#region
 
-using System;
-using System.Diagnostics;
-using dotnetapp.AseFramework.Definitions;
-using dotnetapp.RabbitMqAdapter.UseCases;
-using RabbitMQ.Client;
-
 #endregion
 
-namespace dotnetapp.RabbitMqAdapter
+namespace DotnetApp.RabbitMqAdapter
 {
+    using System;
+    using System.Diagnostics;
+
+    using DotnetApp.AseFramework.Definitions;
+    using DotnetApp.RabbitMqAdapter.UseCases;
+
+    using RabbitMQ.Client;
+
     public class MqOperationsEngine
     {
         public bool ConfiguredState { get; private set; }
@@ -18,7 +20,7 @@ namespace dotnetapp.RabbitMqAdapter
         public void ConfigureTestTest(EnvironmentSetup.MessageQueueConfigEntry config)
         {
             Debug.Assert(config.Purpose == ProgramConfigKeys.MessageQueue);
-            ConnectionFactory = new ConnectionFactory
+            this.ConnectionFactory = new ConnectionFactory
             {
                 HostName = config.Hostname,
                 UserName = "test",
@@ -26,14 +28,14 @@ namespace dotnetapp.RabbitMqAdapter
             };
             //            Console.WriteLine(ConnectionFactory);
             //            Debug.WriteLine(ConnectionFactory);
-            ConfiguredState = true;
+            this.ConfiguredState = true;
         }
 
         public void ExecuteWithMessageHandlers(
             ConsumeMqMessagesLoopUseCase.AseMessageHandler processProductCreatedMessage,
             ConsumeMqMessagesLoopUseCase.AseMessageHandler createTweetHandler)
         {
-            if (ConfiguredState)
+            if (this.ConfiguredState)
             {
                 // routing
                 // product created  -> create product in dependent store
@@ -53,9 +55,9 @@ namespace dotnetapp.RabbitMqAdapter
 
         public IConnection CreateConnection()
         {
-            if (!ConfiguredState)
+            if (!this.ConfiguredState)
                 throw new Exception("configuration error");
-            return ConnectionFactory.CreateConnection();
+            return this.ConnectionFactory.CreateConnection();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace dotnetapp.AseFramework.Definitions
+﻿namespace DotnetApp.AseFramework.Definitions
 {
     public interface IConfigEntry
     {

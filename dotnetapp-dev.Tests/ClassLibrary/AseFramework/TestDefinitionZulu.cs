@@ -1,12 +1,13 @@
 ﻿#region
 
-using dotnetapp.AseFramework.Definitions;
-using NUnit.Framework;
-
 #endregion
 
-namespace dotnetapp.ClassLibrary.AseFramework
+namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
+    using DotnetApp.AseFramework.Definitions;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class TestDefinitionZulu
     {

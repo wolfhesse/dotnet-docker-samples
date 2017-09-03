@@ -1,11 +1,11 @@
 #region
 
-using System;
-
 #endregion
 
-namespace dotnetapp.AseFramework.Models
+namespace DotnetApp.AseFramework.Models
 {
+    using System;
+
     public static class InteropTypes
     {
         public class V1
@@ -25,11 +25,11 @@ namespace dotnetapp.AseFramework.Models
                 {
                     var res = base.ToString();
 //                    res += $"\n \\.. _id          : {_id}";
-                    res += $"\n \\.. id           : {Id}";
-                    res += $"\n \\.. user         : {User}";
-                    res += $"\n \\.. postDateTime : {PostDateTime}";
-                    res += $"\n \\.. value        : {Value}";
-                    res += $"\n \\.. version        : {Version}";
+                    res += $"\n \\.. id           : {this.Id}";
+                    res += $"\n \\.. user         : {this.User}";
+                    res += $"\n \\.. postDateTime : {this.PostDateTime}";
+                    res += $"\n \\.. value        : {this.Value}";
+                    res += $"\n \\.. version        : {this.Version}";
                     res += $"\n \\.. ]";
                     return res;
                 }

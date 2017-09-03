@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using WooCommerceNET;
-using WooCommerceNET.WooCommerce.v2;
-
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using WooCommerceNET;
+    using WooCommerceNET.WooCommerce.v2;
+
     public class GetProductViaApi
     {
         public static async Task<Product>

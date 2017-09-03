@@ -1,12 +1,14 @@
-﻿using System;
-using System.Text;
-using System.Threading;
-using dotnetapp.AseFramework.Definitions;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-
-namespace dotnetapp.RabbitMqAdapter.UseCases
+﻿namespace DotnetApp.RabbitMqAdapter.UseCases
 {
+    using System;
+    using System.Text;
+    using System.Threading;
+
+    using DotnetApp.AseFramework.Definitions;
+
+    using RabbitMQ.Client;
+    using RabbitMQ.Client.Events;
+
     public class ConsumeMqMessagesLoopUseCase
     {
         public delegate void AseMessageHandler(object sender, AseMessageEventArgs eventArgs);

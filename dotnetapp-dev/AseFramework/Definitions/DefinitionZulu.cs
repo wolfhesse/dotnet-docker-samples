@@ -1,11 +1,11 @@
 ﻿#region
 
-using System;
-
 #endregion
 
-namespace dotnetapp.AseFramework.Definitions
+namespace DotnetApp.AseFramework.Definitions
 {
+    using System;
+
     public class DefinitionZulu
     {
         /// <summary>

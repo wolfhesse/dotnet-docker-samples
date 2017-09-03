@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace dotnetapp.AseFramework.Definitions
+﻿namespace DotnetApp.AseFramework.Definitions
 {
+    using System;
+
     public class AseMessageEventArgs : EventArgs
     {
         public AseMessageEventArgs(string s)
         {
-            Message = s;
+            this.Message = s;
         }
 
         public string Message { get; }

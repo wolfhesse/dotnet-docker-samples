@@ -1,11 +1,11 @@
 #region
 
-using dotnetapp.TodoComponent.Entities;
-
 #endregion
 
-namespace dotnetapp.TodoComponent.Utilities
+namespace DotnetApp.TodoComponent.Utilities
 {
+    using DotnetApp.TodoComponent.Entities;
+
     public class TaskBuilder
     {
         public static TodoTask BuildTask(string title)

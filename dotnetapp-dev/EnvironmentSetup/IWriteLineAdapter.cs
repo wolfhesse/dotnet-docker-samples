@@ -1,29 +1,30 @@
 ﻿#region
 
-using System.Diagnostics;
-using System.IO;
-using Xunit.Abstractions;
-
 #endregion
 
-namespace dotnetapp.EnvironmentSetup
+namespace DotnetApp.EnvironmentSetup
 {
-    public class IWriteLineAdapter : IWriteLineSupport
+    using System.Diagnostics;
+    using System.IO;
+
+    using Xunit.Abstractions;
+
+    public class EnvironmentOutputAdapter : IWriteLineSupport
     {
         private readonly TextWriter _textWriter;
         private readonly IWriteLineSupport _writeLineSupportImplementation;
 
-        public IWriteLineAdapter(IWriteLineSupport writeLineSupportImplementation)
+        public EnvironmentOutputAdapter(IWriteLineSupport writeLineSupportImplementation)
         {
-            _writeLineSupportImplementation = writeLineSupportImplementation;
+            this._writeLineSupportImplementation = writeLineSupportImplementation;
         }
 
-        public IWriteLineAdapter(TextWriter textWriter)
+        public EnvironmentOutputAdapter(TextWriter textWriter)
         {
-            _textWriter = textWriter;
+            this._textWriter = textWriter;
         }
 
-        public IWriteLineAdapter(ITestOutputHelper testOutputHelper)
+        public EnvironmentOutputAdapter(ITestOutputHelper testOutputHelper)
         {
             EnvManager.TestOutputHelper = testOutputHelper;
         }
@@ -32,11 +33,11 @@ namespace dotnetapp.EnvironmentSetup
         {
             if (EnvManager.TestOutputHelper != null)
                 EnvManager.TestOutputHelper.WriteLine(message.ToString());
-            else if (null != _textWriter)
-                _textWriter.WriteLine(message);
+            else if (null != this._textWriter)
+                this._textWriter.WriteLine(message);
             else
             {
-                _writeLineSupportImplementation?.WriteLine(message);
+                this._writeLineSupportImplementation?.WriteLine(message);
             }
 
             Debug.WriteLine(message);

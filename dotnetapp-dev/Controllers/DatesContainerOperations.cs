@@ -1,16 +1,17 @@
 #region
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using dotnetapp.AbstractArchitecture;
-using dotnetapp.AseFramework.EngineSetups;
-using dotnetapp.AseFramework.Models;
-
 #endregion
 
-namespace dotnetapp.AseFramework.Controllers
+namespace DotnetApp.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
+    using DotnetApp.AbstractArchitecture;
+    using DotnetApp.AseFramework.EngineSetups;
+    using DotnetApp.AseFramework.Models;
+
     #region
 
     #endregion
@@ -49,7 +50,7 @@ namespace dotnetapp.AseFramework.Controllers
                 Port = new Presenter {TextWriter = textWriter};
                 Port.TextWriter.WriteLine("controller initialization...");
 
-                _datesEngineSetup = datesEngineSetup;
+                this._datesEngineSetup = datesEngineSetup;
 
                 Port.TextWriter.WriteLine("controller initialized...");
             }
@@ -79,7 +80,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             public void FirePostProcessing()
             {
-                OnEvPostProcessingHook();
+                this.OnEvPostProcessingHook();
             }
 
             /// <summary>
@@ -87,8 +88,8 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             public void StartActionBatch()
             {
-                _datesEngineSetup.ActionBatch();
-                OnEvAfterActionHookEventHandler();
+                this._datesEngineSetup.ActionBatch();
+                this.OnEvAfterActionHookEventHandler();
             }
 
             /// <summary>
@@ -96,7 +97,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             protected virtual void OnEvAfterActionHookEventHandler()
             {
-                EvAfterActionHookEventHandler?.Invoke(this, EventArgs.Empty);
+                this.EvAfterActionHookEventHandler?.Invoke(this, EventArgs.Empty);
             }
 
             /// <summary>
@@ -104,7 +105,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             protected virtual void OnEvPostProcessingHook()
             {
-                EvPostProcessingHook?.Invoke(this, EventArgs.Empty);
+                this.EvPostProcessingHook?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -151,33 +152,33 @@ namespace dotnetapp.AseFramework.Controllers
             /// </param>
             public View(DatesContainerModel datesContainerModel)
             {
-                _datesContainerModel = datesContainerModel;
+                this._datesContainerModel = datesContainerModel;
 
-                _datesContainerModel.ModelChanged += (sender, args) =>
+                this._datesContainerModel.ModelChanged += (sender, args) =>
                 {
                     Port.TextWriter.WriteLine("Ev DatesContainerModel.ModelChanged Handling");
-                    Render();
+                    this.Render();
                     Port.TextWriter.WriteLine(Environment.NewLine);
                 };
 
-                _datesContainerModel.ModelSorted += (sender, args) =>
+                this._datesContainerModel.ModelSorted += (sender, args) =>
                 {
                     Port.TextWriter.WriteLine("Ev DatesContainerModel.ModelSorted Handling");
                     Port.TextWriter.WriteLine("=== datesContainerModel Dates are SortedSet ===");
                     Port.TextWriter.WriteLine(Environment.NewLine);
                 };
-                _datesContainerModel.EvWarning += (sender, args) =>
+                this._datesContainerModel.EvWarning += (sender, args) =>
                 {
                     // datesContainerModel fired a warning; dump it to Port and cleanup
                     // if (_datesContainerModel.SysWarnings == null) return;
-                    foreach (var modelSysWarning in _datesContainerModel.SysWarnings)
+                    foreach (var modelSysWarning in this._datesContainerModel.SysWarnings)
                     {
                         Port.TextWriter.WriteLine(modelSysWarning);
                         // ReSharper disable once ObjectCreationAsStatement
                         new WarningWrittenHook(this);
                     }
 
-                    _datesContainerModel.SysWarnings.Clear();
+                    this._datesContainerModel.SysWarnings.Clear();
                     var unused = new SysWarningsClearedHook(this);
                 };
             }
@@ -189,10 +190,10 @@ namespace dotnetapp.AseFramework.Controllers
             {
                 Helper.FnOutSeparator72(Port.TextWriter, '=');
                 Port.TextWriter.WriteLine(DateTimeOffset.Now.LocalDateTime);
-                Port.TextWriter.WriteLine($"{this}.Render # {_counter++}");
-                Port.TextWriter.WriteLine($"{this}.Render ->  {_datesContainerModel}");
+                Port.TextWriter.WriteLine($"{this}.Render # {this._counter++}");
+                Port.TextWriter.WriteLine($"{this}.Render ->  {this._datesContainerModel}");
 
-                DumpDates(Port.TextWriter, _datesContainerModel.Dates);
+                this.DumpDates(Port.TextWriter, this._datesContainerModel.Dates);
 
                 Helper.FnOutSeparator72(Port.TextWriter);
             }
@@ -216,7 +217,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             protected virtual void OnEvSysWarningsCleared()
             {
-                EvSysWarningsCleared?.Invoke(this, EventArgs.Empty);
+                this.EvSysWarningsCleared?.Invoke(this, EventArgs.Empty);
             }
 
             /// <summary>
@@ -224,7 +225,7 @@ namespace dotnetapp.AseFramework.Controllers
             /// </summary>
             protected virtual void OnEvWarningWritten()
             {
-                EvWarningWritten?.Invoke(this, EventArgs.Empty);
+                this.EvWarningWritten?.Invoke(this, EventArgs.Empty);
             }
 
             /// <summary>

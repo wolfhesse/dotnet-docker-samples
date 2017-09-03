@@ -1,13 +1,13 @@
 ﻿#region
 
-using dotnetapp.TodoComponent.Entities;
-using dotnetapp.TodoComponent.Storage;
-using dotnetapp.TodoComponent.Utilities;
-
 #endregion
 
-namespace dotnetapp.TodoComponent.UseCases
+namespace DotnetApp.TodoComponent.UseCases
 {
+    using DotnetApp.TodoComponent.Entities;
+    using DotnetApp.TodoComponent.Storage;
+    using DotnetApp.TodoComponent.Utilities;
+
     public class AddTask
     {
         public static void Execute(string title)

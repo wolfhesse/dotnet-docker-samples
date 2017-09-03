@@ -1,12 +1,13 @@
 #region
 
-using dotnetapp.AseFramework.Models;
-using NUnit.Framework;
-
 #endregion
 
-namespace dotnetapp.ClassLibrary.AseFramework
+namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
+    using DotnetApp.AseFramework.Models;
+
+    using NUnit.Framework;
+
     public class TestCodersResourceCollection
     {
         [Test]

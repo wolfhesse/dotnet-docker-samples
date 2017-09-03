@@ -1,13 +1,14 @@
 #region
 
-using System.Threading.Tasks;
-using WooCommerceNET;
-using WooCommerceNET.WooCommerce.v2;
-
 #endregion
 
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System.Threading.Tasks;
+
+    using WooCommerceNET;
+    using WooCommerceNET.WooCommerce.v2;
+
     public class AddProduct
     {
         public static async Task<Product> Execute(RestAPI restApi, Product p2)

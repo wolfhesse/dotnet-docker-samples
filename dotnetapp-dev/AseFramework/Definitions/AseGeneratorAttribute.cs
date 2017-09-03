@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace dotnetapp.AseFramework.Definitions
+﻿namespace DotnetApp.AseFramework.Definitions
 {
+    using System;
+
     public class AseGeneratorAttribute : Attribute, AseFrameworkDefinitionsHead
     {
     }

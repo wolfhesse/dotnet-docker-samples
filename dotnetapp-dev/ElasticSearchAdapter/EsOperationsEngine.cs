@@ -1,18 +1,21 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using dotnetapp.AseFramework.Controllers;
-using dotnetapp.AseFramework.Models;
-using dotnetapp.ElasticSearchAdapter.UseCases;
-using Elasticsearch.Net;
-using Nest;
-
 #endregion
 
-namespace dotnetapp.ElasticSearchAdapter
+namespace DotnetApp.ElasticSearchAdapter
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+
+    using DotnetApp.AseFramework.Models;
+    using DotnetApp.Controllers;
+    using DotnetApp.ElasticSearchAdapter.UseCases;
+
+    using Elasticsearch.Net;
+
+    using Nest;
+
     public class EsOperationsEngine
     {
         private static ElasticClient _client;

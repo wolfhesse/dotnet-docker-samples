@@ -1,17 +1,18 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using dotnetapp.AseFramework.Controllers;
-using dotnetapp.AseFramework.Models;
-using dotnetapp.EnvironmentSetup;
-using Nest;
-
 #endregion
 
-namespace dotnetapp.ElasticSearchAdapter.UseCases
+namespace DotnetApp.ElasticSearchAdapter.UseCases
 {
+    using System;
+    using System.Collections.Generic;
+
+    using DotnetApp.AseFramework.Models;
+    using DotnetApp.Controllers;
+    using DotnetApp.EnvironmentSetup;
+
+    using Nest;
+
     internal class WriteAndReadBackEsTweet
     {
         public static List<InteropTypes.V1.TweetModel> Execute(InteropTypes.V1.TweetModel pTweetModel,

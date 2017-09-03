@@ -1,16 +1,17 @@
 #region
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
-using Newtonsoft.Json;
-
 #endregion
 
-namespace dotnetapp
+namespace DotnetApp
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Runtime.InteropServices;
+
+    using Newtonsoft.Json;
+
     /// <summary>
     ///     The program.
     /// </summary>

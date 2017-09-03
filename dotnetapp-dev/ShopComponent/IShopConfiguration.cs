@@ -1,4 +1,4 @@
-﻿namespace dotnetapp.ShopComponent
+﻿namespace DotnetApp.ShopComponent
 {
     public interface IShopConfiguration
     {

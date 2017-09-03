@@ -1,12 +1,13 @@
 ﻿#region
 
-using System;
-using dotnetapp.TodoComponent.Storage;
-
 #endregion
 
-namespace dotnetapp.TodoComponent
+namespace DotnetApp.TodoComponent
 {
+    using System;
+
+    using DotnetApp.TodoComponent.Storage;
+
     public class TodoController
     {
         public static ITaskRepository TaskRepository { get; } = new InMemoryTaskRepository();

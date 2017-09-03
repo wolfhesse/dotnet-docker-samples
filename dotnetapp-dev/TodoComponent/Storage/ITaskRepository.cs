@@ -1,7 +1,7 @@
-using dotnetapp.TodoComponent.Entities;
-
-namespace dotnetapp.TodoComponent.Storage
+namespace DotnetApp.TodoComponent.Storage
 {
+    using DotnetApp.TodoComponent.Entities;
+
     public interface ITaskRepository
     {
         int Count { get; }

@@ -1,12 +1,13 @@
 ﻿#region
 
-using System;
-using WooCommerceNET.WooCommerce.v2;
-
 #endregion
 
-namespace dotnetapp.ShopComponent.AseWordPressPCL
+namespace DotnetApp.ShopComponent.AseWordPressPCL
 {
+    using System;
+
+    using WooCommerceNET.WooCommerce.v2;
+
     internal class WordPressPclAdapterFuture : IShopAdapter
     {
 //        public Product AddProduct(Product product)

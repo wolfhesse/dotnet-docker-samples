@@ -1,13 +1,13 @@
 #region
 
-using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Authenticators.OAuth;
-
 #endregion
 
-namespace dotnetapp.AseFramework.Authentication
+namespace DotnetApp.AseFramework.Authentication
 {
+    using RestSharp;
+    using RestSharp.Authenticators;
+    using RestSharp.Authenticators.OAuth;
+
     public static class ExtraRestRequestExtensions
     {
         public static RestRequest BuildOAuth1QueryString(this RestRequest request, RestClient client,

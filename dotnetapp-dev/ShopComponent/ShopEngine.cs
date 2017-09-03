@@ -1,11 +1,11 @@
 ﻿#region
 
-using WooCommerceNET.WooCommerce.v2;
-
 #endregion
 
-namespace dotnetapp.ShopComponent
+namespace DotnetApp.ShopComponent
 {
+    using WooCommerceNET.WooCommerce.v2;
+
     public class ShopEngine
     {
         // ReSharper disable once UnusedMember.Local
@@ -15,8 +15,8 @@ namespace dotnetapp.ShopComponent
 
         public ShopEngine(IShopAdapter adapter, IShopConfiguration configuration)
         {
-            Adapter = adapter;
-            Configuration = configuration;
+            this.Adapter = adapter;
+            this.Configuration = configuration;
             configuration.Configure(adapter);
         }
 
@@ -25,7 +25,7 @@ namespace dotnetapp.ShopComponent
 
         public Product AddProduct(Product product)
         {
-            return Adapter.AddProduct(product);
+            return this.Adapter.AddProduct(product);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace dotnetapp.EnvironmentSetup
+﻿namespace DotnetApp.EnvironmentSetup
 {
     public interface IWriteLineSupport
     {

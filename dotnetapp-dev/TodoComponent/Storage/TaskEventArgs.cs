@@ -1,26 +1,28 @@
 ﻿#region
 
-using System;
-using dotnetapp.TodoComponent.Entities;
-using Newtonsoft.Json;
-
 #endregion
 
-namespace dotnetapp.TodoComponent.Storage
+namespace DotnetApp.TodoComponent.Storage
 {
+    using System;
+
+    using DotnetApp.TodoComponent.Entities;
+
+    using Newtonsoft.Json;
+
     public class TaskEventArgs : EventArgs
     {
         private readonly TodoTask _todoTask;
 
         public TaskEventArgs(TodoTask todoTask)
         {
-            _todoTask = todoTask;
+            this._todoTask = todoTask;
         }
 
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine +
-                   JsonConvert.SerializeObject(_todoTask, Formatting.Indented);
+                   JsonConvert.SerializeObject(this._todoTask, Formatting.Indented);
         }
     }
 }

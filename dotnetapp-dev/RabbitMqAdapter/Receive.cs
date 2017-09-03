@@ -1,15 +1,16 @@
 ﻿#region
 
-using System;
-using System.Text;
-using System.Threading;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-
 #endregion
 
-namespace dotnetapp.RabbitMqAdapter
+namespace DotnetApp.RabbitMqAdapter
 {
+    using System;
+    using System.Text;
+    using System.Threading;
+
+    using RabbitMQ.Client;
+    using RabbitMQ.Client.Events;
+
     public class Receive
     {
         public delegate void CustomEventHandler(object sender, CustomEventArgs eventArgs);
@@ -95,7 +96,7 @@ namespace dotnetapp.RabbitMqAdapter
         {
             public CustomEventArgs(string s)
             {
-                Message = s;
+                this.Message = s;
             }
 
             public string Message { get; }

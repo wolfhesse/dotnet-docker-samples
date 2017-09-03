@@ -1,13 +1,14 @@
 #region
 
-using System;
-using System.Collections.Generic;
-using WooCommerceNET.WooCommerce.v2;
-
 #endregion
 
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System;
+    using System.Collections.Generic;
+
+    using WooCommerceNET.WooCommerce.v2;
+
     #region
 
     #endregion

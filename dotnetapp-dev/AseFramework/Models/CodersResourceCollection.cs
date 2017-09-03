@@ -1,11 +1,11 @@
 #region
 
-using System.Collections.Generic;
-
 #endregion
 
-namespace dotnetapp.AseFramework.Models
+namespace DotnetApp.AseFramework.Models
 {
+    using System.Collections.Generic;
+
     public class CodersResourceCollection
     {
         // class as object

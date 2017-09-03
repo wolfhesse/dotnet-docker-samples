@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using WooCommerceNET;
-using WooCommerceNET.WooCommerce.v2;
-
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using WooCommerceNET;
+    using WooCommerceNET.WooCommerce.v2;
+
     /// <summary>
     ///     The get products base.
     /// </summary>
@@ -16,9 +17,9 @@ namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
             int pPerPage = 10,
             string pIncludeProductIds = null)
         {
-            var p = ExecGetProducts(pPage, pPerPage, restApi, pIncludeProductIds).Result;
+            var p = this.ExecGetProducts(pPage, pPerPage, restApi, pIncludeProductIds).Result;
 
-            ProductListWrite(p);
+            this.ProductListWrite(p);
             return p;
         }
 

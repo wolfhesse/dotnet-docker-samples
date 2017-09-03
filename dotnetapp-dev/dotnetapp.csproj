@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <StartupObject>dotnetapp.Program</StartupObject>
     <Platforms>AnyCPU;x64</Platforms>
+    <RootNamespace>DotnetApp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

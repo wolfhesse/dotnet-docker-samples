@@ -1,10 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using RabbitMQ.Client;
-
-namespace dotnetapp.RabbitMqAdapter.UseCases
+namespace DotnetApp.RabbitMqAdapter.UseCases
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using RabbitMQ.Client;
+
     public class QueueHelloWorldMessagesUseCase
     {
         public static int UnmanagedMessagesQueuedCounter = 0;

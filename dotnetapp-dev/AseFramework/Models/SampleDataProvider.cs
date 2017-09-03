@@ -1,11 +1,11 @@
 ﻿#region
 
-using System;
-
 #endregion
 
-namespace dotnetapp.AseFramework.Models
+namespace DotnetApp.AseFramework.Models
 {
+    using System;
+
     public class SampleDataProvider
     {
         public static string OnetabJsonEmptyState = @"{""tabGroups"":[]}";

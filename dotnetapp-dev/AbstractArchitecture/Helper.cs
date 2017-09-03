@@ -1,11 +1,11 @@
 #region
 
-using System.IO;
-
 #endregion
 
-namespace dotnetapp.AbstractArchitecture
+namespace DotnetApp.AbstractArchitecture
 {
+    using System.IO;
+
     public class Helper
     {
         public static void FnOutSeparator72(TextWriter textWriter, char character = '_')

@@ -1,4 +1,4 @@
-﻿namespace dotnetapp.AseFramework
+﻿namespace DotnetApp.AseFramework
 {
     public class Version
     {

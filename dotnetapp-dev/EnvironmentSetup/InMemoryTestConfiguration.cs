@@ -1,8 +1,8 @@
-using dotnetapp.TodoComponent;
-using dotnetapp.TodoComponent.Storage;
-
-namespace dotnetapp.EnvironmentSetup
+namespace DotnetApp.EnvironmentSetup
 {
+    using DotnetApp.TodoComponent;
+    using DotnetApp.TodoComponent.Storage;
+
     public class InMemoryTestConfiguration
     {
         public static ITaskRepository TaskRepository = new InMemoryTaskRepository();

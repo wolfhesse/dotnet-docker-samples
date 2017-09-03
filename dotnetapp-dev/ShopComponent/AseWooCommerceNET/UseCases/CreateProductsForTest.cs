@@ -1,13 +1,14 @@
 #region
 
-using System;
-using WooCommerceNET;
-using WooCommerceNET.WooCommerce.v2;
-
 #endregion
 
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System;
+
+    using WooCommerceNET;
+    using WooCommerceNET.WooCommerce.v2;
+
     public class CreateProductsForTest
     {
         public static void

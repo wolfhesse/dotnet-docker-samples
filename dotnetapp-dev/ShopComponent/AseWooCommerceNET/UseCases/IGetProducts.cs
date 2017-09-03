@@ -7,12 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using WooCommerceNET;
-using WooCommerceNET.WooCommerce.v2;
-
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System.Collections.Generic;
+
+    using WooCommerceNET;
+    using WooCommerceNET.WooCommerce.v2;
+
     #region
 
     #endregion

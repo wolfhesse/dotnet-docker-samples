@@ -1,15 +1,16 @@
-﻿using dotnetapp.AseFramework.Definitions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-namespace dotnetapp.EnvironmentSetup
+﻿namespace DotnetApp.EnvironmentSetup
 {
+    using DotnetApp.AseFramework.Definitions;
+
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     public class MessageQueueConfigEntry : IConfigEntry, AseFrameworkDefinitionsHead
     {
         public MessageQueueConfigEntry(string hostname)
         {
-            Hostname = hostname;
-            Purpose = ProgramConfigKeys.MessageQueue;
+            this.Hostname = hostname;
+            this.Purpose = ProgramConfigKeys.MessageQueue;
         }
 
         public MessageQueueConfigEntry()

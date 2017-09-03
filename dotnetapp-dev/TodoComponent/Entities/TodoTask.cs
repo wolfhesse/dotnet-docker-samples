@@ -1,11 +1,11 @@
 ﻿#region
 
-using System;
-
 #endregion
 
-namespace dotnetapp.TodoComponent.Entities
+namespace DotnetApp.TodoComponent.Entities
 {
+    using System;
+
     public class TodoTask
     {
         public TodoTask()
@@ -14,8 +14,8 @@ namespace dotnetapp.TodoComponent.Entities
 
         public TodoTask(string title)
         {
-            CreatedAt = DateTimeOffset.Now;
-            Title = title;
+            this.CreatedAt = DateTimeOffset.Now;
+            this.Title = title;
         }
 
         public int Id { get; set; }
@@ -24,7 +24,7 @@ namespace dotnetapp.TodoComponent.Entities
 
         public bool IsValid()
         {
-            return Title.Trim().Length > 0;
+            return this.Title.Trim().Length > 0;
         }
     }
 }

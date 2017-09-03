@@ -1,14 +1,15 @@
 #region
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using WooCommerceNET;
-using WooCommerceNET.WooCommerce.v2;
-
 #endregion
 
-namespace dotnetapp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using WooCommerceNET;
+    using WooCommerceNET.WooCommerce.v2;
+
     public class GetProduct
     {
         public static async Task<Product>

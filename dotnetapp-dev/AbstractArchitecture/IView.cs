@@ -1,4 +1,4 @@
-namespace dotnetapp.AbstractArchitecture
+namespace DotnetApp.AbstractArchitecture
 {
     public interface IView
     {

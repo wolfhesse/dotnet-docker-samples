@@ -1,11 +1,11 @@
 ﻿#region
 
-using dotnetapp.AseFramework.Models;
-
 #endregion
 
-namespace dotnetapp.AbstractArchitecture
+namespace DotnetApp.AbstractArchitecture
 {
+    using DotnetApp.AseFramework.Models;
+
     public class EngineSetup
     {
         public readonly DatesContainerModel DatesContainerModel;
@@ -13,8 +13,8 @@ namespace dotnetapp.AbstractArchitecture
 
         public EngineSetup(DatesContainerModel datesContainerModel, IView view)
         {
-            DatesContainerModel = datesContainerModel;
-            View = view;
+            this.DatesContainerModel = datesContainerModel;
+            this.View = view;
         }
     }
 }
