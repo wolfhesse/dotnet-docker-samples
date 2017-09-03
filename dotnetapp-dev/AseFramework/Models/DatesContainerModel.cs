@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DatesContainerModel.cs" company="">
-//   
+// <copyright file="DatesContainerModel.cs" company="ase">
+//   mit
 // </copyright>
 // <summary>
 //   The dates container model.
@@ -18,37 +18,37 @@ namespace DotnetApp.AseFramework.Models
     #endregion
 
     /// <summary>
-    /// The dates container model.
+    ///     The dates container model.
     /// </summary>
     public class DatesContainerModel
     {
         /// <summary>
-        /// The ev warning.
+        ///     The ev warning.
         /// </summary>
         public event EventHandler EvWarning;
 
         /// <summary>
-        /// The model changed.
+        ///     The model changed.
         /// </summary>
         public event EventHandler ModelChanged;
 
         /// <summary>
-        /// The model sorted.
+        ///     The model sorted.
         /// </summary>
         public event EventHandler ModelSorted;
 
         /// <summary>
-        /// Gets the dates.
+        ///     Gets the dates.
         /// </summary>
         public MySortedSet<DateTimeOffset> Dates { get; private set; }
 
         /// <summary>
-        /// The sys warnings.
+        ///     The sys warnings.
         /// </summary>
         public IList<string> SysWarnings => this.Dates.SysWarnings;
 
         /// <summary>
-        /// The create dates.
+        ///     The create dates.
         /// </summary>
         public void CreateDates()
         {
@@ -64,7 +64,7 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// The insert timestamp.
+        ///     The insert timestamp.
         /// </summary>
         public void InsertTimestamp()
         {
@@ -88,7 +88,7 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// The sort.
+        ///     The sort.
         /// </summary>
         public void Sort()
         {
@@ -103,7 +103,7 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// The on ev warning.
+        ///     The on ev warning.
         /// </summary>
         protected virtual void OnEvWarning()
         {
@@ -111,7 +111,7 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// The on model changed.
+        ///     The on model changed.
         /// </summary>
         protected virtual void OnModelChanged()
         {
@@ -119,7 +119,7 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// The on model sorted.
+        ///     The on model sorted.
         /// </summary>
         protected virtual void OnModelSorted()
         {
@@ -149,17 +149,17 @@ namespace DotnetApp.AseFramework.Models
         public class MySortedSet<T> : SortedSet<T>
         {
             /// <summary>
-            /// The ev warning.
+            ///     The ev warning.
             /// </summary>
             public event EventHandler EvWarning;
 
             /// <summary>
-            /// Gets the sys warnings.
+            ///     Gets the sys warnings.
             /// </summary>
             public IList<string> SysWarnings { get; } = new List<string>();
 
             /// <summary>
-            /// The sort.
+            ///     The sort.
             /// </summary>
             internal void Sort()
             {
@@ -169,7 +169,7 @@ namespace DotnetApp.AseFramework.Models
             }
 
             /// <summary>
-            /// The on ev warning.
+            ///     The on ev warning.
             /// </summary>
             protected virtual void OnEvWarning()
             {

@@ -27,14 +27,9 @@ namespace DotnetAppDev.Tests.Unittests
     public class OperationXunitTests
     {
         /// <summary>
-        ///     The request uri string.
-        /// </summary>
-        private const string RequestUriString = "http://10.0.0.21:13000/";
-
-        /// <summary>
         ///     The data d result txt f.
         /// </summary>
-        private static readonly string DataDResultTxtF = EnvManager.AseDataDWin + "/OperationXunitTests.res.txt";
+        public static string DataDResultTxtF { get; } = EnvManager.AseDataDWin + "/OperationXunitTests.res.txt";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OperationXunitTests"/> class.
@@ -46,8 +41,6 @@ namespace DotnetAppDev.Tests.Unittests
         {
             EnvManager.TestOutputHelper = outputHelper;
         }
-
-     
 
         // [Fact]
         // public void ApiTestS13K()
@@ -71,20 +64,20 @@ namespace DotnetAppDev.Tests.Unittests
         ///     The get_stmt_test.
         /// </summary>
         [Fact]
-        public void Get_stmt_test()
+        public void GetStmtTest()
         {
-            Assert.NotEmpty(S13000Operation.Get_statement_1());
+            Assert.NotEmpty(S13000Operation.GetStatement1());
         }
 
         /// <summary>
         ///     The mkidx_test.
         /// </summary>
         [Fact]
-        public void Mkidx_test()
+        public void MkidxTest()
         {
-            EnvManager.DefaultOut = new EnvironmentOutputAdapter(this.Oh);
-            var pTweet = SampleDataProvider.GetSampleTweet();
-            var tweets = EsOperationsEngine.EsWriteAndReadbackTweet(pTweet);
+            // EnvManager.DefaultOut = new EnvironmentOutputAdapter(this.Oh);
+            var sampleTweet = SampleDataProvider.GetSampleTweet();
+            var tweets = EsOperationsEngine.EsWriteAndReadbackTweet(sampleTweet);
             Assert.Equal(tweets[0].User, tweets[1].User);
         }
     }
