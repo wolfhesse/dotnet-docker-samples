@@ -1,22 +1,13 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DatesContainerOperations.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The dates container operations.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.Controllers
+namespace DotnetApp.AseFramework.Controllers
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
     using System.IO;
 
-    using DotnetApp.AbstractArchitecture;
-    using DotnetApp.AseFramework.EngineSetups;
+    using DotnetApp.AseFramework.AbstractArchitecture;
+    using DotnetApp.AseFramework.AbstractArchitecture.EngineSetups;
     using DotnetApp.AseFramework.Models;
 
     #endregion
@@ -42,13 +33,13 @@ namespace DotnetApp.Controllers
             private readonly DatesEngineSetup _datesEngineSetup;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="Controller"/> class.
+            ///     Initializes a new instance of the <see cref="Controller" /> class.
             /// </summary>
             /// <param name="datesEngineSetup">
-            /// The dates engine setup.
+            ///     The dates engine setup.
             /// </param>
             /// <param name="textWriter">
-            /// The text writer.
+            ///     The text writer.
             /// </param>
             public Controller(DatesEngineSetup datesEngineSetup, TextWriter textWriter)
             {
@@ -71,7 +62,7 @@ namespace DotnetApp.Controllers
             public event EventHandler EvPostProcessingHook;
 
             /// <summary>
-            /// Gets or sets the ts start.
+            ///     Gets or sets the ts start.
             /// </summary>
             public DateTime TsStart { get; set; }
 
@@ -123,13 +114,13 @@ namespace DotnetApp.Controllers
         public class Helper
         {
             /// <summary>
-            /// The fn out separator 72.
+            ///     The fn out separator 72.
             /// </summary>
             /// <param name="textWriter">
-            /// The text writer.
+            ///     The text writer.
             /// </param>
             /// <param name="character">
-            /// The character.
+            ///     The character.
             /// </param>
             public static void FnOutSeparator72(TextWriter textWriter, char character = '_')
             {
@@ -153,10 +144,10 @@ namespace DotnetApp.Controllers
             private int _counter;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="View"/> class.
+            ///     Initializes a new instance of the <see cref="View" /> class.
             /// </summary>
             /// <param name="datesContainerModel">
-            /// The dates container model.
+            ///     The dates container model.
             /// </param>
             public View(DatesContainerModel datesContainerModel)
             {
@@ -238,13 +229,13 @@ namespace DotnetApp.Controllers
             }
 
             /// <summary>
-            /// The dump dates.
+            ///     The dump dates.
             /// </summary>
             /// <param name="textWriter">
-            /// The text writer.
+            ///     The text writer.
             /// </param>
             /// <param name="dates">
-            /// The dates.
+            ///     The dates.
             /// </param>
             private void DumpDates(TextWriter textWriter, IEnumerable<DateTimeOffset> dates)
             {
@@ -260,10 +251,10 @@ namespace DotnetApp.Controllers
             public class SysWarningsClearedHook
             {
                 /// <summary>
-                /// Initializes a new instance of the <see cref="SysWarningsClearedHook"/> class.
+                ///     Initializes a new instance of the <see cref="SysWarningsClearedHook" /> class.
                 /// </summary>
                 /// <param name="view">
-                /// The view.
+                ///     The view.
                 /// </param>
                 /// <exception cref="NotImplementedException">
                 /// </exception>
@@ -279,10 +270,10 @@ namespace DotnetApp.Controllers
             public class WarningWrittenHook
             {
                 /// <summary>
-                /// Initializes a new instance of the <see cref="WarningWrittenHook"/> class.
+                ///     Initializes a new instance of the <see cref="WarningWrittenHook" /> class.
                 /// </summary>
                 /// <param name="view">
-                /// The view.
+                ///     The view.
                 /// </param>
                 /// <exception cref="NotImplementedException">
                 /// </exception>

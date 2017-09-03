@@ -1,33 +1,24 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IShopAdapter.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The ShopAdapter interface.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent
+﻿namespace DotnetApp.AseFramework.Core.ShopComponent
 {
-    #region
+    #region using directives
 
     using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
     /// <summary>
-    /// The ShopAdapter interface.
+    ///     The ShopAdapter interface.
     /// </summary>
     public interface IShopAdapter
     {
         /// <summary>
-        /// The add product.
+        ///     The add product.
         /// </summary>
         /// <param name="product">
-        /// The product.
+        ///     The product.
         /// </param>
         /// <returns>
-        /// The <see cref="Product"/>.
+        ///     The <see cref="Product" />.
         /// </returns>
         Product AddProduct(Product product);
     }

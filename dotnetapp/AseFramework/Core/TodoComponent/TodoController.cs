@@ -1,37 +1,28 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TodoController.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The todo controller.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.TodoComponent
+﻿namespace DotnetApp.AseFramework.Core.TodoComponent
 {
-    #region
+    #region using directives
 
     using System;
 
-    using DotnetApp.TodoComponent.Storage;
+    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 
     #endregion
 
     /// <summary>
-    /// The todo controller.
+    ///     The todo controller.
     /// </summary>
     public class TodoController
     {
         /// <summary>
-        /// Gets the task repository.
+        ///     Gets the task repository.
         /// </summary>
         public static ITaskRepository TaskRepository { get; } = new InMemoryTaskRepository();
 
         /// <summary>
-        /// The add task.
+        ///     The add task.
         /// </summary>
         /// <param name="title">
-        /// The title.
+        ///     The title.
         /// </param>
         public static void AddTask(string title)
         {

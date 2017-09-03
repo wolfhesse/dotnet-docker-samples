@@ -1,40 +1,31 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InMemoryTaskRepository.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The in memory task repository.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.TodoComponent.Storage
+﻿namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
 {
-    #region
+    #region using directives
 
     using System.Collections.Generic;
     using System.Diagnostics;
 
-    using DotnetApp.TodoComponent.Entities;
+    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 
     #endregion
 
     /// <summary>
-    /// The in memory task repository.
+    ///     The in memory task repository.
     /// </summary>
     public class InMemoryTaskRepository : ITaskRepository
     {
         /// <summary>
-        /// The _tasks.
+        ///     The _tasks.
         /// </summary>
         private readonly List<TodoTask> _tasks;
 
         /// <summary>
-        /// The _id.
+        ///     The _id.
         /// </summary>
         private int _id;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InMemoryTaskRepository"/> class.
+        ///     Initializes a new instance of the <see cref="InMemoryTaskRepository" /> class.
         /// </summary>
         public InMemoryTaskRepository()
         {
@@ -43,34 +34,34 @@ namespace DotnetApp.TodoComponent.Storage
         }
 
         /// <summary>
-        /// The task added event handler.
+        ///     The task added event handler.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="eventArgs">
-        /// The event args.
+        ///     The event args.
         /// </param>
         public delegate void TaskAddedEventHandler(object sender, TaskEventArgs eventArgs);
 
         /// <summary>
-        /// The ev task added.
+        ///     The ev task added.
         /// </summary>
         public event TaskAddedEventHandler EvTaskAdded;
 
         /// <summary>
-        /// The count.
+        ///     The count.
         /// </summary>
         public int Count => this._tasks.Count;
 
         /// <summary>
-        /// The find task.
+        ///     The find task.
         /// </summary>
         /// <param name="taskId">
-        /// The task id.
+        ///     The task id.
         /// </param>
         /// <returns>
-        /// The <see cref="TodoTask"/>.
+        ///     The <see cref="TodoTask" />.
         /// </returns>
         public TodoTask FindTask(int taskId)
         {
@@ -79,10 +70,10 @@ namespace DotnetApp.TodoComponent.Storage
         }
 
         /// <summary>
-        /// The persist.
+        ///     The persist.
         /// </summary>
         /// <param name="t">
-        /// The t.
+        ///     The t.
         /// </param>
         public void Persist(TodoTask t)
         {
@@ -92,10 +83,10 @@ namespace DotnetApp.TodoComponent.Storage
         }
 
         /// <summary>
-        /// The on ev task added.
+        ///     The on ev task added.
         /// </summary>
         /// <param name="todoTask">
-        /// The todo task.
+        ///     The todo task.
         /// </param>
         protected virtual void OnEvTaskAdded(TodoTask todoTask)
         {

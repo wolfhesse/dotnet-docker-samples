@@ -1,17 +1,8 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MessageQueueConfigEntry.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The message queue config entry.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.EnvironmentSetup
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
-    #region
+    #region using directives
 
-    using DotnetApp.AseFramework.Definitions;
+    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -24,10 +15,10 @@ namespace DotnetApp.EnvironmentSetup
     public class MessageQueueConfigEntry : IConfigEntry, AseFrameworkDefinitionsHead
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MessageQueueConfigEntry"/> class.
+        ///     Initializes a new instance of the <see cref="MessageQueueConfigEntry" /> class.
         /// </summary>
         /// <param name="hostname">
-        /// The hostname.
+        ///     The hostname.
         /// </param>
         public MessageQueueConfigEntry(string hostname)
         {

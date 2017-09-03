@@ -1,26 +1,17 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ProgramConfigKeys.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The program config keys.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AseFramework.Definitions
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
 {
     /// <summary>
-    /// The program config keys.
+    ///     The program config keys.
     /// </summary>
     public enum ProgramConfigKeys
     {
         /// <summary>
-        /// The program.
+        ///     The program.
         /// </summary>
         Program,
 
         /// <summary>
-        /// The message queue.
+        ///     The message queue.
         /// </summary>
         MessageQueue
     }

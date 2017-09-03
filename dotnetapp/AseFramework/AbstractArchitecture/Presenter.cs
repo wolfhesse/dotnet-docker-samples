@@ -1,27 +1,18 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Presenter.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The presenter.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AbstractArchitecture
+namespace DotnetApp.AseFramework.AbstractArchitecture
 {
-    #region
+    #region using directives
 
     using System.IO;
 
     #endregion
 
     /// <summary>
-    /// The presenter.
+    ///     The presenter.
     /// </summary>
     public class Presenter
     {
         /// <summary>
-        /// Gets or sets the text writer.
+        ///     Gets or sets the text writer.
         /// </summary>
         public TextWriter TextWriter { get; set; }
     }

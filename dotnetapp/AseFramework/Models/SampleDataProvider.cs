@@ -1,35 +1,26 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SampleDataProvider.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The sample data provider.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AseFramework.Models
+﻿namespace DotnetApp.AseFramework.Models
 {
-    #region
+    #region using directives
 
     using System;
 
     #endregion
 
     /// <summary>
-    /// The sample data provider.
+    ///     The sample data provider.
     /// </summary>
     public class SampleDataProvider
     {
         /// <summary>
-        /// The onetab json empty state.
+        ///     The onetab json empty state.
         /// </summary>
         public static string OnetabJsonEmptyState = @"{""tabGroups"":[]}";
 
         /// <summary>
-        /// The get sample tweet.
+        ///     The get sample tweet.
         /// </summary>
         /// <returns>
-        /// The <see cref="TweetModel"/>.
+        ///     The <see cref="TweetModel" />.
         /// </returns>
         public static InteropTypes.V1.TweetModel GetSampleTweet()
         {

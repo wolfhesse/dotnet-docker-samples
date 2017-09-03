@@ -1,25 +1,14 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EnvManager.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The env manager.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.EnvironmentSetup
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Text;
 
-    using DotnetApp.AseFramework.Definitions;
-    using DotnetApp.Controllers;
+    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+    using DotnetApp.AseFramework.Controllers;
 
     using Xunit.Abstractions;
 
@@ -37,7 +26,7 @@ namespace DotnetApp.EnvironmentSetup
             Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/data.d";
 
         /// <summary>
-        /// Gets or sets the default out.
+        ///     Gets or sets the default out.
         /// </summary>
         public static IWriteLineSupport DefaultOut { get; set; }
 
@@ -52,12 +41,12 @@ namespace DotnetApp.EnvironmentSetup
         public static string FlgNotAvailableS { get; } = "n/a";
 
         /// <summary>
-        /// Gets or sets the test output helper.
+        ///     Gets or sets the test output helper.
         /// </summary>
         public static ITestOutputHelper TestOutputHelper { get; set; }
 
         /// <summary>
-        /// Gets or sets the enum registry.
+        ///     Gets or sets the enum registry.
         /// </summary>
         private static IDictionary<Enum, IDictionary<Enum, List<string>>> EnumRegistry { get; set; }
 
@@ -67,10 +56,10 @@ namespace DotnetApp.EnvironmentSetup
         private static IDictionary<string, IDictionary<string, object>> Registry { get; set; }
 
         /// <summary>
-        /// The get enum registry.
+        ///     The get enum registry.
         /// </summary>
         /// <returns>
-        /// The <see cref="IDictionary"/>.
+        ///     The <see cref="IDictionary" />.
         /// </returns>
         public static IDictionary<Enum, IDictionary<Enum, List<string>>> GetEnumRegistry()
         {
@@ -129,7 +118,7 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// The new line.
+        ///     The new line.
         /// </summary>
         public static void NewLine()
         {
@@ -137,10 +126,10 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// The set enum registry.
+        ///     The set enum registry.
         /// </summary>
         /// <param name="value">
-        /// The value.
+        ///     The value.
         /// </param>
         public static void SetEnumRegistry(IDictionary<Enum, IDictionary<Enum, List<string>>> value)
         {
@@ -148,10 +137,10 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// The set registry.
+        ///     The set registry.
         /// </summary>
         /// <param name="value">
-        /// The value.
+        ///     The value.
         /// </param>
         public static void SetRegistry(IDictionary<string, IDictionary<string, object>> value)
         {
@@ -159,7 +148,7 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// The write line.
+        ///     The write line.
         /// </summary>
         /// <param name="s">
         ///     The s.
@@ -169,48 +158,6 @@ namespace DotnetApp.EnvironmentSetup
         {
             if (null != DefaultOut) DefaultOut.WriteLine(s);
             else Console.Out.WriteLine(s);
-        }
-
-        /// <summary>
-        ///     The ase environment namespace.
-        /// </summary>
-        public class AseEnvironmentNamespace
-        {
-            /// <summary>
-            ///     The get data d.
-            /// </summary>
-            /// <returns>
-            ///     The <see cref="string" />.
-            /// </returns>
-            [SuppressMessage(
-                "StyleCop.CSharp.OrderingRules",
-                "SA1216:NoValueFirstComparison",
-                Justification = "Reviewed. Suppression is OK here.")]
-            public static string GetDataD()
-            {
-                var s = Environment.GetEnvironmentVariable(EnvVarAseDataD);
-                if (null == s)
-                {
-                    // bail out
-                    var sw = new StringWriter(new StringBuilder());
-                    try
-                    {
-                        GeneralOperations.err_handling_bail_out(sw, "get env var ASE_DATA_D");
-                    }
-                    catch (Exception e)
-                    {
-                        sw.WriteLine($"exception: {e.Message}");
-                    }
-
-                    Debug.WriteLine(sw.ToString());
-
-                    s = AseDataDWin;
-                    Environment.SetEnvironmentVariable(EnvVarAseDataD, s);
-                }
-
-                Debug.WriteLine($"ASE_DATA_D env var set to {s}");
-                return s;
-            }
         }
     }
 }

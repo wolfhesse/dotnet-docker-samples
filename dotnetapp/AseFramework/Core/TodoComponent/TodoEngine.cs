@@ -1,34 +1,25 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TodoEngine.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The todo engine.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.TodoComponent
+﻿namespace DotnetApp.AseFramework.Core.TodoComponent
 {
-    #region
+    #region using directives
 
-    using DotnetApp.TodoComponent.Entities;
-    using DotnetApp.TodoComponent.Storage;
+    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 
     #endregion
 
     /// <summary>
-    /// The todo engine.
+    ///     The todo engine.
     /// </summary>
     public class TodoEngine
     {
         /// <summary>
-        /// The add task.
+        ///     The add task.
         /// </summary>
         /// <param name="taskRepository">
-        /// The task repository.
+        ///     The task repository.
         /// </param>
         /// <param name="todoTask">
-        /// The todo task.
+        ///     The todo task.
         /// </param>
         public void AddTask(ITaskRepository taskRepository, TodoTask todoTask)
         {

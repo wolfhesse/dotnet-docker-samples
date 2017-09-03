@@ -1,16 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IConfigEntry.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The ConfigEntry interface.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.EnvironmentSetup
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     /// <summary>
-    /// The ConfigEntry interface.
+    ///     The ConfigEntry interface.
     /// </summary>
     public interface IConfigEntry
     {

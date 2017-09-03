@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The program.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace DotnetApp
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
@@ -32,13 +23,33 @@ namespace DotnetApp
         private static string serializedEnvironment;
 
         /// <summary>
-        /// The get bot.
+        ///     The environment dict.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="IDictionary{TKey,TValue}" />.
+        /// </returns>
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed. Suppression is OK here.")]
+        public static Dictionary<string, string> EnvironmentDict()
+        {
+            return new Dictionary<string, string>
+                       {
+                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+                       };
+        }
+
+        /// <summary>
+        ///     The get bot.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string GetBot(string message)
         {
@@ -93,10 +104,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The main.
+        ///     The main.
         /// </summary>
         /// <param name="args">
-        /// The args.
+        ///     The args.
         /// </param>
         public static void Main(string[] args)
         {
@@ -129,13 +140,13 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The build message.
+        ///     The build message.
         /// </summary>
         /// <param name="args">
-        /// The args.
+        ///     The args.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         private static string BuildMessage(string[] args)
         {
@@ -148,33 +159,13 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        ///     The environment dict.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="IDictionary{TKey,TValue}" />.
-        /// </returns>
-        [SuppressMessage(
-            "StyleCop.CSharp.DocumentationRules",
-            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
-            Justification = "Reviewed. Suppression is OK here.")]
-        public static Dictionary<string, string> EnvironmentDict()
-        {
-            return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
-        }
-
-        /// <summary>
-        /// The get bot header.
+        ///     The get bot header.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         private static string GetBotHeader(string message)
         {
@@ -185,16 +176,16 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The get environment variable with options.
+        ///     The get environment variable with options.
         /// </summary>
         /// <param name="variable">
-        /// The variable.
+        ///     The variable.
         /// </param>
         /// <param name="defaultValue">
-        /// The default value.
+        ///     The default value.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
         {
@@ -204,10 +195,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The write environment description.
+        ///     The write environment description.
         /// </summary>
         /// <param name="environmentDict">
-        /// The environment dict.
+        ///     The environment dict.
         /// </param>
         [SuppressMessage(
             "StyleCop.CSharp.DocumentationRules",
@@ -226,10 +217,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The write line.
+        ///     The write line.
         /// </summary>
         /// <param name="s">
-        /// The s.
+        ///     The s.
         /// </param>
         private static void WriteLine(string s = null)
         {
@@ -239,10 +230,10 @@ x-ase-sect-PAT_END
         }
 
         /// <summary>
-        /// The write line.
+        ///     The write line.
         /// </summary>
         /// <param name="s">
-        /// The s.
+        ///     The s.
         /// </param>
         [SuppressMessage(
             "StyleCop.CSharp.LayoutRules",

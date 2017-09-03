@@ -1,22 +1,13 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AseGeneratorAttribute.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The ase generator attribute.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AseFramework.Definitions
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
 {
-    #region
+    #region using directives
 
     using System;
 
     #endregion
 
     /// <summary>
-    /// The ase generator attribute.
+    ///     The ase generator attribute.
     /// </summary>
     public class AseGeneratorAttribute : Attribute, AseFrameworkDefinitionsHead
     {

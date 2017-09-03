@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CreateProductsForTest.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The create products for test.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
-    #region
+    #region using directives
 
     using System;
 
@@ -19,18 +10,18 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
     #endregion
 
     /// <summary>
-    /// The create products for test.
+    ///     The create products for test.
     /// </summary>
     public class CreateProductsForTest
     {
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         /// <param name="HowMany">
-        /// The how many.
+        ///     The how many.
         /// </param>
         public static void Execute(RestAPI restApi, int HowMany = 3)
         {

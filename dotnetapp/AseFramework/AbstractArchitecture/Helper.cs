@@ -1,33 +1,24 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Helper.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The helper.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AbstractArchitecture
+namespace DotnetApp.AseFramework.AbstractArchitecture
 {
-    #region
+    #region using directives
 
     using System.IO;
 
     #endregion
 
     /// <summary>
-    /// The helper.
+    ///     The helper.
     /// </summary>
     public class Helper
     {
         /// <summary>
-        /// The fn out separator 72.
+        ///     The fn out separator 72.
         /// </summary>
         /// <param name="textWriter">
-        /// The text writer.
+        ///     The text writer.
         /// </param>
         /// <param name="character">
-        /// The character.
+        ///     The character.
         /// </param>
         public static void FnOutSeparator72(TextWriter textWriter, char character = '_')
         {

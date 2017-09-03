@@ -1,67 +1,58 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InteropTypes.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The interop types.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace DotnetApp.AseFramework.Models
 {
-    #region
+    #region using directives
 
     using System;
 
     #endregion
 
     /// <summary>
-    /// The interop types.
+    ///     The interop types.
     /// </summary>
     public static class InteropTypes
     {
         /// <summary>
-        /// The v 1.
+        ///     The v 1.
         /// </summary>
         public class V1
         {
             /// <summary>
-            /// The tweet model.
+            ///     The tweet model.
             /// </summary>
             public class TweetModel
             {
                 // public string _id { get; set; }
                 // public int? Id { get; set; }
                 /// <summary>
-                /// Gets or sets the id.
+                ///     Gets or sets the id.
                 /// </summary>
                 public string Id { get; set; }
 
                 /// <summary>
-                /// Gets or sets the post date time.
+                ///     Gets or sets the post date time.
                 /// </summary>
                 public DateTime PostDateTime { get; set; }
 
                 /// <summary>
-                /// Gets or sets the user.
+                ///     Gets or sets the user.
                 /// </summary>
                 public string User { get; set; }
 
                 /// <summary>
-                /// Gets or sets the value.
+                ///     Gets or sets the value.
                 /// </summary>
                 public string Value { get; set; }
 
                 /// <summary>
-                /// Gets the version.
+                ///     Gets the version.
                 /// </summary>
                 public string Version { get; } = typeof(TweetModel).AssemblyQualifiedName;
 
                 /// <summary>
-                /// The to string.
+                ///     The to string.
                 /// </summary>
                 /// <returns>
-                /// The <see cref="string"/>.
+                ///     The <see cref="string" />.
                 /// </returns>
                 public override string ToString()
                 {

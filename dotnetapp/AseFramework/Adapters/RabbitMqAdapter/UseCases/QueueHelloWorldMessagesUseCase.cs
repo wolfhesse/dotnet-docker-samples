@@ -1,52 +1,43 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueueHelloWorldMessagesUseCase.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The queue hello world messages use case.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.RabbitMqAdapter.UseCases
+namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    using DotnetApp.EnvironmentSetup;
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     using RabbitMQ.Client;
 
     #endregion
 
     /// <summary>
-    /// The queue hello world messages use case.
+    ///     The queue hello world messages use case.
     /// </summary>
     public class QueueHelloWorldMessagesUseCase
     {
         /// <summary>
-        /// The unmanaged messages queued counter.
+        ///     The unmanaged messages queued counter.
         /// </summary>
         public static int UnmanagedMessagesQueuedCounter;
 
         /// <summary>
-        /// The ev message queued.
+        ///     The ev message queued.
         /// </summary>
         public static event EventHandler EvMessageQueued;
 
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="pMessageCount">
-        /// The p message count.
+        ///     The p message count.
         /// </param>
         /// <param name="engine">
-        /// The engine.
+        ///     The engine.
         /// </param>
         /// <param name="testing">
-        /// The testing.
+        ///     The testing.
         /// </param>
         public static void Execute(int pMessageCount, MqOperationsEngine engine, bool testing = false)
         {
@@ -88,7 +79,7 @@ namespace DotnetApp.RabbitMqAdapter.UseCases
         }
 
         /// <summary>
-        /// The on ev message queued.
+        ///     The on ev message queued.
         /// </summary>
         protected static void OnEvMessageQueued()
         {

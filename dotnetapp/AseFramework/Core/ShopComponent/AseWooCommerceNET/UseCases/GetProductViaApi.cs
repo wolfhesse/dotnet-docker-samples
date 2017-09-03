@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetProductViaApi.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The get product via api.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
-    #region
+    #region using directives
 
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -20,21 +11,21 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
     #endregion
 
     /// <summary>
-    /// The get product via api.
+    ///     The get product via api.
     /// </summary>
     public class GetProductViaApi
     {
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="pId">
-        /// The p id.
+        ///     The p id.
         /// </param>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         public static async Task<Product> Execute(string pId, RestAPI restApi)
         {
@@ -43,16 +34,16 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
         }
 
         /// <summary>
-        /// The fn get products by id.
+        ///     The fn get products by id.
         /// </summary>
         /// <param name="pId">
-        /// The p id.
+        ///     The p id.
         /// </param>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         public static async Task<Product> FnGetProductsById(string pId, RestAPI restApi)
         {
@@ -63,22 +54,22 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
         }
 
         /// <summary>
-        /// The fn get products by include per page page.
+        ///     The fn get products by include per page page.
         /// </summary>
         /// <param name="pPage">
-        /// The p page.
+        ///     The p page.
         /// </param>
         /// <param name="pPerPage">
-        /// The p per page.
+        ///     The p per page.
         /// </param>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         /// <param name="pIncludeProductIds">
-        /// The p include product ids.
+        ///     The p include product ids.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         public static async Task<List<Product>> FnGetProductsByIncludePerPagePage(
             int pPage,

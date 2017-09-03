@@ -1,23 +1,14 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EsOperationsEngine.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The es operations engine.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ElasticSearchAdapter
+﻿namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
 
+    using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases;
+    using DotnetApp.AseFramework.Controllers;
     using DotnetApp.AseFramework.Models;
-    using DotnetApp.Controllers;
-    using DotnetApp.ElasticSearchAdapter.UseCases;
 
     using Elasticsearch.Net;
 
@@ -26,20 +17,20 @@ namespace DotnetApp.ElasticSearchAdapter
     #endregion
 
     /// <summary>
-    /// The es operations engine.
+    ///     The es operations engine.
     /// </summary>
     public class EsOperationsEngine
     {
         /// <summary>
-        /// The _client.
+        ///     The _client.
         /// </summary>
         private static ElasticClient _client;
 
         /// <summary>
-        /// The dump tweet.
+        ///     The dump tweet.
         /// </summary>
         /// <param name="obj">
-        /// The obj.
+        ///     The obj.
         /// </param>
         public static void DumpTweet(InteropTypes.V1.TweetModel obj)
         {
@@ -48,13 +39,13 @@ namespace DotnetApp.ElasticSearchAdapter
         }
 
         /// <summary>
-        /// The es write and readback tweet.
+        ///     The es write and readback tweet.
         /// </summary>
         /// <param name="pTweetModel">
-        /// The p tweet model.
+        ///     The p tweet model.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        ///     The <see cref="List" />.
         /// </returns>
         public static List<InteropTypes.V1.TweetModel> EsWriteAndReadbackTweet(InteropTypes.V1.TweetModel pTweetModel)
         {
@@ -65,10 +56,10 @@ namespace DotnetApp.ElasticSearchAdapter
         }
 
         /// <summary>
-        /// The init elastic client.
+        ///     The init elastic client.
         /// </summary>
         /// <returns>
-        /// The <see cref="ElasticClient"/>.
+        ///     The <see cref="ElasticClient" />.
         /// </returns>
         private static ElasticClient InitElasticClient()
         {
@@ -87,13 +78,13 @@ namespace DotnetApp.ElasticSearchAdapter
         }
 
         /// <summary>
-        /// The read back tweet 11.
+        ///     The read back tweet 11.
         /// </summary>
         /// <param name="client">
-        /// The client.
+        ///     The client.
         /// </param>
         /// <returns>
-        /// The <see cref="IGetResponse"/>.
+        ///     The <see cref="IGetResponse" />.
         /// </returns>
         private static IGetResponse<InteropTypes.V1.TweetModel> ReadBackTweet11(ElasticClient client)
         {

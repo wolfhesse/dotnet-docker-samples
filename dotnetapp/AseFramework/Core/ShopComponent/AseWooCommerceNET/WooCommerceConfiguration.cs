@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WooCommerceConfiguration.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The woo commerce configuration.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWooCommerceNET
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
 {
-    #region
+    #region using directives
 
     using System;
 
@@ -18,20 +9,20 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET
     #endregion
 
     /// <summary>
-    /// The woo commerce configuration.
+    ///     The woo commerce configuration.
     /// </summary>
     public class WooCommerceConfiguration : IShopConfiguration
     {
         /// <summary>
-        /// The _rest api.
+        ///     The _rest api.
         /// </summary>
         private readonly RestAPI _restApi;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WooCommerceConfiguration"/> class.
+        ///     Initializes a new instance of the <see cref="WooCommerceConfiguration" /> class.
         /// </summary>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         public WooCommerceConfiguration(RestAPI restApi)
         {
@@ -39,10 +30,10 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET
         }
 
         /// <summary>
-        /// The configure.
+        ///     The configure.
         /// </summary>
         /// <param name="adapter">
-        /// The adapter.
+        ///     The adapter.
         /// </param>
         /// <exception cref="Exception">
         /// </exception>

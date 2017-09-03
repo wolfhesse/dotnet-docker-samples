@@ -1,37 +1,28 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TodoTask.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The todo task.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.TodoComponent.Entities
+﻿namespace DotnetApp.AseFramework.Core.TodoComponent.Entities
 {
-    #region
+    #region using directives
 
     using System;
 
     #endregion
 
     /// <summary>
-    /// The todo task.
+    ///     The todo task.
     /// </summary>
     public class TodoTask
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TodoTask"/> class.
+        ///     Initializes a new instance of the <see cref="TodoTask" /> class.
         /// </summary>
         public TodoTask()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TodoTask"/> class.
+        ///     Initializes a new instance of the <see cref="TodoTask" /> class.
         /// </summary>
         /// <param name="title">
-        /// The title.
+        ///     The title.
         /// </param>
         public TodoTask(string title)
         {
@@ -40,25 +31,25 @@ namespace DotnetApp.TodoComponent.Entities
         }
 
         /// <summary>
-        /// Gets or sets the created at.
+        ///     Gets or sets the created at.
         /// </summary>
         public DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or sets the id.
+        ///     Gets or sets the id.
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the title.
+        ///     Gets or sets the title.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// The is valid.
+        ///     The is valid.
         /// </summary>
         /// <returns>
-        /// The <see cref="bool"/>.
+        ///     The <see cref="bool" />.
         /// </returns>
         public bool IsValid()
         {

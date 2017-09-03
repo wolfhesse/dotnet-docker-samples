@@ -1,21 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConsumeMqMessagesLoopUseCase.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The consume mq messages loop use case.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.RabbitMqAdapter.UseCases
+﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
 {
-    #region
+    #region using directives
 
     using System;
     using System.Text;
     using System.Threading;
 
-    using DotnetApp.AseFramework.Definitions;
+    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
 
     using RabbitMQ.Client;
     using RabbitMQ.Client.Events;
@@ -23,36 +14,36 @@ namespace DotnetApp.RabbitMqAdapter.UseCases
     #endregion
 
     /// <summary>
-    /// The consume mq messages loop use case.
+    ///     The consume mq messages loop use case.
     /// </summary>
     public class ConsumeMqMessagesLoopUseCase
     {
         /// <summary>
-        /// The ase message handler.
+        ///     The ase message handler.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="eventArgs">
-        /// The event args.
+        ///     The event args.
         /// </param>
         public delegate void AseMessageHandler(object sender, AseMessageEventArgs eventArgs);
 
         /// <summary>
-        /// The ev rq tweet message.
+        ///     The ev rq tweet message.
         /// </summary>
         public static event AseMessageHandler EvRqTweetMessage;
 
         /// <summary>
-        /// The ev rq tweet product create message.
+        ///     The ev rq tweet product create message.
         /// </summary>
         public static event AseMessageHandler EvRqTweetProductCreateMessage;
 
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="e">
-        /// The e.
+        ///     The e.
         /// </param>
         public static void Execute(MqOperationsEngine e)
         {
@@ -95,10 +86,10 @@ namespace DotnetApp.RabbitMqAdapter.UseCases
         }
 
         /// <summary>
-        /// The on ev rq tweet message.
+        ///     The on ev rq tweet message.
         /// </summary>
         /// <param name="eventargs">
-        /// The eventargs.
+        ///     The eventargs.
         /// </param>
         private static void OnEvRqTweetMessage(AseMessageEventArgs eventargs)
         {
@@ -110,10 +101,10 @@ namespace DotnetApp.RabbitMqAdapter.UseCases
 
         // }
         /// <summary>
-        /// The on ev rq tweet product create message.
+        ///     The on ev rq tweet product create message.
         /// </summary>
         /// <param name="ea">
-        /// The ea.
+        ///     The ea.
         /// </param>
         private static void OnEvRqTweetProductCreateMessage(AseMessageEventArgs ea)
         {
@@ -121,10 +112,10 @@ namespace DotnetApp.RabbitMqAdapter.UseCases
         }
 
         /// <summary>
-        /// The process message.
+        ///     The process message.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         private static void ProcessMessage(string message)
         {

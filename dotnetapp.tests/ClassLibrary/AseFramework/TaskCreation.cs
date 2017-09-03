@@ -1,33 +1,24 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TaskCreation.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The task creation.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
+﻿namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
-    #region
+    #region using directives
 
     using System;
 
-    using DotnetApp.EnvironmentSetup;
-    using DotnetApp.TodoComponent.Utilities;
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
 
     using NUnit.Framework;
 
     #endregion
 
     /// <summary>
-    /// The task creation.
+    ///     The task creation.
     /// </summary>
     [TestFixture]
     public class TaskCreation
     {
         /// <summary>
-        /// The test task created at.
+        ///     The test task created at.
         /// </summary>
         [Test]
         public void TestTaskCreatedAt()

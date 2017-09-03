@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="S13000Operation.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The s 13000 operation.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.Controllers
+namespace DotnetApp.AseFramework.Controllers
 {
-    #region
+    #region using directives
 
     using System.Net;
 
@@ -130,16 +121,16 @@ namespace DotnetApp.Controllers
         // }
 
         /// <summary>
-        /// The get 1.
+        ///     The get 1.
         /// </summary>
         /// <param name="requestUriString">
-        /// The request uri string.
+        ///     The request uri string.
         /// </param>
         /// <param name="s">
-        /// The s.
+        ///     The s.
         /// </param>
         /// <returns>
-        /// The <see cref="WebResponse"/>.
+        ///     The <see cref="WebResponse" />.
         /// </returns>
         private static WebResponse MakeWebrequest(string requestUriString, string s)
         {

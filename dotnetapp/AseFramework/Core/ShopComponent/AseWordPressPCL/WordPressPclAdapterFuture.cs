@@ -1,15 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WordPressPclAdapterFuture.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The word press pcl adapter future.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWordPressPCL
+﻿namespace DotnetApp.AseFramework.Core.ShopComponent.AseWordPressPCL
 {
-    #region
+    #region using directives
 
     using System;
 
@@ -18,7 +9,7 @@ namespace DotnetApp.ShopComponent.AseWordPressPCL
     #endregion
 
     /// <summary>
-    /// The word press pcl adapter future.
+    ///     The word press pcl adapter future.
     /// </summary>
     internal class WordPressPclAdapterFuture : IShopAdapter
     {
@@ -30,13 +21,13 @@ namespace DotnetApp.ShopComponent.AseWordPressPCL
         // client.Password = "1boris";
         // }
         /// <summary>
-        /// The add product.
+        ///     The add product.
         /// </summary>
         /// <param name="product">
-        /// The product.
+        ///     The product.
         /// </param>
         /// <returns>
-        /// The <see cref="Product"/>.
+        ///     The <see cref="Product" />.
         /// </returns>
         /// <exception cref="NotImplementedException">
         /// </exception>

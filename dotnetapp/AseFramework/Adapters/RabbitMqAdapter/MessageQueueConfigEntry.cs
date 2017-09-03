@@ -1,17 +1,8 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MessageQueueConfigEntry.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The message queue config entry.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.RabbitMqAdapter
+﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
-    #region
+    #region using directives
 
-    using DotnetApp.AseFramework.Definitions;
+    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -19,22 +10,22 @@ namespace DotnetApp.RabbitMqAdapter
     #endregion
 
     /// <summary>
-    /// The message queue config entry.
+    ///     The message queue config entry.
     /// </summary>
     public class MessageQueueConfigEntry : IConfigEntry
     {
         /// <summary>
-        /// The extra.
+        ///     The extra.
         /// </summary>
         public string Extra => "eins";
 
         /// <summary>
-        /// Gets or sets the hostname.
+        ///     Gets or sets the hostname.
         /// </summary>
         public string Hostname { get; set; }
 
         /// <summary>
-        /// Gets or sets the purpose.
+        ///     Gets or sets the purpose.
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public ProgramConfigKeys Purpose { get; set; }

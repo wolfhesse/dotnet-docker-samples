@@ -1,33 +1,24 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InMemoryTestConfiguration.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The in memory test configuration.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.EnvironmentSetup
+namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
-    #region
+    #region using directives
 
-    using DotnetApp.TodoComponent;
-    using DotnetApp.TodoComponent.Storage;
+    using DotnetApp.AseFramework.Core.TodoComponent;
+    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 
     #endregion
 
     /// <summary>
-    /// The in memory test configuration.
+    ///     The in memory test configuration.
     /// </summary>
     public class InMemoryTestConfiguration
     {
         /// <summary>
-        /// The task repository.
+        ///     The task repository.
         /// </summary>
         public static ITaskRepository TaskRepository = new InMemoryTaskRepository();
 
         /// <summary>
-        /// The todo engine.
+        ///     The todo engine.
         /// </summary>
         public static TodoEngine TodoEngine = new TodoEngine();
     }

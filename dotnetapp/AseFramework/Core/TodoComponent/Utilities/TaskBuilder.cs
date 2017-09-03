@@ -1,33 +1,24 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TaskBuilder.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The task builder.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.TodoComponent.Utilities
+namespace DotnetApp.AseFramework.Core.TodoComponent.Utilities
 {
-    #region
+    #region using directives
 
-    using DotnetApp.TodoComponent.Entities;
+    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 
     #endregion
 
     /// <summary>
-    /// The task builder.
+    ///     The task builder.
     /// </summary>
     public class TaskBuilder
     {
         /// <summary>
-        /// The build task.
+        ///     The build task.
         /// </summary>
         /// <param name="title">
-        /// The title.
+        ///     The title.
         /// </param>
         /// <returns>
-        /// The <see cref="TodoTask"/>.
+        ///     The <see cref="TodoTask" />.
         /// </returns>
         public static TodoTask BuildTask(string title)
         {

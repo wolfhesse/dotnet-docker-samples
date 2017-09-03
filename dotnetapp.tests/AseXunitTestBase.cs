@@ -1,25 +1,50 @@
 ﻿namespace DotnetAppDev.Tests.Unittests
 {
+    #region using directives
+
     using System;
 
     using DotnetApp;
-    using DotnetApp.EnvironmentSetup;
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     using Newtonsoft.Json;
 
     using Xunit;
     using Xunit.Abstractions;
+
+    #endregion
+
     /// <summary>The xuit test base.</summary>
     public class AseXunitTestBase
     {
         /// <summary>
-        /// The _serialized environment.
+        ///     The _serialized environment.
         /// </summary>
         private string serializedEnvironment;
 
         public AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
             EnvManager.TestOutputHelper = testOutputHelper;
+        }
+
+        /// <summary>
+        ///     The test 1.
+        /// </summary>
+        [Fact]
+        public void Test1()
+        {
+            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+            Assert.Equal(1, 1);
+        }
+
+        /// <summary>
+        ///     The test 2.
+        /// </summary>
+        [Fact]
+        public void Test2()
+        {
+            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+            Assert.False(bool.TrueString == "1");
         }
 
         /// <summary>
@@ -48,26 +73,6 @@
             Assert.NotEmpty(actual);
 
             // Assert.False(true);
-        }
-
-        /// <summary>
-        ///     The test 1.
-        /// </summary>
-        [Fact]
-        public void Test1()
-        {
-            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
-            Assert.Equal(1, 1);
-        }
-
-        /// <summary>
-        ///     The test 2.
-        /// </summary>
-        [Fact]
-        public void Test2()
-        {
-            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
-            Assert.False(bool.TrueString == "1");
         }
     }
 }

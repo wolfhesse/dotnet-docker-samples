@@ -1,20 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OperationXunitTests.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The operation xunit tests.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetAppDev.Tests.Unittests
+﻿namespace DotnetAppDev.Tests.Unittests
 {
-    #region
+    #region using directives
 
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter;
+    using DotnetApp.AseFramework.Controllers;
     using DotnetApp.AseFramework.Models;
-    using DotnetApp.Controllers;
-    using DotnetApp.ElasticSearchAdapter;
-    using DotnetApp.EnvironmentSetup;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -27,10 +18,10 @@ namespace DotnetAppDev.Tests.Unittests
     public class OperationXunitTests
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperationXunitTests"/> class.
+        ///     Initializes a new instance of the <see cref="OperationXunitTests" /> class.
         /// </summary>
         /// <param name="outputHelper">
-        /// The outputHelper.
+        ///     The outputHelper.
         /// </param>
         public OperationXunitTests(ITestOutputHelper outputHelper)
         {

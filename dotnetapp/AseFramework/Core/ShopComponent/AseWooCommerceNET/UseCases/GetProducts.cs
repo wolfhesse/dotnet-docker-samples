@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetProducts.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The get products.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
@@ -24,10 +15,10 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
     public class GetProducts : GetProductsBase
     {
         /// <summary>
-        /// The product list write.
+        ///     The product list write.
         /// </summary>
         /// <param name="p">
-        /// The p.
+        ///     The p.
         /// </param>
         public override void ProductListWrite(List<Product> p)
         {

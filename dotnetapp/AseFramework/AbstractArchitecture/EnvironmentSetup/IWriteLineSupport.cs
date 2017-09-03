@@ -1,24 +1,15 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IWriteLineSupport.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The WriteLineSupport interface.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.EnvironmentSetup
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     /// <summary>
-    /// The WriteLineSupport interface.
+    ///     The WriteLineSupport interface.
     /// </summary>
     public interface IWriteLineSupport
     {
         /// <summary>
-        /// The write line.
+        ///     The write line.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         void WriteLine(object message);
     }

@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AuthContainer.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The auth container.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace DotnetApp.AseFramework.Authentication
 {
-    #region
+    #region using directives
 
     using System;
     using System.Text;
@@ -17,25 +8,25 @@ namespace DotnetApp.AseFramework.Authentication
     #endregion
 
     /// <summary>
-    /// The auth container.
+    ///     The auth container.
     /// </summary>
     public class AuthContainer
     {
         /// <summary>
-        /// Gets or sets the key.
+        ///     Gets or sets the key.
         /// </summary>
         public string Key { get; set; }
 
         /// <summary>
-        /// Gets or sets the secret.
+        ///     Gets or sets the secret.
         /// </summary>
         public string Secret { get; set; }
 
         /// <summary>
-        /// The fn basic auth header.
+        ///     The fn basic auth header.
         /// </summary>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public string FnBasicAuthHeader()
         {
@@ -46,10 +37,10 @@ namespace DotnetApp.AseFramework.Authentication
         }
 
         /// <summary>
-        /// The to dump string.
+        ///     The to dump string.
         /// </summary>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public string ToDumpString()
         {

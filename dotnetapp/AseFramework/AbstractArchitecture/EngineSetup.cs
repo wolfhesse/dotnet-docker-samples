@@ -1,15 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EngineSetup.cs" company="ase">
-//   mit
-// </copyright>
-// <summary>
-//   The engine setup.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AbstractArchitecture
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture
 {
-    #region
+    #region using directives
 
     using DotnetApp.AseFramework.Models;
 
@@ -31,13 +22,13 @@ namespace DotnetApp.AbstractArchitecture
         public readonly IView View;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EngineSetup"/> class.
+        ///     Initializes a new instance of the <see cref="EngineSetup" /> class.
         /// </summary>
         /// <param name="datesContainerModel">
-        /// The dates container model.
+        ///     The dates container model.
         /// </param>
         /// <param name="view">
-        /// The view.
+        ///     The view.
         /// </param>
         public EngineSetup(DatesContainerModel datesContainerModel, IView view)
         {

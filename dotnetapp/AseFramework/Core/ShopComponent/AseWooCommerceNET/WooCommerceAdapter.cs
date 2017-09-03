@@ -1,15 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WooCommerceAdapter.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The woo commerce adapter.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWooCommerceNET
+﻿namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
 {
-    #region
+    #region using directives
 
     using WooCommerceNET;
     using WooCommerceNET.WooCommerce.v2;
@@ -17,23 +8,23 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET
     #endregion
 
     /// <summary>
-    /// The woo commerce adapter.
+    ///     The woo commerce adapter.
     /// </summary>
     public class WooCommerceAdapter : IShopAdapter
     {
         /// <summary>
-        /// The _rest api.
+        ///     The _rest api.
         /// </summary>
         private RestAPI _restApi;
 
         /// <summary>
-        /// The add product.
+        ///     The add product.
         /// </summary>
         /// <param name="product">
-        /// The product.
+        ///     The product.
         /// </param>
         /// <returns>
-        /// The <see cref="Product"/>.
+        ///     The <see cref="Product" />.
         /// </returns>
         public Product AddProduct(Product product)
         {
@@ -42,10 +33,10 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET
         }
 
         /// <summary>
-        /// The set rest api.
+        ///     The set rest api.
         /// </summary>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         public void SetRestApi(RestAPI restApi)
         {

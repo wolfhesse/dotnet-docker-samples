@@ -1,24 +1,15 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IShopConfiguration.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The ShopConfiguration interface.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent
+﻿namespace DotnetApp.AseFramework.Core.ShopComponent
 {
     /// <summary>
-    /// The ShopConfiguration interface.
+    ///     The ShopConfiguration interface.
     /// </summary>
     public interface IShopConfiguration
     {
         /// <summary>
-        /// The configure.
+        ///     The configure.
         /// </summary>
         /// <param name="adapter">
-        /// The adapter.
+        ///     The adapter.
         /// </param>
         void Configure(IShopAdapter adapter);
     }

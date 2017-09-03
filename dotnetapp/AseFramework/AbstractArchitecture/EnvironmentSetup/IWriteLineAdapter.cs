@@ -1,15 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IWriteLineAdapter.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The environment output adapter.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.EnvironmentSetup
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
-    #region
+    #region using directives
 
     using System.Diagnostics;
     using System.IO;
@@ -19,25 +10,25 @@ namespace DotnetApp.EnvironmentSetup
     #endregion
 
     /// <summary>
-    /// The environment output adapter.
+    ///     The environment output adapter.
     /// </summary>
     public class EnvironmentOutputAdapter : IWriteLineSupport
     {
         /// <summary>
-        /// The _text writer.
+        ///     The _text writer.
         /// </summary>
         private readonly TextWriter _textWriter;
 
         /// <summary>
-        /// The _write line support implementation.
+        ///     The _write line support implementation.
         /// </summary>
         private readonly IWriteLineSupport _writeLineSupportImplementation;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnvironmentOutputAdapter"/> class.
+        ///     Initializes a new instance of the <see cref="EnvironmentOutputAdapter" /> class.
         /// </summary>
         /// <param name="writeLineSupportImplementation">
-        /// The write line support implementation.
+        ///     The write line support implementation.
         /// </param>
         public EnvironmentOutputAdapter(IWriteLineSupport writeLineSupportImplementation)
         {
@@ -45,10 +36,10 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnvironmentOutputAdapter"/> class.
+        ///     Initializes a new instance of the <see cref="EnvironmentOutputAdapter" /> class.
         /// </summary>
         /// <param name="textWriter">
-        /// The text writer.
+        ///     The text writer.
         /// </param>
         public EnvironmentOutputAdapter(TextWriter textWriter)
         {
@@ -56,10 +47,10 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnvironmentOutputAdapter"/> class.
+        ///     Initializes a new instance of the <see cref="EnvironmentOutputAdapter" /> class.
         /// </summary>
         /// <param name="testOutputHelper">
-        /// The test output helper.
+        ///     The test output helper.
         /// </param>
         public EnvironmentOutputAdapter(ITestOutputHelper testOutputHelper)
         {
@@ -67,10 +58,10 @@ namespace DotnetApp.EnvironmentSetup
         }
 
         /// <summary>
-        /// The write line.
+        ///     The write line.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         public void WriteLine(object message)
         {

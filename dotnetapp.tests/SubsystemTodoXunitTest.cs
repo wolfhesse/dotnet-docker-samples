@@ -1,12 +1,3 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SubsystemTodoXunitTest.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   Defines the SubsystemTodoXunitTest type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace DotnetAppDev.Tests
 {
     #region using directives
@@ -14,15 +5,19 @@ namespace DotnetAppDev.Tests
     using System;
     using System.Diagnostics;
 
-    using DotnetApp.EnvironmentSetup;
-    using DotnetApp.TodoComponent;
-    using DotnetApp.TodoComponent.Entities;
-    using DotnetApp.TodoComponent.Storage;
+    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DotnetApp.AseFramework.Core.TodoComponent;
+    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 
     using DotnetAppDev.Tests.Unittests;
 
     using Xunit;
     using Xunit.Abstractions;
+
+    #endregion
+
+    #region using directives
 
     #endregion
 
@@ -66,8 +61,7 @@ namespace DotnetAppDev.Tests
         {
             var testTodoEngine = new TodoEngine();
 
-            //             todo move EvTaskAdded to Engine
-
+            // todo move EvTaskAdded to Engine
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
                 {

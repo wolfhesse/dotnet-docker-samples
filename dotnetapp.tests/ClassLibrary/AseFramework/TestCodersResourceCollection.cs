@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TestCodersResourceCollection.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The test coders resource collection.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
-    #region
+    #region using directives
 
     using DotnetApp.AseFramework.Models;
 
@@ -18,12 +9,12 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
     #endregion
 
     /// <summary>
-    /// The test coders resource collection.
+    ///     The test coders resource collection.
     /// </summary>
     public class TestCodersResourceCollection
     {
         /// <summary>
-        /// The test length.
+        ///     The test length.
         /// </summary>
         [Test]
         public void TestLength()

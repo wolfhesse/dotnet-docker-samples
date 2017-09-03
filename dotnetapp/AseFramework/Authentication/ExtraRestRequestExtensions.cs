@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExtraRestRequestExtensions.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The extra rest request extensions.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace DotnetApp.AseFramework.Authentication
 {
-    #region
+    #region using directives
 
     using RestSharp;
     using RestSharp.Authenticators;
@@ -18,27 +9,27 @@ namespace DotnetApp.AseFramework.Authentication
     #endregion
 
     /// <summary>
-    /// The extra rest request extensions.
+    ///     The extra rest request extensions.
     /// </summary>
     public static class ExtraRestRequestExtensions
     {
         /// <summary>
-        /// The build o auth 1 query string.
+        ///     The build o auth 1 query string.
         /// </summary>
         /// <param name="request">
-        /// The request.
+        ///     The request.
         /// </param>
         /// <param name="client">
-        /// The client.
+        ///     The client.
         /// </param>
         /// <param name="consumerKey">
-        /// The consumer key.
+        ///     The consumer key.
         /// </param>
         /// <param name="consumerSecret">
-        /// The consumer secret.
+        ///     The consumer secret.
         /// </param>
         /// <returns>
-        /// The <see cref="RestRequest"/>.
+        ///     The <see cref="RestRequest" />.
         /// </returns>
         public static RestRequest BuildOAuth1QueryString(
             this RestRequest request,

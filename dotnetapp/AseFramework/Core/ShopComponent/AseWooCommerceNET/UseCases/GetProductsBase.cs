@@ -1,15 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetProductsBase.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The get products base.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
-    #region
+    #region using directives
 
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -25,22 +16,22 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
     public abstract class GetProductsBase : IGetProducts
     {
         /// <summary>
-        /// The exec get products.
+        ///     The exec get products.
         /// </summary>
         /// <param name="pPage">
-        /// The p page.
+        ///     The p page.
         /// </param>
         /// <param name="pPerPage">
-        /// The p per page.
+        ///     The p per page.
         /// </param>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         /// <param name="pIncludeProductIds">
-        /// The p include product ids.
+        ///     The p include product ids.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         public async Task<List<Product>> ExecGetProducts(
             int pPage,
@@ -57,22 +48,22 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
         }
 
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="restApi">
-        /// The rest api.
+        ///     The rest api.
         /// </param>
         /// <param name="pPage">
-        /// The p page.
+        ///     The p page.
         /// </param>
         /// <param name="pPerPage">
-        /// The p per page.
+        ///     The p per page.
         /// </param>
         /// <param name="pIncludeProductIds">
-        /// The p include product ids.
+        ///     The p include product ids.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        ///     The <see cref="List" />.
         /// </returns>
         public List<Product> Execute(
             RestAPI restApi,
@@ -87,10 +78,10 @@ namespace DotnetApp.ShopComponent.AseWooCommerceNET.UseCases
         }
 
         /// <summary>
-        /// The product list write.
+        ///     The product list write.
         /// </summary>
         /// <param name="p">
-        /// The p.
+        ///     The p.
         /// </param>
         public abstract void ProductListWrite(List<Product> p);
     }

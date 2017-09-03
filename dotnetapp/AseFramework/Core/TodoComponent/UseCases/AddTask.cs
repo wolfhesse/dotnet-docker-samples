@@ -1,32 +1,23 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddTask.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The add task.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.TodoComponent.UseCases
+﻿namespace DotnetApp.AseFramework.Core.TodoComponent.UseCases
 {
-    #region
+    #region using directives
 
-    using DotnetApp.TodoComponent.Entities;
-    using DotnetApp.TodoComponent.Storage;
-    using DotnetApp.TodoComponent.Utilities;
+    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+    using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
 
     #endregion
 
     /// <summary>
-    /// The add task.
+    ///     The add task.
     /// </summary>
     public class AddTask
     {
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="title">
-        /// The title.
+        ///     The title.
         /// </param>
         public static void Execute(string title)
         {
@@ -35,13 +26,13 @@ namespace DotnetApp.TodoComponent.UseCases
         }
 
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="taskRepository">
-        /// The task repository.
+        ///     The task repository.
         /// </param>
         /// <param name="todoTask">
-        /// The todo task.
+        ///     The todo task.
         /// </param>
         internal static void Execute(ITaskRepository taskRepository, TodoTask todoTask)
         {

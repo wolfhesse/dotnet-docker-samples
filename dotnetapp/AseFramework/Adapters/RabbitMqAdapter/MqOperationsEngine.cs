@@ -1,48 +1,39 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MqOperationsEngine.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The mq operations engine.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.RabbitMqAdapter
+﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
-    #region
+    #region using directives
 
     using System;
     using System.Diagnostics;
 
-    using DotnetApp.AseFramework.Definitions;
-    using DotnetApp.RabbitMqAdapter.UseCases;
+    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+    using DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases;
 
     using RabbitMQ.Client;
 
     #endregion
 
     /// <summary>
-    /// The mq operations engine.
+    ///     The mq operations engine.
     /// </summary>
     public class MqOperationsEngine
     {
         /// <summary>
-        /// Gets a value indicating whether configured state.
+        ///     Gets a value indicating whether configured state.
         /// </summary>
         public bool ConfiguredState { get; private set; }
 
         /// <summary>
-        /// Gets or sets the connection factory.
+        ///     Gets or sets the connection factory.
         /// </summary>
         public ConnectionFactory ConnectionFactory { get; set; }
 
         /// <summary>
-        /// The configure test test.
+        ///     The configure test test.
         /// </summary>
         /// <param name="config">
-        /// The config.
+        ///     The config.
         /// </param>
-        public void ConfigureTestTest(EnvironmentSetup.MessageQueueConfigEntry config)
+        public void ConfigureTestTest(AbstractArchitecture.EnvironmentSetup.MessageQueueConfigEntry config)
         {
             Debug.Assert(config.Purpose == ProgramConfigKeys.MessageQueue);
             this.ConnectionFactory =
@@ -54,10 +45,10 @@ namespace DotnetApp.RabbitMqAdapter
         }
 
         /// <summary>
-        /// The create connection.
+        ///     The create connection.
         /// </summary>
         /// <returns>
-        /// The <see cref="IConnection"/>.
+        ///     The <see cref="IConnection" />.
         /// </returns>
         /// <exception cref="Exception">
         /// </exception>
@@ -68,13 +59,13 @@ namespace DotnetApp.RabbitMqAdapter
         }
 
         /// <summary>
-        /// The execute with message handlers.
+        ///     The execute with message handlers.
         /// </summary>
         /// <param name="processProductCreatedMessage">
-        /// The process product created message.
+        ///     The process product created message.
         /// </param>
         /// <param name="createTweetHandler">
-        /// The create tweet handler.
+        ///     The create tweet handler.
         /// </param>
         /// <exception cref="Exception">
         /// </exception>

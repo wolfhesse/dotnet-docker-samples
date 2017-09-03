@@ -1,26 +1,17 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EnumRegistryKeys.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The enum registry keys.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AseFramework.Definitions
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
 {
     /// <summary>
-    /// The enum registry keys.
+    ///     The enum registry keys.
     /// </summary>
     public enum EnumRegistryKeys
     {
         /// <summary>
-        /// The base.
+        ///     The base.
         /// </summary>
         Base,
 
         /// <summary>
-        /// The self.
+        ///     The self.
         /// </summary>
         Self
     }

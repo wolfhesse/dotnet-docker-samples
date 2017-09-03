@@ -1,17 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DatesEngineSetup.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The dates engine setup.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AseFramework.EngineSetups
+﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EngineSetups
 {
-    #region
+    #region using directives
 
-    using DotnetApp.AbstractArchitecture;
     using DotnetApp.AseFramework.Models;
 
     #endregion
@@ -32,13 +22,13 @@ namespace DotnetApp.AseFramework.EngineSetups
         public readonly IView View;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DatesEngineSetup"/> class.
+        ///     Initializes a new instance of the <see cref="DatesEngineSetup" /> class.
         /// </summary>
         /// <param name="datesContainerModel">
-        /// The dates container model.
+        ///     The dates container model.
         /// </param>
         /// <param name="view">
-        /// The view.
+        ///     The view.
         /// </param>
         public DatesEngineSetup(DatesContainerModel datesContainerModel, IView view)
         {

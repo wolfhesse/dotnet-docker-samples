@@ -1,15 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Receive.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The receive.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.RabbitMqAdapter
+﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
-    #region
+    #region using directives
 
     using System;
     using System.Text;
@@ -21,33 +12,33 @@ namespace DotnetApp.RabbitMqAdapter
     #endregion
 
     /// <summary>
-    /// The receive.
+    ///     The receive.
     /// </summary>
     public class Receive
     {
         /// <summary>
-        /// The custom event handler.
+        ///     The custom event handler.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="eventArgs">
-        /// The event args.
+        ///     The event args.
         /// </param>
         public delegate void CustomEventHandler(object sender, CustomEventArgs eventArgs);
 
         /// <summary>
-        /// The ev normal message.
+        ///     The ev normal message.
         /// </summary>
         public static event CustomEventHandler EvNormalMessage;
 
         /// <summary>
-        /// The ev product message.
+        ///     The ev product message.
         /// </summary>
         public static event CustomEventHandler EvProductMessage;
 
         /// <summary>
-        /// The main entry point.
+        ///     The main entry point.
         /// </summary>
         public static void MainEntryPoint()
         {
@@ -95,10 +86,10 @@ namespace DotnetApp.RabbitMqAdapter
         }
 
         /// <summary>
-        /// The on ev normal message.
+        ///     The on ev normal message.
         /// </summary>
         /// <param name="eventargs">
-        /// The eventargs.
+        ///     The eventargs.
         /// </param>
         private static void OnEvNormalMessage(CustomEventArgs eventargs)
         {
@@ -110,10 +101,10 @@ namespace DotnetApp.RabbitMqAdapter
 
         // }
         /// <summary>
-        /// The on ev product message.
+        ///     The on ev product message.
         /// </summary>
         /// <param name="ea">
-        /// The ea.
+        ///     The ea.
         /// </param>
         private static void OnEvProductMessage(CustomEventArgs ea)
         {
@@ -121,10 +112,10 @@ namespace DotnetApp.RabbitMqAdapter
         }
 
         /// <summary>
-        /// The process message.
+        ///     The process message.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         private static void ProcessMessage(string message)
         {
@@ -141,15 +132,15 @@ namespace DotnetApp.RabbitMqAdapter
         }
 
         /// <summary>
-        /// The custom event args.
+        ///     The custom event args.
         /// </summary>
         public class CustomEventArgs : EventArgs
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="CustomEventArgs"/> class.
+            ///     Initializes a new instance of the <see cref="CustomEventArgs" /> class.
             /// </summary>
             /// <param name="s">
-            /// The s.
+            ///     The s.
             /// </param>
             public CustomEventArgs(string s)
             {
@@ -157,7 +148,7 @@ namespace DotnetApp.RabbitMqAdapter
             }
 
             /// <summary>
-            /// Gets the message.
+            ///     Gets the message.
             /// </summary>
             public string Message { get; }
         }

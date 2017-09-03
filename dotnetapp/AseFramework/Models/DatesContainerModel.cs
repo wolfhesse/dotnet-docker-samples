@@ -1,15 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DatesContainerModel.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The dates container model.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetApp.AseFramework.Models
+﻿namespace DotnetApp.AseFramework.Models
 {
-    #region
+    #region using directives
 
     using System;
     using System.Collections.Generic;
@@ -127,13 +118,13 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// The dates_ ev warning.
+        ///     The dates_ ev warning.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="e">
-        /// The e.
+        ///     The e.
         /// </param>
         private void Dates_EvWarning(object sender, EventArgs e)
         {
@@ -142,7 +133,7 @@ namespace DotnetApp.AseFramework.Models
         }
 
         /// <summary>
-        /// derive from SortedSet to put deprecation notice into 'Sort' method
+        ///     derive from SortedSet to put deprecation notice into 'Sort' method
         /// </summary>
         /// <typeparam name="T">
         /// </typeparam>
