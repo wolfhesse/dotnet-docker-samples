@@ -136,7 +136,7 @@ x-ase-sect-PAT_END
             env.Add("TS_NOW", DateTimeOffset.Now.ToString());
             env.Add("PAT_RECORD",".here");
 
-            serializedEnvironment = JsonConvert.SerializeObject(env);
+            serializedEnvironment = JsonConvert.SerializeObject(env,Formatting.Indented);
             WriteLine(serializedEnvironment);
             return serializedEnvironment;
         }
