@@ -127,11 +127,32 @@ x-ase-sect-PAT_END
             WriteEnvironmentDescription(environmentDict);
 
             EnvManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins"));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("2eins"));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("3eins"));
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
             var taskRepositoryCount = TodoController.TaskRepository.Count;
             Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
+        }
+
+        private static void TaskBuilderAddSet()
+        {
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
         }
 
         /// <summary>
