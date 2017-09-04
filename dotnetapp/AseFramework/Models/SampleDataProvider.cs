@@ -24,7 +24,7 @@ namespace DotnetApp.AseFramework.Models
         ///     The get sample tweet.
         /// </summary>
         /// <returns>
-        ///     The <see cref="TweetModel" />.
+        ///     The <see cref="InteropTypes.V1.TweetModel" />.
         /// </returns>
         public static InteropTypes.V1.TweetModel GetSampleTweet()
         {

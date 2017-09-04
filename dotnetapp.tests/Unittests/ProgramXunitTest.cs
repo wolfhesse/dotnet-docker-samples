@@ -1,15 +1,12 @@
 ﻿using DotnetApp;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using Newtonsoft.Json;
+using Xunit;
+using Xunit.Abstractions;
 
-namespace DotnetAppDev.Tests
+namespace DotnetAppDev.Tests.Unittests
 {
     #region using directives
-
-    using DotnetAppDev.Tests.Unittests;
-
-    using Xunit;
-    using Xunit.Abstractions;
 
     #endregion
 
@@ -34,8 +31,8 @@ namespace DotnetAppDev.Tests
         {
             Program.Main(new[] { "eins", "zwo", "drei" });
 
-            this.SerializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
-            EnvManager.WriteLine(this.SerializedEnvironment);
+            SerializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
+            EnvManager.WriteLine(SerializedEnvironment);
 
             EnvManager.WriteLine("x-ase-debug-line");
             EnvManager.WriteLine("x-ase-trace-line", "test");

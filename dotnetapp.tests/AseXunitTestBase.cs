@@ -11,14 +11,7 @@ namespace DotnetAppDev.Tests
 {
     #region using directives
 
-    using System;
-
-    using DotnetApp;
     using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-
-    using Newtonsoft.Json;
-
-    using Xunit;
     using Xunit.Abstractions;
 
     #endregion

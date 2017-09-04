@@ -66,7 +66,10 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
         ///     The p include product ids.
         /// </param>
         /// <returns>
-        ///     The <see cref="List" />.
+        ///     The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
         /// </returns>
         public List<Product> Execute(
             RestAPI restApi,

@@ -15,7 +15,7 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
     /// <summary>
     ///     The message queue config entry.
     /// </summary>
-    public class MessageQueueConfigEntry : IConfigEntry, AseFrameworkDefinitionsHead
+    public class MessageQueueConfigEntry : IConfigEntry, IAseFrameworkDefinitionsHead
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MessageQueueConfigEntry" /> class.

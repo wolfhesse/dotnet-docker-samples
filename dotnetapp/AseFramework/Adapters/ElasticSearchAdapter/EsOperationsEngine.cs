@@ -46,7 +46,10 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         ///     The p tweet model.
         /// </param>
         /// <returns>
-        ///     The <see cref="List" />.
+        ///     The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
         /// </returns>
         public static List<InteropTypes.V1.TweetModel> EsWriteAndReadbackTweet(InteropTypes.V1.TweetModel pTweetModel)
         {
@@ -85,7 +88,10 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         ///     The client.
         /// </param>
         /// <returns>
-        ///     The <see cref="IGetResponse" />.
+        ///     The <see>
+        ///         <cref>IGetResponse</cref>
+        ///     </see>
+        ///     .
         /// </returns>
         private static IGetResponse<InteropTypes.V1.TweetModel> ReadBackTweet11(ElasticClient client)
         {

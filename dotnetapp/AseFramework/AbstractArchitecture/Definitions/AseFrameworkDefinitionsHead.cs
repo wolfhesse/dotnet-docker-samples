@@ -3,7 +3,7 @@
     /// <summary>
     ///     The seFrameworkDefinitionsHead interface.
     /// </summary>
-    public interface AseFrameworkDefinitionsHead
+    public interface IAseFrameworkDefinitionsHead
     {
     }
 }

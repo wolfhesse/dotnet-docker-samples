@@ -27,7 +27,7 @@ namespace DotnetApp
         /// <summary>
         ///     The serialized environment.
         /// </summary>
-        private static string serializedEnvironment;
+        private static string _serializedEnvironment;
 
         public static void ConfgureTodoEngine()
         {
@@ -162,8 +162,8 @@ x-ase-sect-PAT_END
             env.Add("TS_NOW", DateTimeOffset.Now.ToString());
             env.Add("PAT_RECORD", ".here");
 
-            serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
-            return serializedEnvironment;
+            _serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
+            return _serializedEnvironment;
         }
 
         /// <summary>
@@ -262,18 +262,7 @@ x-ase-sect-PAT_END
                 + $"\t flgZwo    : \t {environmentDict["zwo"]}");
         }
 
-        /// <summary>
-        ///     The write line.
-        /// </summary>
-        /// <param name="s">
-        ///     The s.
-        /// </param>
-        private static void WriteLine(string s = null)
-        {
-            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            EnvManager.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
-            //            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
-        }
+       
 
         /// <summary>
         ///     The write line.

@@ -4,7 +4,6 @@ using System;
 using DotnetApp;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TodoComponent;
 using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.ProgramSetup;
@@ -13,7 +12,7 @@ using Xunit.Abstractions;
 
 #endregion
 
-namespace DotnetAppDev.Tests
+namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
     #region using directives
 
@@ -30,7 +29,7 @@ namespace DotnetAppDev.Tests
     public class SubsystemTodoXunitTest : AseXunitTestBase
     {
         /// <inheritdoc />
-        /// <summary>Initializes a new instance of the <see cref="T:DotnetAppDev.Tests.SubsystemTodoXunitTest" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="T:DotnetAppDev.Tests.ClassLibrary.AseFramework.SubsystemTodoXunitTest" /> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTodoXunitTest(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)

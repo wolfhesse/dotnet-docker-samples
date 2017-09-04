@@ -25,8 +25,9 @@ namespace DotnetApp.ProgramSetup
         /// <summary>
         ///     The add task.
         /// </summary>
-        /// <param name="taskRepository">
+        /// <param>
         ///     The task repository.
+        ///     <name>taskRepository</name>
         /// </param>
         /// <param name="todoTask">
         ///     The todo task.

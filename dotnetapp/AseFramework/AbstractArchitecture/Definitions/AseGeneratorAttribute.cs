@@ -13,7 +13,7 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
     /// <summary>
     ///     The ase generator attribute.
     /// </summary>
-    public class AseGeneratorAttribute : Attribute, AseFrameworkDefinitionsHead
+    public class AseGeneratorAttribute : Attribute, IAseFrameworkDefinitionsHead
     {
     }
 }

@@ -60,7 +60,10 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         ///     The get enum registry.
         /// </summary>
         /// <returns>
-        ///     The <see cref="IDictionary" />.
+        ///     The <see>
+        ///         <cref>IDictionary</cref>
+        ///     </see>
+        ///     .
         /// </returns>
         public static IDictionary<Enum, IDictionary<Enum, List<string>>> GetEnumRegistry()
         {
