@@ -9,14 +9,14 @@
     #endregion
 
     /// <summary>
-    ///     The todo controller.
+    ///     The todo controller. component
     /// </summary>
     public class TodoController
     {
         /// <summary>
         ///     Gets the task repository.
         /// </summary>
-        public static ITaskRepository TaskRepository { get; } = new InMemoryTaskRepository();
+        internal static ITaskRepository TaskRepository { get; set; } = new InMemoryTaskRepository();
 
         /// <summary>
         ///     The add task.

@@ -1,4 +1,6 @@
-﻿namespace DotnetAppDev.Tests.Unittests
+﻿using System;
+
+namespace DotnetAppDev.Tests.Unittests
 {
     #region using directives
 
@@ -12,20 +14,14 @@
 
     #endregion
 
+    /// <inheritdoc />
     /// <summary>
     ///     The operation xunit tests.
     /// </summary>
-    public class OperationXunitTests
+    public class OperationXunitTests :AseXunitTestBase
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="OperationXunitTests" /> class.
-        /// </summary>
-        /// <param name="outputHelper">
-        ///     The outputHelper.
-        /// </param>
-        public OperationXunitTests(ITestOutputHelper outputHelper)
+        public OperationXunitTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
         {
-            EnvManager.TestOutputHelper = outputHelper;
         }
 
         /// <summary>
@@ -70,6 +66,26 @@
             var sampleTweet = SampleDataProvider.GetSampleTweet();
             var tweets = EsOperationsEngine.EsWriteAndReadbackTweet(sampleTweet);
             Assert.Equal(tweets[0].User, tweets[1].User);
+        }
+
+        /// <summary>
+        ///     The test 1.
+        /// </summary>
+        [Fact]
+        public void Test1()
+        {
+            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+            Assert.Equal(1, 1);
+        }
+
+        /// <summary>
+        ///     The test 2.
+        /// </summary>
+        [Fact]
+        public void Test2()
+        {
+            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+            Assert.False(bool.TrueString == "1");
         }
     }
 }

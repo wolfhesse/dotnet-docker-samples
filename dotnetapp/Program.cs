@@ -1,3 +1,8 @@
+using DotnetApp.AseFramework.Core.TodoComponent;
+using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
+using DotnetApp.ProgramSetup;
+
 namespace DotnetApp
 {
     #region using directives
@@ -112,6 +117,7 @@ x-ase-sect-PAT_END
         /// </param>
         public static void Main(string[] args)
         {
+            ConfgureTodoEngine();
             var message = BuildMessage(args);
 
             // setup environmentDict
@@ -121,6 +127,11 @@ x-ase-sect-PAT_END
             WriteEnvironmentDescription(environmentDict);
 
             EnvManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins"));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("2eins"));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("3eins"));
+            var taskRepositoryCount = TodoController.TaskRepository.Count;
+            Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
         }
 
         /// <summary>
@@ -153,7 +164,7 @@ x-ase-sect-PAT_END
             // data
             var message = "Dotnet-bot: Welcome to using .NET Core!";
 
-            if (args.Length > 0) message = string.Join(" ", args);
+            if (args.Length > 0) message = String.Join(" ", args);
 
             return message;
         }
@@ -190,7 +201,7 @@ x-ase-sect-PAT_END
         private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
         {
             var flgDebug = Environment.GetEnvironmentVariable(variable) ?? defaultValue;
-            flgDebug = string.Empty == flgDebug ? defaultValue : flgDebug;
+            flgDebug = String.Empty == flgDebug ? defaultValue : flgDebug;
             return flgDebug;
         }
 
@@ -224,8 +235,8 @@ x-ase-sect-PAT_END
         /// </param>
         private static void WriteLine(string s = null)
         {
-            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            EnvManager.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
+            if (String.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
+            EnvManager.WriteLine(String.Format("PAT_ANF\n\t{0}\nPAT_END", s));
             //            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
         }
 
@@ -241,9 +252,22 @@ x-ase-sect-PAT_END
             Justification = "Reviewed. Suppression is OK here.")]
         private static void WriteLineWithSignifier(string s = null)
         {
-            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            EnvManager.WriteLine(string.Format("s = {0}", s));
+            if (String.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
+            EnvManager.WriteLine(String.Format("s = {0}", s));
             Console.Out.WriteLine("s = {0}", s);
+        }
+
+        public static void ConfgureTodoEngine()
+        {
+// todo move EvTaskAdded to Engine
+            var inMemoryTaskRepository = new InMemoryTaskRepository();
+            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
+            {
+                EnvManager.WriteLine(
+                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                Console.Out.WriteLine("con: task created");
+            };
+            TodoEngine.TaskRepository = inMemoryTaskRepository;
         }
     }
 }
