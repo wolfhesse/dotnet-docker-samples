@@ -18,7 +18,7 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
     /// <summary>
     ///     The env manager.
     /// </summary>
-    public class EnvManager
+    public static class EnvManager
     {
         /// <summary>
         ///     Gets the ase data d win.
@@ -29,7 +29,7 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         /// <summary>
         ///     Gets or sets the default out.
         /// </summary>
-        public static IWriteLineSupport DefaultOut { get; set; }
+        public static IWriteLineSupport DefaultOut { private get; set; }
 
         /// <summary>
         ///     Gets the env var ase data d.
@@ -60,7 +60,8 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         ///     The get enum registry.
         /// </summary>
         /// <returns>
-        ///     The <see>
+        ///     The
+        ///     <see>
         ///         <cref>IDictionary</cref>
         ///     </see>
         ///     .
@@ -126,13 +127,6 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
                 new SortedDictionary<string, object> {["/0/tags/registry-create-ts"] = DateTime.Now};
         }
 
-        /// <summary>
-        ///     The new line.
-        /// </summary>
-        public static void NewLine()
-        {
-            WriteLine();
-        }
 
         /// <summary>
         ///     The set enum registry.
@@ -163,13 +157,28 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         ///     The s.
         /// </param>
         /// <param name="category"></param>
-        public static void WriteLine(string s = null, string category = "")
+        public static void WriteLine(object s = null, string category = "")
         {
             s = s ?? Environment.NewLine;
             s += category.Trim().Length == 0 ? string.Empty : $", {category}";
-            if (TestOutputHelper != null) TestOutputHelper.WriteLine(s);
-            else if (DefaultOut != null) DefaultOut.WriteLine(s);
-            else Console.Out.WriteLine(s);
+            var done = false;
+            try
+            {
+                TestOutputHelper.WriteLine(s.ToString());
+                done = true;
+            }
+            catch
+            {
+                if (DefaultOut != null)
+                {
+                    DefaultOut.WriteLine(s);
+                    done = true;
+                }
+            }
+            finally
+            {
+                if (!done) Console.Out.WriteLine(s);
+            }
         }
     }
 }

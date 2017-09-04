@@ -25,7 +25,7 @@
         {
             var task = TaskBuilder.BuildTask("sample");
             EnvManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
-            EnvManager.DefaultOut.WriteLine(task);
+            EnvManager.WriteLine(task);
             Assert.IsNotNull(task.CreatedAt);
         }
     }

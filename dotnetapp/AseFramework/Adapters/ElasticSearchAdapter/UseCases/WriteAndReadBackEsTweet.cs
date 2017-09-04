@@ -46,7 +46,7 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases
             else
             {
                 var esCallSuccessful = "es call successful";
-                EnvManager.DefaultOut.WriteLine(esCallSuccessful);
+                EnvManager.WriteLine(esCallSuccessful);
             }
 
             var tweet2 = tweet;
