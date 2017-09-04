@@ -1,8 +1,12 @@
+#region using directives
+
+using System.Collections.Generic;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Models
 {
     #region using directives
-
-    using System.Collections.Generic;
 
     #endregion
 
@@ -16,6 +20,6 @@ namespace DotnetApp.AseFramework.Models
         /// <summary>
         ///     The resource list.
         /// </summary>
-        public List<string> ResourceList = new List<string> { "https://8thlight.com/process/" };
+        public List<string> ResourceList = new List<string> {"https://8thlight.com/process/"};
     }
 }

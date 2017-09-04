@@ -1,11 +1,13 @@
+#region using directives
+
+using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.ProgramSetup;
+
+#endregion
 
 namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     #region using directives
-
-    using DotnetApp.AseFramework.Core.TodoComponent;
-    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 
     #endregion
 

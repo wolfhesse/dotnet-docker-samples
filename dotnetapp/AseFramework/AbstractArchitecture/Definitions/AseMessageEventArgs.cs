@@ -1,8 +1,12 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
+﻿#region using directives
+
+using System;
+
+#endregion
+
+namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
 {
     #region using directives
-
-    using System;
 
     #endregion
 
@@ -19,7 +23,7 @@
         /// </param>
         public AseMessageEventArgs(string s)
         {
-            this.Message = s;
+            Message = s;
         }
 
         /// <summary>

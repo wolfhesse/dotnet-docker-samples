@@ -1,23 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AseEnvironmentNamespace.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The ase environment namespace.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+﻿#region using directives
+
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Text;
+using DotnetApp.AseFramework.Controllers;
+
+#endregion
 
 namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     #region using directives
-
-    using System;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Text;
-
-    using DotnetApp.AseFramework.Controllers;
 
     #endregion
 

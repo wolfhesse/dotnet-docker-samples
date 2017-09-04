@@ -1,8 +1,12 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture
+﻿#region using directives
+
+using DotnetApp.AseFramework.Models;
+
+#endregion
+
+namespace DotnetApp.AseFramework.AbstractArchitecture
 {
     #region using directives
-
-    using DotnetApp.AseFramework.Models;
 
     #endregion
 
@@ -32,8 +36,8 @@
         /// </param>
         public EngineSetup(DatesContainerModel datesContainerModel, IView view)
         {
-            this.DatesContainerModel = datesContainerModel;
-            this.View = view;
+            DatesContainerModel = datesContainerModel;
+            View = view;
         }
     }
 }

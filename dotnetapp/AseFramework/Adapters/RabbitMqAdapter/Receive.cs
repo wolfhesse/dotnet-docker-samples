@@ -1,13 +1,16 @@
-﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
+﻿#region using directives
+
+using System;
+using System.Text;
+using System.Threading;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
     #region using directives
-
-    using System;
-    using System.Text;
-    using System.Threading;
-
-    using RabbitMQ.Client;
-    using RabbitMQ.Client.Events;
 
     #endregion
 
@@ -43,11 +46,11 @@
         public static void MainEntryPoint()
         {
             var factory = new ConnectionFactory
-                              {
-                                  HostName = "s0.wolfslab.local.wolfspool.at",
-                                  UserName = "test",
-                                  Password = "test"
-                              };
+            {
+                HostName = "s0.wolfslab.local.wolfspool.at",
+                UserName = "test",
+                Password = "test"
+            };
             using (var connection = factory.CreateConnection())
             {
                 using (var channel = connection.CreateModel())
@@ -56,21 +59,21 @@
 
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (model, ea) =>
-                        {
-                            var body = ea.Body;
-                            var message = Encoding.UTF8.GetString(body);
+                    {
+                        var body = ea.Body;
+                        var message = Encoding.UTF8.GetString(body);
 
-                            Console.WriteLine(" [x] Received {0}", message);
+                        Console.WriteLine(" [x] Received {0}", message);
 
-                            var t = new Thread(
-                                () =>
-                                    {
-                                        ProcessMessage(message);
-                                        Console.WriteLine(" [x] Processed {0}", message);
-                                    });
-                            t.Start();
-                            t.Join();
-                        };
+                        var t = new Thread(
+                            () =>
+                            {
+                                ProcessMessage(message);
+                                Console.WriteLine(" [x] Processed {0}", message);
+                            });
+                        t.Start();
+                        t.Join();
+                    };
 
                     channel.BasicConsume(
                         "hello",
@@ -144,7 +147,7 @@
             /// </param>
             public CustomEventArgs(string s)
             {
-                this.Message = s;
+                Message = s;
             }
 
             /// <summary>

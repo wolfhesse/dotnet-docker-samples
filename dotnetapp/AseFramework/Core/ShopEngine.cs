@@ -1,8 +1,13 @@
-﻿namespace DotnetApp.AseFramework.Core.ShopComponent
+﻿#region using directives
+
+using DotnetApp.AseFramework.Core.ShopComponent;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core
 {
     #region using directives
-
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -22,8 +27,8 @@
         /// </param>
         public ShopEngine(IShopAdapter adapter, IShopConfiguration configuration)
         {
-            this.Adapter = adapter;
-            this.Configuration = configuration;
+            Adapter = adapter;
+            Configuration = configuration;
             configuration.Configure(adapter);
         }
 
@@ -56,7 +61,7 @@
         /// </returns>
         public Product AddProduct(Product product)
         {
-            return this.Adapter.AddProduct(product);
+            return Adapter.AddProduct(product);
         }
     }
 }

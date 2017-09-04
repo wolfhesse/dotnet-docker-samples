@@ -1,12 +1,15 @@
+#region using directives
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
     #region using directives
-
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using WooCommerceNET;
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -48,7 +51,7 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
         public static async Task<Product> FnGetProductsById(string pId, RestAPI restApi)
         {
             var wc = new WCObject(restApi);
-            var p = await wc.Product.GetAll(new Dictionary<string, string> { { "include", pId } });
+            var p = await wc.Product.GetAll(new Dictionary<string, string> {{"include", pId}});
 
             return 0 < p.Count ? p[0] : new Product();
         }
@@ -80,12 +83,12 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
             var wc = new WCObject(restApi);
 
             var dictionary = new Dictionary<string, string>
-                                 {
-                                     { "per_page", pPerPage },
-                                     { "page", pPage }
+            {
+                {"per_page", pPerPage},
+                {"page", pPage}
 
-                                     // {"include", pIncludeProductIds},
-                                 };
+                // {"include", pIncludeProductIds},
+            };
             if (null != pIncludeProductIds) dictionary["include"] = pIncludeProductIds;
 
             var p = await wc.Product.GetAll(dictionary);

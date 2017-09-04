@@ -1,10 +1,13 @@
-﻿namespace DotnetApp.AseFramework.Core.ShopComponent.AseWordPressPCL
+﻿#region using directives
+
+using System;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWordPressPCL
 {
     #region using directives
-
-    using System;
-
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 

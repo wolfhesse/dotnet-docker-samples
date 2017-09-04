@@ -1,10 +1,13 @@
+#region using directives
+
+using System;
+using WooCommerceNET;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
 {
     #region using directives
-
-    using System;
-
-    using WooCommerceNET;
 
     #endregion
 
@@ -26,7 +29,7 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
         /// </param>
         public WooCommerceConfiguration(RestAPI restApi)
         {
-            this._restApi = restApi;
+            _restApi = restApi;
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
         /// </exception>
         public void Configure(IShopAdapter adapter)
         {
-            if (adapter is WooCommerceAdapter sa) sa.SetRestApi(this._restApi);
+            if (adapter is WooCommerceAdapter sa) sa.SetRestApi(_restApi);
             else
                 throw new Exception(
                     "incompatible adapter: " + typeof(WooCommerceAdapter) + " for configuration: "

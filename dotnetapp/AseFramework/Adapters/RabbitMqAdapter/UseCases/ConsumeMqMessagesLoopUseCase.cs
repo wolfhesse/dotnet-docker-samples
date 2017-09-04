@@ -1,15 +1,17 @@
-﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
+﻿#region using directives
+
+using System;
+using System.Text;
+using System.Threading;
+using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
 {
     #region using directives
-
-    using System;
-    using System.Text;
-    using System.Threading;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-
-    using RabbitMQ.Client;
-    using RabbitMQ.Client.Events;
 
     #endregion
 
@@ -55,22 +57,22 @@
 
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (model, ea) =>
-                        {
-                            var body = ea.Body;
-                            var message = Encoding.UTF8.GetString(body);
+                    {
+                        var body = ea.Body;
+                        var message = Encoding.UTF8.GetString(body);
 
-                            Console.WriteLine(" [x] Received {0}...", message.Substring(0, 10));
+                        Console.WriteLine(" [x] Received {0}...", message.Substring(0, 10));
 
-                            var t = new Thread(
-                                () =>
-                                    {
-                                        ProcessMessage(message);
-                                        Console.WriteLine(" [x] Processed {0}...", message.Substring(0, 10));
-                                    });
-                            t.Start();
+                        var t = new Thread(
+                            () =>
+                            {
+                                ProcessMessage(message);
+                                Console.WriteLine(" [x] Processed {0}...", message.Substring(0, 10));
+                            });
+                        t.Start();
 
-                            // t.Join();
-                        };
+                        // t.Join();
+                    };
 
                     channel.BasicConsume(
                         "hello",

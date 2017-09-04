@@ -1,12 +1,14 @@
-﻿namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
+﻿#region using directives
+
+using System;
+using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+using Newtonsoft.Json;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
 {
     #region using directives
-
-    using System;
-
-    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
-
-    using Newtonsoft.Json;
 
     #endregion
 
@@ -28,7 +30,7 @@
         /// </param>
         public TaskEventArgs(TodoTask todoTask)
         {
-            this._todoTask = todoTask;
+            _todoTask = todoTask;
         }
 
         /// <summary>
@@ -40,7 +42,7 @@
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine
-                   + JsonConvert.SerializeObject(this._todoTask, Formatting.Indented);
+                   + JsonConvert.SerializeObject(_todoTask, Formatting.Indented);
         }
     }
 }

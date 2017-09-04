@@ -1,6 +1,10 @@
-﻿using DotnetApp.AseFramework.Core.TodoComponent;
+﻿#region using directives
+
+using DotnetApp.AseFramework.Core;
 using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+
+#endregion
 
 namespace DotnetApp.ProgramSetup
 {
@@ -32,7 +36,5 @@ namespace DotnetApp.ProgramSetup
             TodoController.AddTask(todoTask.Title);
             //            UseCases.AddTask.Execute(TodoController.TaskRepository, todoTask);
         }
-
-
     }
 }

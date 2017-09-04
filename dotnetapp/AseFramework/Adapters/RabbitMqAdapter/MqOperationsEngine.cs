@@ -1,14 +1,16 @@
-﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
+﻿#region using directives
+
+using System;
+using System.Diagnostics;
+using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+using DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases;
+using RabbitMQ.Client;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
     #region using directives
-
-    using System;
-    using System.Diagnostics;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-    using DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases;
-
-    using RabbitMQ.Client;
 
     #endregion
 
@@ -36,12 +38,12 @@
         public void ConfigureTestTest(AbstractArchitecture.EnvironmentSetup.MessageQueueConfigEntry config)
         {
             Debug.Assert(config.Purpose == ProgramConfigKeys.MessageQueue);
-            this.ConnectionFactory =
-                new ConnectionFactory { HostName = config.Hostname, UserName = "test", Password = "test" };
+            ConnectionFactory =
+                new ConnectionFactory {HostName = config.Hostname, UserName = "test", Password = "test"};
 
             // Console.WriteLine(ConnectionFactory);
             // EnvManager.WriteLine(ConnectionFactory);
-            this.ConfiguredState = true;
+            ConfiguredState = true;
         }
 
         /// <summary>
@@ -54,8 +56,8 @@
         /// </exception>
         public IConnection CreateConnection()
         {
-            if (!this.ConfiguredState) throw new Exception("configuration error");
-            return this.ConnectionFactory.CreateConnection();
+            if (!ConfiguredState) throw new Exception("configuration error");
+            return ConnectionFactory.CreateConnection();
         }
 
         /// <summary>
@@ -73,7 +75,7 @@
             ConsumeMqMessagesLoopUseCase.AseMessageHandler processProductCreatedMessage,
             ConsumeMqMessagesLoopUseCase.AseMessageHandler createTweetHandler)
         {
-            if (this.ConfiguredState)
+            if (ConfiguredState)
             {
                 // routing
                 // product created  -> create product in dependent store

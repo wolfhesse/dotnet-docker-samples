@@ -1,10 +1,13 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
+﻿#region using directives
+
+using System.IO;
+using Xunit.Abstractions;
+
+#endregion
+
+namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     #region using directives
-
-    using System.IO;
-
-    using Xunit.Abstractions;
 
     #endregion
 
@@ -31,7 +34,7 @@
         /// </param>
         public EnvironmentOutputAdapter(IWriteLineSupport writeLineSupportImplementation)
         {
-            this._writeLineSupportImplementation = writeLineSupportImplementation;
+            _writeLineSupportImplementation = writeLineSupportImplementation;
         }
 
         /// <summary>
@@ -42,7 +45,7 @@
         /// </param>
         public EnvironmentOutputAdapter(TextWriter textWriter)
         {
-            this._textWriter = textWriter;
+            _textWriter = textWriter;
         }
 
         /// <summary>
@@ -66,8 +69,8 @@
         public void WriteLine(object message)
         {
             if (EnvManager.TestOutputHelper != null) EnvManager.TestOutputHelper.WriteLine(message.ToString());
-            else if (null != this._textWriter) this._textWriter.WriteLine(message);
-            else this._writeLineSupportImplementation?.WriteLine(message);
+            else if (null != _textWriter) _textWriter.WriteLine(message);
+            else _writeLineSupportImplementation?.WriteLine(message);
 
             EnvManager.WriteLine(message.ToString());
         }

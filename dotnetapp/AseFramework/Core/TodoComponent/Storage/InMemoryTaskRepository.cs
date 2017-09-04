@@ -1,11 +1,14 @@
-﻿namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
+﻿#region using directives
+
+using System.Collections.Generic;
+using System.Diagnostics;
+using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
 {
     #region using directives
-
-    using System.Collections.Generic;
-    using System.Diagnostics;
-
-    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 
     #endregion
 
@@ -29,8 +32,8 @@
         /// </summary>
         public InMemoryTaskRepository()
         {
-            this._tasks = new List<TodoTask>();
-            this._id = 0;
+            _tasks = new List<TodoTask>();
+            _id = 0;
         }
 
         /// <summary>
@@ -52,7 +55,7 @@
         /// <summary>
         ///     The count.
         /// </summary>
-        public int Count => this._tasks.Count;
+        public int Count => _tasks.Count;
 
         /// <summary>
         ///     The find task.
@@ -65,8 +68,8 @@
         /// </returns>
         public TodoTask FindTask(int taskId)
         {
-            Debug.Assert(this._tasks != null, "_tasks != null");
-            return this._tasks[taskId];
+            Debug.Assert(_tasks != null, "_tasks != null");
+            return _tasks[taskId];
         }
 
         /// <summary>
@@ -77,9 +80,9 @@
         /// </param>
         public void Persist(TodoTask t)
         {
-            t.Id = this._id++;
-            this._tasks.Add(t);
-            this.OnEvTaskAdded(t);
+            t.Id = _id++;
+            _tasks.Add(t);
+            OnEvTaskAdded(t);
         }
 
         /// <summary>
@@ -91,7 +94,7 @@
         protected virtual void OnEvTaskAdded(TodoTask todoTask)
         {
             var eventArgs = new TaskEventArgs(todoTask);
-            this.EvTaskAdded?.Invoke(this, eventArgs);
+            EvTaskAdded?.Invoke(this, eventArgs);
         }
     }
 }

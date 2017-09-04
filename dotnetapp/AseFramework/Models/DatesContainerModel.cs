@@ -1,12 +1,14 @@
-﻿namespace DotnetApp.AseFramework.Models
+﻿#region using directives
+
+using System;
+using System.Collections.Generic;
+using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Models
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     #endregion
 
@@ -38,7 +40,7 @@
         /// <summary>
         ///     The sys warnings.
         /// </summary>
-        public IList<string> SysWarnings => this.Dates.SysWarnings;
+        public IList<string> SysWarnings => Dates.SysWarnings;
 
         /// <summary>
         ///     The create dates.
@@ -46,14 +48,14 @@
         public void CreateDates()
         {
             EnvManager.WriteLine($"{this}.CreateDates");
-            this.Dates =
+            Dates =
                 new MySortedSet<DateTimeOffset>
-                    {
-                        DateTimeOffset.MinValue.LocalDateTime,
-                        DateTimeOffset.MaxValue.LocalDateTime
-                    };
-            this.Dates.EvWarning += this.Dates_EvWarning;
-            this.OnModelChanged();
+                {
+                    DateTimeOffset.MinValue.LocalDateTime,
+                    DateTimeOffset.MaxValue.LocalDateTime
+                };
+            Dates.EvWarning += Dates_EvWarning;
+            OnModelChanged();
         }
 
         /// <summary>
@@ -64,20 +66,20 @@
             EnvManager.WriteLine($"{this}.InsertTimestamp");
             var ts0 = DateTimeOffset.Now.LocalDateTime;
             var ts1 = DateTimeOffset.Now;
-            this.Dates.Add(ts0);
-            this.Dates.Add(ts0);
-            this.Dates.Add(ts0);
-            this.Dates.Add(ts0);
-            this.Dates.Add(ts0);
-            this.Dates.Add(ts0);
-            this.Dates.Add(ts1);
-            this.Dates.Add(ts1);
-            this.Dates.Add(ts1);
-            this.Dates.Add(ts1);
-            this.Dates.Add(ts1);
-            this.Dates.Add(ts1);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
 
-            this.OnModelChanged();
+            OnModelChanged();
         }
 
         /// <summary>
@@ -88,11 +90,11 @@
             EnvManager.WriteLine($"{this}.Sort");
 
             // TODO need deprecation notice; this.Dates is now SortedSet
-            this.Dates.Sort();
+            Dates.Sort();
 
             // wird aus Sort ausgeloest    OnEvWarning();
-            this.OnModelSorted();
-            this.OnModelChanged();
+            OnModelSorted();
+            OnModelChanged();
         }
 
         /// <summary>
@@ -100,7 +102,7 @@
         /// </summary>
         protected virtual void OnEvWarning()
         {
-            this.EvWarning?.Invoke(this, EventArgs.Empty);
+            EvWarning?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -108,7 +110,7 @@
         /// </summary>
         protected virtual void OnModelChanged()
         {
-            this.ModelChanged?.Invoke(this, EventArgs.Empty);
+            ModelChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -116,7 +118,7 @@
         /// </summary>
         protected virtual void OnModelSorted()
         {
-            this.ModelSorted?.Invoke(this, EventArgs.Empty);
+            ModelSorted?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -131,7 +133,7 @@
         private void Dates_EvWarning(object sender, EventArgs e)
         {
             // weiterreichen
-            this.OnEvWarning();
+            OnEvWarning();
         }
 
         /// <summary>
@@ -156,9 +158,9 @@
             /// </summary>
             internal void Sort()
             {
-                this.SysWarnings.Add(
+                SysWarnings.Add(
                     $"{this}\n\t - deprecation notice: Dates is now a SortedSet; not need to call Sort");
-                this.OnEvWarning();
+                OnEvWarning();
             }
 
             /// <summary>
@@ -166,7 +168,7 @@
             /// </summary>
             protected virtual void OnEvWarning()
             {
-                this.EvWarning?.Invoke(this, EventArgs.Empty);
+                EvWarning?.Invoke(this, EventArgs.Empty);
             }
         }
     }

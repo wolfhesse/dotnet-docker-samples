@@ -1,12 +1,15 @@
+#region using directives
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
     #region using directives
-
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using WooCommerceNET;
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -40,10 +43,10 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
             string pIncludeProductIds = null)
         {
             var p = await GetProductViaApi.FnGetProductsByIncludePerPagePage(
-                        pPage,
-                        pPerPage,
-                        restApi,
-                        pIncludeProductIds);
+                pPage,
+                pPerPage,
+                restApi,
+                pIncludeProductIds);
             return p;
         }
 
@@ -71,9 +74,9 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
             int pPerPage = 10,
             string pIncludeProductIds = null)
         {
-            var p = this.ExecGetProducts(pPage, pPerPage, restApi, pIncludeProductIds).Result;
+            var p = ExecGetProducts(pPage, pPerPage, restApi, pIncludeProductIds).Result;
 
-            this.ProductListWrite(p);
+            ProductListWrite(p);
             return p;
         }
 

@@ -1,8 +1,12 @@
+#region using directives
+
+using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Core.TodoComponent.Utilities
 {
     #region using directives
-
-    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 
     #endregion
 

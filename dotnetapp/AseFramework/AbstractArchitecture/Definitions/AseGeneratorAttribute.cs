@@ -1,8 +1,12 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
+﻿#region using directives
+
+using System;
+
+#endregion
+
+namespace DotnetApp.AseFramework.AbstractArchitecture.Definitions
 {
     #region using directives
-
-    using System;
 
     #endregion
 

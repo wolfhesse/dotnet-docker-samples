@@ -1,20 +1,21 @@
-using DotnetApp.AseFramework.Core.TodoComponent;
+#region using directives
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+using DotnetApp.AseFramework.Core;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
 using DotnetApp.ProgramSetup;
+using Newtonsoft.Json;
+
+#endregion
 
 namespace DotnetApp
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.InteropServices;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-
-    using Newtonsoft.Json;
 
     #endregion
 
@@ -27,6 +28,19 @@ namespace DotnetApp
         ///     The serialized environment.
         /// </summary>
         private static string serializedEnvironment;
+
+        public static void ConfgureTodoEngine()
+        {
+// todo move EvTaskAdded to Engine
+            var inMemoryTaskRepository = new InMemoryTaskRepository();
+            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
+            {
+                EnvManager.WriteLine(
+                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                Console.Out.WriteLine("con: task created");
+            };
+            TodoEngine.TaskRepository = inMemoryTaskRepository;
+        }
 
         /// <summary>
         ///     The environment dict.
@@ -136,25 +150,6 @@ x-ase-sect-PAT_END
             Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
         }
 
-        private static void TaskBuilderAddSet()
-        {
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-        }
-
         /// <summary>
         ///     The r write serialized env.
         /// </summary>
@@ -185,7 +180,7 @@ x-ase-sect-PAT_END
             // data
             var message = "Dotnet-bot: Welcome to using .NET Core!";
 
-            if (args.Length > 0) message = String.Join(" ", args);
+            if (args.Length > 0) message = string.Join(" ", args);
 
             return message;
         }
@@ -222,8 +217,27 @@ x-ase-sect-PAT_END
         private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
         {
             var flgDebug = Environment.GetEnvironmentVariable(variable) ?? defaultValue;
-            flgDebug = String.Empty == flgDebug ? defaultValue : flgDebug;
+            flgDebug = string.Empty == flgDebug ? defaultValue : flgDebug;
             return flgDebug;
+        }
+
+        private static void TaskBuilderAddSet()
+        {
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
         }
 
         /// <summary>
@@ -256,8 +270,8 @@ x-ase-sect-PAT_END
         /// </param>
         private static void WriteLine(string s = null)
         {
-            if (String.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            EnvManager.WriteLine(String.Format("PAT_ANF\n\t{0}\nPAT_END", s));
+            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
+            EnvManager.WriteLine(string.Format("PAT_ANF\n\t{0}\nPAT_END", s));
             //            Console.Out.WriteLine("PAT_ANF\n\t{0}\nPAT_END", s);
         }
 
@@ -273,22 +287,9 @@ x-ase-sect-PAT_END
             Justification = "Reviewed. Suppression is OK here.")]
         private static void WriteLineWithSignifier(string s = null)
         {
-            if (String.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            EnvManager.WriteLine(String.Format("s = {0}", s));
+            if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
+            EnvManager.WriteLine(string.Format("s = {0}", s));
             Console.Out.WriteLine("s = {0}", s);
-        }
-
-        public static void ConfgureTodoEngine()
-        {
-// todo move EvTaskAdded to Engine
-            var inMemoryTaskRepository = new InMemoryTaskRepository();
-            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
-            {
-                EnvManager.WriteLine(
-                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                Console.Out.WriteLine("con: task created");
-            };
-            TodoEngine.TaskRepository = inMemoryTaskRepository;
         }
     }
 }

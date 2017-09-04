@@ -1,11 +1,14 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
+﻿#region using directives
+
+using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+#endregion
+
+namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 {
     #region using directives
-
-    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     #endregion
 
@@ -22,8 +25,8 @@
         /// </param>
         public MessageQueueConfigEntry(string hostname)
         {
-            this.Hostname = hostname;
-            this.Purpose = ProgramConfigKeys.MessageQueue;
+            Hostname = hostname;
+            Purpose = ProgramConfigKeys.MessageQueue;
         }
 
         /// <summary>

@@ -1,9 +1,13 @@
-﻿namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
+﻿#region using directives
+
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET
 {
     #region using directives
-
-    using WooCommerceNET;
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -28,7 +32,7 @@
         /// </returns>
         public Product AddProduct(Product product)
         {
-            var s = UseCases.AddProduct.Execute(this._restApi, product).Result;
+            var s = UseCases.AddProduct.Execute(_restApi, product).Result;
             return s;
         }
 
@@ -40,7 +44,7 @@
         /// </param>
         public void SetRestApi(RestAPI restApi)
         {
-            this._restApi = restApi;
+            _restApi = restApi;
         }
     }
 }

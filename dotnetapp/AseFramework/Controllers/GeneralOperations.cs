@@ -1,8 +1,12 @@
+#region using directives
+
+using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Controllers
 {
     #region using directives
-
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     #endregion
 

@@ -1,10 +1,13 @@
-﻿namespace DotnetApp.AseFramework.Core.TodoComponent
+﻿#region using directives
+
+using System;
+using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core
 {
     #region using directives
-
-    using System;
-
-    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 
     #endregion
 
@@ -27,7 +30,7 @@
         public static void AddTask(string title)
         {
             Console.Out.WriteLine(typeof(TodoController) + ".AddTask");
-            UseCases.AddTask.Execute(title);
+            TodoComponent.UseCases.AddTask.Execute(title);
         }
     }
 }

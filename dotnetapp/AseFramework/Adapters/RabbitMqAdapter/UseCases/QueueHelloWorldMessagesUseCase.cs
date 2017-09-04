@@ -1,14 +1,15 @@
+#region using directives
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using RabbitMQ.Client;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-
-    using RabbitMQ.Client;
 
     #endregion
 
@@ -44,7 +45,8 @@ namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
             if (null == engine)
             {
                 engine = new MqOperationsEngine();
-                engine.ConfigureTestTest(new MessageQueueConfigEntry("s0.wolfslab.wolfspool.at"));
+                engine.ConfigureTestTest(
+                    new AbstractArchitecture.EnvironmentSetup.MessageQueueConfigEntry("s0.wolfslab.wolfspool.at"));
             }
 
             // var factory = //  new ConnectionFactory {HostName = hostName, UserName = "test", Password = "test"};
@@ -58,19 +60,19 @@ namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
                     for (var i = 0; i < pMessageCount; i++) l.Add(i);
                     l.ForEach(
                         i =>
+                        {
+                            var message = $"Hello World! : #{i}";
+                            var body = Encoding.UTF8.GetBytes(message);
+                            if (!testing)
                             {
-                                var message = $"Hello World! : #{i}";
-                                var body = Encoding.UTF8.GetBytes(message);
-                                if (!testing)
-                                {
-                                    channel.BasicPublish(string.Empty, "hello", null, body);
-                                    OnEvMessageQueued();
-                                }
+                                channel.BasicPublish(string.Empty, "hello", null, body);
+                                OnEvMessageQueued();
+                            }
 
-                                UnmanagedMessagesQueuedCounter++;
+                            UnmanagedMessagesQueuedCounter++;
 
-                                // Console.WriteLine(" [x] Sent {0}", message);
-                            });
+                            // Console.WriteLine(" [x] Sent {0}", message);
+                        });
                 }
 
                 // Console.WriteLine(" Press [enter] to exit.");

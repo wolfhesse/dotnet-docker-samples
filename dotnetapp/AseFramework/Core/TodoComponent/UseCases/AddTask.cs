@@ -1,10 +1,14 @@
-﻿namespace DotnetApp.AseFramework.Core.TodoComponent.UseCases
+﻿#region using directives
+
+using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.TodoComponent.UseCases
 {
     #region using directives
-
-    using DotnetApp.AseFramework.Core.TodoComponent.Entities;
-    using DotnetApp.AseFramework.Core.TodoComponent.Storage;
-    using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
 
     #endregion
 

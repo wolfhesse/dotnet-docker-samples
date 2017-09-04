@@ -1,8 +1,12 @@
-﻿namespace DotnetApp.AseFramework.Core.TodoComponent.Entities
+﻿#region using directives
+
+using System;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.TodoComponent.Entities
 {
     #region using directives
-
-    using System;
 
     #endregion
 
@@ -26,8 +30,8 @@
         /// </param>
         public TodoTask(string title)
         {
-            this.CreatedAt = DateTimeOffset.Now;
-            this.Title = title;
+            CreatedAt = DateTimeOffset.Now;
+            Title = title;
         }
 
         /// <summary>
@@ -53,7 +57,7 @@
         /// </returns>
         public bool IsValid()
         {
-            return this.Title.Trim().Length > 0;
+            return Title.Trim().Length > 0;
         }
     }
 }

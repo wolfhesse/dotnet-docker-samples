@@ -1,10 +1,14 @@
+#region using directives
+
+using RestSharp;
+using RestSharp.Authenticators;
+using RestSharp.Authenticators.OAuth;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Authentication
 {
     #region using directives
-
-    using RestSharp;
-    using RestSharp.Authenticators;
-    using RestSharp.Authenticators.OAuth;
 
     #endregion
 
@@ -44,9 +48,9 @@ namespace DotnetApp.AseFramework.Authentication
             // convert all these oauth params from cookie to querystring
             request.Parameters.ForEach(
                 x =>
-                    {
-                        if (x.Name.StartsWith("oauth_")) x.Type = ParameterType.QueryString;
-                    });
+                {
+                    if (x.Name.StartsWith("oauth_")) x.Type = ParameterType.QueryString;
+                });
             return request;
         }
     }

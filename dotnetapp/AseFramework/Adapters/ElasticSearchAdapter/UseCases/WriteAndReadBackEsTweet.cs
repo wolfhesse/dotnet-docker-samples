@@ -1,14 +1,16 @@
-﻿namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases
+﻿#region using directives
+
+using System.Collections.Generic;
+using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+using DotnetApp.AseFramework.Controllers;
+using DotnetApp.AseFramework.Models;
+using Nest;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases
 {
     #region using directives
-
-    using System.Collections.Generic;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DotnetApp.AseFramework.Controllers;
-    using DotnetApp.AseFramework.Models;
-
-    using Nest;
 
     #endregion
 
@@ -48,7 +50,7 @@
             }
 
             var tweet2 = tweet;
-            return new List<InteropTypes.V1.TweetModel> { tweet, tweet2 };
+            return new List<InteropTypes.V1.TweetModel> {tweet, tweet2};
         }
     }
 }

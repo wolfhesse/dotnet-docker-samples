@@ -1,11 +1,14 @@
+#region using directives
+
+using System.Collections.Generic;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
     #region using directives
-
-    using System.Collections.Generic;
-
-    using WooCommerceNET;
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 

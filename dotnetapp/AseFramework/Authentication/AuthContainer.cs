@@ -1,9 +1,13 @@
+#region using directives
+
+using System;
+using System.Text;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Authentication
 {
     #region using directives
-
-    using System;
-    using System.Text;
 
     #endregion
 
@@ -32,7 +36,7 @@ namespace DotnetApp.AseFramework.Authentication
         {
             // Basic Auth Header
             var svcCredentials =
-                Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(this.Key + ":" + this.Secret));
+                Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(Key + ":" + Secret));
             return svcCredentials;
         }
 
@@ -44,9 +48,9 @@ namespace DotnetApp.AseFramework.Authentication
         /// </returns>
         public string ToDumpString()
         {
-            var sb = new StringBuilder(this.ToString());
-            sb.Append($"\n\t| Key: {this.Key}");
-            sb.Append($"\n\t| Secret: {this.Secret}");
+            var sb = new StringBuilder(ToString());
+            sb.Append($"\n\t| Key: {Key}");
+            sb.Append($"\n\t| Secret: {Secret}");
             return sb.ToString();
         }
 

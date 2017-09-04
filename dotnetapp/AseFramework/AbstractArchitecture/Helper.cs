@@ -1,8 +1,12 @@
+#region using directives
+
+using System.IO;
+
+#endregion
+
 namespace DotnetApp.AseFramework.AbstractArchitecture
 {
     #region using directives
-
-    using System.IO;
 
     #endregion
 

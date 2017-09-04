@@ -1,11 +1,14 @@
-﻿namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
+﻿#region using directives
+
+using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
     #region using directives
-
-    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     #endregion
 

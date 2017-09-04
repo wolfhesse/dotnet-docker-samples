@@ -1,8 +1,13 @@
-﻿namespace DotnetApp.AseFramework.AbstractArchitecture.EngineSetups
+﻿#region using directives
+
+using DotnetApp.AseFramework.AbstractArchitecture;
+using DotnetApp.AseFramework.Models;
+
+#endregion
+
+namespace DotnetApp.ProgramSetup.EngineSetups
 {
     #region using directives
-
-    using DotnetApp.AseFramework.Models;
 
     #endregion
 
@@ -32,8 +37,8 @@
         /// </param>
         public DatesEngineSetup(DatesContainerModel datesContainerModel, IView view)
         {
-            this.DatesContainerModel = datesContainerModel;
-            this.View = view;
+            DatesContainerModel = datesContainerModel;
+            View = view;
         }
 
         /// <summary>
@@ -41,9 +46,9 @@
         /// </summary>
         public void ActionBatch()
         {
-            this.DatesContainerModel.CreateDates();
-            this.DatesContainerModel.InsertTimestamp();
-            this.DatesContainerModel.Sort();
+            DatesContainerModel.CreateDates();
+            DatesContainerModel.InsertTimestamp();
+            DatesContainerModel.Sort();
         }
     }
 }

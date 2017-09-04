@@ -1,8 +1,12 @@
-﻿namespace DotnetApp.AseFramework.Core.ShopComponent
+﻿#region using directives
+
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.ShopComponent
 {
     #region using directives
-
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 

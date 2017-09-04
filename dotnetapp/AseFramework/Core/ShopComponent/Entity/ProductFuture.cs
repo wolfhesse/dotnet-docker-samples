@@ -1,8 +1,12 @@
-﻿namespace DotnetApp.AseFramework.Core.ShopComponent.Entity
+﻿#region using directives
+
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Core.ShopComponent.Entity
 {
     #region using directives
-
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -21,7 +25,7 @@
         /// </summary>
         public ProductFuture()
         {
-            this._container = new Product();
+            _container = new Product();
         }
     }
 }

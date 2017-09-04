@@ -1,11 +1,14 @@
+#region using directives
+
+using System;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+#endregion
+
 namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
 {
     #region using directives
-
-    using System;
-
-    using WooCommerceNET;
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -27,7 +30,7 @@ namespace DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET.UseCases
         {
             var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
-            var p2 = new Product { description = $"test product from {typeof(AddProduct)}", price = 8.0M };
+            var p2 = new Product {description = $"test product from {typeof(AddProduct)}", price = 8.0M};
 
             for (var i = 0; i < HowMany; i++)
             {
