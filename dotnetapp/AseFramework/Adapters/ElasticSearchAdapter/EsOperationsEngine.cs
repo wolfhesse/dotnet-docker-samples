@@ -1,19 +1,19 @@
-﻿namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
+﻿#region using directives
+
+using System;
+using System.Collections.Generic;
+using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases;
+using DotnetApp.AseFramework.Controllers;
+using DotnetApp.AseFramework.Models;
+using Elasticsearch.Net;
+using Nest;
+
+#endregion
+
+namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter.UseCases;
-    using DotnetApp.AseFramework.Controllers;
-    using DotnetApp.AseFramework.Models;
-
-    using Elasticsearch.Net;
-
-    using Nest;
 
     #endregion
 
@@ -65,12 +65,12 @@
         private static ElasticClient InitElasticClient()
         {
             var nodes = new[]
-                            {
-                                new Uri("http://s0.wolfslab.wolfspool.at:9200/")
+            {
+                new Uri("http://s0.wolfslab.wolfspool.at:9200/")
 
-                                // new Uri("http://es.wolfspool.chickenkiller.com/")
-                                // new Uri("http://10.0.0.100:9200")
-                            };
+                // new Uri("http://es.wolfspool.chickenkiller.com/")
+                // new Uri("http://10.0.0.100:9200")
+            };
 
             var pool = new StaticConnectionPool(nodes);
             var settings = new ConnectionSettings(pool);
