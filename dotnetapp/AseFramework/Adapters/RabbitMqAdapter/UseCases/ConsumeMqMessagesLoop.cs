@@ -1,12 +1,15 @@
-﻿using System;
+﻿#region using directives
+
+using System;
 using System.Text;
-using System.Threading;
 using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using DotnetApp.AseFramework.Adapters.RabbitMqAdapter;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Version = DotnetApp.AseFramework.Version;
+
+#endregion
 
 namespace ClassLibrary.RabbitMqAdapter.UseCases
 {
@@ -37,25 +40,41 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
 
                         Console.WriteLine(" [x] Received {0}", message);
 
+                        ProcessMessage(message);
+                        Console.WriteLine(" [x] Processed {0}", message);
+/*
                         var t = new Thread(() =>
                         {
                             ProcessMessage(message);
                             Console.WriteLine(" [x] Processed {0}", message);
                         });
                         t.Start();
-                        //// t.Join();
-                        // variant sync...
                         t.Join();
+  */
                     };
 
                     channel.BasicConsume("hello",
                         //// noAck: true,
                         true,
                         consumer);
-                    EnvManager.WriteLine($"FYI running Version {Version.VERSION}: Waiting... / on con: Press [enter] to exit.");
+                    EnvManager.WriteLine(
+                        $"FYI running Version {Version.VERSION}: Waiting... / on con: Press [enter] to exit.");
                     Console.ReadLine();
                 }
             }
+        }
+
+        private static void OnEvRqTweetMessage(AseMessageEventArgs eventargs)
+        {
+            EvRqTweetMessage?.Invoke(null, eventargs);
+        }
+        //        public class ProductCreatedEventArgs : EventArgs
+        //        {
+
+        //        }
+        private static void OnEvRqTweetProductCreateMessage(AseMessageEventArgs ea)
+        {
+            EvRqTweetProductCreateMessage?.Invoke(null, ea);
         }
 
 
@@ -72,20 +91,5 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
                 OnEvRqTweetMessage(args);
             }
         }
-        //        public class ProductCreatedEventArgs : EventArgs
-        //        {
-
-        //        }
-        private static void OnEvRqTweetProductCreateMessage(AseMessageEventArgs ea)
-        {
-            EvRqTweetProductCreateMessage?.Invoke(null, ea);
-        }
-
-        private static void OnEvRqTweetMessage(AseMessageEventArgs eventargs)
-        {
-            EvRqTweetMessage?.Invoke(null, eventargs);
-        }
     }
-
-  
 }

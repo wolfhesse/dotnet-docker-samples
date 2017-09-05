@@ -60,7 +60,9 @@ namespace DotnetApp
             try
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
+                // since Version 0.1.13 sync ops
                 var t = FnCreateTweet(e.Message);
+//                 Task.Run(() =>
                 await Task.Run(() =>
                 {
                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet);
@@ -73,6 +75,7 @@ namespace DotnetApp
                 var restApi = PlatformInfo.WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
+//                 Task.Run(() =>
                 await Task.Run(() =>
                 {
                     var p2 = shopEngine.AddProduct(p);
@@ -84,6 +87,7 @@ namespace DotnetApp
             catch (Exception ex)
             {
                 var t = FnCreateTweet(ex.Message);
+//                 Task.Run(() =>
                 await Task.Run(() =>
                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
                 EnvManager.WriteLine(ex.Message);
