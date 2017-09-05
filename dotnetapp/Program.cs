@@ -24,7 +24,7 @@ namespace DotnetApp
         public static void Main(string[] args)
         {
             var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> { "s0.wolfslab.wolfspool.at" });
+            mqOperationsEngine.Configure(new List<string> {"s0.wolfslab.wolfspool.at"});
             mqOperationsEngine.ConfigureMessageHandlers(ProcessProductCreatedMessage, CreateTweetHandler);
         }
 
@@ -59,26 +59,32 @@ namespace DotnetApp
         {
             try
             {
-                // if (e.Message.Contains("product created")) // it should!
-                // {
-                // add product
-                var p = new Product { name = e.Message, description = "demo produkt" };
-                var restApi = PlatformInfo.WooStuffAuthAdapter.RestApiDefault();
+                // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
+                var t = FnCreateTweet(e.Message);
+                await Task.Run(() =>
+                {
+                    EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet);
+                    EnvManager.WriteLine(e.Message);
+                });
 
+                // add product
+                var p = new Product {name = e.Message, description = "demo produkt"};
+                var restApi = PlatformInfo.WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
-                await Task.Run(
-                    () =>
-                    {
-                        var p2 = shopEngine.AddProduct(p);
-                        EnvManager.WriteLine($"product created: {p2.name}");
-                    });
+
+                await Task.Run(() =>
+                {
+                    var p2 = shopEngine.AddProduct(p);
+                    EnvManager.WriteLine($"product created: {p2.name}");
+                });
 
                 // }
             }
             catch (Exception ex)
             {
                 var t = FnCreateTweet(ex.Message);
-                await Task.Run(() => EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
+                await Task.Run(() =>
+                    EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
                 EnvManager.WriteLine(ex.Message);
             }
         }
