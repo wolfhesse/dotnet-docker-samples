@@ -20,6 +20,11 @@ namespace DotnetApp.AseFramework.Models
         /// </summary>
         public class V1
         {
+            // deprecated, source import
+            public class Tweet : TweetModel
+            {
+            }
+
             /// <summary>
             ///     The tweet model.
             /// </summary>

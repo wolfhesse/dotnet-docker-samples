@@ -1,96 +1,56 @@
 ﻿#region using directives
 
 using System;
-using System.Diagnostics;
-using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-using DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases;
+using System.Collections.Generic;
+using ClassLibrary.RabbitMqAdapter.UseCases;
 using RabbitMQ.Client;
 
 #endregion
 
 namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
 {
-    #region using directives
-
-    #endregion
-
-    /// <summary>
-    ///     The mq operations engine.
-    /// </summary>
     public class MqOperationsEngine
     {
-        /// <summary>
-        ///     Gets a value indicating whether configured state.
-        /// </summary>
         public bool ConfiguredState { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the connection factory.
-        /// </summary>
         public ConnectionFactory ConnectionFactory { get; set; }
 
-        /// <summary>
-        ///     The configure test test.
-        /// </summary>
-        /// <param name="config">
-        ///     The config.
-        /// </param>
-        public void ConfigureTestTest(AbstractArchitecture.EnvironmentSetup.MessageQueueConfigEntry config)
+        public void Configure(List<string> config)
         {
-            Debug.Assert(config.Purpose == ProgramConfigKeys.MessageQueue);
-            ConnectionFactory =
-                new ConnectionFactory {HostName = config.Hostname, UserName = "test", Password = "test"};
-
-            // Console.WriteLine(ConnectionFactory);
-            // EnvManager.WriteLine(ConnectionFactory);
+            ConnectionFactory = new ConnectionFactory
+            {
+                HostName = config[0],
+                UserName = "test",
+                Password = "test"
+            };
+//            Console.WriteLine(ConnectionFactory);
+//            Debug.WriteLine(ConnectionFactory);
             ConfiguredState = true;
         }
 
-        /// <summary>
-        ///     The create connection.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="IConnection" />.
-        /// </returns>
-        /// <exception cref="Exception">
-        /// </exception>
-        public IConnection CreateConnection()
-        {
-            if (!ConfiguredState) throw new Exception("configuration error");
-            return ConnectionFactory.CreateConnection();
-        }
-
-        /// <summary>
-        ///     The execute with message handlers.
-        /// </summary>
-        /// <param name="processProductCreatedMessage">
-        ///     The process product created message.
-        /// </param>
-        /// <param name="createTweetHandler">
-        ///     The create tweet handler.
-        /// </param>
-        /// <exception cref="Exception">
-        /// </exception>
-        public void ExecuteWithMessageHandlers(
-            ConsumeMqMessagesLoopUseCase.AseMessageHandler processProductCreatedMessage,
-            ConsumeMqMessagesLoopUseCase.AseMessageHandler createTweetHandler)
+        public void ConfigureMessageHandlers(ConsumeMqMessagesLoop.AseMessageHandler processProductCreatedMessage,
+            ConsumeMqMessagesLoop.AseMessageHandler createTweetHandler)
         {
             if (ConfiguredState)
             {
                 // routing
                 // product created  -> create product in dependent store
                 // both cases: create 'tweet' is es-index
-                ConsumeMqMessagesLoopUseCase.EvRqTweetProductCreateMessage += processProductCreatedMessage;
-                ConsumeMqMessagesLoopUseCase.EvRqTweetProductCreateMessage += createTweetHandler;
+                ConsumeMqMessagesLoop.EvRqTweetProductCreateMessage += processProductCreatedMessage;
+                ConsumeMqMessagesLoop.EvRqTweetProductCreateMessage += createTweetHandler;
 
-                ConsumeMqMessagesLoopUseCase.EvRqTweetMessage += createTweetHandler;
+                ConsumeMqMessagesLoop.EvRqTweetMessage += createTweetHandler;
 
-                ConsumeMqMessagesLoopUseCase.Execute(this);
+                ConsumeMqMessagesLoop.Execute(this);
             }
             else
             {
                 throw new Exception("missing configuration");
             }
+        }
+
+        public IConnection CreateConnection()
+        {
+            return ConnectionFactory.CreateConnection();
         }
     }
 }

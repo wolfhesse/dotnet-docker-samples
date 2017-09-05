@@ -29,9 +29,9 @@ namespace DotnetAppDev.Tests.Unittests
         [Fact]
         public void TestProgramFeatureEnvironment()
         {
-            Program.Main(new[] { "eins", "zwo", "drei" });
+            ProgramSample.Main(new[] { "eins", "zwo", "drei" });
 
-            SerializedEnvironment = JsonConvert.SerializeObject(Program.EnvironmentDict(), Formatting.Indented);
+            SerializedEnvironment = JsonConvert.SerializeObject(ProgramSample.EnvironmentDict(), Formatting.Indented);
             EnvManager.WriteLine(SerializedEnvironment);
 
             EnvManager.WriteLine("x-ase-debug-line");
@@ -45,7 +45,7 @@ namespace DotnetAppDev.Tests.Unittests
         public void TestProgramFeatureWriteSerializedEnvironment()
         {
             // it does it and it returns the result
-            var actual = Program.PreparedSerializedEnvironmentSingleLine();
+            var actual = ProgramSample.PreparedSerializedEnvironmentSingleLine();
             Assert.NotEmpty(actual);
 
             // Assert.False(true);

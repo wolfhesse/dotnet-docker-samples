@@ -61,7 +61,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         [Fact]
         public void TestTodoEngineAndComponent()
         {
-            Program.ConfgureTodoEngine();
+            ProgramSample.ConfgureTodoEngine();
 
             TodoEngine.AddTask(new TodoTask("1eins"));
             TodoEngine.AddTask(new TodoTask("2eins"));
