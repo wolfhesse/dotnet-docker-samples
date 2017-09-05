@@ -42,6 +42,8 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
                         });
                         t.Start();
                         //// t.Join();
+                        // variant sync...
+                        t.Join();
                     };
 
                     channel.BasicConsume("hello",
