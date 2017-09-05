@@ -66,6 +66,7 @@ namespace DotnetApp
                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet);
                     EnvManager.WriteLine(e.Message);
                 });
+                EnvManager.WriteLine("after tweet creation");
 
                 // add product
                 var p = new Product {name = e.Message, description = "demo produkt"};
@@ -77,7 +78,7 @@ namespace DotnetApp
                     var p2 = shopEngine.AddProduct(p);
                     EnvManager.WriteLine($"product created: {p2.name}");
                 });
-
+                EnvManager.WriteLine("after product creation");
                 // }
             }
             catch (Exception ex)
@@ -86,6 +87,7 @@ namespace DotnetApp
                 await Task.Run(() =>
                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
                 EnvManager.WriteLine(ex.Message);
+                EnvManager.WriteLine("after tweet creating in catch-");
             }
         }
     }
