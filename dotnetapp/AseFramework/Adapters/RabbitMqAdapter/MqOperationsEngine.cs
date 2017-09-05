@@ -36,7 +36,7 @@ namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter
                 // product created  -> create product in dependent store
                 // both cases: create 'tweet' is es-index
                 ConsumeMqMessagesLoop.EvRqTweetProductCreateMessage += processProductCreatedMessage;
-                ConsumeMqMessagesLoop.EvRqTweetProductCreateMessage += createTweetHandler;
+//                ConsumeMqMessagesLoop.EvRqTweetProductCreateMessage += createTweetHandler;
 
                 ConsumeMqMessagesLoop.EvRqTweetMessage += createTweetHandler;
 

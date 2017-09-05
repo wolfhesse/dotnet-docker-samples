@@ -76,10 +76,15 @@ namespace DotnetApp
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
 //                 Task.Run(() =>
+                
                 await Task.Run(() =>
                 {
+                    var startTs = DateTime.Now;
                     var p2 = shopEngine.AddProduct(p);
-                    EnvManager.WriteLine($"product created: {p2.name}");
+                    var duration = DateTime.Now - startTs;
+                    EnvManager.WriteLine($"product created: {p2.name}" +
+                                         $"{Environment.NewLine}" +
+                                         $"\tduration: ${duration.TotalSeconds} s");
                 });
                 EnvManager.WriteLine("after product creation");
                 // }
