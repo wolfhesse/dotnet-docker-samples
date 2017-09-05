@@ -84,7 +84,7 @@ namespace DotnetApp
                     var duration = DateTime.Now - startTs;
                     EnvManager.WriteLine($"product created: {p2.name}" +
                                          $"{Environment.NewLine}" +
-                                         $"\tduration: ${duration.TotalSeconds} s");
+                                         $"\tduration: {duration.TotalSeconds} s");
                 });
                 EnvManager.WriteLine("after product creation");
                 // }
