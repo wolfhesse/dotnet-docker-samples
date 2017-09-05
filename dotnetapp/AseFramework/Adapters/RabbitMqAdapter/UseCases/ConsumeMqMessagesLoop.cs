@@ -58,7 +58,7 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
 
         private static void ProcessMessage(string message)
         {
-            if (message.Contains("product created") || message.Contains("not Hello"))
+            if (message.Contains("product created") || message.Contains("Hello"))
             {
                 var args = new AseMessageEventArgs(message);
                 OnEvRqTweetProductCreateMessage(args);
