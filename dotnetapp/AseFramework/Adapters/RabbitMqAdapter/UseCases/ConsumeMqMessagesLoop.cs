@@ -2,9 +2,11 @@
 using System.Text;
 using System.Threading;
 using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
+using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using DotnetApp.AseFramework.Adapters.RabbitMqAdapter;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Version = DotnetApp.AseFramework.Version;
 
 namespace ClassLibrary.RabbitMqAdapter.UseCases
 {
@@ -50,8 +52,7 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
                         //// noAck: true,
                         true,
                         consumer);
-
-                    Console.WriteLine("Waiting... / on con: Press [enter] to exit.");
+                    EnvManager.WriteLine($"FYI running Version {Version.VERSION}: Waiting... / on con: Press [enter] to exit.");
                     Console.ReadLine();
                 }
             }
