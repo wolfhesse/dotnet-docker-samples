@@ -36,7 +36,8 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         public static void DumpTweet(InteropTypes.V1.TweetModel obj)
         {
             Console.WriteLine(
-                null != obj ? $"dumpTweet: {obj.Id} : {obj.User} // {obj.Value.Substring(0, 10)}..." : "obj is null");
+                // substring() wirft exception, wenn der string zu kurz is!
+                null != obj ? $"dumpTweet: {obj.Id} : {obj.User} // {obj.Value.PadRight(10)}..." : "obj is null");
         }
 
         /// <summary>
@@ -46,7 +47,8 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         ///     The p tweet model.
         /// </param>
         /// <returns>
-        ///     The <see>
+        ///     The
+        ///     <see>
         ///         <cref>List</cref>
         ///     </see>
         ///     .
@@ -88,7 +90,8 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         ///     The client.
         /// </param>
         /// <returns>
-        ///     The <see>
+        ///     The
+        ///     <see>
         ///         <cref>IGetResponse</cref>
         ///     </see>
         ///     .

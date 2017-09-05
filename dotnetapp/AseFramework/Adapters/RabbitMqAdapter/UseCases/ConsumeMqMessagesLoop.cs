@@ -49,7 +49,7 @@ namespace ClassLibrary.RabbitMqAdapter.UseCases
                         true,
                         consumer);
 
-                    Console.WriteLine(" Press [enter] to exit.");
+                    Console.WriteLine("Waiting... / on con: Press [enter] to exit.");
                     Console.ReadLine();
                 }
             }
