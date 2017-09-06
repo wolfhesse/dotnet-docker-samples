@@ -10,6 +10,8 @@ namespace DotnetApp.ProgramSetup
 {
     public static class PlatformInfo
     {
+        // todo from json datafile
+        // todo env externalize
         internal static string ApiEndpointProducts => "wp-json/wc/v1/products";
 
         internal static string JsonPathWinContent => @"c:\users\rogera\code\dotnet-std\DNS\data.d\content.json";

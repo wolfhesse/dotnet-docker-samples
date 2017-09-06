@@ -32,9 +32,9 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         ///     The task id.
         /// </param>
         /// <returns>
-        ///     The <see cref="TodoTask" />.
+        ///     The <see cref="TaskItem" />.
         /// </returns>
-        TodoTask FindTask(int taskId);
+        TaskItem FindTask(int taskId);
 
         /// <summary>
         ///     The persist.
@@ -42,6 +42,6 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         /// <param name="t">
         ///     The t.
         /// </param>
-        void Persist(TodoTask t);
+        void Persist(TaskItem t);
     }
 }

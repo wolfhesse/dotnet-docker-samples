@@ -1,4 +1,5 @@
-﻿using DotnetApp;
+﻿using System;
+using DotnetApp;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using Newtonsoft.Json;
 using Xunit;
@@ -10,6 +11,7 @@ namespace DotnetAppDev.Tests.Unittests
 
     #endregion
 
+    /// <inheritdoc />
     /// <summary>The program xunit test.</summary>
     public class ProgramXunitTest : AseXunitTestBase
     {
@@ -19,9 +21,7 @@ namespace DotnetAppDev.Tests.Unittests
         }
 
         [Fact]
-        public void TestMethod1()
-        {
-        }
+        public void TestProgramSampleEntrypoint() => ProgramSample.Entrypoint(null);
 
         /// <summary>
         ///     The test program feature environment.
@@ -29,13 +29,23 @@ namespace DotnetAppDev.Tests.Unittests
         [Fact]
         public void TestProgramFeatureEnvironment()
         {
-            ProgramSample.Main(new[] { "eins", "zwo", "drei" });
+        
+            SerializedEnvironmentString = JsonConvert.SerializeObject(ProgramSample.EnvironmentDict(), Formatting.Indented);
+            Console.Out.WriteLine("SerializedEnvironmentString = {0}", SerializedEnvironmentString);
+            EnvManager.WriteLine(SerializedEnvironmentString);
 
-            SerializedEnvironment = JsonConvert.SerializeObject(ProgramSample.EnvironmentDict(), Formatting.Indented);
-            EnvManager.WriteLine(SerializedEnvironment);
+            EnvManager_Future_WriteAseDebugMarker();
+            EnvManager_Future_WriteTrraceMarker();
+        }
 
-            EnvManager.WriteLine("x-ase-debug-line");
+        private static void EnvManager_Future_WriteTrraceMarker()
+        {
             EnvManager.WriteLine("x-ase-trace-line", "test");
+        }
+
+        private static void EnvManager_Future_WriteAseDebugMarker()
+        {
+            EnvManager.WriteLine("x-ase-debug-line");
         }
 
         /// <summary>

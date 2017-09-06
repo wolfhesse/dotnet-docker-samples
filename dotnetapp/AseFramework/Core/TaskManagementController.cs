@@ -14,7 +14,7 @@ namespace DotnetApp.AseFramework.Core
     /// <summary>
     ///     The todo controller. component
     /// </summary>
-    public class TodoController
+    public class TaskManagementController
     {
         /// <summary>
         ///     Gets the task repository.
@@ -29,7 +29,7 @@ namespace DotnetApp.AseFramework.Core
         /// </param>
         public static void AddTask(string title)
         {
-            Console.Out.WriteLine(typeof(TodoController) + ".AddTask");
+            Console.Out.WriteLine(typeof(TaskManagementController) + ".AddTask");
             TodoComponent.UseCases.AddTask.Execute(title);
         }
     }

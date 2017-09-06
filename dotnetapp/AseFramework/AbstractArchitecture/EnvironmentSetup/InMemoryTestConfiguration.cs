@@ -2,6 +2,7 @@
 
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.ProgramSetup;
+using DotnetApp.ProgramSetup.EngineSetups;
 
 #endregion
 
@@ -24,6 +25,6 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         /// <summary>
         ///     The todo engine.
         /// </summary>
-        public static TodoEngine TodoEngine = new TodoEngine();
+        public static TaskManagementEngineSetup TaskManagementEngineSetup = new TaskManagementEngineSetup();
     }
 }

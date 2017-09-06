@@ -26,7 +26,7 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.UseCases
         public static void Execute(string title)
         {
             var task = TaskBuilder.BuildTask(title);
-            TodoController.TaskRepository.Persist(task);
+            TaskManagementController.TaskRepository.Persist(task);
         }
 
         /// <summary>
@@ -35,12 +35,12 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.UseCases
         /// <param name="taskRepository">
         ///     The task repository.
         /// </param>
-        /// <param name="todoTask">
+        /// <param name="taskItem">
         ///     The todo task.
         /// </param>
-        internal static void Execute(ITaskRepository taskRepository, TodoTask todoTask)
+        internal static void Execute(ITaskRepository taskRepository, TaskItem taskItem)
         {
-            taskRepository.Persist(todoTask);
+            taskRepository.Persist(taskItem);
         }
     }
 }

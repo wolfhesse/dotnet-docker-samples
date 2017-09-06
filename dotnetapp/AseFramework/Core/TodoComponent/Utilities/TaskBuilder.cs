@@ -22,11 +22,11 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Utilities
         ///     The title.
         /// </param>
         /// <returns>
-        ///     The <see cref="TodoTask" />.
+        ///     The <see cref="TaskItem" />.
         /// </returns>
-        public static TodoTask BuildTask(string title)
+        public static TaskItem BuildTask(string title)
         {
-            var t = new TodoTask(title);
+            var t = new TaskItem(title);
             return t;
         }
     }

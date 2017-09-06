@@ -20,7 +20,7 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         /// <summary>
         ///     The _tasks.
         /// </summary>
-        private readonly List<TodoTask> _tasks;
+        private readonly List<TaskItem> _tasks;
 
         /// <summary>
         ///     The _id.
@@ -32,7 +32,7 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         /// </summary>
         public InMemoryTaskRepository()
         {
-            _tasks = new List<TodoTask>();
+            _tasks = new List<TaskItem>();
             _id = 0;
         }
 
@@ -64,9 +64,9 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         ///     The task id.
         /// </param>
         /// <returns>
-        ///     The <see cref="TodoTask" />.
+        ///     The <see cref="TaskItem" />.
         /// </returns>
-        public TodoTask FindTask(int taskId)
+        public TaskItem FindTask(int taskId)
         {
             Debug.Assert(_tasks != null, "_tasks != null");
             return _tasks[taskId];
@@ -78,7 +78,7 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         /// <param name="t">
         ///     The t.
         /// </param>
-        public void Persist(TodoTask t)
+        public void Persist(TaskItem t)
         {
             t.Id = _id++;
             _tasks.Add(t);
@@ -88,12 +88,12 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         /// <summary>
         ///     The on ev task added.
         /// </summary>
-        /// <param name="todoTask">
+        /// <param name="taskItem">
         ///     The todo task.
         /// </param>
-        protected virtual void OnEvTaskAdded(TodoTask todoTask)
+        protected virtual void OnEvTaskAdded(TaskItem taskItem)
         {
-            var eventArgs = new TaskEventArgs(todoTask);
+            var eventArgs = new TaskEventArgs(taskItem);
             EvTaskAdded?.Invoke(this, eventArgs);
         }
     }

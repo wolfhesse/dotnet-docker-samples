@@ -13,22 +13,22 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Entities
     /// <summary>
     ///     The todo task.
     /// </summary>
-    public class TodoTask
+    public class TaskItem
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TodoTask" /> class.
+        ///     Initializes a new instance of the <see cref="TaskItem" /> class.
         /// </summary>
-        public TodoTask()
+        public TaskItem()
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TodoTask" /> class.
+        ///     Initializes a new instance of the <see cref="TaskItem" /> class.
         /// </summary>
         /// <param name="title">
         ///     The title.
         /// </param>
-        public TodoTask(string title)
+        public TaskItem(string title)
         {
             CreatedAt = DateTimeOffset.Now;
             Title = title;

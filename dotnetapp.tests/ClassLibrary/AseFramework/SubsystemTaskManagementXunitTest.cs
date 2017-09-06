@@ -7,6 +7,7 @@ using DotnetApp.AseFramework.Core;
 using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.ProgramSetup;
+using DotnetApp.ProgramSetup.EngineSetups;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,12 +27,12 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
     /// <summary>
     ///     The subsystem todo.
     /// </summary>
-    public class SubsystemTodoXunitTest : AseXunitTestBase
+    public class SubsystemTaskManagementXunitTest : AseXunitTestBase
     {
         /// <inheritdoc />
-        /// <summary>Initializes a new instance of the <see cref="T:DotnetAppDev.Tests.ClassLibrary.AseFramework.SubsystemTodoXunitTest" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="T:DotnetAppDev.Tests.ClassLibrary.AseFramework.SubsystemTaskManagementXunitTest" /> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
-        public SubsystemTodoXunitTest(ITestOutputHelper testOutputHelper)
+        public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -40,18 +41,17 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         ///     The test todo controller.
         /// </summary>
         [Fact]
-        public void TestTodoController()
+        public void TestTaskManagementController()
         {
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
             {
                 EnvManager.WriteLine(
                     $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                Console.Out.WriteLine("con: task created");
             };
-            TodoEngine.TaskRepository = inMemoryTaskRepository;
+            TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
 
-            TodoController.AddTask(new TodoTask("eins").Title);
+            TaskManagementController.AddTask(new TaskItem("eins").Title);
             Assert.Empty(string.Empty);
         }
 
@@ -59,14 +59,14 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         ///     The test todo engine and component.
         /// </summary>
         [Fact]
-        public void TestTodoEngineAndComponent()
+        public void TestTaskManagementEngine()
         {
-            ProgramSample.ConfgureTodoEngine();
+            ProgramSample.ConfgureTaskManagementEngine();
 
-            TodoEngine.AddTask(new TodoTask("1eins"));
-            TodoEngine.AddTask(new TodoTask("2eins"));
-            TodoEngine.AddTask(new TodoTask("3eins"));
-            TodoEngine.AddTask(new TodoTask("4eins"));
+            TaskManagementEngineSetup.AddTask(new TaskItem("1eins"));
+            TaskManagementEngineSetup.AddTask(new TaskItem("2eins"));
+            TaskManagementEngineSetup.AddTask(new TaskItem("3eins"));
+            TaskManagementEngineSetup.AddTask(new TaskItem("4eins"));
             Assert.Empty(string.Empty);
         }
     }

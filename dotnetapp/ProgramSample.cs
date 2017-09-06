@@ -9,6 +9,7 @@ using DotnetApp.AseFramework.Core;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
 using DotnetApp.ProgramSetup;
+using DotnetApp.ProgramSetup.EngineSetups;
 using Newtonsoft.Json;
 
 #endregion
@@ -29,7 +30,7 @@ namespace DotnetApp
         /// </summary>
         private static string _serializedEnvironment;
 
-        public static void ConfgureTodoEngine()
+        public static void ConfgureTaskManagementEngine()
         {
 // todo move EvTaskAdded to Engine
             var inMemoryTaskRepository = new InMemoryTaskRepository();
@@ -39,7 +40,7 @@ namespace DotnetApp
                     $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                 Console.Out.WriteLine("con: task created");
             };
-            TodoEngine.TaskRepository = inMemoryTaskRepository;
+            TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
         }
 
         /// <summary>
@@ -129,9 +130,9 @@ x-ase-sect-PAT_END
         /// <param name="args">
         ///     The args.
         /// </param>
-        public static void Main(string[] args)
+        public static void Entrypoint(string[] args)
         {
-            ConfgureTodoEngine();
+            ConfgureTaskManagementEngine();
             var message = BuildMessage(args);
 
             // setup environmentDict
@@ -146,7 +147,7 @@ x-ase-sect-PAT_END
             TaskBuilderAddSet();
             TaskBuilderAddSet();
             TaskBuilderAddSet();
-            var taskRepositoryCount = TodoController.TaskRepository.Count;
+            var taskRepositoryCount = TaskManagementController.TaskRepository.Count;
             Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
         }
 
@@ -180,7 +181,7 @@ x-ase-sect-PAT_END
             // data
             var message = "Dotnet-bot: Welcome to using .NET Core!";
 
-            if (args.Length > 0) message = string.Join(" ", args);
+            if (args != null && args.Length > 0) message = string.Join(" ", args);
 
             return message;
         }
@@ -223,21 +224,21 @@ x-ase-sect-PAT_END
 
         private static void TaskBuilderAddSet()
         {
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TodoEngine.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
+            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
         }
 
         /// <summary>

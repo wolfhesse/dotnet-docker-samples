@@ -22,7 +22,7 @@ namespace DotnetAppDev.Tests
         /// <summary>
         ///     The _serialized environment.
         /// </summary>
-        protected string SerializedEnvironment;
+        protected string SerializedEnvironmentString;
 
         /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>

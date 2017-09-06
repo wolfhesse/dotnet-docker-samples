@@ -20,17 +20,17 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         /// <summary>
         ///     The _todo task.
         /// </summary>
-        private readonly TodoTask _todoTask;
+        private readonly TaskItem _taskItem;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TaskEventArgs" /> class.
         /// </summary>
-        /// <param name="todoTask">
+        /// <param name="taskItem">
         ///     The todo task.
         /// </param>
-        public TaskEventArgs(TodoTask todoTask)
+        public TaskEventArgs(TaskItem taskItem)
         {
-            _todoTask = todoTask;
+            _taskItem = taskItem;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine
-                   + JsonConvert.SerializeObject(_todoTask, Formatting.Indented);
+                   + JsonConvert.SerializeObject(_taskItem, Formatting.Indented);
         }
     }
 }
