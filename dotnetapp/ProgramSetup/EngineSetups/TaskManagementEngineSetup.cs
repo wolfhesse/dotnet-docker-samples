@@ -1,8 +1,8 @@
 ﻿#region using directives
 
 using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TodoComponent.Entities;
-using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Storage;
 
 #endregion
 

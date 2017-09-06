@@ -1,7 +1,7 @@
 ﻿#region using directives
 
 using System;
-using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Storage;
 
 #endregion
 
@@ -30,7 +30,7 @@ namespace DotnetApp.AseFramework.Core
         public static void AddTask(string title)
         {
             Console.Out.WriteLine(typeof(TaskManagementController) + ".AddTask");
-            TodoComponent.UseCases.AddTask.Execute(title);
+            TaskManagementComponent.UseCases.AddTask.Execute(title);
         }
     }
 }

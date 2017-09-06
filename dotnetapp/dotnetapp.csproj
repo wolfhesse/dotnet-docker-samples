@@ -18,6 +18,11 @@
     <PackageReference Include="xunit" Version="2.3.0-beta5-build3769" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AseFramework\Core\TodoComponent\UseCases\" />
+    <Folder Include="AseFramework\Core\TodoComponent\Utilities\" />
+  </ItemGroup>
+
   
 
 </Project>

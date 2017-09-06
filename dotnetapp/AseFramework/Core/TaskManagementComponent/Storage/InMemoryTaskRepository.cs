@@ -2,11 +2,11 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
 
 #endregion
 
-namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
+namespace DotnetApp.AseFramework.Core.TaskManagementComponent.Storage
 {
     #region using directives
 

@@ -40,12 +40,12 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         /// <summary>
         ///     Gets or sets the hostname.
         /// </summary>
-        public string Hostname { get; set; }
+        private string Hostname { get; }
 
         /// <summary>
         ///     Gets or sets the purpose.
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public ProgramConfigKeys Purpose { get; set; }
+        private ProgramConfigKeys Purpose { get; }
     }
 }

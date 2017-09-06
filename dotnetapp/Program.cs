@@ -3,11 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AseFramework.Core.ShopComponent;
 using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter;
 using DotnetApp.AseFramework.Adapters.RabbitMqAdapter;
 using DotnetApp.AseFramework.Core;
+using DotnetApp.AseFramework.Core.ShopComponent;
 using DotnetApp.AseFramework.Core.ShopComponent.AseWooCommerceNET;
 using DotnetApp.AseFramework.Models;
 using DotnetApp.ProgramSetup;

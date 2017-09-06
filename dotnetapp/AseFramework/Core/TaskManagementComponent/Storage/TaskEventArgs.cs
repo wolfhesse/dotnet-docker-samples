@@ -1,12 +1,12 @@
 ﻿#region using directives
 
 using System;
-using DotnetApp.AseFramework.Core.TodoComponent.Entities;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
 using Newtonsoft.Json;
 
 #endregion
 
-namespace DotnetApp.AseFramework.Core.TodoComponent.Storage
+namespace DotnetApp.AseFramework.Core.TaskManagementComponent.Storage
 {
     #region using directives
 

@@ -6,10 +6,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TodoComponent.Storage;
-using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Storage;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Utilities;
 using DotnetApp.ProgramSetup.EngineSetups;
-using DotnetAppDev.Tests.ClassLibrary.AseFramework;
 using Newtonsoft.Json;
 
 #endregion
@@ -30,12 +29,45 @@ namespace DotnetAppDev.Tests.Unittests
         /// </summary>
         private static string _serializedEnvironment;
 
-        public static void ConfigureTaskRepositoryEventHandler(InMemoryTaskRepository.TaskAddedEventHandler inMemoryTaskRepositoryOnEvTaskAdded)
+        public static void ConfigureTaskRepositoryEventHandler(
+            InMemoryTaskRepository.TaskAddedEventHandler inMemoryTaskRepositoryOnEvTaskAdded)
         {
 // todo move EvTaskAdded to Engine
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += inMemoryTaskRepositoryOnEvTaskAdded;
             TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
+        }
+
+        /// <summary>
+        ///     The main.
+        /// </summary>
+        /// <param name="args">
+        ///     The args.
+        /// </param>
+        public static void Entrypoint(string[] args)
+        {
+            ConfigureTaskRepositoryEventHandler(delegate(object sender, TaskEventArgs eventArgs)
+            {
+                EnvManager.WriteLine(
+                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                Console.Out.WriteLine("con: task created");
+            });
+            var message = BuildMessage(args);
+
+            // setup environmentDict
+            IDictionary<string, string> environmentDict = EnvironmentDict();
+
+            WriteLineWithSignifier(GetBot(message));
+            WriteEnvironmentDescription(environmentDict);
+
+            EnvManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            TaskBuilderAddSet();
+            var taskRepositoryCount = TaskManagementController.TaskRepository.Count;
+            Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
         }
 
         /// <summary>
@@ -117,39 +149,6 @@ x-ase-sect-PAT_END
 ---
 ";
             return bot;
-        }
-
-        /// <summary>
-        ///     The main.
-        /// </summary>
-        /// <param name="args">
-        ///     The args.
-        /// </param>
-        public static void Entrypoint(string[] args)
-        {
-            ConfigureTaskRepositoryEventHandler(delegate(object sender, TaskEventArgs eventArgs)
-            {
-                EnvManager.WriteLine(
-                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                Console.Out.WriteLine("con: task created");
-
-            });
-            var message = BuildMessage(args);
-
-            // setup environmentDict
-            IDictionary<string, string> environmentDict = EnvironmentDict();
-
-            WriteLineWithSignifier(GetBot(message));
-            WriteEnvironmentDescription(environmentDict);
-
-            EnvManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
-            TaskBuilderAddSet();
-            TaskBuilderAddSet();
-            TaskBuilderAddSet();
-            TaskBuilderAddSet();
-            TaskBuilderAddSet();
-            var taskRepositoryCount = TaskManagementController.TaskRepository.Count;
-            Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
         }
 
         /// <summary>
@@ -264,7 +263,6 @@ x-ase-sect-PAT_END
                 + $"\t flgZwo    : \t {environmentDict["zwo"]}");
         }
 
-       
 
         /// <summary>
         ///     The write line.

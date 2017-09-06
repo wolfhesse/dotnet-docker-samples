@@ -26,7 +26,7 @@ namespace DotnetAppDev.Tests
 
         /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
-        public AseXunitTestBase(ITestOutputHelper testOutputHelper)
+        protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
             EnvManager.TestOutputHelper = testOutputHelper;
         }

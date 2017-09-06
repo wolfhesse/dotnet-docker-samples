@@ -2,8 +2,7 @@
 
 using System;
 using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TodoComponent.Entities;
-using DotnetApp.AseFramework.Core.TodoComponent.Storage;
+using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
 
 #endregion
 
@@ -19,7 +18,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
     /// </summary>
     public class TaskManagementControllerVariant : TaskManagementController
     {
-        private static string InceptionDate = DateTimeOffset.Now.ToString();
+        private static readonly string InceptionDate = DateTimeOffset.Now.ToString();
 
         /// <summary>
         ///     The add task.
@@ -35,7 +34,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         {
             // add inception date info
             var extendetTitle = $"[TaskVariantInception: {InceptionDate}] // " +
-                        taskItem.Title;
+                                taskItem.Title;
             AddTask(extendetTitle);
         }
     }

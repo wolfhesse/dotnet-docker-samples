@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace DotnetApp.AseFramework.Core.TodoComponent.Entities
+namespace DotnetApp.AseFramework.Core.TaskManagementComponent.Entities
 {
     #region using directives
 
