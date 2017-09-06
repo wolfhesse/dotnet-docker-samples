@@ -1,7 +1,6 @@
 ﻿#region using directives
 
 using System.IO;
-using Xunit.Abstractions;
 
 #endregion
 
@@ -11,6 +10,7 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
 
     #endregion
 
+    /// <inheritdoc />
     /// <summary>
     ///     The environment output adapter.
     /// </summary>
@@ -26,16 +26,6 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         /// </summary>
         private readonly IWriteLineSupport _writeLineSupportImplementation;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EnvironmentOutputAdapter" /> class.
-        /// </summary>
-        /// <param name="writeLineSupportImplementation">
-        ///     The write line support implementation.
-        /// </param>
-        public EnvironmentOutputAdapter(IWriteLineSupport writeLineSupportImplementation)
-        {
-            _writeLineSupportImplementation = writeLineSupportImplementation;
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EnvironmentOutputAdapter" /> class.
@@ -43,21 +33,13 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         /// <param name="textWriter">
         ///     The text writer.
         /// </param>
-        public EnvironmentOutputAdapter(TextWriter textWriter)
+        public EnvironmentOutputAdapter(TextWriter textWriter,
+            IWriteLineSupport otherWriteLineSupportImplementation = null)
         {
             _textWriter = textWriter;
+            _writeLineSupportImplementation = otherWriteLineSupportImplementation;
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EnvironmentOutputAdapter" /> class.
-        /// </summary>
-        /// <param name="testOutputHelper">
-        ///     The test output helper.
-        /// </param>
-        public EnvironmentOutputAdapter(ITestOutputHelper testOutputHelper)
-        {
-            EnvManager.TestOutputHelper = testOutputHelper;
-        }
 
         /// <inheritdoc />
         /// <summary>
@@ -70,9 +52,8 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
         {
             if (EnvManager.TestOutputHelper != null) EnvManager.TestOutputHelper.WriteLine(message.ToString());
             else if (null != _textWriter) _textWriter.WriteLine(message);
-            else _writeLineSupportImplementation?.WriteLine(message);
-
-            EnvManager.WriteLine(message.ToString());
+            else if (_writeLineSupportImplementation != null) _writeLineSupportImplementation?.WriteLine(message);
+            else EnvManager.WriteLine(message.ToString());
         }
     }
 }

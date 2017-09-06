@@ -15,7 +15,7 @@
     ///     The task creation.
     /// </summary>
     [TestFixture]
-    public class TaskCreation
+    public class TaskCreationNUnitTest
     {
         /// <summary>
         ///     The test task created at.

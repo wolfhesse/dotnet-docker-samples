@@ -4,14 +4,12 @@ using System;
 using System.Text;
 using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
 using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-using DotnetApp.AseFramework.Adapters.RabbitMqAdapter;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Version = DotnetApp.AseFramework.Version;
 
 #endregion
 
-namespace ClassLibrary.RabbitMqAdapter.UseCases
+namespace DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases
 {
     public class ConsumeMqMessagesLoop
     {

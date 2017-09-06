@@ -8,13 +8,13 @@ using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
 using DotnetApp.AseFramework.Core;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.AseFramework.Core.TodoComponent.Utilities;
-using DotnetApp.ProgramSetup;
 using DotnetApp.ProgramSetup.EngineSetups;
+using DotnetAppDev.Tests.ClassLibrary.AseFramework;
 using Newtonsoft.Json;
 
 #endregion
 
-namespace DotnetApp
+namespace DotnetAppDev.Tests.Unittests
 {
     #region using directives
 
@@ -30,16 +30,11 @@ namespace DotnetApp
         /// </summary>
         private static string _serializedEnvironment;
 
-        public static void ConfgureTaskManagementEngine()
+        public static void ConfigureTaskRepositoryEventHandler(InMemoryTaskRepository.TaskAddedEventHandler inMemoryTaskRepositoryOnEvTaskAdded)
         {
 // todo move EvTaskAdded to Engine
             var inMemoryTaskRepository = new InMemoryTaskRepository();
-            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
-            {
-                EnvManager.WriteLine(
-                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                Console.Out.WriteLine("con: task created");
-            };
+            inMemoryTaskRepository.EvTaskAdded += inMemoryTaskRepositoryOnEvTaskAdded;
             TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
         }
 
@@ -132,7 +127,13 @@ x-ase-sect-PAT_END
         /// </param>
         public static void Entrypoint(string[] args)
         {
-            ConfgureTaskManagementEngine();
+            ConfigureTaskRepositoryEventHandler(delegate(object sender, TaskEventArgs eventArgs)
+            {
+                EnvManager.WriteLine(
+                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                Console.Out.WriteLine("con: task created");
+
+            });
             var message = BuildMessage(args);
 
             // setup environmentDict

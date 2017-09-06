@@ -1,12 +1,12 @@
 #region using directives
 
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
-using DotnetApp.ProgramSetup;
 using DotnetApp.ProgramSetup.EngineSetups;
+using DotnetAppDev.Tests.ClassLibrary.AseFramework;
 
 #endregion
 
-namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
+namespace DotnetAppDev.Tests.Unittests
 {
     #region using directives
 

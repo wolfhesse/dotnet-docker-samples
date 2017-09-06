@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using ClassLibrary.RabbitMqAdapter.UseCases;
+using DotnetApp.AseFramework.Adapters.RabbitMqAdapter.UseCases;
 using RabbitMQ.Client;
 
 #endregion

@@ -8,6 +8,7 @@ using DotnetApp.AseFramework.Core.TodoComponent.Entities;
 using DotnetApp.AseFramework.Core.TodoComponent.Storage;
 using DotnetApp.ProgramSetup;
 using DotnetApp.ProgramSetup.EngineSetups;
+using DotnetAppDev.Tests.Unittests;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -49,7 +50,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
                 EnvManager.WriteLine(
                     $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
             };
-            TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
+            TaskManagementControllerVariant.TaskRepository = inMemoryTaskRepository;
 
             TaskManagementController.AddTask(new TaskItem("eins").Title);
             Assert.Empty(string.Empty);
@@ -59,14 +60,19 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         ///     The test todo engine and component.
         /// </summary>
         [Fact]
-        public void TestTaskManagementEngine()
+        public void TestModifiedTaskManagementController()
         {
-            ProgramSample.ConfgureTaskManagementEngine();
+            ProgramSample.ConfigureTaskRepositoryEventHandler((sender, args) =>
+            {
+                EnvManager.WriteLine(
+                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                Console.Out.WriteLine("con: task created");
+            });
 
-            TaskManagementEngineSetup.AddTask(new TaskItem("1eins"));
-            TaskManagementEngineSetup.AddTask(new TaskItem("2eins"));
-            TaskManagementEngineSetup.AddTask(new TaskItem("3eins"));
-            TaskManagementEngineSetup.AddTask(new TaskItem("4eins"));
+            TaskManagementControllerVariant.AddTask(new TaskItem("1eins"));
+            TaskManagementControllerVariant.AddTask(new TaskItem("2eins"));
+            TaskManagementControllerVariant.AddTask(new TaskItem("3eins"));
+            TaskManagementControllerVariant.AddTask(new TaskItem("4eins"));
             Assert.Empty(string.Empty);
         }
     }

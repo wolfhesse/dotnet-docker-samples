@@ -19,7 +19,7 @@ namespace DotnetApp.AseFramework.Core
         /// <summary>
         ///     Gets the task repository.
         /// </summary>
-        internal static ITaskRepository TaskRepository { get; set; } = new InMemoryTaskRepository();
+        public static ITaskRepository TaskRepository { get; set; } = new InMemoryTaskRepository();
 
         /// <summary>
         ///     The add task.

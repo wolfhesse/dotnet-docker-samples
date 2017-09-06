@@ -48,28 +48,28 @@ namespace DotnetApp.ProgramSetup
 
         public class AseAuthEngine
         {
-            internal static void rcs1_consumer_auth(AuthContainer auth = null)
+            internal static void Rcs1_consumer_auth(AuthContainer auth = null)
             {
                 const string consumerKey = "ck_862c118d151446ea3690e8e9baeb8bf1c6c8c604";
                 const string consumerSecret = "cs_a3f27722e3267a2eff9d9e11f1f7349022a49eef";
-                fill_auth_container(auth, consumerKey, consumerSecret);
+                Fill_auth_container(auth, consumerKey, consumerSecret);
             }
 
-            internal static void rcs2_consumer_auth(AuthContainer auth = null)
+            internal static void Rcs2_consumer_auth(AuthContainer auth = null)
             {
                 const string consumerKey = "ck_56cf1ec961a9e96398ccc0e60062d42a54c6ed6a";
                 const string consumerSecret = "cs_33162532c283749869b2bed38c997487fe4be7bd";
-                fill_auth_container(auth, consumerKey, consumerSecret);
+                Fill_auth_container(auth, consumerKey, consumerSecret);
             }
 
-            internal static void test_aposites_r1_consumer_auth(AuthContainer auth = null)
+            internal static void Test_aposites_r1_consumer_auth(AuthContainer auth = null)
             {
                 const string consumerKey = "ck_e94c1e01464fea83210ec711eab582d892011d20";
                 const string consumerSecret = "cs_ea4526d2e0e3711057fe9d25eeec20e917284f52";
-                fill_auth_container(auth, consumerKey, consumerSecret);
+                Fill_auth_container(auth, consumerKey, consumerSecret);
             }
 
-            private static void fill_auth_container(AuthContainer auth, string consumerKey, string consumerSecret)
+            private static void Fill_auth_container(AuthContainer auth, string consumerKey, string consumerSecret)
             {
                 if (null == auth) return;
                 auth.Key = consumerKey;
@@ -82,14 +82,14 @@ namespace DotnetApp.ProgramSetup
             public static AuthContainer FnAuthForRcs2()
             {
                 var auth = new AuthContainer();
-                AseAuthEngine.rcs2_consumer_auth(auth);
+                AseAuthEngine.Rcs2_consumer_auth(auth);
                 return auth;
             }
 
             public static AuthContainer FnAuthForTestApoR1()
             {
                 var auth = new AuthContainer();
-                AseAuthEngine.test_aposites_r1_consumer_auth(auth);
+                AseAuthEngine.Test_aposites_r1_consumer_auth(auth);
                 return auth;
             }
 
