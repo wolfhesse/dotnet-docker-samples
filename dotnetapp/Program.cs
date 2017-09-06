@@ -76,7 +76,7 @@ namespace DotnetApp
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
 //                 Task.Run(() =>
-                
+
                 await Task.Run(() =>
                 {
                     var startTs = DateTime.Now;
@@ -91,10 +91,12 @@ namespace DotnetApp
             }
             catch (Exception ex)
             {
+/*
                 var t = FnCreateTweet(ex.Message);
 //                 Task.Run(() =>
                 await Task.Run(() =>
                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
+               */
                 EnvManager.WriteLine(ex.Message);
                 EnvManager.WriteLine("after tweet creating in catch-");
             }
