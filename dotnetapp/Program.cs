@@ -32,12 +32,12 @@ namespace DotnetApp
         private static async void CreateTweetHandler(object sender, AseMessageEventArgs e)
         {
             // create 'tweet' in elasticsearch
-            var t = FnCreateTweet(e.Message);
+            var t = BuildTweet(e.Message);
             await Task.Run(() => EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
             EnvManager.WriteLine(e.Message);
         }
 
-        private static InteropTypes.V1.Tweet FnCreateTweet(string message)
+        private static InteropTypes.V1.Tweet BuildTweet(string message)
         {
             var t = new InteropTypes.V1.Tweet
             {
@@ -61,7 +61,7 @@ namespace DotnetApp
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
                 // since Version 0.1.13 sync ops
-                var t = FnCreateTweet(e.Message);
+                var t = BuildTweet(e.Message);
 //                 Task.Run(() =>
                 await Task.Run(() =>
                 {
@@ -92,7 +92,7 @@ namespace DotnetApp
             catch (Exception ex)
             {
 /*
-                var t = FnCreateTweet(ex.Message);
+                var t = BuildTweet(ex.Message);
 //                 Task.Run(() =>
                 await Task.Run(() =>
                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));

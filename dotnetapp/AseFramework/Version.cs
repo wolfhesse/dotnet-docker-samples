@@ -10,6 +10,6 @@
         /// <summary>
         ///     The version.
         /// </summary>
-        public static string VERSION = "0.1.15.00";
+        public static string VERSION = "0.1.15.03";
     }
 }

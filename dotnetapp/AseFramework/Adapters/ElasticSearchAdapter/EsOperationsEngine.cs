@@ -35,7 +35,7 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         /// </param>
         public static void DumpTweet(InteropTypes.V1.TweetModel obj)
         {
-            Console.WriteLine(
+            EnvManager.WriteLine(
                 // substring() wirft exception, wenn der string zu kurz is!
                 null != obj ? $"dumpTweet: {obj.Id} : {obj.User} // {obj.Value.PadRight(10)}..." : "obj is null");
         }
@@ -71,10 +71,10 @@ namespace DotnetApp.AseFramework.Adapters.ElasticSearchAdapter
         {
             var nodes = new[]
             {
-                new Uri("http://s0.wolfslab.wolfspool.at:9200/")
+//                new Uri("http://s0.wolfslab.wolfspool.at:9200/")
 
                 // new Uri("http://es.wolfspool.chickenkiller.com/")
-                // new Uri("http://10.0.0.100:9200")
+                new Uri("http://10.0.0.100:9200")
             };
 
             var pool = new StaticConnectionPool(nodes);
