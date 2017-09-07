@@ -10,6 +10,6 @@
         /// <summary>
         ///     The version.
         /// </summary>
-        public static string VERSION = "0.1.147.prep";
+        public static string VERSION = "0.1.148.prep";
     }
 }
