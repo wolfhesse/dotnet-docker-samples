@@ -17,7 +17,7 @@ namespace DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup
     /// <summary>
     ///     The ase environment namespace.
     /// </summary>
-    public class AseEnvironmentNamespace
+    public class AseEnvironmentNames
     {
         /// <summary>
         ///     The get data d.
