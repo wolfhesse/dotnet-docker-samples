@@ -1,12 +1,12 @@
-﻿using DotnetApp.AseFramework.Core.TaskManagementComponent.Utilities;
-
-namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
+﻿namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
     #region using directives
 
     using System;
 
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.Core.TodoComponent.Utilities;
+
     using NUnit.Framework;
 
     #endregion

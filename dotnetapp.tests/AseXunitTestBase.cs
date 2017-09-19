@@ -1,17 +1,9 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AseXunitTestBase.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The xuit test base.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace DotnetAppDev.Tests
+﻿namespace DotnetAppDev.Tests
 {
     #region using directives
 
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+
     using Xunit.Abstractions;
 
     #endregion
@@ -24,7 +16,7 @@ namespace DotnetAppDev.Tests
         /// </summary>
         protected string SerializedEnvironmentString;
 
-        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase" /> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {

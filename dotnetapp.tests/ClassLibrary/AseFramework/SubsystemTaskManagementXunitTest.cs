@@ -1,18 +1,25 @@
 #region using directives
 
-using System;
-using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Storage;
-using DotnetAppDev.Tests.Unittests;
-using Xunit;
-using Xunit.Abstractions;
-
 #endregion
 
 namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
+    #region using directives
+
+    using System;
+
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.Core;
+    using DnsLib.AseFramework.Core.TaskManagementComponent.Entities;
+    using DnsLib.AseFramework.Core.TodoComponent.Storage;
+
+    using DotnetAppDev.Tests.Unittests;
+
+    using Xunit;
+    using Xunit.Abstractions;
+
+    #endregion
+
     #region using directives
 
     #endregion
@@ -44,12 +51,13 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         [Fact]
         public void TestModifiedTaskManagementController()
         {
-            ProgramSample.ConfigureTaskRepositoryEventHandler((sender, args) =>
-            {
-                EnvManager.WriteLine(
-                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                Console.Out.WriteLine("con: task created");
-            });
+            ProgramSample.ConfigureTaskRepositoryEventHandler(
+                (sender, args) =>
+                    {
+                        EnvManager.WriteLine(
+                            $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                        Console.Out.WriteLine("con: task created");
+                    });
 
             TaskManagementControllerVariant.AddTask(new TaskItem("1eins"));
             TaskManagementControllerVariant.AddTask(new TaskItem("2eins"));
@@ -66,10 +74,10 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         {
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
-            {
-                EnvManager.WriteLine(
-                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-            };
+                {
+                    EnvManager.WriteLine(
+                        $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                };
             TaskManagementController.TaskRepository = inMemoryTaskRepository;
 
             TaskManagementController.AddTask(new TaskItem("eins").Title);

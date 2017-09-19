@@ -1,12 +1,18 @@
-﻿using System;
-using DotnetApp;
-using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-using Newtonsoft.Json;
-using Xunit;
-using Xunit.Abstractions;
-
-namespace DotnetAppDev.Tests.Unittests
+﻿namespace DotnetAppDev.Tests.Unittests
 {
+    #region using directives
+
+    using System;
+
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+
+    using Newtonsoft.Json;
+
+    using Xunit;
+    using Xunit.Abstractions;
+
+    #endregion
+
     #region using directives
 
     #endregion
@@ -20,32 +26,20 @@ namespace DotnetAppDev.Tests.Unittests
         {
         }
 
-        [Fact]
-        public void TestProgramSampleEntrypoint() => ProgramSample.Entrypoint(null);
-
         /// <summary>
         ///     The test program feature environment.
         /// </summary>
         [Fact]
         public void TestProgramFeatureEnvironment()
         {
-        
-            SerializedEnvironmentString = JsonConvert.SerializeObject(ProgramSample.EnvironmentDict(), Formatting.Indented);
-            Console.Out.WriteLine("SerializedEnvironmentString = {0}", SerializedEnvironmentString);
-            EnvManager.WriteLine(SerializedEnvironmentString);
+            this.SerializedEnvironmentString = JsonConvert.SerializeObject(
+                ProgramSample.EnvironmentDict(),
+                Formatting.Indented);
+            Console.Out.WriteLine("SerializedEnvironmentString = {0}", this.SerializedEnvironmentString);
+            EnvManager.WriteLine(this.SerializedEnvironmentString);
 
             EnvManager_Future_WriteAseDebugMarker();
             EnvManager_Future_WriteTrraceMarker();
-        }
-
-        private static void EnvManager_Future_WriteTrraceMarker()
-        {
-            EnvManager.WriteLine("x-ase-trace-line", "test");
-        }
-
-        private static void EnvManager_Future_WriteAseDebugMarker()
-        {
-            EnvManager.WriteLine("x-ase-debug-line");
         }
 
         /// <summary>
@@ -59,6 +53,22 @@ namespace DotnetAppDev.Tests.Unittests
             Assert.NotEmpty(actual);
 
             // Assert.False(true);
+        }
+
+        [Fact]
+        public void TestProgramSampleEntrypoint()
+        {
+            ProgramSample.Entrypoint(null);
+        }
+
+        private static void EnvManager_Future_WriteAseDebugMarker()
+        {
+            EnvManager.WriteLine("x-ase-debug-line");
+        }
+
+        private static void EnvManager_Future_WriteTrraceMarker()
+        {
+            EnvManager.WriteLine("x-ase-trace-line", "test");
         }
     }
 }

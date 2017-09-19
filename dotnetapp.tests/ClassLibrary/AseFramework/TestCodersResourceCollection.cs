@@ -2,8 +2,6 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
     #region using directives
 
-    using DotnetApp.AseFramework.Models;
-
     using NUnit.Framework;
 
     #endregion

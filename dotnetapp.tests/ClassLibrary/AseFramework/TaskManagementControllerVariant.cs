@@ -1,13 +1,18 @@
 ﻿#region using directives
 
-using System;
-using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
-
 #endregion
 
 namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
+    #region using directives
+
+    using System;
+
+    using DnsLib.AseFramework.Core;
+    using DnsLib.AseFramework.Core.TaskManagementComponent.Entities;
+
+    #endregion
+
     #region using directives
 
     #endregion
@@ -33,8 +38,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         public static void AddTask(TaskItem taskItem)
         {
             // add inception date info
-            var extendetTitle = $"[TaskVariantInception: {InceptionDate}] // " +
-                                taskItem.Title;
+            var extendetTitle = $"[TaskVariantInception: {InceptionDate}] // " + taskItem.Title;
             AddTask(extendetTitle);
         }
     }

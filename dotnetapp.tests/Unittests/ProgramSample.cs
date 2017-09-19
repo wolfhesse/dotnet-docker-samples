@@ -1,20 +1,26 @@
 #region using directives
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
-using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Storage;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Utilities;
-using DotnetApp.ProgramSetup.EngineSetups;
-using Newtonsoft.Json;
-
 #endregion
 
 namespace DotnetAppDev.Tests.Unittests
 {
+    #region using directives
+
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Runtime.InteropServices;
+
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.Core;
+    using DnsLib.AseFramework.Core.TodoComponent.Storage;
+    using DnsLib.AseFramework.Core.TodoComponent.Utilities;
+    using DnsLib.ProgramSetup.EngineSetups;
+
+    using Newtonsoft.Json;
+
+    #endregion
+
     #region using directives
 
     #endregion
@@ -32,7 +38,7 @@ namespace DotnetAppDev.Tests.Unittests
         public static void ConfigureTaskRepositoryEventHandler(
             InMemoryTaskRepository.TaskAddedEventHandler inMemoryTaskRepositoryOnEvTaskAdded)
         {
-// todo move EvTaskAdded to Engine
+            // todo move EvTaskAdded to Engine
             var inMemoryTaskRepository = new InMemoryTaskRepository();
             inMemoryTaskRepository.EvTaskAdded += inMemoryTaskRepositoryOnEvTaskAdded;
             TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
@@ -46,12 +52,13 @@ namespace DotnetAppDev.Tests.Unittests
         /// </param>
         public static void Entrypoint(string[] args)
         {
-            ConfigureTaskRepositoryEventHandler(delegate(object sender, TaskEventArgs eventArgs)
-            {
-                EnvManager.WriteLine(
-                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                Console.Out.WriteLine("con: task created");
-            });
+            ConfigureTaskRepositoryEventHandler(
+                delegate(object sender, TaskEventArgs eventArgs)
+                    {
+                        EnvManager.WriteLine(
+                            $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                        Console.Out.WriteLine("con: task created");
+                    });
             var message = BuildMessage(args);
 
             // setup environmentDict
@@ -83,11 +90,11 @@ namespace DotnetAppDev.Tests.Unittests
         public static Dictionary<string, string> EnvironmentDict()
         {
             return new Dictionary<string, string>
-            {
-                ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-            };
+                       {
+                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+                       };
         }
 
         /// <summary>
@@ -262,7 +269,6 @@ x-ase-sect-PAT_END
                 + $"\t flgEins   : \t {environmentDict["eins"]}" + Environment.NewLine
                 + $"\t flgZwo    : \t {environmentDict["zwo"]}");
         }
-
 
         /// <summary>
         ///     The write line.

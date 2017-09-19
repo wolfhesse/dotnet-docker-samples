@@ -2,8 +2,6 @@
 {
     #region using directives
 
-    using DotnetApp.AseFramework.AbstractArchitecture.Definitions;
-
     using NUnit.Framework;
 
     #endregion

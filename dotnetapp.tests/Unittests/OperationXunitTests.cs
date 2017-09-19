@@ -1,13 +1,13 @@
-﻿using System;
-
-namespace DotnetAppDev.Tests.Unittests
+﻿namespace DotnetAppDev.Tests.Unittests
 {
     #region using directives
 
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DotnetApp.AseFramework.Adapters.ElasticSearchAdapter;
-    using DotnetApp.AseFramework.Controllers;
-    using DotnetApp.AseFramework.Models;
+    using System;
+
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.Adapters.ElasticSearchAdapter;
+    using DnsLib.AseFramework.Controllers;
+    using DnsLib.AseFramework.Models;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -18,9 +18,10 @@ namespace DotnetAppDev.Tests.Unittests
     /// <summary>
     ///     The operation xunit tests.
     /// </summary>
-    public class OperationXunitTests :AseXunitTestBase
+    public class OperationXunitTests : AseXunitTestBase
     {
-        public OperationXunitTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
+        public OperationXunitTests(ITestOutputHelper testOutputHelper)
+            : base(testOutputHelper)
         {
         }
 
