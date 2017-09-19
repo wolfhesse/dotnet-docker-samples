@@ -1,8 +1,4 @@
-﻿#region using directives
-
-#endregion
-
-namespace DotnetApp
+﻿namespace DotnetApp
 {
     #region using directives
 

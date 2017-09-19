@@ -1,7 +1,3 @@
-#region using directives
-
-#endregion
-
 namespace DotnetAppDev.Tests.Unittests
 {
     #region using directives

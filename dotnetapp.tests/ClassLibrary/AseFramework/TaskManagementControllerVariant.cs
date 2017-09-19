@@ -1,8 +1,4 @@
-﻿#region using directives
-
-#endregion
-
-namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
+﻿namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
     #region using directives
 
