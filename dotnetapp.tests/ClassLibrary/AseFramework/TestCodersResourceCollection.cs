@@ -2,6 +2,8 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
 {
     #region using directives
 
+    using DnsLib.AseFramework.DataSources;
+
     using NUnit.Framework;
 
     #endregion
@@ -17,7 +19,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         [Test]
         public void TestLength()
         {
-            Assert.AreEqual(1, new CodersResourceCollection().ResourceList.Count);
+            Assert.AreEqual(1, CodersResourceCollection.GetProgrammerResourcesList().Count);
         }
     }
 }

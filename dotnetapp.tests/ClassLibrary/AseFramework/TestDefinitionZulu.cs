@@ -2,6 +2,8 @@
 {
     #region using directives
 
+    using DnsLib.AseFramework.AbstractArchitecture.Definitions;
+
     using NUnit.Framework;
 
     #endregion
