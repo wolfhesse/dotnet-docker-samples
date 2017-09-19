@@ -3,7 +3,7 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.csproj ./
-RUN dotnet restore
+RUN dotnet restore -s http://nuget.base.wolfspool.at -s https://api.nuget.org/v3/index.json
 
 # copy and build everything else
 COPY . ./
