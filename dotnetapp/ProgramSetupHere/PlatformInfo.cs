@@ -1,18 +1,18 @@
-#region using directives
-
-using System.IO;
-using DotnetApp.AseFramework.Authentication;
-using WooCommerceNET;
-
-#endregion
-
-namespace DotnetApp.ProgramSetup
+namespace DnsLib.ProgramSetupHere
 {
+    #region using directives
+
     using System;
+    using System.IO;
 
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AseFramework.Authentication;
 
-    internal static class PlatformInfo
+    using WooCommerceNET;
+
+    #endregion
+
+    public static class PlatformInfo
     {
         internal static string ApiEndpointProducts => "wp-json/wc/v1/products";
 
@@ -111,7 +111,7 @@ namespace DotnetApp.ProgramSetup
                 return restApi;
             }
 
-            internal static RestAPI RestApiDefault(string restApiEndpoint = null, AuthContainer auth = null)
+            public static RestAPI RestApiDefault(string restApiEndpoint = null, AuthContainer auth = null)
             {
                 restApiEndpoint = restApiEndpoint ?? Rcs2RestApiEndpoint;
                 auth = auth ?? FnAuthForRcs2();

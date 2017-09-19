@@ -1,13 +1,13 @@
-﻿#region using directives
-
-using DotnetApp.AseFramework.Core;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Entities;
-using DotnetApp.AseFramework.Core.TaskManagementComponent.Storage;
-
-#endregion
-
-namespace DotnetApp.ProgramSetup.EngineSetups
+﻿namespace DnsLib.ProgramSetupHere.EngineSetups
 {
+    #region using directives
+
+    using DnsLib.AseFramework.Core;
+    using DnsLib.AseFramework.Core.TaskManagementComponent.Entities;
+    using DnsLib.AseFramework.Core.TodoComponent.Storage;
+
+    #endregion
+
     #region using directives
 
     #endregion
