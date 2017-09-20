@@ -16,6 +16,7 @@ namespace DotnetApp.Tests.Unittests
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     using DotnetApp.Tests.ClassLibrary;
+    using DotnetApp.Tests.IntegrationTests;
 
     using Newtonsoft.Json;
 
