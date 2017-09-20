@@ -101,7 +101,7 @@ namespace DotnetApp
 
                 // add product
                 var p = new Product { name = e.Message, description = "demo produkt" };
-                var restApi = PlatformInfo.WooStuffAuthAdapter.RestApiDefault();
+                var restApi = WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
                 // Task.Run(() =>

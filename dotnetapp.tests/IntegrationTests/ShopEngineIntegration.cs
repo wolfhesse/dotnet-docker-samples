@@ -38,7 +38,7 @@ namespace DotnetApp.Tests.IntegrationTests
         {
             var shop1 = new ShopEngine(
                 new WooCommerceAdapter(),
-                new WooCommerceConfiguration(PlatformInfo.WooStuffAuthAdapter.FnRestApiRcs2()));
+                new WooCommerceConfiguration(WooStuffAuthAdapter.FnRestApiRcs2()));
             shop1.AddProduct(
                 new Product
                     {
