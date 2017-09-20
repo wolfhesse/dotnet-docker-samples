@@ -16,7 +16,7 @@ namespace DotnetApp.Tests.IntegrationTests
 
     using DnsLib.AseFramework.Core.ShopComponent;
     using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
-    using DnsLib.AseFramework.ProgramSetup;
+    using DnsLib.AseFramework.Lib.ProgramSetup;
 
     using NUnit.Framework;
 

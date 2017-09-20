@@ -12,8 +12,8 @@ namespace DotnetApp.Tests.IntegrationTests
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.TaskManagementComponent.Entities;
     using DnsLib.AseFramework.Core.TodoComponent;
+    using DnsLib.AseFramework.Core.TodoComponent.Entities;
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
 
     using DotnetApp.Tests.ClassLibrary;
@@ -52,10 +52,10 @@ namespace DotnetApp.Tests.IntegrationTests
                         Console.Out.WriteLine("con: task created");
                     });
 
-            TaskManagementControllerVariant.AddTask(new TaskItem("1eins"));
-            TaskManagementControllerVariant.AddTask(new TaskItem("2eins"));
-            TaskManagementControllerVariant.AddTask(new TaskItem("3eins"));
-            TaskManagementControllerVariant.AddTask(new TaskItem("4eins"));
+            TaskManagementControllerVariant.AddTask(new TodoItem("1eins"));
+            TaskManagementControllerVariant.AddTask(new TodoItem("2eins"));
+            TaskManagementControllerVariant.AddTask(new TodoItem("3eins"));
+            TaskManagementControllerVariant.AddTask(new TodoItem("4eins"));
             Assert.Empty(string.Empty);
         }
 
@@ -73,7 +73,7 @@ namespace DotnetApp.Tests.IntegrationTests
                 };
             TaskManagementController.TaskRepository = inMemoryTaskRepository;
 
-            TaskManagementController.AddTask(new TaskItem("eins").Title);
+            TaskManagementController.AddTask(new TodoItem("eins").Title);
             Assert.Empty(string.Empty);
         }
     }

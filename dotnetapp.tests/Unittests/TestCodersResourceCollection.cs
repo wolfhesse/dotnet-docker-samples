@@ -11,7 +11,7 @@ namespace DotnetApp.Tests.Unittests
 {
     #region using directives
 
-    using DnsLib.AseFramework.DataSources;
+    using DnsLib.AseFramework.Lib.DataSources;
 
     using NUnit.Framework;
 

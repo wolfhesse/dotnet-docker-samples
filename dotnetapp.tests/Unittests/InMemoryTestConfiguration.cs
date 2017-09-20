@@ -12,7 +12,7 @@ namespace DotnetApp.Tests.Unittests
     #region using directives
 
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
-    using DnsLib.AseFramework.ProgramSetup.EngineSetups;
+    using DnsLib.AseFramework.Lib.ProgramSetup.EngineSetups;
 
     #endregion
 

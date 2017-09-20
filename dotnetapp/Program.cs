@@ -21,8 +21,8 @@ namespace DotnetApp
     using DnsLib.AseFramework.Core.RabbitMqAdapter;
     using DnsLib.AseFramework.Core.ShopComponent;
     using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
+    using DnsLib.AseFramework.Lib.ProgramSetup;
     using DnsLib.AseFramework.Models;
-    using DnsLib.ProgramSetupHere;
 
     using WooCommerceNET.WooCommerce.v2;
 
@@ -45,7 +45,7 @@ namespace DotnetApp
 
         /// <summary>The build tweet.</summary>
         /// <param name="message">The message.</param>
-        /// <returns>The <see cref="TweetModel"/>.</returns>
+        /// <returns>The <see cref="InteropTypes.TweetModel"/>.</returns>
         private static InteropTypes.TweetModel BuildTweet(string message)
         {
             var t = new InteropTypes.TweetModel
