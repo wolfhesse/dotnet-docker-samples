@@ -1,13 +1,18 @@
-﻿namespace DnsLib.ProgramSetupHere.EngineSetups
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DatesEngineSetup.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The dates engine setup.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DnsLib.ProgramSetupHere.EngineSetups
 {
     #region using directives
 
     using DnsLib.AseFramework.AbstractArchitecture;
     using DnsLib.AseFramework.Models;
-
-    #endregion
-
-    #region using directives
 
     #endregion
 
@@ -26,15 +31,9 @@
         /// </summary>
         public readonly IView View;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="DatesEngineSetup" /> class.
-        /// </summary>
-        /// <param name="datesContainerModel">
-        ///     The dates container model.
-        /// </param>
-        /// <param name="view">
-        ///     The view.
-        /// </param>
+        /// <summary>Initializes a new instance of the <see cref="DatesEngineSetup"/> class.</summary>
+        /// <param name="datesContainerModel">The dates container model.</param>
+        /// <param name="view">The view.</param>
         public DatesEngineSetup(DatesContainerModel datesContainerModel, IView view)
         {
             this.DatesContainerModel = datesContainerModel;

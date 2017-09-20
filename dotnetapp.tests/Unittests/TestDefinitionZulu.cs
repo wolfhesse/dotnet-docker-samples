@@ -1,4 +1,13 @@
-﻿namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TestDefinitionZulu.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The test definition zulu.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.Unittests
 {
     #region using directives
 

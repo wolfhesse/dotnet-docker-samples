@@ -1,7 +1,14 @@
-namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
-{
-    #region using directives
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SubsystemTaskManagementXunitTest.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   Defines the SubsystemTaskManagementXunitTest type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
+namespace DotnetApp.Tests.IntegrationTests
+{
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
@@ -9,20 +16,10 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
     using DnsLib.AseFramework.Core.TodoComponent;
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
 
-    using DotnetAppDev.Tests.Unittests;
+    using DotnetApp.Tests.ClassLibrary;
 
     using Xunit;
     using Xunit.Abstractions;
-
-    #endregion
-
-    #region using directives
-
-    #endregion
-
-    #region using directives
-
-    #endregion
 
     /// <inheritdoc />
     /// <summary>
@@ -33,7 +30,7 @@ namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the
-        ///     <see cref="T:DotnetAppDev.Tests.ClassLibrary.AseFramework.SubsystemTaskManagementXunitTest" /> class.
+        ///     <see cref="T:DotnetApp.Tests.IntegrationTests.SubsystemTaskManagementXunitTest" /> class.
         /// </summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)

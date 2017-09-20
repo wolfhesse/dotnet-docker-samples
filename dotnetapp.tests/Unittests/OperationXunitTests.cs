@@ -1,4 +1,13 @@
-﻿namespace DotnetAppDev.Tests.Unittests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OperationXunitTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   Defines the OperationXunitTests type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.Unittests
 {
     #region using directives
 
@@ -8,6 +17,8 @@
     using DnsLib.AseFramework.Controllers;
     using DnsLib.AseFramework.Core.ElasticSearchAdapter;
     using DnsLib.AseFramework.Models;
+
+    using DotnetApp.Tests.ClassLibrary;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -20,6 +31,8 @@
     /// </summary>
     public class OperationXunitTests : AseXunitTestBase
     {
+        /// <summary>Initializes a new instance of the <see cref="OperationXunitTests"/> class.</summary>
+        /// <param name="testOutputHelper">The test output helper.</param>
         public OperationXunitTests(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {

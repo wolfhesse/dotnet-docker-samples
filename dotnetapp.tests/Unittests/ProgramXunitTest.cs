@@ -1,10 +1,21 @@
-﻿namespace DotnetAppDev.Tests.Unittests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ProgramXunitTest.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   Defines the ProgramXunitTest type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.Unittests
 {
     #region using directives
 
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+
+    using DotnetApp.Tests.ClassLibrary;
 
     using Newtonsoft.Json;
 
@@ -13,14 +24,12 @@
 
     #endregion
 
-    #region using directives
-
-    #endregion
-
     /// <inheritdoc />
     /// <summary>The program xunit test.</summary>
     public class ProgramXunitTest : AseXunitTestBase
     {
+        /// <summary>Initializes a new instance of the <see cref="ProgramXunitTest"/> class.</summary>
+        /// <param name="testOutputHelper">The test output helper.</param>
         public ProgramXunitTest(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
@@ -55,17 +64,20 @@
             // Assert.False(true);
         }
 
+        /// <summary>The test program sample entrypoint.</summary>
         [Fact]
         public void TestProgramSampleEntrypoint()
         {
             ProgramSample.Entrypoint(null);
         }
 
+        /// <summary>The env manager_ future_ write ase debug marker.</summary>
         private static void EnvManager_Future_WriteAseDebugMarker()
         {
             EnvManager.WriteLine("x-ase-debug-line");
         }
 
+        /// <summary>The env manager_ future_ write trrace marker.</summary>
         private static void EnvManager_Future_WriteTrraceMarker()
         {
             EnvManager.WriteLine("x-ase-trace-line", "test");

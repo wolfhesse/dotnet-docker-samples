@@ -1,4 +1,13 @@
-﻿namespace DotnetAppDev.Tests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AseXunitTestBase.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The xuit test base.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 
@@ -16,7 +25,7 @@
         /// </summary>
         protected string SerializedEnvironmentString;
 
-        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {

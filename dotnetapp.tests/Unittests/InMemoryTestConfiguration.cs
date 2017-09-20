@@ -1,13 +1,18 @@
-namespace DotnetAppDev.Tests.Unittests
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="InMemoryTestConfiguration.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The in memory test configuration.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.Unittests
 {
     #region using directives
 
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
     using DnsLib.AseFramework.ProgramSetup.EngineSetups;
-
-    #endregion
-
-    #region using directives
 
     #endregion
 

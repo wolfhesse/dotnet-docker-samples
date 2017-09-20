@@ -1,4 +1,13 @@
-namespace DotnetAppDev.Tests.ClassLibrary.AseFramework
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TestCodersResourceCollection.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The test coders resource collection.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.Unittests
 {
     #region using directives
 

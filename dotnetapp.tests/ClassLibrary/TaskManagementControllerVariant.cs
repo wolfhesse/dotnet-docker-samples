@@ -1,41 +1,36 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TaskManagementEngineSetup.cs" company="">
+// <copyright file="TaskManagementControllerVariant.cs" company="">
 //   
 // </copyright>
 // <summary>
-//   The todo engine. (Todo Provider)
+//   Defines the TaskManagementControllerVariant type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DnsLib.ProgramSetupHere.EngineSetups
+namespace DotnetApp.Tests.ClassLibrary
 {
-    #region using directives
+    using System;
 
     using DnsLib.AseFramework.Core.TaskManagementComponent.Entities;
     using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.AseFramework.Core.TodoComponent.Storage;
 
-    #endregion
-
+    /// <inheritdoc />
     /// <summary>
     ///     The todo engine. (Todo Provider)
     /// </summary>
-    public class TaskManagementEngineSetup
+    public class TaskManagementControllerVariant : TaskManagementController
     {
-        /// <summary>Sets the task repository.</summary>
-        public static ITaskRepository TaskRepository
-        {
-            set => TaskManagementController.TaskRepository = value;
-        }
+        /// <summary>The inception date.</summary>
+        private static readonly string InceptionDate = DateTimeOffset.Now.ToString();
 
         /// <summary>The add task.</summary>
         /// <param>The task repository.<name>taskRepository</name></param>
         /// <param name="taskItem">The todo task.</param>
         public static void AddTask(TaskItem taskItem)
         {
-            TaskManagementController.AddTask(taskItem.Title);
-
-            // UseCases.AddTask.Execute(TaskManagementController.TaskRepository, taskItem);
+            // add inception date info
+            var extendetTitle = $"[TaskVariantInception: {InceptionDate}] // " + taskItem.Title;
+            AddTask(extendetTitle);
         }
     }
 }

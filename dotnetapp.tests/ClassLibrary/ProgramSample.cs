@@ -1,4 +1,13 @@
-namespace DotnetAppDev.Tests.Unittests
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ProgramSample.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The program.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 
@@ -17,10 +26,6 @@ namespace DotnetAppDev.Tests.Unittests
 
     #endregion
 
-    #region using directives
-
-    #endregion
-
     /// <summary>
     ///     The program.
     /// </summary>
@@ -31,6 +36,8 @@ namespace DotnetAppDev.Tests.Unittests
         /// </summary>
         private static string _serializedEnvironment;
 
+        /// <summary>The configure task repository event handler.</summary>
+        /// <param name="inMemoryTaskRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
         public static void ConfigureTaskRepositoryEventHandler(
             InMemoryTaskRepository.TaskAddedEventHandler inMemoryTaskRepositoryOnEvTaskAdded)
         {
@@ -40,12 +47,8 @@ namespace DotnetAppDev.Tests.Unittests
             TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
         }
 
-        /// <summary>
-        ///     The main.
-        /// </summary>
-        /// <param name="args">
-        ///     The args.
-        /// </param>
+        /// <summary>The main.</summary>
+        /// <param name="args">The args.</param>
         public static void Entrypoint(string[] args)
         {
             ConfigureTaskRepositoryEventHandler(
@@ -93,15 +96,9 @@ namespace DotnetAppDev.Tests.Unittests
                        };
         }
 
-        /// <summary>
-        ///     The get bot.
-        /// </summary>
-        /// <param name="message">
-        ///     The message.
-        /// </param>
-        /// <returns>
-        ///     The <see cref="string" />.
-        /// </returns>
+        /// <summary>The get bot.</summary>
+        /// <param name="message">The message.</param>
+        /// <returns>The <see cref="string"/>.</returns>
         public static string GetBot(string message)
         {
             var bot = GetBotHeader(message);
@@ -170,15 +167,9 @@ x-ase-sect-PAT_END
             return _serializedEnvironment;
         }
 
-        /// <summary>
-        ///     The build message.
-        /// </summary>
-        /// <param name="args">
-        ///     The args.
-        /// </param>
-        /// <returns>
-        ///     The <see cref="string" />.
-        /// </returns>
+        /// <summary>The build message.</summary>
+        /// <param name="args">The args.</param>
+        /// <returns>The <see cref="string"/>.</returns>
         private static string BuildMessage(string[] args)
         {
             // data
@@ -189,15 +180,9 @@ x-ase-sect-PAT_END
             return message;
         }
 
-        /// <summary>
-        ///     The get bot header.
-        /// </summary>
-        /// <param name="message">
-        ///     The message.
-        /// </param>
-        /// <returns>
-        ///     The <see cref="string" />.
-        /// </returns>
+        /// <summary>The get bot header.</summary>
+        /// <param name="message">The message.</param>
+        /// <returns>The <see cref="string"/>.</returns>
         private static string GetBotHeader(string message)
         {
             var bot = $"\n        {message}";
@@ -206,18 +191,10 @@ x-ase-sect-PAT_END
             return bot;
         }
 
-        /// <summary>
-        ///     The get environment variable with options.
-        /// </summary>
-        /// <param name="variable">
-        ///     The variable.
-        /// </param>
-        /// <param name="defaultValue">
-        ///     The default value.
-        /// </param>
-        /// <returns>
-        ///     The <see cref="string" />.
-        /// </returns>
+        /// <summary>The get environment variable with options.</summary>
+        /// <param name="variable">The variable.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <returns>The <see cref="string"/>.</returns>
         private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
         {
             var flgDebug = Environment.GetEnvironmentVariable(variable) ?? defaultValue;
@@ -225,6 +202,7 @@ x-ase-sect-PAT_END
             return flgDebug;
         }
 
+        /// <summary>The task builder add set.</summary>
         private static void TaskBuilderAddSet()
         {
             TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
@@ -244,12 +222,8 @@ x-ase-sect-PAT_END
             TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
         }
 
-        /// <summary>
-        ///     The write environment description.
-        /// </summary>
-        /// <param name="environmentDict">
-        ///     The environment dict.
-        /// </param>
+        /// <summary>The write environment description.</summary>
+        /// <param name="environmentDict">The environment dict.</param>
         [SuppressMessage(
             "StyleCop.CSharp.DocumentationRules",
             "SA1650:ElementDocumentationMustBeSpelledCorrectly",
@@ -266,12 +240,8 @@ x-ase-sect-PAT_END
                 + $"\t flgZwo    : \t {environmentDict["zwo"]}");
         }
 
-        /// <summary>
-        ///     The write line.
-        /// </summary>
-        /// <param name="s">
-        ///     The s.
-        /// </param>
+        /// <summary>The write line.</summary>
+        /// <param name="s">The s.</param>
         [SuppressMessage(
             "StyleCop.CSharp.LayoutRules",
             "SA1503:CurlyBracketsMustNotBeOmitted",
