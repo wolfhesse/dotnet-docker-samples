@@ -20,7 +20,7 @@ namespace DotnetApp.Tests.ClassLibrary
     using DnsLib.AseFramework.Core.TodoComponent;
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
     using DnsLib.AseFramework.Core.TodoComponent.Utilities;
-    using DnsLib.AseFramework.Lib.ProgramSetup.EngineSetups;
+    using DnsLib.AseFramework.Lib.EngineSetups;
 
     using Newtonsoft.Json;
 

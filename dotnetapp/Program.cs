@@ -21,7 +21,6 @@ namespace DotnetApp
     using DnsLib.AseFramework.Core.RabbitMqAdapter;
     using DnsLib.AseFramework.Core.ShopComponent;
     using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
-    using DnsLib.AseFramework.Lib.ProgramSetup;
     using DnsLib.AseFramework.Models;
 
     using WooCommerceNET.WooCommerce.v2;

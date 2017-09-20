@@ -11,7 +11,7 @@ namespace DotnetApp.Tests.Unittests
 {
     using System;
 
-    using DnsLib.AseFramework.Lib.ProgramSetup;
+    using DnsLib.AseFramework.Core.ShopComponent;
 
     using NUnit.Framework;
 
