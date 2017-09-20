@@ -8,10 +8,10 @@ namespace DotnetAppDev.Tests.Unittests
     using System.Runtime.InteropServices;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core;
+    using DnsLib.AseFramework.Core.TodoComponent;
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
     using DnsLib.AseFramework.Core.TodoComponent.Utilities;
-    using DnsLib.ProgramSetup.EngineSetups;
+    using DnsLib.AseFramework.ProgramSetup.EngineSetups;
 
     using Newtonsoft.Json;
 

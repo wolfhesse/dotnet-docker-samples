@@ -5,8 +5,8 @@
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Adapters.ElasticSearchAdapter;
     using DnsLib.AseFramework.Controllers;
+    using DnsLib.AseFramework.Core.ElasticSearchAdapter;
     using DnsLib.AseFramework.Models;
 
     using Xunit;

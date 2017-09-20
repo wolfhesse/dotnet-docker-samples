@@ -8,13 +8,13 @@
 
     using DnsLib.AseFramework.AbstractArchitecture.Definitions;
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Adapters.ElasticSearchAdapter;
-    using DnsLib.AseFramework.Adapters.RabbitMqAdapter;
+    using DnsLib.AseFramework.Core.ElasticSearchAdapter;
+    using DnsLib.AseFramework.Core.RabbitMqAdapter;
     using DnsLib.AseFramework.Core.ShopComponent;
     using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
     using DnsLib.AseFramework.Models;
     using DnsLib.ProgramSetupHere;
-
+    
     using WooCommerceNET.WooCommerce.v2;
 
     #endregion
