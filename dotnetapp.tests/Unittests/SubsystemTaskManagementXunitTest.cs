@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Unittests
 {
     using System;
 
@@ -17,6 +17,7 @@ namespace DotnetApp.Tests.IntegrationTests
     using DnsLib.AseFramework.Core.TodoComponent.Storage;
 
     using DotnetApp.Tests.ClassLibrary;
+    using DotnetApp.Tests.IntegrationTests;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -30,7 +31,7 @@ namespace DotnetApp.Tests.IntegrationTests
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the
-        ///     <see cref="T:DotnetApp.Tests.IntegrationTests.SubsystemTaskManagementXunitTest" /> class.
+        ///     <see cref="T:DotnetApp.Tests.Unittests.SubsystemTaskManagementXunitTest" /> class.
         /// </summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)
@@ -51,6 +52,9 @@ namespace DotnetApp.Tests.IntegrationTests
                             $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                         Console.Out.WriteLine("con: task created");
                     });
+
+            // todo wechsel gegen EfPlugin
+            TaskManagementController.TaskRepository = new InMemoryTaskRepository();
 
             TaskManagementControllerVariant.AddTask(new TodoItem("1eins"));
             TaskManagementControllerVariant.AddTask(new TodoItem("2eins"));

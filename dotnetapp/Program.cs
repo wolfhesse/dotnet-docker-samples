@@ -15,6 +15,8 @@ namespace DotnetApp
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using DescriptionUseCase;
+
     using DnsLib.AseFramework.AbstractArchitecture.Definitions;
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using DnsLib.AseFramework.Core.ElasticSearchAdapter;
@@ -55,6 +57,8 @@ namespace DotnetApp
                             User = typeof(Program).ToString(),
                             Value = message
                         };
+//            var addDescription = new AddDescription(t.Value);
+//            Console.Out.WriteLine("addDescription = {0}", addDescription.DescriptionRecord.Id);
             return t;
         }
 
@@ -67,6 +71,7 @@ namespace DotnetApp
             var t = BuildTweet(aseMessageEventArgs.Message);
             await Task.Run(() => EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
             EnvManager.WriteLine(aseMessageEventArgs.Message);
+            new AddDescription(aseMessageEventArgs.Message);
         }
 
         /// <summary>The process product created message.</summary>
@@ -74,14 +79,14 @@ namespace DotnetApp
         /// <param name="eventArgs">The event args.</param>
         private static async void ProcessProductCreatedMessage(object sender, AseMessageEventArgs eventArgs)
         {
-            await Receive_EvMessageAsync(sender, eventArgs);
+            await ReceiveEvMessageAsync(sender, eventArgs);
         }
 
         /// <summary>The receive_ ev message async.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The e.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        private static async Task Receive_EvMessageAsync(object sender, AseMessageEventArgs e)
+        private static async Task ReceiveEvMessageAsync(object sender, AseMessageEventArgs e)
         {
             try
             {
@@ -115,7 +120,7 @@ namespace DotnetApp
                                 + $"\tduration: {duration.TotalSeconds} s");
                         });
                 EnvManager.WriteLine("after product creation");
-
+                new AddDescription("product :" + p.description);
                 // }
             }
             catch (Exception ex)
