@@ -1,3 +1,8 @@
+
+build provoke
+
+---
+
 # .NET Core Development Sample
 
 This .NET Core Docker sample demonstrates how to use Docker in your .NET Core development process. The sample works with both Linux and Windows containers.
