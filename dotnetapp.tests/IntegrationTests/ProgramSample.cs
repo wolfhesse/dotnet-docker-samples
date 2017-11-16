@@ -20,7 +20,7 @@ namespace DotnetApp.Tests.IntegrationTests
     using DnsLib.AseFramework.Core.Components.TodoComponent;
     using DnsLib.AseFramework.Core.Components.TodoComponent.Storage;
     using DnsLib.AseFramework.Core.Components.TodoComponent.Utilities;
-    using DnsLib.AseFramework.Lib.EngineSetups;
+    using DnsLib.AseFramework.Lib.Core;
 
     using Newtonsoft.Json;
 
