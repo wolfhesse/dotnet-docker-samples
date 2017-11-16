@@ -12,9 +12,9 @@ namespace DotnetApp.Tests.Unittests
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.AseFramework.Core.TodoComponent.Entities;
-    using DnsLib.AseFramework.Core.TodoComponent.Storage;
+    using DnsLib.AseFramework.Core.Components.TodoComponent;
+    using DnsLib.AseFramework.Core.Components.TodoComponent.Entities;
+    using DnsLib.AseFramework.Core.Components.TodoComponent.Storage;
 
     using DotnetApp.Tests.ClassLibrary;
     using DotnetApp.Tests.IntegrationTests;

@@ -17,9 +17,9 @@ namespace DotnetApp.Tests.IntegrationTests
     using System.Runtime.InteropServices;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.AseFramework.Core.TodoComponent.Storage;
-    using DnsLib.AseFramework.Core.TodoComponent.Utilities;
+    using DnsLib.AseFramework.Core.Components.TodoComponent;
+    using DnsLib.AseFramework.Core.Components.TodoComponent.Storage;
+    using DnsLib.AseFramework.Core.Components.TodoComponent.Utilities;
     using DnsLib.AseFramework.Lib.EngineSetups;
 
     using Newtonsoft.Json;

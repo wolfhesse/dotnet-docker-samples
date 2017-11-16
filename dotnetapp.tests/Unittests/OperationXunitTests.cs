@@ -14,7 +14,7 @@ namespace DotnetApp.Tests.Unittests
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.ElasticSearchAdapter;
+    using DnsLib.AseFramework.Core.Adapters.ElasticSearchAdapter;
     using DnsLib.AseFramework.Lib.Controllers;
     using DnsLib.AseFramework.Models;
 

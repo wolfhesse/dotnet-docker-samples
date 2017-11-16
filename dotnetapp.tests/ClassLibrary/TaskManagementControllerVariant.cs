@@ -11,8 +11,8 @@ namespace DotnetApp.Tests.ClassLibrary
 {
     using System;
 
-    using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.AseFramework.Core.TodoComponent.Entities;
+    using DnsLib.AseFramework.Core.Components.TodoComponent;
+    using DnsLib.AseFramework.Core.Components.TodoComponent.Entities;
 
     /// <inheritdoc />
     /// <summary>
@@ -29,8 +29,8 @@ namespace DotnetApp.Tests.ClassLibrary
         public static void AddTask(TodoItem TodoItem)
         {
             // add inception date info
-            var extendetTitle = $"[TaskVariantInception: {InceptionDate}] // " + TodoItem.Title;
-            AddTask(extendetTitle);
+            var extendedTitle = $"[TaskVariantInception: {InceptionDate}] // " + TodoItem.Title;
+            AddTask(extendedTitle);
         }
     }
 }

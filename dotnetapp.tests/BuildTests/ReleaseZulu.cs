@@ -19,10 +19,10 @@ namespace DotnetApp.Tests.BuildTests
     {
         /// <summary>The t c 1.</summary>
         [TestMethod]
-        public void TC1()
+        public void Tc1()
         {
             var version = VersionInfo.Version;
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(version);
+            Assert.IsNotNull(version);
         }
     }
 }
