@@ -26,6 +26,8 @@ namespace DotnetApp
 
     using WooCommerceNET.WooCommerce.v2;
 
+    using Version = DnsLib.AseFramework.Lib.Version;
+
     #endregion
 
     /// <summary>The program.</summary>
@@ -105,7 +107,7 @@ namespace DotnetApp
                 EnvManager.WriteLine("after tweet creation");
 
                 // add product
-                var p = new Product { name = e.Message, description = "demo produkt" };
+                var p = new Product { name = e.Message, description = "demo produkt fuer V "+ Version.VERSION };
                 var restApi = WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
