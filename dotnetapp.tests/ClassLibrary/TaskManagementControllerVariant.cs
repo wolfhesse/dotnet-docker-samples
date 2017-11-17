@@ -25,11 +25,11 @@ namespace DotnetApp.Tests.ClassLibrary
 
         /// <summary>The add task.</summary>
         /// <param>The task repository.<name>taskRepository</name></param>
-        /// <param name="TodoItem">The todo task.</param>
-        public static void AddTask(TodoItem TodoItem)
+        /// <param name="todoItem">The todo task.</param>
+        public static void AddTask(TodoItem todoItem)
         {
             // add inception date info
-            var extendedTitle = $"[TaskVariantInception: {InceptionDate}] // " + TodoItem.Title;
+            var extendedTitle = $"[TaskVariantInception: {InceptionDate}] // " + todoItem.Title;
             AddTask(extendedTitle);
         }
     }

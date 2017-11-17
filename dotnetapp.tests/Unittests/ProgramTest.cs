@@ -18,15 +18,22 @@ namespace DotnetApp.Tests.Unittests
     using DotnetApp.Tests.ClassLibrary;
     using DotnetApp.Tests.IntegrationTests;
 
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using Newtonsoft.Json;
+
+    using NUnit.Framework;
 
     using Xunit;
     using Xunit.Abstractions;
+
+    using Assert = Xunit.Assert;
 
     #endregion
 
     /// <inheritdoc />
     /// <summary>The program xunit test.</summary>
+    [TestClass]
     public class ProgramTest : AseXunitTestBase
     {
         /// <summary>Initializes a new instance of the <see cref="ProgramTest"/> class.</summary>
@@ -36,10 +43,12 @@ namespace DotnetApp.Tests.Unittests
         {
         }
 
+        public ProgramTest() { }
+        
         /// <summary>
         ///     The test program feature environment.
         /// </summary>
-        [Fact]
+        [TestMethod]
         public void TestProgramFeatureEnvironment()
         {
             this.SerializedEnvironmentString = JsonConvert.SerializeObject(
@@ -48,14 +57,14 @@ namespace DotnetApp.Tests.Unittests
             Console.Out.WriteLine("SerializedEnvironmentString = {0}", this.SerializedEnvironmentString);
             EnvManager.WriteLine(this.SerializedEnvironmentString);
 
-            EnvManager_Future_WriteAseDebugMarker();
-            EnvManager_Future_WriteTrraceMarker();
+            EnvManagerFutureWriteAseDebugMarker();
+            EnvManagerFutureWriteTrraceMarker();
         }
 
         /// <summary>
         ///     The test program feature write serialized environment.
         /// </summary>
-        [Fact]
+        [TestMethod]
         public void TestProgramFeatureWriteSerializedEnvironment()
         {
             // it does it and it returns the result
@@ -66,20 +75,20 @@ namespace DotnetApp.Tests.Unittests
         }
 
         /// <summary>The test program sample entrypoint.</summary>
-        [Fact]
+        [TestMethod]
         public void TestProgramSampleEntrypoint()
         {
             ProgramSample.Entrypoint(null);
         }
 
         /// <summary>The env manager_ future_ write ase debug marker.</summary>
-        private static void EnvManager_Future_WriteAseDebugMarker()
+        private static void EnvManagerFutureWriteAseDebugMarker()
         {
             EnvManager.WriteLine("x-ase-debug-line");
         }
 
         /// <summary>The env manager_ future_ write trrace marker.</summary>
-        private static void EnvManager_Future_WriteTrraceMarker()
+        private static void EnvManagerFutureWriteTrraceMarker()
         {
             EnvManager.WriteLine("x-ase-trace-line", "test");
         }

@@ -34,7 +34,7 @@ namespace DotnetApp.Tests.IntegrationTests
         /// <summary>
         ///     The serialized environment.
         /// </summary>
-        private static string _serializedEnvironment;
+        private static string serializedEnvironment;
 
         /// <summary>The configure task repository event handler.</summary>
         /// <param name="inMemoryTaskRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
@@ -163,8 +163,8 @@ x-ase-sect-PAT_END
             env.Add("TS_NOW", DateTimeOffset.Now.ToString());
             env.Add("PAT_RECORD", ".here");
 
-            _serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
-            return _serializedEnvironment;
+            serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
+            return serializedEnvironment;
         }
 
         /// <summary>The build message.</summary>
