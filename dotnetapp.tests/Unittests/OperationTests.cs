@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OperationXunitTests.cs" company="">
+// <copyright file="OperationTests.cs" company="">
 //   
 // </copyright>
 // <summary>
-//   Defines the OperationXunitTests type.
+//   Defines the OperationTests type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -29,11 +29,11 @@ namespace DotnetApp.Tests.Unittests
     /// <summary>
     ///     The operation xunit tests.
     /// </summary>
-    public class OperationXunitTests : AseXunitTestBase
+    public class OperationTests : AseXunitTestBase
     {
-        /// <summary>Initializes a new instance of the <see cref="OperationXunitTests"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="OperationTests"/> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
-        public OperationXunitTests(ITestOutputHelper testOutputHelper)
+        public OperationTests(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -41,7 +41,7 @@ namespace DotnetApp.Tests.Unittests
         /// <summary>
         ///     The data d result txt f.
         /// </summary>
-        public static string DataDResultTxtF { get; } = EnvManager.AseDataDWin + "/OperationXunitTests.res.txt";
+        public static string DataDResultTxtF { get; } = EnvManager.AseDataDWin + "/OperationTests.res.txt";
 
         // [Fact]
         // public void ApiTestS13K()

@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ProgramXunitTest.cs" company="">
+// <copyright file="ProgramTest.cs" company="">
 //   
 // </copyright>
 // <summary>
-//   Defines the ProgramXunitTest type.
+//   Defines the ProgramTest type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -27,11 +27,11 @@ namespace DotnetApp.Tests.Unittests
 
     /// <inheritdoc />
     /// <summary>The program xunit test.</summary>
-    public class ProgramXunitTest : AseXunitTestBase
+    public class ProgramTest : AseXunitTestBase
     {
-        /// <summary>Initializes a new instance of the <see cref="ProgramXunitTest"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ProgramTest"/> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
-        public ProgramXunitTest(ITestOutputHelper testOutputHelper)
+        public ProgramTest(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
