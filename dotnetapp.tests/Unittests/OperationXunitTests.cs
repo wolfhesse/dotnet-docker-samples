@@ -14,9 +14,9 @@ namespace DotnetApp.Tests.Unittests
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Adapters.ElasticSearchAdapter;
+    using DnsLib.AseFramework.Core.Components;
+    using DnsLib.AseFramework.Core.Engines;
     using DnsLib.AseFramework.Lib.Controllers;
-    using DnsLib.AseFramework.Models;
 
     using DotnetApp.Tests.ClassLibrary;
 
@@ -77,8 +77,7 @@ namespace DotnetApp.Tests.Unittests
         public void MkidxTest()
         {
             // EnvManager.DefaultOut = new EnvironmentOutputAdapter(this.Oh);
-            var sampleTweet = SampleDataProvider.GetSampleTweet();
-            var tweets = EsOperationsEngine.EsWriteAndReadbackTweet(sampleTweet);
+            var tweets = EsOperationsEngine.EsWriteAndDupTweet(EnvironmentManager.GetSampleTweet());
             Assert.Equal(tweets[0].User, tweets[1].User);
         }
 

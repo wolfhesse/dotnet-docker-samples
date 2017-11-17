@@ -17,16 +17,14 @@ namespace DotnetApp
 
     using DnsLib.AseFramework.AbstractArchitecture.Definitions;
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Adapters.ElasticSearchAdapter;
-    using DnsLib.AseFramework.Core.Adapters.RabbitMqAdapter;
+    using DnsLib.AseFramework.Core.Components;
     using DnsLib.AseFramework.Core.Components.ShopComponent;
     using DnsLib.AseFramework.Core.Components.ShopComponent.AseWooCommerceNET;
     using DnsLib.AseFramework.Core.Engines;
-    using DnsLib.AseFramework.Models;
 
     using WooCommerceNET.WooCommerce.v2;
 
-    using Version = DnsLib.AseFramework.Lib.Version;
+    using Version = DnsLib.AseFramework.Lib.VersionInfo;
 
     #endregion
 
@@ -71,7 +69,7 @@ namespace DotnetApp
         {
             // create 'tweet' in elasticsearch
             var t = BuildTweet(aseMessageEventArgs.Message);
-            await Task.Run(() => EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
+            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet));
             EnvManager.WriteLine(aseMessageEventArgs.Message);
 
             // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
@@ -101,7 +99,7 @@ namespace DotnetApp
                 await Task.Run(
                     () =>
                         {
-                            EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet);
+                            EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet);
                             EnvManager.WriteLine(e.Message);
                         });
                 EnvManager.WriteLine("after tweet creation");
