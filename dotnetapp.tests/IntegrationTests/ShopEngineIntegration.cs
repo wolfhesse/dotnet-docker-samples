@@ -18,22 +18,25 @@ namespace DotnetApp.Tests.IntegrationTests
     using DnsLib.AseFramework.Core.Components.ShopComponent.AseWooCommerceNET;
     using DnsLib.AseFramework.Core.Engines;
 
-    using NUnit.Framework;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    
 
     using WooCommerceNET.WooCommerce.v2;
 
-    using Xunit;
-
-    using Assert = Xunit.Assert;
+    
 
     #endregion
 
     /// <summary>The shop engine integration.</summary>
+    /// 
+    /// 
+    [TestClass]
     public class ShopEngineIntegration
     {
         /// <summary>The create shop engine setup.</summary>
-        [Fact]
-        [MaxTime(10000)]
+        [TestMethod()]
+//        [MaxTime(10000)]
         public void CreateShopEngineSetup()
         {
             var shop1 = new ShopEngine(
@@ -62,7 +65,7 @@ namespace DotnetApp.Tests.IntegrationTests
                         description = $"{DateTimeOffset.Now} description",
                         short_description = $"{DateTimeOffset.Now} short desc"
                     });
-            Assert.NotNull(shop1);
+            Assert.IsNotNull(shop1);
         }
     }
 }
