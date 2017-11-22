@@ -18,6 +18,7 @@ namespace DotnetApp
     using DnsLib.AseFramework.AbstractArchitecture.Definitions;
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using DnsLib.AseFramework.Core.Components;
+    using DnsLib.AseFramework.Core.Components.Operations;
     using DnsLib.AseFramework.Core.Components.ShopComponent;
     using DnsLib.AseFramework.Core.Components.ShopComponent.AseWooCommerceNET;
     using DnsLib.AseFramework.Core.Engines;
