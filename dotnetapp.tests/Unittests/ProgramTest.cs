@@ -22,12 +22,9 @@ namespace DotnetApp.Tests.Unittests
 
     using Newtonsoft.Json;
 
-    using NUnit.Framework;
-
-    using Xunit;
     using Xunit.Abstractions;
 
-    using Assert = Xunit.Assert;
+    
 
     #endregion
 
@@ -69,7 +66,7 @@ namespace DotnetApp.Tests.Unittests
         {
             // it does it and it returns the result
             var actual = ProgramSample.PreparedSerializedEnvironmentSingleLine();
-            Assert.NotEmpty(actual);
+            Assert.IsNotNull(actual);
 
             // Assert.False(true);
         }

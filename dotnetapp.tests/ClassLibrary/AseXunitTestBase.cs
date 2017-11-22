@@ -11,8 +11,6 @@ namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 
-    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-
     using Xunit.Abstractions;
 
     #endregion
@@ -29,7 +27,7 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
-            EnvManager.TestOutputHelper = testOutputHelper;
+//            EnvManager.TestOutputHelper = testOutputHelper;
         }
 
         protected AseXunitTestBase()
