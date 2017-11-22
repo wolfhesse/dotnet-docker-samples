@@ -14,7 +14,7 @@ namespace DotnetApp.Tests.Unittests
   using System;
 
   using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-  using DnsLib.AseFramework.Core.Components;
+  using DnsLib.AseFramework.Core.Components.Operations;
   using DnsLib.AseFramework.Core.Engines;
   using DnsLib.AseFramework.Lib.Controllers;
 

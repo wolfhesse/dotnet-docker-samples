@@ -17,7 +17,6 @@ namespace DotnetApp
 
     using DnsLib.AseFramework.AbstractArchitecture.Definitions;
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Components;
     using DnsLib.AseFramework.Core.Components.Operations;
     using DnsLib.AseFramework.Core.Components.ShopComponent;
     using DnsLib.AseFramework.Core.Components.ShopComponent.AseWooCommerceNET;
@@ -70,7 +69,7 @@ namespace DotnetApp
         {
             // create 'tweet' in elasticsearch
             var t = BuildTweet(aseMessageEventArgs.Message);
-            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet));
+            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet)).ConfigureAwait(false);
             EnvManager.WriteLine(aseMessageEventArgs.Message);
 
             // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
