@@ -14,9 +14,7 @@ namespace DotnetApp.Tests.Unittests
   using System;
 
   using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-  using DnsLib.AseFramework.Core.Components.Operations;
-  using DnsLib.AseFramework.Core.Engines;
-  using DnsLib.AseFramework.Lib.Controllers;
+  using DnsLib.AseFramework.Core.EngineOneLab;
 
   using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -46,14 +44,7 @@ namespace DotnetApp.Tests.Unittests
     // S13000Operation.fetch_s13000(RequestUriString, DataDResultTxtF);
     // }
 
-    /// <summary>
-    ///   The get_stmt_test.
-    /// </summary>
-    [TestMethod]
-    public void GetStmtTest()
-    {
-      Assert.IsNotNull(S13000Operation.GetStatement1());
-    }
+
 
     /// <summary>
     ///   The mkidx_test.

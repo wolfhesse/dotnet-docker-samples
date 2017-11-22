@@ -11,14 +11,14 @@ namespace DotnetApp.Tests.ClassLibrary
 {
     using System;
 
-    using DnsLib.AseFramework.Core.Components.TodoComponent;
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Entities;
+    using DnsLib.AseFramework.Core.TodoComponent;
+    using DnsLib.Operations;
 
     /// <inheritdoc />
     /// <summary>
     ///     The todo engine. (Todo Provider)
     /// </summary>
-    public class TaskManagementControllerVariant : TaskManagementController
+    public class TaskManagementControllerVariant : InMemoryTodoEngine
     {
         /// <summary>The inception date.</summary>
         private static readonly string InceptionDate = DateTimeOffset.Now.ToString();
@@ -26,11 +26,11 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <summary>The add task.</summary>
         /// <param>The task repository.<name>taskRepository</name></param>
         /// <param name="todoItem">The todo task.</param>
-        public static void AddTask(TodoItem todoItem)
+        public static void AddTodo(TodoItem todoItem)
         {
             // add inception date info
             var extendedTitle = $"[TaskVariantInception: {InceptionDate}] // " + todoItem.Title;
-            AddTask(extendedTitle);
+            AddTodo(extendedTitle);
         }
     }
 }

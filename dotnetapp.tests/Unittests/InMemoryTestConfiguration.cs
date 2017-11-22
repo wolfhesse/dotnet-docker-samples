@@ -9,10 +9,11 @@
 
 namespace DotnetApp.Tests.Unittests
 {
-    #region using directives
+    using DnsLib.AseFramework.Core.TodoComponent;
+    using DnsLib.FactoryFloor;
+    using DnsLib.Operations;
 
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Storage;
-    using DnsLib.AseFramework.Lib.Core;
+    #region using directives
 
     #endregion
 
@@ -24,11 +25,11 @@ namespace DotnetApp.Tests.Unittests
         /// <summary>
         ///     The todo engine.
         /// </summary>
-        public static TaskManagementEngineSetup TaskManagementEngineSetup = new TaskManagementEngineSetup();
+        public static InMemoryTodoEngine TaskManagementEngineSetup = new InMemoryTodoEngine();
 
         /// <summary>
         ///     The task repository.
         /// </summary>
-        public static ITaskRepository TaskRepository = new InMemoryTaskRepository();
+        public static AbstractTodoRepository TaskRepository = new InMemoryTodoRepository();
     }
 }

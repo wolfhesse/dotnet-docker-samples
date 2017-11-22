@@ -17,10 +17,9 @@ namespace DotnetApp.Tests.IntegrationTests
     using System.Runtime.InteropServices;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Components.TodoComponent;
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Storage;
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Utilities;
-    using DnsLib.AseFramework.Lib.Core;
+    using DnsLib.AseFramework.Core.TodoComponent;
+    using DnsLib.FactoryFloor;
+    using DnsLib.Operations;
 
     using Newtonsoft.Json;
 
@@ -37,14 +36,14 @@ namespace DotnetApp.Tests.IntegrationTests
         private static string serializedEnvironment;
 
         /// <summary>The configure task repository event handler.</summary>
-        /// <param name="inMemoryTaskRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
+        /// <param name="InMemoryTodoRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
         public static void ConfigureTaskRepositoryEventHandler(
-            InMemoryTaskRepository.TaskAddedEventHandler inMemoryTaskRepositoryOnEvTaskAdded)
+            InMemoryTodoRepository.TodoAddedEventHandler InMemoryTodoRepositoryOnEvTaskAdded)
         {
+            InMemoryTodoEngine.Init();
             // todo move EvTaskAdded to Engine
-            var inMemoryTaskRepository = new InMemoryTaskRepository();
-            inMemoryTaskRepository.EvTaskAdded += inMemoryTaskRepositoryOnEvTaskAdded;
-            TaskManagementEngineSetup.TaskRepository = inMemoryTaskRepository;
+            TodoController.TodoRepository.EvTodoAdded += InMemoryTodoRepositoryOnEvTaskAdded;
+            
         }
 
         /// <summary>The main.</summary>
@@ -52,7 +51,7 @@ namespace DotnetApp.Tests.IntegrationTests
         public static void Entrypoint(string[] args)
         {
             ConfigureTaskRepositoryEventHandler(
-                delegate(object sender, TaskEventArgs eventArgs)
+                delegate(object sender, TodoEventArgs eventArgs)
                     {
                         EnvManager.WriteLine(
                             $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
@@ -72,7 +71,7 @@ namespace DotnetApp.Tests.IntegrationTests
             TaskBuilderAddSet();
             TaskBuilderAddSet();
             TaskBuilderAddSet();
-            var taskRepositoryCount = TaskManagementController.TaskRepository.Count;
+            var taskRepositoryCount = TodoController.TodoRepository.Count;
             Console.Out.WriteLine("taskRepositoryCount = {0}", taskRepositoryCount);
         }
 
@@ -205,22 +204,21 @@ x-ase-sect-PAT_END
         /// <summary>The task builder add set.</summary>
         private static void TaskBuilderAddSet()
         {
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-            TaskManagementEngineSetup.AddTask(TaskBuilder.BuildTask("1eins" + DateTimeOffset.Now.UtcTicks));
-        }
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).ToString());
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).ToString());
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
+            }
 
         /// <summary>The write environment description.</summary>
         /// <param name="environmentDict">The environment dict.</param>

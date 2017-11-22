@@ -15,16 +15,16 @@ namespace DotnetApp
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using DnsLib;
     using DnsLib.AseFramework.AbstractArchitecture.Definitions;
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Components.Operations;
-    using DnsLib.AseFramework.Core.Components.ShopComponent;
-    using DnsLib.AseFramework.Core.Components.ShopComponent.AseWooCommerceNET;
-    using DnsLib.AseFramework.Core.Engines;
+    using DnsLib.AseFramework.Core.EngineOneLab;
+    using DnsLib.AseFramework.Core.ShopComponent;
+    using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
+    using DnsLib.Operations;
 
     using WooCommerceNET.WooCommerce.v2;
 
-    using Version = DnsLib.AseFramework.Lib.VersionInfo;
 
     #endregion
 
@@ -40,7 +40,7 @@ namespace DotnetApp
         {
             var mqOperationsEngine = new MqOperationsEngine();
             mqOperationsEngine.Configure(new List<string> { "s0.wolfslab.wolfspool.at" });
-            mqOperationsEngine.ConfigureMessageHandlers(ProcessProductCreatedMessage, CreateTweetHandler);
+            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(ProcessProductCreatedMessage, CreateTweetHandler);
         }
 
         /// <summary>The build tweet.</summary>
@@ -106,7 +106,7 @@ namespace DotnetApp
                 EnvManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
-                var p = new Product { name = e.Message, description = "demo produkt fuer V " + Version.VERSION };
+                var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
                 var restApi = WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 

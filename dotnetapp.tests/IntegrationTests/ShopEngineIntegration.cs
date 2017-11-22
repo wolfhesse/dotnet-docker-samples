@@ -14,9 +14,9 @@ namespace DotnetApp.Tests.IntegrationTests
     using System;
     using System.Collections.Generic;
 
-    using DnsLib.AseFramework.Core.Components.ShopComponent;
-    using DnsLib.AseFramework.Core.Components.ShopComponent.AseWooCommerceNET;
-    using DnsLib.AseFramework.Core.Engines;
+    using DnsLib.AseFramework.Core.ShopComponent;
+    using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
+    using DnsLib.Operations;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

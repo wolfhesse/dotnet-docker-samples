@@ -14,7 +14,7 @@ namespace DotnetApp.Tests.Unittests
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Utilities;
+    using DnsLib.AseFramework.Core.TodoComponent;
 
     using NUnit.Framework;
 
@@ -32,7 +32,7 @@ namespace DotnetApp.Tests.Unittests
         [Test]
         public void TestTaskCreatedAt()
         {
-            var task = TaskBuilder.BuildTask("sample");
+            var task = TodoBuilder.BuildTodo("sample");
             EnvManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
             EnvManager.WriteLine(task);
             Assert.IsNotNull(task.CreatedAt);

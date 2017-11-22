@@ -12,9 +12,9 @@ namespace DotnetApp.Tests.Unittests
     using System;
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.Components.TodoComponent;
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Entities;
-    using DnsLib.AseFramework.Core.Components.TodoComponent.Storage;
+    using DnsLib.AseFramework.Core.TodoComponent;
+    using DnsLib.FactoryFloor;
+    using DnsLib.Operations;
 
     using DotnetApp.Tests.ClassLibrary;
     using DotnetApp.Tests.IntegrationTests;
@@ -54,12 +54,12 @@ namespace DotnetApp.Tests.Unittests
                     });
 
             // todo wechsel gegen EfPlugin
-            TaskManagementController.TaskRepository = new InMemoryTaskRepository();
+            InMemoryTodoEngine.Init();
 
-            TaskManagementControllerVariant.AddTask(new TodoItem("1eins"));
-            TaskManagementControllerVariant.AddTask(new TodoItem("2eins"));
-            TaskManagementControllerVariant.AddTask(new TodoItem("3eins"));
-            TaskManagementControllerVariant.AddTask(new TodoItem("4eins"));
+            TaskManagementControllerVariant.AddTodo(new TodoItem("1eins"));
+            TaskManagementControllerVariant.AddTodo(new TodoItem("2eins"));
+            TaskManagementControllerVariant.AddTodo(new TodoItem("3eins"));
+            TaskManagementControllerVariant.AddTodo(new TodoItem("4eins"));
             Assert.Empty(string.Empty);
         }
 
@@ -69,15 +69,14 @@ namespace DotnetApp.Tests.Unittests
         [Fact]
         public void TestTaskManagementController()
         {
-            var inMemoryTaskRepository = new InMemoryTaskRepository();
-            inMemoryTaskRepository.EvTaskAdded += (sender, args) =>
+            InMemoryTodoEngine.Init();
+            TodoController.TodoRepository.EvTodoAdded += (sender, args) =>
                 {
                     EnvManager.WriteLine(
                         $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                 };
-            TaskManagementController.TaskRepository = inMemoryTaskRepository;
 
-            TaskManagementController.AddTask(new TodoItem("eins").Title);
+            TodoController.AddTodo(new TodoItem("eins").Title);
             Assert.Empty(string.Empty);
         }
     }
