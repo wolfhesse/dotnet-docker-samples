@@ -18,7 +18,6 @@ namespace DotnetApp.Tests.IntegrationTests
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.FactoryFloor;
     using DnsLib.Operations;
 
     using Newtonsoft.Json;
@@ -38,12 +37,12 @@ namespace DotnetApp.Tests.IntegrationTests
         /// <summary>The configure task repository event handler.</summary>
         /// <param name="InMemoryTodoRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
         public static void ConfigureTaskRepositoryEventHandler(
-            InMemoryTodoRepository.TodoAddedEventHandler InMemoryTodoRepositoryOnEvTaskAdded)
+            AbstractTodoRepository.TodoAddedEventHandler InMemoryTodoRepositoryOnEvTaskAdded)
         {
             InMemoryTodoEngine.Init();
+
             // todo move EvTaskAdded to Engine
             TodoController.TodoRepository.EvTodoAdded += InMemoryTodoRepositoryOnEvTaskAdded;
-            
         }
 
         /// <summary>The main.</summary>
@@ -218,7 +217,7 @@ x-ase-sect-PAT_END
             TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
             TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
             TodoController.AddTodo(TodoBuilder.BuildTodo("1eins" + DateTimeOffset.Now.UtcTicks).Title);
-            }
+        }
 
         /// <summary>The write environment description.</summary>
         /// <param name="environmentDict">The environment dict.</param>

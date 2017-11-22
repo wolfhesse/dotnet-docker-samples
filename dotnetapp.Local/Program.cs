@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp
+namespace DotnetApp.Local
 {
     #region using directives
 
@@ -28,8 +28,9 @@ namespace DotnetApp
     #endregion
 
     /// <summary>The program.</summary>
-    public class Program 
-    {  /// <summary>The tweets counter.</summary>
+    public class Program
+    {
+        /// <summary>The tweets counter.</summary>
         public static int TweetsCounter = 0;
 
         /// <summary>The main.</summary>
@@ -50,13 +51,13 @@ namespace DotnetApp
         private static InteropTypes.TweetModel BuildTweet(string message)
         {
             var t = new InteropTypes.TweetModel
-            {
-                PostDateTime = DateTimeOffset.Now.DateTime,
+                        {
+                            PostDateTime = DateTimeOffset.Now.DateTime,
 
-                // Id = tweets++,
-                User = typeof(Program).ToString(),
-                Value = message
-            };
+                            // Id = tweets++,
+                            User = typeof(Program).ToString(),
+                            Value = message
+                        };
 
             // var addDescription = new AddDescription(t.Value);
             // Console.Out.WriteLine("addDescription = {0}", addDescription.DescriptionRecord.Id);
@@ -100,11 +101,11 @@ namespace DotnetApp
                 // Task.Run(() =>
                 await Task.Run(
                     () =>
-                    {
-                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet);
-                        EnvManager.WriteLine(e.Message);
-                        EnvManager.WriteLine("after tweet creation [inTask]");
-                    });
+                        {
+                            EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet);
+                            EnvManager.WriteLine(e.Message);
+                            EnvManager.WriteLine("after tweet creation [inTask]");
+                        });
                 EnvManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
@@ -115,15 +116,15 @@ namespace DotnetApp
                 // Task.Run(() =>
                 await Task.Run(
                     () =>
-                    {
-                        var startTs = DateTime.Now;
-                        var p2 = shopEngine.AddProduct(p);
-                        var duration = DateTime.Now - startTs;
-                        EnvManager.WriteLine(
-                            $"product created: {p2.name}" + $"{Environment.NewLine}"
-                            + $"\tduration: {duration.TotalSeconds} s");
-                        EnvManager.WriteLine("after product creation [inTask]");
-                    });
+                        {
+                            var startTs = DateTime.Now;
+                            var p2 = shopEngine.AddProduct(p);
+                            var duration = DateTime.Now - startTs;
+                            EnvManager.WriteLine(
+                                $"product created: {p2.name}" + $"{Environment.NewLine}"
+                                + $"\tduration: {duration.TotalSeconds} s");
+                            EnvManager.WriteLine("after product creation [inTask]");
+                        });
                 EnvManager.WriteLine("after product creation");
 
                 // ## rq: DescriptionUseCase ##     new AddDescription("product :" + p.description);

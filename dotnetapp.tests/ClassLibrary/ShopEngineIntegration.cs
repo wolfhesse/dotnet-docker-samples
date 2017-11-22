@@ -20,23 +20,18 @@ namespace DotnetApp.Tests.IntegrationTests
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    
-
     using WooCommerceNET.WooCommerce.v2;
-
-    
 
     #endregion
 
     /// <summary>The shop engine integration.</summary>
-    /// 
-    /// 
     [TestClass]
     public class ShopEngineIntegration
     {
         /// <summary>The create shop engine setup.</summary>
-        [TestMethod()]
-//        [MaxTime(10000)]
+        [TestMethod]
+
+        // [MaxTime(10000)]
         public void CreateShopEngineSetup()
         {
             var shop1 = new ShopEngine(

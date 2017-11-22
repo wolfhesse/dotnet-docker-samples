@@ -8,6 +8,12 @@
     <Platforms>AnyCPU;x64</Platforms>
 
     <RootNamespace>DotnetApp.Tests</RootNamespace>
+
+    <ApplicationIcon />
+
+    <OutputType>Library</OutputType>
+
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

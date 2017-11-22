@@ -13,7 +13,6 @@ namespace DotnetApp.Tests.Unittests
 
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.FactoryFloor;
     using DnsLib.Operations;
 
     using DotnetApp.Tests.ClassLibrary;

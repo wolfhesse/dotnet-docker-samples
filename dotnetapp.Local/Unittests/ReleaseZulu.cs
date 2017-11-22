@@ -7,30 +7,30 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Local.Unittests
 {
     using DnsLib;
 
-    using DotnetApp.Tests.IntegrationTests;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>The release zulu.</summary>
-    [TestClass]
+    [TestFixture]
     public class ReleaseZulu
     {
         /// <summary>The t c 1.</summary>
-        [TestMethod]
+        [Test]
         public void Tc1()
         {
             var version = VersionInfo.Version;
             Assert.IsNotNull(version);
         }
 
-        [TestMethod]
-        public void TestProgramSampleEntrypoint()
+        /// <summary>The test program.</summary>
+        [Test]
+        public void TestProgram()
         {
-            ProgramSample.Entrypoint(null);
+            Program.Main(null);
+            Assert.IsTrue(true);
         }
     }
 }

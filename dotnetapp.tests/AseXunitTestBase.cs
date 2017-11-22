@@ -27,12 +27,12 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
-//            EnvManager.TestOutputHelper = testOutputHelper;
+            // EnvManager.TestOutputHelper = testOutputHelper;
         }
 
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
         protected AseXunitTestBase()
         {
-            
         }
     }
 }

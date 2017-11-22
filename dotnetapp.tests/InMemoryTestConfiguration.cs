@@ -13,10 +13,6 @@ namespace DotnetApp.Tests.Unittests
     using DnsLib.FactoryFloor;
     using DnsLib.Operations;
 
-    #region using directives
-
-    #endregion
-
     /// <summary>
     ///     The in memory test configuration.
     /// </summary>

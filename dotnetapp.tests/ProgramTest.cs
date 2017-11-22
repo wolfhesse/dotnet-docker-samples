@@ -24,8 +24,6 @@ namespace DotnetApp.Tests.Unittests
 
     using Xunit.Abstractions;
 
-    
-
     #endregion
 
     /// <inheritdoc />
@@ -40,8 +38,11 @@ namespace DotnetApp.Tests.Unittests
         {
         }
 
-        public ProgramTest() { }
-        
+        /// <summary>Initializes a new instance of the <see cref="ProgramTest"/> class.</summary>
+        public ProgramTest()
+        {
+        }
+
         /// <summary>
         ///     The test program feature environment.
         /// </summary>
