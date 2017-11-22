@@ -23,7 +23,7 @@ RUN dotnet restore -s http://nuget.base.wolfspool.at -s https://api.nuget.org/v3
 COPY . .
 RUN dotnet publish -c release -o published 
 
-FROM microsoft/dotnet:2.0.0-runtime
+FROM microsoft/dotnet-nightly:2.1-runtime-alpine
 
 WORKDIR /app  
 COPY --from=builder /root/src/app/dotnetapp/published .
