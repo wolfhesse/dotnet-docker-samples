@@ -63,6 +63,7 @@ namespace DotnetApp.Tests.Unittests
     {
       // EnvManager.DefaultOut = new EnvironmentOutputAdapter(this.Oh);
       var tweets = EsOperationsEngine.EsWriteAndDupTweet(EnvironmentManager.GetSampleTweet());
+      Console.WriteLine(tweets[1]);
       Assert.AreEqual(tweets[0].User, tweets[1].User);
     }
 
