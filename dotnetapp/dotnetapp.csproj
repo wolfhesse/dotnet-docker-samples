@@ -6,6 +6,9 @@
     <StartupObject>DotnetApp.Program</StartupObject>
     <Platforms>AnyCPU;x64</Platforms>
     <RootNamespace>DotnetApp</RootNamespace>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <FileVersion>1.0.0.2</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
