@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.BuildTests
+namespace DotnetApp.Tests
 {
     using DnsLib;
 

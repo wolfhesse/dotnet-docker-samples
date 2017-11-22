@@ -101,11 +101,12 @@ namespace DotnetApp
                         {
                             EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet);
                             EnvManager.WriteLine(e.Message);
+                            EnvManager.WriteLine("after tweet creation [inTask]");
                         });
-                EnvManager.WriteLine("after tweet creation");
+                EnvManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
-                var p = new Product { name = e.Message, description = "demo produkt fuer V "+ Version.VERSION };
+                var p = new Product { name = e.Message, description = "demo produkt fuer V " + Version.VERSION };
                 var restApi = WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
@@ -119,6 +120,7 @@ namespace DotnetApp
                             EnvManager.WriteLine(
                                 $"product created: {p2.name}" + $"{Environment.NewLine}"
                                 + $"\tduration: {duration.TotalSeconds} s");
+                            EnvManager.WriteLine("after product creation [inTask]");
                         });
                 EnvManager.WriteLine("after product creation");
 
