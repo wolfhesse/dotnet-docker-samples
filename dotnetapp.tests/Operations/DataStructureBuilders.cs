@@ -24,7 +24,7 @@ namespace DotnetApp.Tests
     ///     The task creation.
     /// </summary>
     [TestFixture]
-    public class TaskCreationNUnitTest
+    public class DataStructureBuilders
     {
         /// <summary>
         ///     The test task created at.
