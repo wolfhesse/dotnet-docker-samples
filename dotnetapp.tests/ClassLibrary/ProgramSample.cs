@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 

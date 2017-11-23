@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.Unittests
+namespace DotnetApp.Tests
 {
     using System;
 

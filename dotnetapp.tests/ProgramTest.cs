@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.Unittests
+namespace DotnetApp.Tests
 {
     #region using directives
 
@@ -16,7 +16,6 @@ namespace DotnetApp.Tests.Unittests
     using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
 
     using DotnetApp.Tests.ClassLibrary;
-    using DotnetApp.Tests.IntegrationTests;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

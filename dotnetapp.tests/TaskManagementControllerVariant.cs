@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.ClassLibrary
+namespace DotnetApp.Tests
 {
     using System;
 

@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.Unittests
+namespace DotnetApp.Tests
 {
     using System;
 
@@ -16,7 +16,6 @@ namespace DotnetApp.Tests.Unittests
     using DnsLib.Operations;
 
     using DotnetApp.Tests.ClassLibrary;
-    using DotnetApp.Tests.IntegrationTests;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -30,7 +29,7 @@ namespace DotnetApp.Tests.Unittests
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the
-        ///     <see cref="T:DotnetApp.Tests.Unittests.SubsystemTaskManagementXunitTest" /> class.
+        ///     <see cref="T:DotnetApp.Tests.SubsystemTaskManagementXunitTest" /> class.
         /// </summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)

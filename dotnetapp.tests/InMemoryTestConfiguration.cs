@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests.Unittests
+namespace DotnetApp.Tests
 {
     using DnsLib.AseFramework.Core.TodoComponent;
     using DnsLib.FactoryFloor;
