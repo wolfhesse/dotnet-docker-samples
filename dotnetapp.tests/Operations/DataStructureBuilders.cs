@@ -24,18 +24,20 @@ namespace DotnetApp.Tests
     ///     The task creation.
     /// </summary>
     [TestFixture]
-    public class TaskCreationNUnitTest
+    public class DataStructureBuilders
     {
         /// <summary>
         ///     The test task created at.
         /// </summary>
         [Test]
-        public void TestTaskCreatedAt()
+        public void TestTodoBuilder()
         {
-            var task = TodoBuilder.BuildTodo("sample");
+            var item = TodoBuilder.BuildTodo("sample");
+
             EnvManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
-            EnvManager.WriteLine(task);
-            Assert.IsNotNull(task.CreatedAt);
+            EnvManager.WriteLine(item);
+
+            Assert.IsNotNull(item.CreatedAt);
         }
     }
 }
