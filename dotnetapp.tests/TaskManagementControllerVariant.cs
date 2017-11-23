@@ -11,8 +11,8 @@ namespace DotnetApp.Tests
 {
     using System;
 
-    using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.Operations;
+    using DnsLib.FactoryFloor.TodoComponent;
+    using DnsLib.Lab;
 
     /// <inheritdoc />
     /// <summary>

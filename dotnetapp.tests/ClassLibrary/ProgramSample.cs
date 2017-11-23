@@ -16,9 +16,9 @@ namespace DotnetApp.Tests.ClassLibrary
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
 
-    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.Operations;
+    using DnsLib.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.FactoryFloor.TodoComponent;
+    using DnsLib.Lab;
 
     using Newtonsoft.Json;
 

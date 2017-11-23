@@ -11,7 +11,7 @@ namespace DotnetApp.Tests
 {
     #region using directives
 
-    using DnsLib.AseFramework.AbstractArchitecture.Definitions;
+    using DnsLib.AbstractArchitecture.Definitions;
 
     using NUnit.Framework;
 

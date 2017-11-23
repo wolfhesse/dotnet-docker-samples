@@ -11,7 +11,7 @@ namespace DotnetApp.Tests
 {
     using System;
 
-    using DnsLib.AseFramework.Core.ShopComponent;
+    using DnsLib.FactoryFloor.ShopComponent;
 
     using NUnit.Framework;
 

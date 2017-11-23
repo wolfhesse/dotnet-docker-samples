@@ -13,8 +13,8 @@ namespace DotnetApp.Tests
 
     using System;
 
-    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.EngineOneLab;
+    using DnsLib.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.FactoryFloor;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

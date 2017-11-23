@@ -14,8 +14,8 @@ namespace DotnetApp.Tests.ClassLibrary
     using System;
     using System.Collections.Generic;
 
-    using DnsLib.AseFramework.Core.ShopComponent;
-    using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
+    using DnsLib.FactoryFloor.ShopComponent;
+    using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
     using DnsLib.Operations;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;

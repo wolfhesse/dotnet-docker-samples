@@ -13,7 +13,7 @@ namespace DotnetApp.Tests
 
     using System;
 
-    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.AbstractArchitecture.EnvironmentSetup;
 
     using DotnetApp.Tests.ClassLibrary;
 

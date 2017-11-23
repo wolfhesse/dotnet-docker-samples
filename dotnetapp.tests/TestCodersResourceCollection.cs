@@ -11,7 +11,7 @@ namespace DotnetApp.Tests
 {
     #region using directives
 
-    using DnsLib.FactoryFloor;
+    using DnsLib.Lab.Components;
 
     using NUnit.Framework;
 

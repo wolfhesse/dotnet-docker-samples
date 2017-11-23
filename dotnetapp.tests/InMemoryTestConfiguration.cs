@@ -9,9 +9,9 @@
 
 namespace DotnetApp.Tests
 {
-    using DnsLib.AseFramework.Core.TodoComponent;
-    using DnsLib.FactoryFloor;
-    using DnsLib.Operations;
+    using DnsLib.FactoryFloor.TodoComponent;
+    using DnsLib.Lab;
+    using DnsLib.Lab.Components;
 
     /// <summary>
     ///     The in memory test configuration.

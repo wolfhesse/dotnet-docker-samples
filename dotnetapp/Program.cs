@@ -16,11 +16,11 @@ namespace DotnetApp
     using System.Threading.Tasks;
 
     using DnsLib;
-    using DnsLib.AseFramework.AbstractArchitecture.Definitions;
-    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.EngineOneLab;
-    using DnsLib.AseFramework.Core.ShopComponent;
-    using DnsLib.AseFramework.Core.ShopComponent.AseWooCommerceNET;
+    using DnsLib.AbstractArchitecture.Definitions;
+    using DnsLib.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.FactoryFloor;
+    using DnsLib.FactoryFloor.ShopComponent;
+    using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
     using DnsLib.Operations;
 
     using WooCommerceNET.WooCommerce.v2;

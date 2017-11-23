@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.Operations
 {
     #region using directives
 
     using System;
 
-    using DnsLib.AseFramework.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.AseFramework.Core.TodoComponent;
+    using DnsLib.AbstractArchitecture.EnvironmentSetup;
+    using DnsLib.FactoryFloor.TodoComponent;
 
     using NUnit.Framework;
 
@@ -35,7 +35,7 @@ namespace DotnetApp.Tests
             var item = TodoBuilder.BuildTodo("sample");
 
             EnvManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
-            EnvManager.WriteLine(item);
+            EnvManager.WriteLine($"extraCreatorInfo: {item.ExtraCreatorInfo}");
 
             Assert.IsNotNull(item.CreatedAt);
         }
