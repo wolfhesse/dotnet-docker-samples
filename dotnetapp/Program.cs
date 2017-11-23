@@ -38,10 +38,9 @@ namespace DotnetApp
         {
             var mqOperationsEngine = new MqOperationsEngine();
             mqOperationsEngine.Configure(new List<string> { "s0.wolfslab.wolfspool.at" });
-            var engine = mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
+            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
                 ProcessProductCreatedMessage,
-                CreateTweetHandler);
-            engine.Execute(mqOperationsEngine);
+                CreateTweetHandler).Execute(mqOperationsEngine);
         }
 
         /// <summary>The build tweet.</summary>
