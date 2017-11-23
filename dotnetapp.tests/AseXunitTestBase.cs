@@ -7,11 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DotnetAppDev.Tests
+namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 
-    using DotnetApp.AseFramework.AbstractArchitecture.EnvironmentSetup;
     using Xunit.Abstractions;
 
     #endregion
@@ -28,7 +27,12 @@ namespace DotnetAppDev.Tests
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
-            EnvManager.TestOutputHelper = testOutputHelper;
+            // EnvManager.TestOutputHelper = testOutputHelper;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
+        protected AseXunitTestBase()
+        {
         }
     }
 }

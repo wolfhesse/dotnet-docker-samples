@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  dotnetapp.tests:
+    image: dotnetapp.tests
+    build:
+      context: ./dotnetapp.tests
+      dockerfile: Dockerfile
