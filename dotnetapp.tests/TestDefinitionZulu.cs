@@ -29,7 +29,7 @@ namespace DotnetApp.Tests
         [Test]
         public void TheodorDataDTest()
         {
-            Assert.AreEqual($@"c:\data.d", DefinitionZulu.DataD);
+            Assert.AreEqual($@"C:\Users\rogera/data.d", DefinitionZulu.DataD);
         }
     }
 }

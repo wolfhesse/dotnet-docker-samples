@@ -28,7 +28,7 @@ namespace DotnetApp.Tests
         [Test]
         public void TestLength()
         {
-            Assert.AreEqual(1, CodersResourceCollection.GetProgrammerResourcesList().Count);
+            Assert.AreEqual(6, CodersResourceCollection.GetProgrammerResourcesList().Count);
         }
     }
 }
