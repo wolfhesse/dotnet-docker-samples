@@ -101,7 +101,7 @@ namespace DotnetApp
                     () =>
                     {
                         EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet);
-                        EnvManager.WriteLine(e.Message);
+//                        EnvManager.WriteLine(e.Message);
                         EnvManager.WriteLine("after tweet creation [inTask]");
                     });
                 EnvManager.WriteLine("after tweet creation [aftTask]");
