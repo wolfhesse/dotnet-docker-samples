@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AseFramework" Version="1.1.1-CI-20171206-112821" />
+    <PackageReference Include="AseFramework" Version="1.1.1-CI-20171206-120749" />
     <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="MySql.Data.Entity" Version="7.0.7-m61" />
     <PackageReference Include="NEST" Version="6.0.0-alpha1" />
