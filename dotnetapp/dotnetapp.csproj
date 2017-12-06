@@ -17,10 +17,10 @@
     <PackageReference Include="MySql.Data.Entity" Version="7.0.7-m61" />
     <PackageReference Include="NEST" Version="6.0.0-alpha1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
-    <PackageReference Include="Npgsql" Version="3.2.5" />
+    <PackageReference Include="Npgsql" Version="3.2.6" />
     <PackageReference Include="NUnit" Version="3.9.0" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.0-pre1" />
-    <PackageReference Include="RestSharp" Version="106.1.0" />
+    <PackageReference Include="RestSharp" Version="106.2.0-alpha0025" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0-preview1-25914-04" />
     <PackageReference Include="WooCommerceNET" Version="0.7.2" />
     <PackageReference Include="xunit" Version="2.3.1" />
