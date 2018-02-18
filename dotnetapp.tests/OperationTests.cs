@@ -53,7 +53,7 @@ namespace DotnetApp.Tests
         public void Test1()
         {
             EnvManager.WriteLine(DateTimeOffset.Now.ToString());
-            Assert.AreSame(11, 11);
+            Assert.AreEqual(11, 11);
         }
 
         /// <summary>
