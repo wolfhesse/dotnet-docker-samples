@@ -1,20 +1,9 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InMemoryTestConfiguration.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The in memory test configuration.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.FactoryFloor.Lab.Components;
 using DnsLib.TodoComponent;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.ClassLibrary
 {
-   
-
     /// <summary>
     ///     The in memory test configuration.
     /// </summary>

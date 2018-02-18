@@ -1,12 +1,3 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SubsystemTaskManagementXunitTest.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   Defines the SubsystemTaskManagementXunitTest type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 using System;
 using DnsLib.EnvironmentSetup;
 using DnsLib.FactoryFloor.Lab;
@@ -15,7 +6,7 @@ using DotnetApp.Tests.ClassLibrary;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.IntegrationTests
 {
     /// <inheritdoc />
     /// <summary>
@@ -26,7 +17,7 @@ namespace DotnetApp.Tests
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the
-        ///     <see cref="T:DotnetApp.Tests.SubsystemTaskManagementXunitTest" /> class.
+        ///     <see cref="T:DotnetApp.Tests.IntegrationTests.SubsystemTaskManagementXunitTest" /> class.
         /// </summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)
@@ -42,19 +33,19 @@ namespace DotnetApp.Tests
         {
             ProgramSample.ConfigureTaskRepositoryEventHandler(
                 (sender, args) =>
-                    {
-                        EnvManager.WriteLine(
-                            $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                        Console.Out.WriteLine("con: task created");
-                    });
+                {
+                    EnvManager.WriteLine(
+                        $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                    Console.Out.WriteLine("con: task created");
+                });
 
             // todo wechsel gegen EfPlugin
             InMemoryTodoEngine.Init();
 
-            TaskManagementControllerVariant.AddTodo(new TodoItem("1eins"));
-            TaskManagementControllerVariant.AddTodo(new TodoItem("2eins"));
-            TaskManagementControllerVariant.AddTodo(new TodoItem("3eins"));
-            TaskManagementControllerVariant.AddTodo(new TodoItem("4eins"));
+            TodoManagementControllerVariant.AddTodo(new TodoItem("1eins"));
+            TodoManagementControllerVariant.AddTodo(new TodoItem("2eins"));
+            TodoManagementControllerVariant.AddTodo(new TodoItem("3eins"));
+            TodoManagementControllerVariant.AddTodo(new TodoItem("4eins"));
             Assert.Empty(string.Empty);
         }
 
@@ -66,10 +57,10 @@ namespace DotnetApp.Tests
         {
             InMemoryTodoEngine.Init();
             TodoController.TodoRepository.EvTodoAdded += (sender, args) =>
-                {
-                    EnvManager.WriteLine(
-                        $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                };
+            {
+                EnvManager.WriteLine(
+                    $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+            };
 
             TodoController.AddTodo(new TodoItem("eins").Title);
             Assert.Empty(string.Empty);

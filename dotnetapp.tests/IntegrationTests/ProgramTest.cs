@@ -1,20 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ProgramTest.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   Defines the ProgramTest type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using DnsLib.EnvironmentSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.IntegrationTests
 {
     #region using directives
 
@@ -25,14 +16,14 @@ namespace DotnetApp.Tests
     [TestClass]
     public class ProgramTest : AseXunitTestBase
     {
-        /// <summary>Initializes a new instance of the <see cref="ProgramTest"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ProgramTest" /> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public ProgramTest(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
 
-        /// <summary>Initializes a new instance of the <see cref="ProgramTest"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ProgramTest" /> class.</summary>
         public ProgramTest()
         {
         }
@@ -71,6 +62,7 @@ namespace DotnetApp.Tests
         public void TestProgramSampleEntrypoint()
         {
             ProgramSample.Entrypoint(null);
+            Assert.IsTrue(true);
         }
 
         /// <summary>The env manager_ future_ write ase debug marker.</summary>

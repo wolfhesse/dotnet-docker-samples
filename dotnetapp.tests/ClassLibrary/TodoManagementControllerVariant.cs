@@ -1,23 +1,14 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TaskManagementControllerVariant.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   Defines the TaskManagementControllerVariant type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.TodoComponent;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.ClassLibrary
 {
     /// <inheritdoc />
     /// <summary>
     ///     The todo engine. (Todo Provider)
     /// </summary>
-    public class TaskManagementControllerVariant : InMemoryTodoEngine
+    public class TodoManagementControllerVariant : InMemoryTodoEngine
     {
         /// <summary>The inception date.</summary>
         private static readonly string InceptionDate = DateTimeOffset.Now.ToString();

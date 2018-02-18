@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <Reference Include="DnsLib">
-      <HintPath>..\..\..\..\.nuget\packages\aseframework\1.1.1-ci-20180218-004137\lib\net461\DnsLib.dll</HintPath>
+      <HintPath>..\..\..\..\.nuget\packages\aseframework\1.1.1-ci-20180218-044122\lib\net461\DnsLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
       <HintPath>..\..\..\..\.nuget\packages\mstest.testframework\1.3.0-beta2\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>

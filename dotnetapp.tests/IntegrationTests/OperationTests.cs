@@ -3,7 +3,7 @@ using DnsLib.EnvironmentSetup;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.IntegrationTests
 {
     #region using directives
 
@@ -52,8 +52,17 @@ namespace DotnetApp.Tests
         [TestMethod]
         public void Test1()
         {
-            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
-            Assert.AreEqual(11, 11);
+            Console.WriteLine(1);
+            try
+            {
+                EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+            }
+            finally
+            {
+                Assert.AreEqual(11, 11);
+            }
+
+            Console.WriteLine(2);
         }
 
         /// <summary>

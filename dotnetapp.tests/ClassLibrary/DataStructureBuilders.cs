@@ -1,14 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TaskCreationNUnitTest.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The task creation.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-using System;
+﻿using System;
 using DnsLib.EnvironmentSetup;
 using DnsLib.TodoComponent;
 using NUnit.Framework;

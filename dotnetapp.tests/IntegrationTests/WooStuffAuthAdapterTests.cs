@@ -1,17 +1,8 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WooStuffAuthAdapterTests.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The woo stuff auth adapter tests.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using DnsLib.FactoryFloor.TestDriving.Trainer;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.IntegrationTests
 {
     /// <summary>The woo stuff auth adapter tests.</summary>
     [TestFixture]
@@ -23,6 +14,8 @@ namespace DotnetApp.Tests
         {
             var dumpString = WooStuffAuthAdapter.FnAuthForRcs2().ToDumpString();
             Console.Out.WriteLine("dumpString = {0}", dumpString);
+
+            Assert.True(true);
         }
     }
 }

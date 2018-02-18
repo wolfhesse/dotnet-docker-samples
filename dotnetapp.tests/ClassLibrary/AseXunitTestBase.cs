@@ -1,16 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AseXunitTestBase.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The xuit test base.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using DnsLib.EnvironmentSetup;
+﻿using DnsLib.EnvironmentSetup;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 
@@ -24,9 +15,7 @@ namespace DotnetApp.Tests
         /// </summary>
         protected string SerializedEnvironmentString;
 
-        public bool OutputHelperComparison { get; }
-
-        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase" /> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
@@ -34,9 +23,11 @@ namespace DotnetApp.Tests
             OutputHelperComparison = testOutputHelper == envManagerTestOutputHelper;
         }
 
-        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase" /> class.</summary>
         protected AseXunitTestBase()
         {
         }
+
+        public bool OutputHelperComparison { get; }
     }
 }

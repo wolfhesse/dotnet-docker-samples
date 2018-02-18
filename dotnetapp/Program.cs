@@ -1,24 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The program.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DnsLib;
 using DnsLib.AbstractArchitecture.Definitions;
+using WooCommerceNET.WooCommerce.v2;
+using DnsLib.AbstractArchitecture.Definitions;
 using DnsLib.EnvironmentSetup;
+using DnsLib.FactoryFloor.Lab;
 using DnsLib.FactoryFloor.Operations;
 using DnsLib.FactoryFloor.TestDriving.Trainer;
 using DnsLib.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
-using WooCommerceNET.WooCommerce.v2;
 
 namespace DotnetApp
 {
@@ -45,7 +37,7 @@ namespace DotnetApp
 
         /// <summary>The build tweet.</summary>
         /// <param name="message">The message.</param>
-        /// <returns>The <see cref="InteropTypes.TweetModel"/>.</returns>
+        /// <returns>The <see cref="InteropTypes.TweetModel" />.</returns>
         private static InteropTypes.TweetModel BuildTweet(string message)
         {
             var t = new InteropTypes.TweetModel
@@ -87,7 +79,7 @@ namespace DotnetApp
         /// <summary>The receive_ ev message async.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The e.</param>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <returns>The <see cref="Task" />.</returns>
         private static async Task ReceiveEvMessageAsync(object sender, AseMessageEventArgs e)
         {
             EnvManager.WriteLine($"{typeof(Program)}: got message from {sender}");
@@ -101,7 +93,7 @@ namespace DotnetApp
                 await Task.Run(
                     () =>
                     {
-                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet);
+                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(DnsLib.FactoryFloor.Lab.TweetEngine.DumpTweet);
 //                        EnvManager.WriteLine(e.Message);
                         EnvManager.WriteLine("after tweet creation [inTask]");
                     });

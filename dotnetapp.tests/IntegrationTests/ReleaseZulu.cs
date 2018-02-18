@@ -1,19 +1,9 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ReleaseZulu.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The release zulu.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using DnsLib;
+﻿using DnsLib;
 using Xunit;
 
 namespace DotnetApp.Tests.IntegrationTests
 {
     /// <summary>The release zulu.</summary>
-    
     public class ReleaseZulu
     {
         /// <summary>The t c 1.</summary>

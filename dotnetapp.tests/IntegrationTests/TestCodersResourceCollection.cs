@@ -1,16 +1,7 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TestCodersResourceCollection.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The test coders resource collection.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 using DnsLib.FactoryFloor.Lab.Components;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.IntegrationTests
 {
     #region using directives
 

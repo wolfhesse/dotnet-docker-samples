@@ -1,12 +1,3 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ProgramSample.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The program.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -49,11 +40,11 @@ namespace DotnetApp.Tests.ClassLibrary
         {
             ConfigureTaskRepositoryEventHandler(
                 delegate(object sender, TodoEventArgs eventArgs)
-                    {
-                        EnvManager.WriteLine(
-                            $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
-                        Console.Out.WriteLine("con: task created");
-                    });
+                {
+                    EnvManager.WriteLine(
+                        $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
+                    Console.Out.WriteLine("con: task created");
+                });
             var message = BuildMessage(args);
 
             // setup environmentDict
@@ -85,16 +76,16 @@ namespace DotnetApp.Tests.ClassLibrary
         public static Dictionary<string, string> EnvironmentDict()
         {
             return new Dictionary<string, string>
-                       {
-                           ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
-                           ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
-                           ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
-                       };
+            {
+                ["DEBUG"] = GetEnvironmentVariableWithOptions("DEBUG", "OFF"),
+                ["eins"] = GetEnvironmentVariableWithOptions("eins", "1"),
+                ["zwo"] = GetEnvironmentVariableWithOptions("zwo", "2")
+            };
         }
 
         /// <summary>The get bot.</summary>
         /// <param name="message">The message.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         public static string GetBot(string message)
         {
             var bot = GetBotHeader(message);
@@ -165,7 +156,7 @@ x-ase-sect-PAT_END
 
         /// <summary>The build message.</summary>
         /// <param name="args">The args.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         private static string BuildMessage(string[] args)
         {
             // data
@@ -178,7 +169,7 @@ x-ase-sect-PAT_END
 
         /// <summary>The get bot header.</summary>
         /// <param name="message">The message.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         private static string GetBotHeader(string message)
         {
             var bot = $"\n        {message}";
@@ -190,7 +181,7 @@ x-ase-sect-PAT_END
         /// <summary>The get environment variable with options.</summary>
         /// <param name="variable">The variable.</param>
         /// <param name="defaultValue">The default value.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         private static string GetEnvironmentVariableWithOptions(string variable, string defaultValue)
         {
             var flgDebug = Environment.GetEnvironmentVariable(variable) ?? defaultValue;

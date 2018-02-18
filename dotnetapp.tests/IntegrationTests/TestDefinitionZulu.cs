@@ -1,16 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TestDefinitionZulu.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The test definition zulu.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using DnsLib.SysRes;
+﻿using DnsLib.SysRes;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests
+namespace DotnetApp.Tests.IntegrationTests
 {
     #region using directives
 
