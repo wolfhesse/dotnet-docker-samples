@@ -8,14 +8,11 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using DnsLib.FactoryFloor.Lab.Components;
+using NUnit.Framework;
 
 namespace DotnetApp.Tests
 {
     #region using directives
-
-   
-
-    using NUnit.Framework;
 
     #endregion
 

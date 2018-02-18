@@ -7,21 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using DnsLib.EnvironmentSetup;
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.TodoComponent;
+using DotnetApp.Tests.ClassLibrary;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace DotnetApp.Tests
 {
-    using System;
-
-    
-
-    using DotnetApp.Tests.ClassLibrary;
-
-    using Xunit;
-    using Xunit.Abstractions;
-
     /// <inheritdoc />
     /// <summary>
     ///     The subsystem todo.

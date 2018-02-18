@@ -8,23 +8,22 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DnsLib;
+using DnsLib.AbstractArchitecture.Definitions;
 using DnsLib.EnvironmentSetup;
 using DnsLib.FactoryFloor.Operations;
 using DnsLib.FactoryFloor.TestDriving.Trainer;
 using DnsLib.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
 using DnsLib.Utility;
+using WooCommerceNET.WooCommerce.v2;
 
 namespace DotnetApp
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using DnsLib;
-    using DnsLib.AbstractArchitecture.Definitions;
-    using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
@@ -92,6 +91,7 @@ namespace DotnetApp
         /// <returns>The <see cref="Task"/>.</returns>
         private static async Task ReceiveEvMessageAsync(object sender, AseMessageEventArgs e)
         {
+            EnvManager.WriteLine($"{typeof(Program)}: got message from {sender}");
             try
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)

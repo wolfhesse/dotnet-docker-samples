@@ -7,23 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using DnsLib.EnvironmentSetup;
+using DotnetApp.Tests.ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
+using Xunit.Abstractions;
 
 namespace DotnetApp.Tests
 {
     #region using directives
-
-    using System;
-
- 
-
-    using DotnetApp.Tests.ClassLibrary;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Newtonsoft.Json;
-
-    using Xunit.Abstractions;
 
     #endregion
 
@@ -50,11 +43,11 @@ namespace DotnetApp.Tests
         [TestMethod]
         public void TestProgramFeatureEnvironment()
         {
-            this.SerializedEnvironmentString = JsonConvert.SerializeObject(
+            SerializedEnvironmentString = JsonConvert.SerializeObject(
                 ProgramSample.EnvironmentDict(),
                 Formatting.Indented);
-            Console.Out.WriteLine("SerializedEnvironmentString = {0}", this.SerializedEnvironmentString);
-            EnvManager.WriteLine(this.SerializedEnvironmentString);
+            Console.Out.WriteLine("SerializedEnvironmentString = {0}", SerializedEnvironmentString);
+            EnvManager.WriteLine(SerializedEnvironmentString);
 
             EnvManagerFutureWriteAseDebugMarker();
             EnvManagerFutureWriteTrraceMarker();

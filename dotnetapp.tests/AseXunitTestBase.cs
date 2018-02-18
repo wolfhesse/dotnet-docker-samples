@@ -7,11 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.EnvironmentSetup;
+using Xunit.Abstractions;
+
 namespace DotnetApp.Tests
 {
     #region using directives
-
-    using Xunit.Abstractions;
 
     #endregion
 
@@ -23,11 +24,14 @@ namespace DotnetApp.Tests
         /// </summary>
         protected string SerializedEnvironmentString;
 
+        public bool OutputHelperComparison { get; }
+
         /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
-            // EnvManager.TestOutputHelper = testOutputHelper;
+            var envManagerTestOutputHelper = EnvManager.TestOutputHelper;
+            OutputHelperComparison = testOutputHelper == envManagerTestOutputHelper;
         }
 
         /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase"/> class.</summary>

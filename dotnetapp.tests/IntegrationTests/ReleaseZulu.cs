@@ -7,12 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib;
+using Xunit;
+
 namespace DotnetApp.Tests.IntegrationTests
 {
-    using DnsLib;
-
-    using Xunit;
-
     /// <summary>The release zulu.</summary>
     
     public class ReleaseZulu

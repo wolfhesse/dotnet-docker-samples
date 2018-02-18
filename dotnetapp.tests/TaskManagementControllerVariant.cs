@@ -7,15 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.TodoComponent;
 
 namespace DotnetApp.Tests
 {
-    using System;
-
-    
-
     /// <inheritdoc />
     /// <summary>
     ///     The todo engine. (Todo Provider)

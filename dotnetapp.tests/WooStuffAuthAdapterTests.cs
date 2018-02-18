@@ -7,16 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using DnsLib.FactoryFloor.TestDriving.Trainer;
+using NUnit.Framework;
 
 namespace DotnetApp.Tests
 {
-    using System;
-
-
-
-    using NUnit.Framework;
-
     /// <summary>The woo stuff auth adapter tests.</summary>
     [TestFixture]
     public class WooStuffAuthAdapterTests

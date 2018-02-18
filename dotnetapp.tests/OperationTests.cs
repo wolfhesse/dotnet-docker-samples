@@ -7,18 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using DnsLib.EnvironmentSetup;
 using DnsLib.SysRes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotnetApp.Tests
 {
     #region using directives
-
-    using System;
-
- 
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     #endregion
 

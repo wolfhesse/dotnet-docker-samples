@@ -8,17 +8,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
+using System;
 using DnsLib.EnvironmentSetup;
 using DnsLib.TodoComponent;
+using NUnit.Framework;
 
 namespace DotnetApp.Tests.Operations
 {
     #region using directives
-
-    using System;
-
-
-    using NUnit.Framework;
 
     #endregion
 

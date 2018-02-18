@@ -7,22 +7,18 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using DnsLib.EnvironmentSetup;
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.TodoComponent;
+using Newtonsoft.Json;
 
 namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
-
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.InteropServices;
-
-   
-
-    using Newtonsoft.Json;
 
     #endregion
 
@@ -34,17 +30,17 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <summary>
         ///     The serialized environment.
         /// </summary>
-        private static string serializedEnvironment;
+        private static string _serializedEnvironment;
 
         /// <summary>The configure task repository event handler.</summary>
-        /// <param name="InMemoryTodoRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
+        /// <param name="inMemoryTodoRepositoryOnEvTaskAdded">The in memory task repository on ev task added.</param>
         public static void ConfigureTaskRepositoryEventHandler(
-            AbstractTodoRepository.TodoAddedEventHandler InMemoryTodoRepositoryOnEvTaskAdded)
+            AbstractTodoRepository.TodoAddedEventHandler inMemoryTodoRepositoryOnEvTaskAdded)
         {
             InMemoryTodoEngine.Init();
 
             // todo move EvTaskAdded to Engine
-            TodoController.TodoRepository.EvTodoAdded += InMemoryTodoRepositoryOnEvTaskAdded;
+            TodoController.TodoRepository.EvTodoAdded += inMemoryTodoRepositoryOnEvTaskAdded;
         }
 
         /// <summary>The main.</summary>
@@ -163,8 +159,8 @@ x-ase-sect-PAT_END
             env.Add("TS_NOW", DateTimeOffset.Now.ToString());
             env.Add("PAT_RECORD", ".here");
 
-            serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
-            return serializedEnvironment;
+            _serializedEnvironment = JsonConvert.SerializeObject(env, Formatting.None);
+            return _serializedEnvironment;
         }
 
         /// <summary>The build message.</summary>
