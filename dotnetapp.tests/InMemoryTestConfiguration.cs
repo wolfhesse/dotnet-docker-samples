@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.FactoryFloor.Lab;
+using DnsLib.FactoryFloor.Lab.Components;
+using DnsLib.TodoComponent;
+
 namespace DotnetApp.Tests
 {
-    using DnsLib.FactoryFloor.TodoComponent;
-    using DnsLib.Lab;
-    using DnsLib.Lab.Components;
+   
 
     /// <summary>
     ///     The in memory test configuration.

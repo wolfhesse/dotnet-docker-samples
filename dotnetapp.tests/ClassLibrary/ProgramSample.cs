@@ -7,6 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.EnvironmentSetup;
+using DnsLib.FactoryFloor.Lab;
+using DnsLib.TodoComponent;
+
 namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
@@ -16,9 +20,7 @@ namespace DotnetApp.Tests.ClassLibrary
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
 
-    using DnsLib.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.FactoryFloor.TodoComponent;
-    using DnsLib.Lab;
+   
 
     using Newtonsoft.Json;
 

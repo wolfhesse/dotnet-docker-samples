@@ -7,14 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
+using DnsLib.EnvironmentSetup;
+using DnsLib.TodoComponent;
+
 namespace DotnetApp.Tests.Operations
 {
     #region using directives
 
     using System;
 
-    using DnsLib.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.FactoryFloor.TodoComponent;
 
     using NUnit.Framework;
 

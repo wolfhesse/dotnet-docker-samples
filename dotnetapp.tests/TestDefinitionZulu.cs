@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.SysRes;
+
 namespace DotnetApp.Tests
 {
     #region using directives
 
-    using DnsLib.AbstractArchitecture.Definitions;
+  
 
     using NUnit.Framework;
 

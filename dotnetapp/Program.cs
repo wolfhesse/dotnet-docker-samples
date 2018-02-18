@@ -7,6 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
+using DnsLib.EnvironmentSetup;
+using DnsLib.FactoryFloor.Operations;
+using DnsLib.FactoryFloor.TestDriving.Trainer;
+using DnsLib.ShopComponent.AseWooCommerceNET;
+using DnsLib.SysRes;
+using DnsLib.Utility;
+
 namespace DotnetApp
 {
     #region using directives
@@ -14,22 +22,16 @@ namespace DotnetApp
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
     using DnsLib;
     using DnsLib.AbstractArchitecture.Definitions;
-    using DnsLib.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.FactoryFloor;
-    using DnsLib.FactoryFloor.ShopComponent;
-    using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
-    using DnsLib.Operations;
-
     using WooCommerceNET.WooCommerce.v2;
 
     #endregion
 
     /// <summary>The program.</summary>
-    public class Program 
-    {  /// <summary>The tweets counter.</summary>
+    public class Program
+    {
+        /// <summary>The tweets counter.</summary>
         public static int TweetsCounter = 0;
 
         /// <summary>The main.</summary>
@@ -37,7 +39,7 @@ namespace DotnetApp
         public static void Main(string[] args)
         {
             var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> { "s0.wolfslab.wolfspool.at" });
+            mqOperationsEngine.Configure(new List<string> {"s0.wolfslab.wolfspool.at"});
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
                 ProcessProductCreatedMessage,
                 CreateTweetHandler).Execute(mqOperationsEngine);
@@ -107,7 +109,7 @@ namespace DotnetApp
                 EnvManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
-                var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
+                var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
                 var restApi = WooStuffAuthAdapter.RestApiDefault();
                 var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
 
@@ -120,7 +122,7 @@ namespace DotnetApp
                         var duration = DateTime.Now - startTs;
                         EnvManager.WriteLine(
                             $"product created: {p2.name}" + $"{Environment.NewLine}"
-                            + $"\tduration: {duration.TotalSeconds} s");
+                                                          + $"\tduration: {duration.TotalSeconds} s");
                         EnvManager.WriteLine("after product creation [inTask]");
                     });
                 EnvManager.WriteLine("after product creation");

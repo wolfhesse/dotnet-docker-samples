@@ -7,13 +7,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.EnvironmentSetup;
+using DnsLib.FactoryFloor.Lab;
+using DnsLib.TodoComponent;
+
 namespace DotnetApp.Tests
 {
     using System;
 
-    using DnsLib.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.FactoryFloor.TodoComponent;
-    using DnsLib.Lab;
+    
 
     using DotnetApp.Tests.ClassLibrary;
 

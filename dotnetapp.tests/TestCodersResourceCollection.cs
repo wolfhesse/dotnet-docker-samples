@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.FactoryFloor.Lab.Components;
+
 namespace DotnetApp.Tests
 {
     #region using directives
 
-    using DnsLib.Lab.Components;
+   
 
     using NUnit.Framework;
 

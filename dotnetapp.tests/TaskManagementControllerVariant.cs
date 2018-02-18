@@ -7,12 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.FactoryFloor.Lab;
+using DnsLib.TodoComponent;
+
 namespace DotnetApp.Tests
 {
     using System;
 
-    using DnsLib.FactoryFloor.TodoComponent;
-    using DnsLib.Lab;
+    
 
     /// <inheritdoc />
     /// <summary>

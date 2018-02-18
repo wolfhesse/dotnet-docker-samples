@@ -7,14 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.EnvironmentSetup;
+using DnsLib.SysRes;
+
 namespace DotnetApp.Tests
 {
     #region using directives
 
     using System;
 
-    using DnsLib.AbstractArchitecture.EnvironmentSetup;
-    using DnsLib.FactoryFloor;
+ 
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

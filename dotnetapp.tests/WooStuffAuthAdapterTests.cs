@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.FactoryFloor.TestDriving.Trainer;
+
 namespace DotnetApp.Tests
 {
     using System;
 
-    using DnsLib.FactoryFloor.ShopComponent;
+
 
     using NUnit.Framework;
 

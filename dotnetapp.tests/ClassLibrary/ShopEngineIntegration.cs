@@ -7,6 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DnsLib.FactoryFloor.Operations;
+using DnsLib.FactoryFloor.TestDriving.Trainer;
+using DnsLib.ShopComponent.AseWooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
 namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
@@ -14,13 +19,11 @@ namespace DotnetApp.Tests.ClassLibrary
     using System;
     using System.Collections.Generic;
 
-    using DnsLib.FactoryFloor.ShopComponent;
-    using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
-    using DnsLib.Operations;
+
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using WooCommerceNET.WooCommerce.v2;
+   
 
     #endregion
 
