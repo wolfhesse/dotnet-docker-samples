@@ -13,7 +13,7 @@ using DnsLib.EnvironmentSetup;
 using DnsLib.TodoComponent;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests.Operations
+namespace DotnetApp.Tests.ClassLibrary
 {
     #region using directives
 

@@ -18,7 +18,6 @@ using DnsLib.FactoryFloor.Operations;
 using DnsLib.FactoryFloor.TestDriving.Trainer;
 using DnsLib.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
-using DnsLib.Utility;
 using WooCommerceNET.WooCommerce.v2;
 
 namespace DotnetApp
@@ -70,7 +69,7 @@ namespace DotnetApp
         {
             // create 'tweet' in elasticsearch
             var t = BuildTweet(aseMessageEventArgs.Message);
-            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet))
+            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet))
                 .ConfigureAwait(false);
             EnvManager.WriteLine(aseMessageEventArgs.Message);
 
@@ -102,7 +101,7 @@ namespace DotnetApp
                 await Task.Run(
                     () =>
                     {
-                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(EsOperationsEngine.DumpTweet);
+                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet);
 //                        EnvManager.WriteLine(e.Message);
                         EnvManager.WriteLine("after tweet creation [inTask]");
                     });
