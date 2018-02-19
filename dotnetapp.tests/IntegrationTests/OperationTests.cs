@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DnsLib.EnvironmentSetup;
-using DnsLib.FactoryFloor.Operations;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,7 +14,7 @@ namespace DotnetApp.Tests.IntegrationTests
     public class OperationTests
     {
         /// <summary>Gets the data d result txt f.</summary>
-        public static string DataDResultTxtF { get; } = EnvManager.AseDataDWin + "/OperationTests.res.txt";
+        public static string DataDResultTxtF { get; } = EnvironmentManager.AseDataDWin + "/OperationTests.res.txt";
 
         // [Fact]
         // public void ApiTestS13K()
@@ -57,7 +55,7 @@ namespace DotnetApp.Tests.IntegrationTests
             Console.WriteLine(1);
             try
             {
-                EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+                EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
             }
             finally
             {
@@ -73,11 +71,12 @@ namespace DotnetApp.Tests.IntegrationTests
         [TestMethod]
         public void Test2()
         {
-            EnvManager.WriteLine(DateTimeOffset.Now.ToString());
+            EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
             Assert.AreEqual(bool.TrueString, "True");
         }
 
         [TestMethod]
+        [Ignore]
         [Timeout(30000)]
         public void ExecuteMainLoopTest()
         {

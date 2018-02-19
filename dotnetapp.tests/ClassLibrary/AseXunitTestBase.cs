@@ -1,4 +1,4 @@
-﻿using DnsLib.EnvironmentSetup;
+﻿using DnsLib.SysRes;
 using Xunit.Abstractions;
 
 namespace DotnetApp.Tests.ClassLibrary
@@ -19,7 +19,7 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
-            var envManagerTestOutputHelper = EnvManager.TestOutputHelper;
+            var envManagerTestOutputHelper = EnvironmentManager.TestOutputHelper;
             OutputHelperComparison = testOutputHelper == envManagerTestOutputHelper;
         }
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using DnsLib.FactoryFloor.TestDriving.Trainer;
+using DnsLib.ShopComponent;
 using NUnit.Framework;
 
 namespace DotnetApp.Tests.IntegrationTests

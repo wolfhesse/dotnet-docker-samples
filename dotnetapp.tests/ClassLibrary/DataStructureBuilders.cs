@@ -1,5 +1,6 @@
 ﻿using System;
 using DnsLib.EnvironmentSetup;
+using DnsLib.SysRes;
 using DnsLib.TodoComponent;
 using NUnit.Framework;
 
@@ -23,8 +24,8 @@ namespace DotnetApp.Tests.ClassLibrary
         {
             var item = TodoBuilder.BuildTodo("sample");
 
-            EnvManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
-            EnvManager.WriteLine($"extraCreatorInfo: {item.ExtraCreatorInfo}");
+            EnvironmentManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
+            EnvironmentManager.WriteLine($"extraCreatorInfo: {item.ExtraCreatorInfo}");
 
             Assert.IsNotNull(item.CreatedAt);
         }
