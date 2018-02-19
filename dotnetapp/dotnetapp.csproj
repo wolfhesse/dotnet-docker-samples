@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AseFramework" Version="1.1.1-CI-20180218-053433" />
+    <PackageReference Include="AseFramework" Version="1.1.1-CI-20180219-114314" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.0.1" />
     <PackageReference Include="NEST" Version="6.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
@@ -20,6 +20,12 @@
     <PackageReference Include="NUnit" Version="3.9.0" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.0-pre2" />
     <PackageReference Include="xunit" Version="2.4.0-beta.1.build3958" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DnsLib">
+      <HintPath>..\..\..\..\.nuget\packages\aseframework\1.1.1-ci-20180218-053433\lib\net461\DnsLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   
