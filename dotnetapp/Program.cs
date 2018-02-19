@@ -26,7 +26,7 @@ namespace DotnetApp
         public static void Main(string[] args)
         {
             var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> {"s0.wolfslab.wolfspool.at"});
+            mqOperationsEngine.Configure(new List<string> {"10.0.0.100"});
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
                 ProcessProductCreatedMessage,
                 CreateTweetHandler).Execute(mqOperationsEngine);
@@ -45,7 +45,7 @@ namespace DotnetApp
         /// <summary>The create tweet handler.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="aseMessageEventArgs">The ase message event args.</param>
-        private static async void CreateTweetHandler(object sender, AseMessageEventArgs aseMessageEventArgs)
+        public static async void CreateTweetHandler(object sender, AseMessageEventArgs aseMessageEventArgs)
         {
             // create 'tweet' in elasticsearch
             var t = BuildTweet(aseMessageEventArgs.Message);
@@ -59,7 +59,7 @@ namespace DotnetApp
         /// <summary>The process product created message.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="eventArgs">The event args.</param>
-        private static async void ProcessProductCreatedMessage(object sender, AseMessageEventArgs eventArgs)
+        public static async void ProcessProductCreatedMessage(object sender, AseMessageEventArgs eventArgs)
         {
             await ReceiveEvMessageAsync(sender, eventArgs);
         }

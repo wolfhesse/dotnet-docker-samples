@@ -42,6 +42,8 @@ namespace DotnetApp.Tests.IntegrationTests
 
             EnvManagerFutureWriteAseDebugMarker();
             EnvManagerFutureWriteTrraceMarker();
+
+            Assert.IsTrue(true);
         }
 
         /// <summary>

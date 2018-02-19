@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using DnsLib.EnvironmentSetup;
+using DnsLib.FactoryFloor.Operations;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -73,6 +75,19 @@ namespace DotnetApp.Tests.IntegrationTests
         {
             EnvManager.WriteLine(DateTimeOffset.Now.ToString());
             Assert.AreEqual(bool.TrueString, "True");
+        }
+
+        [TestMethod]
+        [Timeout(30000)]
+        public void ExecuteMainLoopTest()
+        {
+            var mqOperationsEngine = new MqOperationsEngine();
+            mqOperationsEngine.Configure(new List<string> {"10.0.0.100"});
+            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers
+            (
+                Program.ProcessProductCreatedMessage,
+                Program.CreateTweetHandler
+            ).Execute(mqOperationsEngine);
         }
     }
 }
