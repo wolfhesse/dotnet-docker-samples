@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using DnsLib;
 using DnsLib.AbstractArchitecture.Definitions;
 using WooCommerceNET.WooCommerce.v2;
-using DnsLib.AbstractArchitecture.Definitions;
 using DnsLib.EnvironmentSetup;
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.FactoryFloor.Operations;
@@ -40,18 +39,9 @@ namespace DotnetApp
         /// <returns>The <see cref="InteropTypes.TweetModel" />.</returns>
         private static InteropTypes.TweetModel BuildTweet(string message)
         {
-            var t = new InteropTypes.TweetModel
-            {
-                PostDateTime = DateTimeOffset.Now.DateTime,
-
-                // Id = tweets++,
-                User = typeof(Program).ToString(),
-                Value = message
-            };
-
-            // var addDescription = new AddDescription(t.Value);
-            // Console.Out.WriteLine("addDescription = {0}", addDescription.DescriptionRecord.Id);
-            return t;
+            var t0 = TweetEngine.FnCreateTweet(message);
+            t0.User = typeof(Program).ToString();
+            return t0;
         }
 
         /// <summary>The create tweet handler.</summary>
@@ -101,8 +91,9 @@ namespace DotnetApp
 
                 // add product
                 var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
-                var restApi = WooStuffAuthAdapter.RestApiDefault();
-                var shopEngine = new ShopEngine(new WooCommerceAdapter(), new WooCommerceConfiguration(restApi));
+                var shopEngine = new ShopEngine(new WooCommerceAdapter(),
+                    new WooCommerceConfiguration(
+                        WooStuffAuthAdapter.RestApiDefault()));
 
                 // Task.Run(() =>
                 await Task.Run(
