@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DnsLib;
 using DnsLib.AbstractArchitecture.Definitions;
+using DnsLib.ElasticSearchComponent;
+using DnsLib.ShopComponent;
 using WooCommerceNET.WooCommerce.v2;
-using DnsLib.EnvironmentSetup;
-using DnsLib.FactoryFloor.Lab;
-using DnsLib.FactoryFloor.Operations;
-using DnsLib.FactoryFloor.TestDriving.Trainer;
 using DnsLib.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
 
@@ -53,7 +51,7 @@ namespace DotnetApp
             var t = BuildTweet(aseMessageEventArgs.Message);
             await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet))
                 .ConfigureAwait(false);
-            EnvManager.WriteLine(aseMessageEventArgs.Message);
+            EnvironmentManager.WriteLine(aseMessageEventArgs.Message);
 
             // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
         }
@@ -72,7 +70,7 @@ namespace DotnetApp
         /// <returns>The <see cref="Task" />.</returns>
         private static async Task ReceiveEvMessageAsync(object sender, AseMessageEventArgs e)
         {
-            EnvManager.WriteLine($"{typeof(Program)}: got message from {sender}");
+            EnvironmentManager.WriteLine($"{typeof(Program)}: got message from {sender}");
             try
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
@@ -83,11 +81,11 @@ namespace DotnetApp
                 await Task.Run(
                     () =>
                     {
-                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(DnsLib.FactoryFloor.Lab.TweetEngine.DumpTweet);
-//                        EnvManager.WriteLine(e.Message);
-                        EnvManager.WriteLine("after tweet creation [inTask]");
+                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet);
+//                        EnvironmentManager.WriteLine(e.Message);
+                        EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
-                EnvManager.WriteLine("after tweet creation [aftTask]");
+                EnvironmentManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
                 var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
@@ -102,12 +100,12 @@ namespace DotnetApp
                         var startTs = DateTime.Now;
                         var p2 = shopEngine.AddProduct(p);
                         var duration = DateTime.Now - startTs;
-                        EnvManager.WriteLine(
+                        EnvironmentManager.WriteLine(
                             $"product created: {p2.name}" + $"{Environment.NewLine}"
                                                           + $"\tduration: {duration.TotalSeconds} s");
-                        EnvManager.WriteLine("after product creation [inTask]");
+                        EnvironmentManager.WriteLine("after product creation [inTask]");
                     });
-                EnvManager.WriteLine("after product creation");
+                EnvironmentManager.WriteLine("after product creation");
 
                 // ## rq: DescriptionUseCase ##     new AddDescription("product :" + p.description);
                 // }
@@ -120,8 +118,8 @@ namespace DotnetApp
                                 await Task.Run(() =>
                                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
                                */
-                EnvManager.WriteLine(ex.Message);
-                EnvManager.WriteLine("after tweet creating in catch-");
+                EnvironmentManager.WriteLine(ex.Message);
+                EnvironmentManager.WriteLine("after tweet creating in catch-");
             }
         }
     }
