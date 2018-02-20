@@ -70,7 +70,7 @@ namespace DotnetApp
         /// <returns>The <see cref="Task" />.</returns>
         private static async Task ReceiveEvMessageAsync(object sender, AseMessageEventArgs e)
         {
-            EnvironmentManager.WriteLine($"{typeof(Program)}: got message from {sender}");
+            EnvironmentManager.WriteLine($"{typeof(Program)}: got message from {sender} @ {DateTimeOffset.Now}");
             try
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
