@@ -21,6 +21,8 @@ namespace DotnetApp
         /// <summary>The tweets counter.</summary>
         public static int TweetsCounter = 0;
 
+        private static bool _flipFlop;
+
         /// <summary>The main.</summary>
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
@@ -96,17 +98,17 @@ namespace DotnetApp
                 var shopEngine2 = new ShopEngine(new WooCommerceAdapter(),
                     new WooCommerceConfiguration(
                         WooStuffAuthAdapter.FnRestApiRcs2()));
-                var flipFlop = false;
+
                 EnvironmentManager.WriteLine("\t\t\t--- 1 --- before product creation");
                 // Task.Run(() =>
                 await Task.Run(
                     () =>
                     {
-                        flipFlop = !flipFlop;
-                        var shopEngine = flipFlop ? shopEngine1 : shopEngine2;
+                        _flipFlop = !_flipFlop;
+                        var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
 
                         EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
-                        EnvironmentManager.WriteLine($"\t\t\t          {shopEngine}");
+                        EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
 
                         var startTs = DateTime.Now;
                         var p2 = shopEngine.AddProduct(p);
@@ -114,9 +116,11 @@ namespace DotnetApp
                         EnvironmentManager.WriteLine(
                             $"product created: {p2.name}" + $"{Environment.NewLine}"
                                                           + $"\tduration: {duration.TotalSeconds} s");
-                        EnvironmentManager.WriteLine("after product creation [inTask]");
+                        EnvironmentManager.WriteLine($"\t\t\t\t\t\t--- 2 --- after product creation [inTask]");
+                        EnvironmentManager.WriteLine(
+                            $"\t\t\t\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
                     });
-                EnvironmentManager.WriteLine("after product creation");
+                EnvironmentManager.WriteLine("\t\t\t\t\t\t--- 1 --- after product creation");
 
                 // ## rq: DescriptionUseCase ##     new AddDescription("product :" + p.description);
                 // }

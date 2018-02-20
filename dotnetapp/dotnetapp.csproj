@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AseFramework" Version="1.1.1-CI-20180220-001622" />
+    <PackageReference Include="AseFramework" Version="1.1.1-CI-20180220-012712" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.0.1" />
     <PackageReference Include="NEST" Version="6.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
