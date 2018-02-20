@@ -89,14 +89,25 @@ namespace DotnetApp
 
                 // add product
                 var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
-                var shopEngine = new ShopEngine(new WooCommerceAdapter(),
-                    new WooCommerceConfiguration(
-                        WooStuffAuthAdapter.RestApiDefault()));
 
+                var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
+                    new WooCommerceConfiguration(
+                        WooStuffAuthAdapter.FnRestApiRcs1()));
+                var shopEngine2 = new ShopEngine(new WooCommerceAdapter(),
+                    new WooCommerceConfiguration(
+                        WooStuffAuthAdapter.FnRestApiRcs2()));
+                var flipFlop = false;
+                EnvironmentManager.WriteLine("\t\t\t--- 1 --- before product creation");
                 // Task.Run(() =>
                 await Task.Run(
                     () =>
                     {
+                        flipFlop = !flipFlop;
+                        var shopEngine = flipFlop ? shopEngine1 : shopEngine2;
+
+                        EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
+                        EnvironmentManager.WriteLine($"\t\t\t          {shopEngine}");
+
                         var startTs = DateTime.Now;
                         var p2 = shopEngine.AddProduct(p);
                         var duration = DateTime.Now - startTs;
