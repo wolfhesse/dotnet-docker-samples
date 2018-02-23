@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DnsLib.MqComponent;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -81,7 +82,7 @@ namespace DotnetApp.Tests.Instrumentation
         public void ExecuteMainLoopTest()
         {
             var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> {"10.0.0.100"});
+            mqOperationsEngine.Configure(new List<string> {"10.0.0.100","30","10","hello"});
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers
             (
                 Program.HandleProductCreationRequest,

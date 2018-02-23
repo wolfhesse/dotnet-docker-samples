@@ -39,7 +39,8 @@ namespace DotnetApp
                 await Task.Run(
                     () =>
                     {
-                        EsOperationsEngine.EsWriteAndDupTweet(StoreMessageToEsIndexTask(e.Message).Result).ForEach(TweetEngine.DumpTweet);
+                        EsOperationsEngine.EsWriteAndDupTweet(StoreMessageToEsIndexTask(e.Message).Result)
+                            .ForEach(TweetEngine.DumpTweet);
 //                        EnvironmentManager.WriteLine(e.Message);
                         EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
@@ -119,10 +120,11 @@ namespace DotnetApp
         {
             var mqOperationsEngine = new MqOperationsEngine();
             // server, gracetime, limit, queue
-            mqOperationsEngine.Configure(new List<string> {"10.0.0.100","30","10","hello"});
+
+            mqOperationsEngine.Configure(new List<string> {"s0.wolfslab.wolfspool.at", "30", "10", "hello"});
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
-                handleProductCreationRequest: HandleProductCreationRequest,
-                handleTweetCreationRequest: HandleTweetCreationRequest)
+                    handleProductCreationRequest: HandleProductCreationRequest,
+                    handleTweetCreationRequest: HandleTweetCreationRequest)
                 .Execute(mqOperationsEngine);
         }
 
@@ -133,7 +135,7 @@ namespace DotnetApp
         {
             // create 'tweet' in elasticsearch
             var t = await BusinessCartridge.StoreMessageToEsIndexTask(aseMessageEventArgs.Message);
-        
+
             // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
         }
 
