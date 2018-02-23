@@ -1,7 +1,7 @@
 ﻿using DnsLib;
 using Xunit;
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Instrumentation
 {
     /// <summary>The release zulu.</summary>
     public class ReleaseZulu

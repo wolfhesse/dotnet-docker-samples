@@ -1,7 +1,7 @@
 using DnsLib.FactoryFloor.Lab.Components;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Instrumentation
 {
     #region using directives
 

@@ -2,7 +2,7 @@
 using DnsLib.ShopComponent;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Instrumentation
 {
     /// <summary>The woo stuff auth adapter tests.</summary>
     [TestFixture]

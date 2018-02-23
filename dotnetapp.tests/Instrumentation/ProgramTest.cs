@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Instrumentation
 {
     #region using directives
 

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DnsLib;
 using DnsLib.AbstractArchitecture.Definitions;
 using DnsLib.ElasticSearchComponent;
+using DnsLib.MqComponent;
 using DnsLib.ShopComponent;
 using WooCommerceNET.WooCommerce.v2;
 using DnsLib.ShopComponent.AseWooCommerceNET;
@@ -15,75 +16,30 @@ namespace DotnetApp
 
     #endregion
 
-    /// <summary>The program.</summary>
-    public class Program
+    public class BusinessCartridge
     {
         /// <summary>The tweets counter.</summary>
         public static int TweetsCounter = 0;
 
         private static bool _flipFlop;
 
-        /// <summary>The main.</summary>
-        /// <param name="args">The args.</param>
-        public static void Main(string[] args)
-        {
-            var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> {"10.0.0.100"});
-            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
-                ProcessProductCreatedMessage,
-                CreateTweetHandler).Execute(mqOperationsEngine);
-        }
-
-        /// <summary>The build tweet.</summary>
-        /// <param name="message">The message.</param>
-        /// <returns>The <see cref="InteropTypes.TweetModel" />.</returns>
-        private static InteropTypes.TweetModel BuildTweet(string message)
-        {
-            var t0 = TweetEngine.FnCreateTweet(message);
-            t0.User = typeof(Program).ToString();
-            return t0;
-        }
-
-        /// <summary>The create tweet handler.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="aseMessageEventArgs">The ase message event args.</param>
-        public static async void CreateTweetHandler(object sender, AseMessageEventArgs aseMessageEventArgs)
-        {
-            // create 'tweet' in elasticsearch
-            var t = BuildTweet(aseMessageEventArgs.Message);
-            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet))
-                .ConfigureAwait(false);
-            EnvironmentManager.WriteLine(aseMessageEventArgs.Message);
-
-            // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
-        }
-
-        /// <summary>The process product created message.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="eventArgs">The event args.</param>
-        public static async void ProcessProductCreatedMessage(object sender, AseMessageEventArgs eventArgs)
-        {
-            await ReceiveEvMessageAsync(sender, eventArgs);
-        }
-
         /// <summary>The receive_ ev message async.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The e.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        private static async Task ReceiveEvMessageAsync(object sender, AseMessageEventArgs e)
+        internal static async Task CreateWooDemoProductsTask(object sender, AseMessageEventArgs e)
         {
             EnvironmentManager.WriteLine($"{typeof(Program)}: got message from {sender} @ {DateTimeOffset.Now}");
             try
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
                 // since Version 0.1.13 sync ops
-                var t = BuildTweet(e.Message);
 
                 // Task.Run(() =>
                 await Task.Run(
                     () =>
                     {
-                        EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet);
+                        EsOperationsEngine.EsWriteAndDupTweet(StoreMessageToEsIndexTask(e.Message).Result).ForEach(TweetEngine.DumpTweet);
 //                        EnvironmentManager.WriteLine(e.Message);
                         EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
@@ -136,6 +92,57 @@ namespace DotnetApp
                 EnvironmentManager.WriteLine(ex.Message);
                 EnvironmentManager.WriteLine("after tweet creating in catch-");
             }
+        }
+
+        /// <summary>The build tweet.</summary>
+        /// <param name="message">The message.</param>
+        /// <returns>The <see cref="InteropTypes.TweetModel" />.</returns>
+        public static async Task<InteropTypes.TweetModel> StoreMessageToEsIndexTask(string message)
+        {
+            var t0 = TweetEngine.FnCreateTweet(message);
+            t0.User = typeof(Program).ToString();
+
+            await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t0).ForEach(TweetEngine.DumpTweet))
+                .ConfigureAwait(false);
+            EnvironmentManager.WriteLine(message);
+
+            return t0;
+        }
+    }
+
+    /// <summary>The program.</summary>
+    public class Program
+    {
+        /// <summary>The main.</summary>
+        /// <param name="args">The args.</param>
+        public static void Main(string[] args)
+        {
+            var mqOperationsEngine = new MqOperationsEngine();
+            // server, gracetime, limit, queue
+            mqOperationsEngine.Configure(new List<string> {"10.0.0.100","30","10","hello"});
+            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
+                handleProductCreationRequest: HandleProductCreationRequest,
+                handleTweetCreationRequest: HandleTweetCreationRequest)
+                .Execute(mqOperationsEngine);
+        }
+
+        /// <summary>The create tweet handler.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="aseMessageEventArgs">The ase message event args.</param>
+        public static async void HandleTweetCreationRequest(object sender, AseMessageEventArgs aseMessageEventArgs)
+        {
+            // create 'tweet' in elasticsearch
+            var t = await BusinessCartridge.StoreMessageToEsIndexTask(aseMessageEventArgs.Message);
+        
+            // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
+        }
+
+        /// <summary>The process product created message.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="eventArgs">The event args.</param>
+        public static async void HandleProductCreationRequest(object sender, AseMessageEventArgs eventArgs)
+        {
+            await BusinessCartridge.CreateWooDemoProductsTask(sender, eventArgs);
         }
     }
 }

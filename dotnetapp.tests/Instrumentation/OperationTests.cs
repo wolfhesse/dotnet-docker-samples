@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Instrumentation
 {
     #region using directives
 
@@ -84,8 +84,8 @@ namespace DotnetApp.Tests.IntegrationTests
             mqOperationsEngine.Configure(new List<string> {"10.0.0.100"});
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers
             (
-                Program.ProcessProductCreatedMessage,
-                Program.CreateTweetHandler
+                Program.HandleProductCreationRequest,
+                Program.HandleTweetCreationRequest
             ).Execute(mqOperationsEngine);
         }
     }

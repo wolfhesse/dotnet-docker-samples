@@ -6,7 +6,7 @@ using DotnetApp.Tests.ClassLibrary;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests.IntegrationTests
+namespace DotnetApp.Tests.Instrumentation
 {
     /// <inheritdoc />
     /// <summary>
@@ -17,7 +17,7 @@ namespace DotnetApp.Tests.IntegrationTests
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the
-        ///     <see cref="T:DotnetApp.Tests.IntegrationTests.SubsystemTaskManagementXunitTest" /> class.
+        ///     <see cref="T:DotnetApp.Tests.Instrumentation.SubsystemTaskManagementXunitTest" /> class.
         /// </summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)
