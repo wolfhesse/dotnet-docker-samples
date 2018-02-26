@@ -11,8 +11,12 @@
     <FileVersion>1.0.0.2</FileVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="AseFramework" Version="1.1.1-CI-20180223-121303" />
+    <PackageReference Include="AseFramework" Version="1.1.1-CI-20180226-181827" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.0.1" />
     <PackageReference Include="NEST" Version="6.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
