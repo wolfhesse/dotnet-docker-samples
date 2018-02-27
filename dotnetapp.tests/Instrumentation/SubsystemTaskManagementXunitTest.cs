@@ -2,6 +2,7 @@ using System;
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.SysRes;
 using DnsLib.TodoComponent;
+using DotnetApp.CustomSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Xunit;
 using Xunit.Abstractions;

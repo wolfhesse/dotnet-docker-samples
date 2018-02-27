@@ -7,7 +7,7 @@ using DnsLib.SysRes;
 using DnsLib.TodoComponent;
 using Newtonsoft.Json;
 
-namespace DotnetApp.Tests.ClassLibrary
+namespace DotnetApp.CustomSetup
 {
     #region using directives
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using DnsLib.SysRes;
+using DotnetApp.CustomSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;

@@ -17,6 +17,20 @@ namespace DotnetApp.Tests.Instrumentation
         /// <summary>Gets the data d result txt f.</summary>
         public static string DataDResultTxtF { get; } = EnvironmentManager.AseDataDWin + "/OperationTests.res.txt";
 
+        [TestMethod]
+        [Ignore]
+        [Timeout(30000)]
+        public void ExecuteMainLoopTest()
+        {
+            var mqOperationsEngine = new MqOperationsEngine();
+            mqOperationsEngine.Configure(new List<string> {"10.0.0.100", "30", "10", "hello"});
+            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers
+            (
+                Program.HandleProductCreationRequest,
+                Program.HandleTweetCreationRequest
+            ).Execute(mqOperationsEngine);
+        }
+
         // [Fact]
         // public void ApiTestS13K()
         // {
@@ -74,20 +88,6 @@ namespace DotnetApp.Tests.Instrumentation
         {
             EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
             Assert.AreEqual(bool.TrueString, "True");
-        }
-
-        [TestMethod]
-        [Ignore]
-        [Timeout(30000)]
-        public void ExecuteMainLoopTest()
-        {
-            var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> {"10.0.0.100","30","10","hello"});
-            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers
-            (
-                Program.HandleProductCreationRequest,
-                Program.HandleTweetCreationRequest
-            ).Execute(mqOperationsEngine);
         }
     }
 }
