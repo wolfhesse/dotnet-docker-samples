@@ -39,7 +39,7 @@ namespace DotnetApp.Tests.Instrumentation
                 ProgramSample.EnvironmentDict(),
                 Formatting.Indented);
             Console.Out.WriteLine("SerializedEnvironmentString = {0}", SerializedEnvironmentString);
-            EnvironmentManager.WriteLine(SerializedEnvironmentString);
+            PlatformSysGen.EnvironmentManager.WriteLine(SerializedEnvironmentString);
 
             EnvManagerFutureWriteAseDebugMarker();
             EnvManagerFutureWriteTrraceMarker();
@@ -71,13 +71,13 @@ namespace DotnetApp.Tests.Instrumentation
         /// <summary>The env manager_ future_ write ase debug marker.</summary>
         private static void EnvManagerFutureWriteAseDebugMarker()
         {
-            EnvironmentManager.WriteLine("x-ase-debug-line");
+            PlatformSysGen.EnvironmentManager.WriteLine("x-ase-debug-line");
         }
 
         /// <summary>The env manager_ future_ write trrace marker.</summary>
         private static void EnvManagerFutureWriteTrraceMarker()
         {
-            EnvironmentManager.WriteLine("x-ase-trace-line", "test");
+            PlatformSysGen.EnvironmentManager.WriteLine("x-ase-trace-line", "test");
         }
     }
 }

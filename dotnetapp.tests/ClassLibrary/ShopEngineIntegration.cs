@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DnsLib.ShopComponent;
-using DnsLib.ShopComponent.AseWooCommerceNET;
+using DnsLib.FactoryFloor.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WooCommerceNET.WooCommerce.v2;

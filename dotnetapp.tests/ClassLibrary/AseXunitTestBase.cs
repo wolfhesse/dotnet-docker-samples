@@ -19,7 +19,7 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <param name="testOutputHelper">The test output helper.</param>
         protected AseXunitTestBase(ITestOutputHelper testOutputHelper)
         {
-            var envManagerTestOutputHelper = EnvironmentManager.TestOutputHelper;
+            var envManagerTestOutputHelper = PlatformSysGen.EnvironmentManager.TestOutputHelper;
             OutputHelperComparison = testOutputHelper == envManagerTestOutputHelper;
         }
 

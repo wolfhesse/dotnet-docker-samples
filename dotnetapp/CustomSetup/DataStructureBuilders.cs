@@ -1,7 +1,7 @@
 ﻿using System;
-using DnsLib.EnvironmentSetup;
+using DnsLib.FactoryFloor.Lab;
+using DnsLib.FactoryFloor.TodoComponent;
 using DnsLib.SysRes;
-using DnsLib.TodoComponent;
 using NUnit.Framework;
 
 namespace DotnetApp.CustomSetup
@@ -24,8 +24,8 @@ namespace DotnetApp.CustomSetup
         {
             var item = TodoBuilder.BuildTodo("sample");
 
-            EnvironmentManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
-            EnvironmentManager.WriteLine($"extraCreatorInfo: {item.ExtraCreatorInfo}");
+            PlatformSysGen.EnvironmentManager.DefaultOut = new EnvironmentOutputAdapter(Console.Out);
+            PlatformSysGen.EnvironmentManager.WriteLine($"extraCreatorInfo: {item.ExtraCreatorInfo}");
 
             Assert.IsNotNull(item.CreatedAt);
         }

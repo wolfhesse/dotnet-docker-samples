@@ -19,7 +19,7 @@ namespace DotnetApp.Tests.Instrumentation
         [Test]
         public void TheodorDataDTest()
         {
-            Assert.AreEqual($@"C:\Users\rogera/data.d", DefinitionZulu.DataD);
+            Assert.AreEqual($@"C:\Users\rogera/data.d", PlatformSysGen.DefinitionZulu.DataD);
         }
     }
 }

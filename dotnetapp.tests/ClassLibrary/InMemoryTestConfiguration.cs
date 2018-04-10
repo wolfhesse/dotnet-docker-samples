@@ -1,6 +1,6 @@
 using DnsLib.FactoryFloor.Lab;
 using DnsLib.FactoryFloor.Lab.Components;
-using DnsLib.TodoComponent;
+using DnsLib.FactoryFloor.TodoComponent;
 
 namespace DotnetApp.Tests.ClassLibrary
 {

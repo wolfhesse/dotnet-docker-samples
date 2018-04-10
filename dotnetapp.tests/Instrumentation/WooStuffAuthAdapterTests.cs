@@ -1,5 +1,5 @@
 ﻿using System;
-using DnsLib.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent;
 using NUnit.Framework;
 
 namespace DotnetApp.Tests.Instrumentation

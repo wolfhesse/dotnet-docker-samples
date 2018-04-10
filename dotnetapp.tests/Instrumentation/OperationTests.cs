@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DnsLib.MqComponent;
+using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,7 +15,7 @@ namespace DotnetApp.Tests.Instrumentation
     public class OperationTests
     {
         /// <summary>Gets the data d result txt f.</summary>
-        public static string DataDResultTxtF { get; } = EnvironmentManager.AseDataDWin + "/OperationTests.res.txt";
+        public static string DataDResultTxtF { get; } = PlatformSysGen.EnvironmentManager.AseDataDWin + "/OperationTests.res.txt";
 
         [TestMethod]
         [Ignore]
@@ -56,7 +56,7 @@ namespace DotnetApp.Tests.Instrumentation
         public void MkidxTest()
         {
             // EnvManager.DefaultOut = new EnvironmentOutputAdapter(this.Oh);
-            var tweets = EsOperationsEngine.EsWriteAndDupTweet(EnvironmentManager.GetSampleTweet());
+            var tweets = EsOperationsEngine.EsWriteAndDupTweet(PlatformSysGen.EnvironmentManager.GetSampleTweet());
             Console.WriteLine(tweets[1]);
             Assert.AreEqual(tweets[0].User, tweets[1].User);
         }
@@ -70,7 +70,7 @@ namespace DotnetApp.Tests.Instrumentation
             Console.WriteLine(1);
             try
             {
-                EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
+                PlatformSysGen.EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
             }
             finally
             {
@@ -86,7 +86,7 @@ namespace DotnetApp.Tests.Instrumentation
         [TestMethod]
         public void Test2()
         {
-            EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
+            PlatformSysGen.EnvironmentManager.WriteLine(DateTimeOffset.Now.ToString());
             Assert.AreEqual(bool.TrueString, "True");
         }
     }
