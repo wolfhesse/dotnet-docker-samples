@@ -143,7 +143,7 @@ namespace DotnetApp
             mqOperationsEngine.Configure(new List<string>
             {
 //                "s0.wolfslab.wolfspool.at", "30", "10", "hello"
-                "10.0.0.100", "30", "10", "hello"
+                "10.0.0.100", "30", "10000", "hello"
             });
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
                     HandleProductCreationRequest,
