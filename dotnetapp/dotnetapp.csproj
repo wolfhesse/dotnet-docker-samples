@@ -21,7 +21,7 @@
     <PackageReference Include="NEST" Version="6.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="NUnit" Version="3.10.1" />
-    <PackageReference Include="RabbitMQ.Client" Version="5.1.0-rc1" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
     <PackageReference Include="RestSharp" Version="106.3.0-alpha0018" />
   </ItemGroup>
 
