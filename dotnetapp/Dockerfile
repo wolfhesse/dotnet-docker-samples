@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.0-sdk as builder  
+FROM microsoft/dotnet:2.1-sdk as builder  
  
 RUN mkdir -p /root/src/app/dotnetapp
 WORKDIR /root/src/app/dotnetapp
@@ -11,7 +11,7 @@ RUN dotnet restore -s http://nuget.base.wolfspool.at -s https://api.nuget.org/v3
 COPY . .
 RUN dotnet publish -c release -o published 
 
-FROM microsoft/dotnet:2.0.0-runtime
+FROM microsoft/dotnet:2.1-runtime
 
 WORKDIR /app  
 COPY --from=builder /root/src/app/dotnetapp/published .
