@@ -7,6 +7,7 @@ using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.FactoryFloor.ShopComponent;
 using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
+using WooCommerceNET.WooCommerce;
 using WooCommerceNET.WooCommerce.v2;
 
 namespace DotnetApp
@@ -139,7 +140,11 @@ namespace DotnetApp
             var mqOperationsEngine = new MqOperationsEngine();
             // server, gracetime, limit, queue
 
-            mqOperationsEngine.Configure(new List<string> {"s0.wolfslab.wolfspool.at", "30", "10", "hello"});
+            mqOperationsEngine.Configure(new List<string>
+            {
+//                "s0.wolfslab.wolfspool.at", "30", "10", "hello"
+                "10.0.0.100", "30", "10", "hello"
+            });
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
                     HandleProductCreationRequest,
                     HandleTweetCreationRequest)

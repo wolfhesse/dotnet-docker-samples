@@ -47,6 +47,7 @@ namespace DotnetApp.Tests.Instrumentation
             TodoManagementControllerVariant.AddTodo(new TodoItem("2eins"));
             TodoManagementControllerVariant.AddTodo(new TodoItem("3eins"));
             TodoManagementControllerVariant.AddTodo(new TodoItem("4eins"));
+            
             Assert.Empty(string.Empty);
         }
 
