@@ -7,7 +7,7 @@ using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.FactoryFloor.ShopComponent;
 using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
-using WooCommerceNET.WooCommerce;
+using Newtonsoft.Json;
 using WooCommerceNET.WooCommerce.v2;
 
 namespace DotnetApp
@@ -129,6 +129,7 @@ namespace DotnetApp
         {
             // create 'tweet' in elasticsearch
             var t = await BusinessCartridge.StoreMessageToEsIndexTask(aseMessageEventArgs.Message);
+            PlatformSysGen.EnvironmentManager.WriteLine($"Business Cartridge stored message { JsonConvert.SerializeObject(t) } ");
 
             // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
         }
