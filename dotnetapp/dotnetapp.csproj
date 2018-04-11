@@ -17,8 +17,9 @@
 
   <ItemGroup>
     <PackageReference Include="DnsLib" Version="1.1.1-CI-20180410-190815" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.0-beta2" />
     <PackageReference Include="NEST" Version="6.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="NUnit" Version="3.10.1" />
     <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
     <PackageReference Include="WooCommerceNET" Version="0.7.4" />
