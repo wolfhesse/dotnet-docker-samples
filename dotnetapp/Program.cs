@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DnsLib;
-using DnsLib.AbstractArchitecture.Definitions;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.ComponentLibrary.Macrolib;
 using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.FactoryFloor.ShopComponent;
 using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
-using DnsLib.SysRes;
+using DnsLib.OperatorApps.SysRes;
 using Newtonsoft.Json;
 using WooCommerceNET.WooCommerce.v2;
 
@@ -33,7 +34,7 @@ namespace DotnetApp
 
             await Task.Run(() => EsOperationsEngine.EsWriteAndDupTweet(t0).ForEach(TweetEngine.DumpTweet))
                 .ConfigureAwait(false);
-            PlatformSysGen.EnvironmentManager.WriteLine(message);
+            EnvironmentManager.WriteLine(message);
 
             return t0;
         }
@@ -44,7 +45,7 @@ namespace DotnetApp
         /// <returns>The <see cref="Task" />.</returns>
         internal static async Task CreateWooDemoProductsTask(object sender, AseMessageEventArgs e)
         {
-            PlatformSysGen.EnvironmentManager.WriteLine($"{typeof(Program)}: got message from {sender} @ {DateTimeOffset.Now}");
+            EnvironmentManager.WriteLine($"{typeof(Program)}: got message from {sender} @ {DateTimeOffset.Now}");
             try
             {
                 // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
@@ -57,9 +58,9 @@ namespace DotnetApp
                         EsOperationsEngine.EsWriteAndDupTweet(StoreMessageToEsIndexTask(e.Message).Result)
                             .ForEach(TweetEngine.DumpTweet);
 //                        EnvironmentManager.WriteLine(e.Message);
-                        PlatformSysGen.EnvironmentManager.WriteLine("after tweet creation [inTask]");
+                        EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
-                PlatformSysGen.EnvironmentManager.WriteLine("after tweet creation [aftTask]");
+                EnvironmentManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
                 var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
@@ -71,7 +72,7 @@ namespace DotnetApp
                     new WooCommerceConfiguration(
                         WooStuffAuthAdapter.FnRestApiRcs2()));
 
-                PlatformSysGen.EnvironmentManager.WriteLine("\t\t\t--- 1 --- before product creation");
+                EnvironmentManager.WriteLine("\t\t\t--- 1 --- before product creation");
                 // Task.Run(() =>
                 await Task.Run(
                     () =>
@@ -79,20 +80,20 @@ namespace DotnetApp
                         _flipFlop = !_flipFlop;
                         var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
 
-                        PlatformSysGen.EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
-                        PlatformSysGen.EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
+                        EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
+                        EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
 
                         var startTs = DateTime.Now;
                         var p2 = shopEngine.AddProduct(p);
                         var duration = DateTime.Now - startTs;
-                        PlatformSysGen.EnvironmentManager.WriteLine(
+                        EnvironmentManager.WriteLine(
                             $"product created: {p2.name}" + $"{Environment.NewLine}"
                                                           + $"\tduration: {duration.TotalSeconds} s");
-                        PlatformSysGen.EnvironmentManager.WriteLine($"\t\t\t\t\t\t--- 2 --- after product creation [inTask]");
-                        PlatformSysGen.EnvironmentManager.WriteLine(
+                        EnvironmentManager.WriteLine($"\t\t\t\t\t\t--- 2 --- after product creation [inTask]");
+                        EnvironmentManager.WriteLine(
                             $"\t\t\t\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
                     });
-                PlatformSysGen.EnvironmentManager.WriteLine("\t\t\t\t\t\t--- 1 --- after product creation");
+                EnvironmentManager.WriteLine("\t\t\t\t\t\t--- 1 --- after product creation");
 
                 // ## rq: DescriptionUseCase ##     new AddDescription("product :" + p.description);
                 // }
@@ -105,8 +106,8 @@ namespace DotnetApp
                                 await Task.Run(() =>
                                     EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
                                */
-                PlatformSysGen.EnvironmentManager.WriteLine(ex.Message);
-                PlatformSysGen.EnvironmentManager.WriteLine("after tweet creating in catch-");
+                EnvironmentManager.WriteLine(ex.Message);
+                EnvironmentManager.WriteLine("after tweet creating in catch-");
             }
         }
     }
@@ -129,7 +130,7 @@ namespace DotnetApp
         {
             // create 'tweet' in elasticsearch
             var t = await BusinessCartridge.StoreMessageToEsIndexTask(aseMessageEventArgs.Message);
-            PlatformSysGen.EnvironmentManager.WriteLine($"Business Cartridge stored message { JsonConvert.SerializeObject(t) } ");
+            EnvironmentManager.WriteLine($"Business Cartridge stored message {JsonConvert.SerializeObject(t)} ");
 
             // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
         }
@@ -144,7 +145,10 @@ namespace DotnetApp
             mqOperationsEngine.Configure(new List<string>
             {
 //                "s0.wolfslab.wolfspool.at", "30", "10", "hello"
-                "10.0.0.100", "30", "10000", "hello"
+                "10.0.0.100",
+                "30",
+                "10000",
+                "hello"
             });
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
                     HandleProductCreationRequest,

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using DnsLib.FactoryFloor.Lab;
+using DnsLib.ComponentLibrary.Lab;
 using DnsLib.FactoryFloor.TodoComponent;
-using DnsLib.SysRes;
+using DnsLib.OperatorApps.SysRes;
 using Newtonsoft.Json;
 
 namespace DotnetApp.CustomSetup
@@ -41,7 +41,7 @@ namespace DotnetApp.CustomSetup
             ConfigureTaskRepositoryEventHandler(
                 delegate(object sender, TodoEventArgs eventArgs)
                 {
-                    PlatformSysGen.EnvironmentManager.WriteLine(
+                    EnvironmentManager.WriteLine(
                         $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                     Console.Out.WriteLine("con: task created");
                 });
@@ -53,7 +53,7 @@ namespace DotnetApp.CustomSetup
             WriteLineWithSignifier(GetBot(message));
             WriteEnvironmentDescription(environmentDict);
 
-            PlatformSysGen.EnvironmentManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
+            EnvironmentManager.WriteLine(PreparedSerializedEnvironmentSingleLine());
             TaskBuilderAddSet();
             TaskBuilderAddSet();
             TaskBuilderAddSet();
@@ -235,7 +235,7 @@ x-ase-sect-PAT_END
         private static void WriteLineWithSignifier(string s = null)
         {
             if (string.Equals(null, s, StringComparison.Ordinal)) s = Environment.NewLine;
-            PlatformSysGen.EnvironmentManager.WriteLine(string.Format("s = {0}", s));
+            EnvironmentManager.WriteLine(string.Format("s = {0}", s));
             Console.Out.WriteLine("s = {0}", s);
         }
     }

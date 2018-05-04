@@ -1,7 +1,7 @@
 using System;
-using DnsLib.FactoryFloor.Lab;
+using DnsLib.ComponentLibrary.Lab;
 using DnsLib.FactoryFloor.TodoComponent;
-using DnsLib.SysRes;
+using DnsLib.OperatorApps.SysRes;
 using DotnetApp.CustomSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Xunit;
@@ -35,7 +35,7 @@ namespace DotnetApp.Tests.Instrumentation
             ProgramSample.ConfigureTaskRepositoryEventHandler(
                 (sender, args) =>
                 {
-                    PlatformSysGen.EnvironmentManager.WriteLine(
+                    EnvironmentManager.WriteLine(
                         $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
                     Console.Out.WriteLine("con: task created");
                 });
@@ -47,7 +47,7 @@ namespace DotnetApp.Tests.Instrumentation
             TodoManagementControllerVariant.AddTodo(new TodoItem("2eins"));
             TodoManagementControllerVariant.AddTodo(new TodoItem("3eins"));
             TodoManagementControllerVariant.AddTodo(new TodoItem("4eins"));
-            
+
             Assert.Empty(string.Empty);
         }
 
@@ -60,7 +60,7 @@ namespace DotnetApp.Tests.Instrumentation
             InMemoryTodoEngine.Init();
             TodoController.TodoRepository.EvTodoAdded += (sender, args) =>
             {
-                PlatformSysGen.EnvironmentManager.WriteLine(
+                EnvironmentManager.WriteLine(
                     $"oh: task created{Environment.NewLine} at {DateTimeOffset.Now}{Environment.NewLine} by {sender}{Environment.NewLine} with args {args}");
             };
 

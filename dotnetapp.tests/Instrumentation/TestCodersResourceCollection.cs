@@ -1,4 +1,4 @@
-using DnsLib.FactoryFloor.Lab.Components;
+using DnsLib.ComponentLibrary.Lab.Components;
 using NUnit.Framework;
 
 namespace DotnetApp.Tests.Instrumentation

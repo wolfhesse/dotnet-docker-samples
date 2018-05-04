@@ -1,5 +1,5 @@
 ﻿using System;
-using DnsLib.SysRes;
+using DnsLib.OperatorApps.SysRes;
 using DotnetApp.CustomSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -39,7 +39,7 @@ namespace DotnetApp.Tests.Instrumentation
                 ProgramSample.EnvironmentDict(),
                 Formatting.Indented);
             Console.Out.WriteLine("SerializedEnvironmentString = {0}", SerializedEnvironmentString);
-            PlatformSysGen.EnvironmentManager.WriteLine(SerializedEnvironmentString);
+            EnvironmentManager.WriteLine(SerializedEnvironmentString);
 
             EnvManagerFutureWriteAseDebugMarker();
             EnvManagerFutureWriteTrraceMarker();
@@ -71,13 +71,13 @@ namespace DotnetApp.Tests.Instrumentation
         /// <summary>The env manager_ future_ write ase debug marker.</summary>
         private static void EnvManagerFutureWriteAseDebugMarker()
         {
-            PlatformSysGen.EnvironmentManager.WriteLine("x-ase-debug-line");
+            EnvironmentManager.WriteLine("x-ase-debug-line");
         }
 
         /// <summary>The env manager_ future_ write trrace marker.</summary>
         private static void EnvManagerFutureWriteTrraceMarker()
         {
-            PlatformSysGen.EnvironmentManager.WriteLine("x-ase-trace-line", "test");
+            EnvironmentManager.WriteLine("x-ase-trace-line", "test");
         }
     }
 }

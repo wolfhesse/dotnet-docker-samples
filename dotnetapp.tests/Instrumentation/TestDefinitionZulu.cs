@@ -1,4 +1,4 @@
-﻿using DnsLib.SysRes;
+﻿using DnsLib.OperatorApps.SysRes;
 using NUnit.Framework;
 
 namespace DotnetApp.Tests.Instrumentation
@@ -19,7 +19,7 @@ namespace DotnetApp.Tests.Instrumentation
         [Test]
         public void TheodorDataDTest()
         {
-            Assert.AreEqual($@"C:\Users\rogera/data.d", PlatformSysGen.DefinitionZulu.DataD);
+            Assert.AreEqual($@"C:\Users\rogera/data.d", DefinitionZulu.DataD);
         }
     }
 }
