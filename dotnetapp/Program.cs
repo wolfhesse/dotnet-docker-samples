@@ -57,13 +57,13 @@ namespace DotnetApp
                     {
                         EsOperationsEngine.EsWriteAndDupTweet(StoreMessageToEsIndexTask(e.Message).Result)
                             .ForEach(TweetEngine.DumpTweet);
-//                        EnvironmentManager.WriteLine(e.Message);
+                        //                        EnvironmentManager.WriteLine(e.Message);
                         EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
                 EnvironmentManager.WriteLine("after tweet creation [aftTask]");
 
                 // add product
-                var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
+                var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
 
                 var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
                     new WooCommerceConfiguration(
@@ -78,7 +78,8 @@ namespace DotnetApp
                     () =>
                     {
                         _flipFlop = !_flipFlop;
-                        var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
+                        // var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
+                        var shopEngine = _flipFlop ? shopEngine2 : shopEngine2;
 
                         EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
                         EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
