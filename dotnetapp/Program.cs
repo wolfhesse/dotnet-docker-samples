@@ -61,43 +61,45 @@ namespace DotnetApp
                         EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
                 EnvironmentManager.WriteLine("after tweet creation [aftTask]");
+                if (false)
+                {
+                    // add product
+                    var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
 
-                // add product
-                var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
+                    var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
+                        new WooCommerceConfiguration(
+                            WooStuffAuthAdapter.FnRestApiRcs1()));
+                    var shopEngine2 = new ShopEngine(new WooCommerceAdapter(),
+                        new WooCommerceConfiguration(
+                            WooStuffAuthAdapter.FnRestApiRcs2()));
 
-                var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
-                    new WooCommerceConfiguration(
-                        WooStuffAuthAdapter.FnRestApiRcs1()));
-                var shopEngine2 = new ShopEngine(new WooCommerceAdapter(),
-                    new WooCommerceConfiguration(
-                        WooStuffAuthAdapter.FnRestApiRcs2()));
-
-                EnvironmentManager.WriteLine("\t\t\t--- 1 --- before product creation");
-                // Task.Run(() =>
-                await Task.Run(
-                    () =>
-                    {
-                        _flipFlop = !_flipFlop;
+                    EnvironmentManager.WriteLine("\t\t\t--- 1 --- before product creation");
+                    // Task.Run(() =>
+                    await Task.Run(
+                        () =>
+                        {
+                            _flipFlop = !_flipFlop;
                         // var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
                         var shopEngine = _flipFlop ? shopEngine2 : shopEngine2;
 
-                        EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
-                        EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
+                            EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
+                            EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
 
-                        var startTs = DateTime.Now;
-                        var p2 = shopEngine.AddProduct(p);
-                        var duration = DateTime.Now - startTs;
-                        EnvironmentManager.WriteLine(
-                            $"product created: {p2.name}" + $"{Environment.NewLine}"
-                                                          + $"\tduration: {duration.TotalSeconds} s");
-                        EnvironmentManager.WriteLine($"\t\t\t\t\t\t--- 2 --- after product creation [inTask]");
-                        EnvironmentManager.WriteLine(
-                            $"\t\t\t\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
-                    });
-                EnvironmentManager.WriteLine("\t\t\t\t\t\t--- 1 --- after product creation");
+                            var startTs = DateTime.Now;
+                            var p2 = shopEngine.AddProduct(p);
+                            var duration = DateTime.Now - startTs;
+                            EnvironmentManager.WriteLine(
+                                $"product created: {p2.name}" + $"{Environment.NewLine}"
+                                                              + $"\tduration: {duration.TotalSeconds} s");
+                            EnvironmentManager.WriteLine($"\t\t\t\t\t\t--- 2 --- after product creation [inTask]");
+                            EnvironmentManager.WriteLine(
+                                $"\t\t\t\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
+                        });
+                    EnvironmentManager.WriteLine("\t\t\t\t\t\t--- 1 --- after product creation");
 
-                // ## rq: DescriptionUseCase ##     new AddDescription("product :" + p.description);
-                // }
+                    // ## rq: DescriptionUseCase ##     new AddDescription("product :" + p.description);
+                    // }
+                }
             }
             catch (Exception ex)
             {
