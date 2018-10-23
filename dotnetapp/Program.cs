@@ -61,7 +61,9 @@ namespace DotnetApp
                         EnvironmentManager.WriteLine("after tweet creation [inTask]");
                     });
                 EnvironmentManager.WriteLine("after tweet creation [aftTask]");
-                if (false)
+                var randomVar = new Random(42).Next(0, 2);
+
+                if (randomVar < 1)
                 {
                     // add product
                     var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
@@ -79,8 +81,8 @@ namespace DotnetApp
                         () =>
                         {
                             _flipFlop = !_flipFlop;
-                        // var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
-                        var shopEngine = _flipFlop ? shopEngine2 : shopEngine2;
+                            // var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
+                            var shopEngine = _flipFlop ? shopEngine2 : shopEngine2;
 
                             EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
                             EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
@@ -148,7 +150,8 @@ namespace DotnetApp
             mqOperationsEngine.Configure(new List<string>
             {
 //                "s0.wolfslab.wolfspool.at", "30", "10", "hello"
-                "10.0.0.100",
+                "s0.wolfslab.wolfspool.at",
+//                "192.168.99.100",
                 "30",
                 "10000",
                 "hello"

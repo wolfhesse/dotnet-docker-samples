@@ -4,6 +4,7 @@ using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.OperatorApps.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace DotnetApp.Tests.Instrumentation
 {
     #region using directives
@@ -18,19 +19,19 @@ namespace DotnetApp.Tests.Instrumentation
         public static string DataDResultTxtF { get; } = EnvironmentManager.AseDataDWin + "/OperationTests.res.txt";
 
         [TestMethod]
-        [Ignore]
+//        [Ignore]
         [Timeout(30000)]
         public void ExecuteMainLoopTest()
         {
             var mqOperationsEngine = new MqOperationsEngine();
-            mqOperationsEngine.Configure(new List<string> {"10.0.0.100", "30", "10", "hello"});
+            mqOperationsEngine.Configure(new List<string> {"s0.wolfslab.wolfspool.at", "30", "10", "hello"});
             mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers
             (
                 Program.HandleProductCreationRequest,
                 Program.HandleTweetCreationRequest
             ).Execute(mqOperationsEngine);
         }
-
+       
         // [Fact]
         // public void ApiTestS13K()
         // {
@@ -78,6 +79,7 @@ namespace DotnetApp.Tests.Instrumentation
             }
 
             Console.WriteLine(2);
+            
         }
 
         /// <summary>

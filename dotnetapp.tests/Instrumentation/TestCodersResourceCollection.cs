@@ -1,5 +1,6 @@
 using DnsLib.ComponentLibrary.Lab.Components;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace DotnetApp.Tests.Instrumentation
 {
@@ -10,12 +11,13 @@ namespace DotnetApp.Tests.Instrumentation
     /// <summary>
     ///     The test coders resource collection.
     /// </summary>
+    [TestClass]
     public class TestCodersResourceCollection
     {
         /// <summary>
         ///     The test length.
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestLength()
         {
             Assert.AreEqual(6, CodersResourceCollection.GetProgrammerResourcesList().Count);
