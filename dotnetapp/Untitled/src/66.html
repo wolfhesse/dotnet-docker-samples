@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\generaloperations.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.IO;
+using DnsLib.SysRes;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;
+    ///     The general operations.
+    /// &lt;/summary&gt;
+    public static class GeneralOperations
+    {
+        /// &lt;summary&gt;The err_handling_bail_out.&lt;/summary&gt;
+        /// &lt;param name=&quot;reason&quot;&gt;The reason.&lt;/param&gt;
+        public static void ErrHandlingBailOut(string reason = null)
+        {
+            EnvironmentManager.WriteLine($&quot;bailing out: rc .. {reason} // &quot;);
+        }
+
+        /// &lt;summary&gt;The handle bailing out.&lt;/summary&gt;
+        /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+        /// &lt;param name=&quot;reason&quot;&gt;The reason.&lt;/param&gt;
+        public static void HandleBailingOut(TextWriter textWriter, string reason = null)
+        {
+            textWriter.WriteLine($&quot;bailing out: rc .. //////////////////// {reason} //////////////////// &quot;);
+        }
+    }
+
+    /// &lt;summary&gt;The helper.&lt;/summary&gt;
+    public class Helper
+    {
+        /// &lt;summary&gt;The fn separator 36.&lt;/summary&gt;
+        public static string FnSeparator36 =&gt; new string(&#39;_&#39;, 36);
+
+        /// &lt;summary&gt;The fn out separator 36.&lt;/summary&gt;
+        /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+        /// &lt;param name=&quot;character&quot;&gt;The character.&lt;/param&gt;
+        public static void FnOutSeparator36(TextWriter textWriter = null, char character = &#39;_&#39;)
+        {
+            if (textWriter == null) textWriter = Console.Out;
+            textWriter.WriteLine(new string(character, 36));
+        }
+
+        /// &lt;summary&gt;The fn out separator 72.&lt;/summary&gt;
+        /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+        /// &lt;param name=&quot;character&quot;&gt;The character.&lt;/param&gt;
+        public static void FnOutSeparator72(TextWriter textWriter = null, char character = &#39;_&#39;)
+        {
+            if (textWriter == null) textWriter = Console.Out;
+            textWriter.WriteLine(new string(character, 72));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,10,0],[20,13,20,78,0],[21,9,21,10,0],[27,9,27,10,1],[28,13,28,109,1],[29,9,29,10,1],[36,47,36,66,1],[42,9,42,10,1],[43,13,43,36,1],[43,37,43,62,1],[44,13,44,61,1],[45,9,45,10,1],[51,9,51,10,1],[52,13,52,36,1],[52,37,52,62,0],[53,13,53,61,1],[54,9,54,10,1]]);
+    </script>
+  </body>
+</html>

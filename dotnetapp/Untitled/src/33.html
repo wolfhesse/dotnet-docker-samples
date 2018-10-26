@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\component2.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.ComponentModel;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The component 2.&lt;/summary&gt;
+    public partial class Component2 : Component
+    {
+        /// &lt;summary&gt;The ev processing.&lt;/summary&gt;
+        public event EventHandler EvProcessing;
+
+        /// &lt;summary&gt;The ev started.&lt;/summary&gt;
+        public event EventHandler EvStarted;
+
+        /// &lt;summary&gt;The ev stopped.&lt;/summary&gt;
+        public event EventHandler EvStopped;
+
+        /// &lt;summary&gt;The start.&lt;/summary&gt;
+        public void Start()
+        {
+            OnEvStarted();
+
+            //// processing
+            Process();
+            Stop();
+        }
+
+        /// &lt;summary&gt;The on ev processing.&lt;/summary&gt;
+        protected virtual void OnEvProcessing()
+        {
+            EvProcessing?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;The on ev started.&lt;/summary&gt;
+        protected virtual void OnEvStarted()
+        {
+            EvStarted?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;The on ev stopped.&lt;/summary&gt;
+        protected virtual void OnEvStopped()
+        {
+            EvStopped?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;The process.&lt;/summary&gt;
+        private void Process()
+        {
+            OnEvProcessing();
+        }
+
+        /// &lt;summary&gt;The stop.&lt;/summary&gt;
+        private void Stop()
+        {
+            OnEvStopped();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[24,9,24,10,0],[25,13,25,27,0],[28,13,28,23,0],[29,13,29,20,0],[30,9,30,10,0],[34,9,34,10,0],[35,13,35,57,0],[36,9,36,10,0],[40,9,40,10,0],[41,13,41,54,0],[42,9,42,10,0],[46,9,46,10,0],[47,13,47,54,0],[48,9,48,10,0],[52,9,52,10,0],[53,13,53,30,0],[54,9,54,10,0],[58,9,58,10,0],[59,13,59,27,0],[60,9,60,10,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\factoryfloorcontroller.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace DnsLib.SysRes
+{
+    public sealed class FactoryFloorController
+    {
+        /*
+         * FactoryFloor initialized Online
+         */
+        private static bool _stageOnline;
+        public event EventHandler EvStageOffline;
+        public event EventHandler EvStageOnline;
+
+        public static string CurrentStageOnlineCondition =&gt;
+            &quot;FactoryFloorController: STAGE == &quot; + (_stageOnline ? &quot;ONLINE&quot; : &quot;OFFLINE&quot;);
+
+        public static FactoryFloorController Instance { get; } = new FactoryFloorController();
+
+        public static void FnTweetMessage(string message)
+        {
+            try
+            {
+                var t = TweetEngine.BuildTweet(&quot;rogera&quot;);
+                t.Value = message;
+                var res = EsOperationsEngine.EsWriteAndDupTweet(t);
+                EnvironmentManager.WriteTweetToConsole(res[0]);
+            }
+            catch
+            {
+                SetStageOffline();
+            }
+        }
+
+
+        public static bool IsStageOnline()
+        {
+            return _stageOnline;
+        }
+
+        public static void SetStageOffline()
+        {
+            _stageOnline = false;
+            Instance?.OnEvStageOffline();
+        }
+
+        public static void SetStageOnline()
+        {
+            _stageOnline = true;
+            Instance?.OnEvStageOnline();
+        }
+
+        private void OnEvStageOffline()
+        {
+            EvStageOffline?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnEvStageOnline()
+        {
+            EvStageOnline?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,13,15,88,1],[17,57,17,61,1],[17,66,17,94,1],[20,9,20,10,1],[22,13,22,14,1],[23,17,23,58,1],[24,17,24,35,1],[25,17,25,68,1],[26,17,26,64,1],[27,13,27,14,1],[28,13,28,18,0],[29,13,29,14,0],[30,17,30,35,0],[31,13,31,14,0],[32,9,32,10,1],[36,9,36,10,1],[37,13,37,33,1],[38,9,38,10,1],[41,9,41,10,1],[42,13,42,34,1],[43,13,43,42,1],[44,9,44,10,1],[47,9,47,10,1],[48,13,48,33,1],[49,13,49,41,1],[50,9,50,10,1],[53,9,53,10,1],[54,13,54,59,1],[55,9,55,10,1],[58,9,58,10,1],[59,13,59,58,1],[60,9,60,10,1]]);
+    </script>
+  </body>
+</html>

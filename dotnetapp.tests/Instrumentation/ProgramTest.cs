@@ -1,5 +1,5 @@
 ﻿using System;
-using DnsLib.OperatorApps.SysRes;
+using DnsLib.SysRes;
 using DotnetApp.CustomSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -39,7 +39,7 @@ namespace DotnetApp.Tests.Instrumentation
                 ProgramSample.EnvironmentDict(),
                 Formatting.Indented);
             Console.Out.WriteLine("SerializedEnvironmentString = {0}", SerializedEnvironmentString);
-            EnvironmentManager.WriteLine(SerializedEnvironmentString);
+            DnsLib.SysRes.EnvironmentManager.WriteLine(SerializedEnvironmentString);
 
             EnvManagerFutureWriteAseDebugMarker();
             EnvManagerFutureWriteTrraceMarker();

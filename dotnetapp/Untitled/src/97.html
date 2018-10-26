@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\environmentmanager.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Text;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.FactoryFloor.Utility;
+using Xunit.Abstractions;
+
+namespace DnsLib.SysRes
+{
+    // todo merge w/ PlatformSysGen
+
+    /// &lt;summary&gt;
+    ///     The environment manager.
+    /// &lt;/summary&gt;
+    public class EnvironmentManager : INeedSampleTweet
+    {
+        /// &lt;summary&gt;The instance.&lt;/summary&gt;
+        private static readonly EnvironmentManager Instance = new EnvironmentManager();
+
+        private static IWriteLineSupport _sDefaultOut;
+
+        /// &lt;summary&gt;Initializes static members of the &lt;see cref=&quot;EnvironmentManager&quot; /&gt; class.&lt;/summary&gt;
+        static EnvironmentManager()
+        {
+//            Instance = new EnvironmentManager();
+        }
+
+        /// &lt;summary&gt;
+        ///     Gets the Ase data directory setting.
+        /// &lt;/summary&gt;
+        public static string AseDataD { get; } =
+            Environment.GetFolderPath(Environment.SpecialFolder.Personal) + &quot;/data.d&quot;;
+
+        /// &lt;summary&gt;
+        ///     Gets the ase data d win.
+        /// &lt;/summary&gt;
+        public static string AseDataDWin { get; } = AseDataD;
+
+        /// &lt;summary&gt;
+        ///     Gets the configuration.
+        /// &lt;/summary&gt;
+        public static IDictionary&lt;string, object&gt; Configuration
+        {
+            get
+            {
+                var testingDictionary = new Dictionary&lt;string, object&gt; {[&quot;eins&quot;] = 1, [&quot;zwei&quot;] = 2};
+                return testingDictionary;
+            }
+        }
+
+        /// &lt;summary&gt;
+        ///     Gets or sets the default out.
+        /// &lt;/summary&gt;
+        public static IWriteLineSupport DefaultOut
+        {
+            private get { return _sDefaultOut; }
+            set { _sDefaultOut = value; }
+        }
+
+        /// &lt;summary&gt;
+        ///     Gets the env var ase data d.
+        /// &lt;/summary&gt;
+        public static string EnvVarAseDataD { get; } = &quot;ASE_DATA_D&quot;;
+
+        /// &lt;summary&gt;
+        ///     Gets the flg not available s.
+        /// &lt;/summary&gt;
+        public static string FlgNotAvailableS { get; } = &quot;n/a&quot;;
+
+        /// &lt;summary&gt;The sample tweet.&lt;/summary&gt;
+        public static TweetModel SampleTweet
+        {
+            get { return GetSampleTweet(); }
+        }
+
+        /// &lt;summary&gt;The version.&lt;/summary&gt;
+        public string Version
+        {
+            get { return $&quot;{typeof(EnvironmentManager)}/1.0&quot;; }
+        }
+
+        /// &lt;summary&gt;
+        ///     Gets or sets the test output helper.
+        /// &lt;/summary&gt;
+        public static ITestOutputHelper TestOutputHelper { get; set; }
+
+        /// &lt;summary&gt;
+        ///     Gets or sets the enum registry.
+        /// &lt;/summary&gt;
+        private static IDictionary&lt;Enum, IDictionary&lt;Enum, List&lt;string&gt;&gt;&gt; EnumRegistry { get; set; }
+
+        /// &lt;summary&gt;
+        ///     Gets or sets the registry.
+        /// &lt;/summary&gt;
+        private static IDictionary&lt;string, IDictionary&lt;string, object&gt;&gt; Registry { get; set; }
+
+        /// &lt;summary&gt;The add sample tweet was requested event handler.&lt;/summary&gt;
+        /// &lt;param name=&quot;value&quot;&gt;The value.&lt;/param&gt;
+        public static void AddSampleTweetWasRequestedEventHandler(EventHandler value)
+        {
+            TweetEngine.EvSampleTweetWasRequested += value;
+        }
+
+        public static void FnDumpEnvironment()
+        {
+            Console.Out.WriteLine(&quot;environment variables:&quot;);
+            var enumerator = Environment.GetEnvironmentVariables().GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                string enumKeyValueMessage = $@&quot;{enumerator.Key,40}:{enumerator.Value,80}&quot;;
+                Console.WriteLine(enumKeyValueMessage);
+            }
+        }
+
+        /// &lt;summary&gt;The get data d.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;string&quot; /&gt;.&lt;/returns&gt;
+        public static string GetDataD()
+        {
+            var s = Environment.GetEnvironmentVariable(DefinitionZulu.EnvVarAseDataD);
+            if (null == s)
+            {
+                // bail out
+                var sw = new StringWriter(new StringBuilder());
+                try
+                {
+                    GeneralOperations.HandleBailingOut(sw, &quot;get env var ASE_DATA_D: &quot; + typeof(PlatformSysGen));
+                }
+                catch (Exception e)
+                {
+                    sw.WriteLine($&quot;exception: {e.Message}&quot;);
+                }
+
+                Debug.WriteLine(sw.ToString());
+
+                s = AseDataD;
+                Environment.SetEnvironmentVariable(DefinitionZulu.EnvVarAseDataD, s);
+            }
+
+            Debug.WriteLine($&quot;ASE_DATA_D env var set to {s}: &quot; + typeof(PlatformSysGen));
+            return s;
+        }
+
+        /// &lt;summary&gt;
+        ///     The get enum registry.
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;
+        ///     The
+        ///     &lt;see&gt;
+        ///         &lt;cref&gt;IDictionary&lt;/cref&gt;
+        ///     &lt;/see&gt;
+        ///     .
+        /// &lt;/returns&gt;
+        public static IDictionary&lt;Enum, IDictionary&lt;Enum, List&lt;string&gt;&gt;&gt; GetEnumRegistry()
+        {
+            switch (EnumRegistry)
+            {
+                case null:
+                    SetEnumRegistry(new Dictionary&lt;Enum, IDictionary&lt;Enum, List&lt;string&gt;&gt;&gt;());
+                    var enumRegistry =
+                        new Dictionary&lt;Enum, List&lt;string&gt;&gt;
+                        {
+                            [EnumRegistryKeys.Base] =
+                                new List&lt;string&gt; {DateTimeOffset.Now.ToString()}
+                        };
+                    if (EnumRegistry != null) EnumRegistry[EnumRegistryKeys.Self] = enumRegistry;
+                    break;
+            }
+
+            return EnumRegistry;
+        }
+
+        /// &lt;summary&gt;
+        ///     The get registry.
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;
+        ///     The
+        ///     &lt;see&gt;
+        ///         &lt;cref&gt;IDictionary&lt;/cref&gt;
+        ///     &lt;/see&gt;
+        ///     .
+        /// &lt;/returns&gt;
+        [SuppressMessage(
+            &quot;StyleCop.CSharp.OrderingRules&quot;,
+            &quot;SA1216:NoValueFirstComparison&quot;,
+            Justification = &quot;Reviewed. Suppression is OK here.&quot;)]
+        public static IDictionary&lt;string, IDictionary&lt;string, object&gt;&gt; GetRegistry()
+        {
+            switch (Registry)
+            {
+                case null:
+                    SetRegistry(new Dictionary&lt;string, IDictionary&lt;string, object&gt;&gt;());
+
+                    var registryRegistry =
+                        new Dictionary&lt;string, object&gt; {[&quot;/0/tags/registry-create-ts&quot;] = DateTime.Now};
+                    Debug.Assert(Registry != null, nameof(Registry) + &quot; != null&quot;);
+                    Debug.Assert(Registry != null, nameof(Registry) + &quot; != null&quot;);
+                    if (Registry != null) Registry[&quot;/root/rel/registry&quot;] = registryRegistry;
+                    break;
+            }
+
+            return Registry;
+        }
+
+        /// &lt;summary&gt;The get result stream writer.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;StreamWriter&quot; /&gt;.&lt;/returns&gt;
+        public static StreamWriter GetResultStreamWriter()
+        {
+            var datap = GetResultDataPath();
+            var dataf = datap + &quot;/ConsoleApplication.reftext.res.txt&quot;;
+
+            var sw = new StreamWriter(dataf, true);
+            return sw;
+        }
+
+
+        /// &lt;summary&gt;The get sample tweet.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;TweetModel&quot; /&gt;.&lt;/returns&gt;
+        public static TweetModel GetSampleTweet()
+        {
+            return TweetEngine.GetSampleTweetFor(Instance);
+        }
+
+        /// &lt;summary&gt;
+        ///     The init testing registry.
+        /// &lt;/summary&gt;
+        public static void InitTestingRegistry()
+        {
+            var registry = GetRegistry();
+            registry[&quot;/root/rel/view/testing&quot;] =
+                new SortedDictionary&lt;string, object&gt; {[&quot;/0/tags/registry-create-ts&quot;] = DateTime.Now};
+        }
+
+        /// &lt;summary&gt;The set enum registry.&lt;/summary&gt;
+        /// &lt;param name=&quot;value&quot;&gt;The value.&lt;/param&gt;
+        public static void SetEnumRegistry(IDictionary&lt;Enum, IDictionary&lt;Enum, List&lt;string&gt;&gt;&gt; value)
+        {
+            EnumRegistry = value;
+        }
+
+        /// &lt;summary&gt;The set registry.&lt;/summary&gt;
+        /// &lt;param name=&quot;value&quot;&gt;The value.&lt;/param&gt;
+        public static void SetRegistry(IDictionary&lt;string, IDictionary&lt;string, object&gt;&gt; value)
+        {
+            Registry = value;
+        }
+
+        /// &lt;summary&gt;The write line.&lt;/summary&gt;
+        /// &lt;param name=&quot;s&quot;&gt;The s.&lt;/param&gt;
+        /// &lt;param name=&quot;category&quot;&gt;&lt;/param&gt;
+        public static void WriteLine(object s = null, string category = &quot;&quot;)
+        {
+            s = s ?? Environment.NewLine;
+            s += category.Trim().Length == 0
+                ? string.Empty
+                : &quot;,&quot; +
+                  Environment.NewLine +
+                  $&quot;\tCategory: {category}&quot;;
+            var done = false;
+            try
+            {
+                var oh = new Xunit.Sdk.TestOutputHelper();
+                oh.WriteLine(s.ToString());
+                done = true;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception, &quot;XunitTesting&quot;);
+                if (DefaultOut != null)
+                {
+                    DefaultOut.WriteLine(s);
+                    done = true;
+                }
+            }
+            finally
+            {
+                if (!done) Console.Out.WriteLine(s);
+            }
+        }
+
+        /// &lt;summary&gt;The write to console.&lt;/summary&gt;
+        /// &lt;param name=&quot;obj&quot;&gt;The obj.&lt;/param&gt;
+        public static void WriteTweetToConsole(TweetModel obj)
+        {
+            Helper.FnOutSeparator36(Console.Out);
+            Console.Out.WriteLine(Environment.NewLine);
+            Console.Out.WriteLine(&quot;TweetModel:&quot; + Environment.NewLine);
+            Console.Out.WriteLine($&quot;tweet = {obj}&quot;);
+        }
+
+        /// &lt;summary&gt;The get result data path.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;string&quot; /&gt;.&lt;/returns&gt;
+        private static string GetResultDataPath()
+        {
+            var datap = GetDataD() + &quot;/DNS&quot;;
+            Directory.CreateDirectory(datap);
+            return datap;
+        }
+    }
+
+    /// &lt;summary&gt;The sample data provider.&lt;/summary&gt;
+    public static class SampleDataProvider
+    {
+        /// &lt;summary&gt;
+        ///     The onetab json empty state.
+        /// &lt;/summary&gt;
+        public static string OnetabJsonEmptyState = @&quot;{&quot;&quot;tabGroups&quot;&quot;:[]}&quot;;
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,88,1],[28,9,28,10,1],[30,9,30,10,1],[35,41,35,45,1],[36,13,36,86,1],[41,44,41,48,0],[41,53,41,61,1],[49,13,49,14,1],[50,17,50,101,1],[51,17,51,42,1],[52,13,52,14,1],[60,25,60,26,1],[60,27,60,47,1],[60,48,60,49,1],[61,17,61,18,0],[61,19,61,40,0],[61,41,61,42,0],[67,47,67,51,0],[67,56,67,68,1],[72,49,72,53,0],[72,58,72,63,1],[77,17,77,18,1],[77,19,77,43,1],[77,44,77,45,1],[83,17,83,18,1],[83,19,83,62,1],[83,63,83,64,1],[89,60,89,64,0],[89,65,89,69,0],[94,90,94,94,0],[94,95,94,99,0],[99,84,99,88,0],[99,89,99,93,0],[104,9,104,10,0],[105,13,105,60,0],[106,9,106,10,0],[109,9,109,10,0],[110,13,110,61,0],[111,13,111,84,0],[112,13,112,42,0],[113,13,113,14,0],[114,17,114,92,0],[115,17,115,56,0],[116,13,116,14,0],[117,9,117,10,0],[122,9,122,10,1],[123,13,123,87,1],[124,13,124,27,1],[125,13,125,14,1],[127,17,127,64,1],[129,17,129,18,1],[130,21,130,113,1],[131,17,131,18,1],[132,17,132,36,0],[133,17,133,18,0],[134,21,134,61,0],[135,17,135,18,0],[137,17,137,48,1],[139,17,139,30,1],[140,17,140,86,1],[141,13,141,14,1],[143,13,143,90,1],[144,13,144,22,1],[145,9,145,10,1],[158,9,158,10,0],[159,13,159,34,0],[162,21,162,94,0],[163,21,168,27,0],[169,21,169,46,0],[169,47,169,98,0],[170,21,170,27,0],[173,13,173,33,0],[174,9,174,10,0],[191,9,191,10,0],[192,13,192,30,0],[195,21,195,88,0],[197,21,198,104,0],[199,21,199,83,0],[200,21,200,83,0],[201,21,201,42,0],[201,43,201,93,0],[202,21,202,27,0],[205,13,205,29,0],[206,9,206,10,0],[211,9,211,10,1],[212,13,212,45,1],[213,13,213,71,1],[215,13,215,52,1],[216,13,216,23,1],[217,9,217,10,1],[223,9,223,10,1],[224,13,224,60,1],[225,9,225,10,1],[231,9,231,10,0],[232,13,232,42,0],[233,13,234,102,0],[235,9,235,10,0],[240,9,240,10,0],[241,13,241,34,0],[242,9,242,10,0],[247,9,247,10,0],[248,13,248,30,0],[249,9,249,10,0],[255,9,255,10,1],[256,13,256,42,1],[257,13,261,45,1],[262,13,262,30,1],[264,13,264,14,1],[265,17,265,59,1],[266,17,266,44,1],[267,17,267,29,0],[268,13,268,14,0],[269,13,269,40,1],[270,13,270,14,1],[271,17,271,60,1],[272,17,272,40,1],[273,17,273,18,0],[274,21,274,45,0],[275,21,275,33,0],[276,17,276,18,0],[277,13,277,14,1],[279,13,279,14,1],[280,17,280,27,1],[280,28,280,53,1],[281,13,281,14,1],[282,9,282,10,1],[287,9,287,10,1],[288,13,288,50,1],[289,13,289,56,1],[290,13,290,72,1],[291,13,291,53,1],[292,9,292,10,1],[297,9,297,10,1],[298,13,298,45,1],[299,13,299,46,1],[300,13,300,26,1],[301,9,301,10,1],[310,9,310,75,1]]);
+    </script>
+  </body>
+</html>

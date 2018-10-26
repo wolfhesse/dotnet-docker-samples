@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\testtodocomponent.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.TodoComponent;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Trainer
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The test todo component.&lt;/summary&gt;
+    public class TestTodoComponent
+    {
+        /// &lt;summary&gt;The task added.&lt;/summary&gt;
+        private bool _taskAdded;
+
+        /// &lt;summary&gt;The test add task.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestAddTask()
+        {
+            InMemoryTodoEngine.Init();
+
+            var startCount = TodoController.TodoRepository.Count;
+
+            TodoController.AddTodo(&quot;eins&quot;);
+            TodoController.AddTodo(&quot;eins&quot;);
+
+            Assert.True(startCount + 2 == TodoController.TodoRepository.Count);
+        }
+
+        /// &lt;summary&gt;The test todo engine add task.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+
+        // 
+        public void TestTodoEngineAddTask()
+        {
+            // one way to do it: flags, local state
+            _taskAdded = false;
+
+            InMemoryTodoEngine.Init();
+            var startCount = TodoController.TodoRepository.Count;
+            TodoController.TodoRepository.EvTodoAdded += TaskRepositoryEvTodoAdded;
+
+            TodoController.AddTodo(&quot;1&quot;);
+            var todoItem = TodoController.TodoRepository.FindTodo(0);
+
+            Assert.True(_taskAdded);
+            Assert.True(0 == todoItem.Id);
+            Assert.True(startCount + 1 == TodoController.TodoRepository.Count);
+        }
+
+        /// &lt;summary&gt;The task repository ev task added.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;The e.&lt;/param&gt;
+        private void TaskRepositoryEvTodoAdded(object sender, EventArgs e)
+        {
+            Console.Out.WriteLine($&quot;{sender} added TodoItem&quot;);
+            _taskAdded = true;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,10,1],[23,13,23,39,1],[25,13,25,66,1],[27,13,27,44,1],[28,13,28,44,1],[30,13,30,80,1],[31,9,31,10,1],[38,9,38,10,1],[40,13,40,32,1],[42,13,42,39,1],[43,13,43,66,1],[44,13,44,84,1],[46,13,46,41,1],[47,13,47,70,1],[49,13,49,37,1],[50,13,50,43,1],[51,13,51,80,1],[52,9,52,10,1],[58,9,58,10,1],[59,13,59,63,1],[60,13,60,31,1],[61,9,61,10,1]]);
+    </script>
+  </body>
+</html>

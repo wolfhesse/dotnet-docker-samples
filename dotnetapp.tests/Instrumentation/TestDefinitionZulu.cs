@@ -1,4 +1,4 @@
-﻿using DnsLib.OperatorApps.SysRes;
+﻿using DnsLib.SysRes;
 using NUnit.Framework;
 
 namespace DotnetApp.Tests.Instrumentation

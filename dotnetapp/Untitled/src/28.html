@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\datesenginesetup.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace DnsLib.FactoryFloor.Utility
+{
+    /// &lt;summary&gt;
+    ///     The dates engine setup.
+    /// &lt;/summary&gt;
+    public class DatesEngineSetup
+    {
+        /// &lt;summary&gt;
+        ///     The dates container model.
+        /// &lt;/summary&gt;
+        public readonly DatesContainerModel DatesContainerModel;
+
+        /// &lt;summary&gt;
+        ///     The view.
+        /// &lt;/summary&gt;
+        public readonly IView View;
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;DatesEngineSetup&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;datesContainerModel&quot;&gt;The dates container model.&lt;/param&gt;
+        /// &lt;param name=&quot;view&quot;&gt;The view.&lt;/param&gt;
+        public DatesEngineSetup(DatesContainerModel datesContainerModel, IView view)
+        {
+            DatesContainerModel = datesContainerModel;
+            View = view;
+        }
+
+        /// &lt;summary&gt;
+        ///     The action batch.
+        /// &lt;/summary&gt;
+        public void StartActionBatch()
+        {
+            DatesContainerModel.CreateDates();
+            DatesContainerModel.InsertTimestamp();
+            DatesContainerModel.Sort();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,85,1],[22,9,22,10,1],[23,13,23,55,1],[24,13,24,25,1],[25,9,25,10,1],[31,9,31,10,1],[32,13,32,47,1],[33,13,33,51,1],[34,13,34,40,1],[35,9,35,10,1]]);
+    </script>
+  </body>
+</html>

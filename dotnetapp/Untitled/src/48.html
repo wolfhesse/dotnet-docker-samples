@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\machineone.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    public class MachineOne
+    {
+        private static bool _onlineState;
+
+        // ReSharper disable once NotAccessedField.Local
+        private WooCommerceAdapter _wooCommerceAdapter;
+
+        public MachineOne(WooCommerceAdapter wooCommerceAdapter)
+        {
+            Console.WriteLine(this);
+            _wooCommerceAdapter = wooCommerceAdapter;
+        }
+
+        public event EventHandler EvSystemOnline;
+
+        public bool OnlineState
+        {
+            get =&gt; _onlineState;
+            set =&gt; _onlineState = value;
+        }
+
+        public static bool TakeSystemOnline()
+        {
+            _onlineState = true;
+
+            return _onlineState;
+        }
+
+        public bool CheckOnlineState()
+        {
+            if (_onlineState) OnEvSystemOnline();
+
+            return _onlineState;
+        }
+
+        protected virtual void OnEvSystemOnline()
+        {
+            EvSystemOnline?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,65,0],[14,9,14,10,0],[15,13,15,37,0],[16,13,16,54,0],[17,9,17,10,0],[23,20,23,32,0],[24,20,24,40,0],[28,9,28,10,0],[29,13,29,33,0],[31,13,31,33,0],[32,9,32,10,0],[35,9,35,10,0],[36,13,36,30,0],[36,31,36,50,0],[38,13,38,33,0],[39,9,39,10,0],[42,9,42,10,0],[43,13,43,59,0],[44,9,44,10,0]]);
+    </script>
+  </body>
+</html>

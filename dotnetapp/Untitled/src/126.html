@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\typeutilities\datacontainerfueraustauschcustomeraccount.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.FloorPlaan.PkgCt.EntityLib;
+using Newtonsoft.Json;
+
+namespace DnsLib.FloorPlaan.PkgCt.TypeUtilities
+{
+    public class DataContainerFuerAustauschCustomerAccount
+    {
+        [JsonProperty(&quot;accounts&quot;)] public List&lt;CtAccount&gt; Accounts = new List&lt;CtAccount&gt;();
+        [JsonProperty(&quot;balance&quot;)] public int Balance;
+        [JsonProperty(&quot;customerName&quot;)] public string CustomerName;
+
+        public void ComputeBalance()
+        {
+            Accounts.ForEach(x =&gt; { Balance += x.Balance; });
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,36,9,92,1],[14,9,14,10,1],[15,13,15,35,1],[15,35,15,36,1],[15,36,15,37,1],[15,37,15,58,1],[15,58,15,59,1],[15,59,15,60,1],[15,60,15,62,1],[15,13,15,62,1],[16,9,16,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\testfeaturesonetabexperengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.ElasticSearchComponent;
+using DnsLib.FactoryFloor.Utility;
+using DnsLib.SysRes;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Trainer
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The test features one tab exper engine.&lt;/summary&gt;
+    public static class TestFeaturesOneTabExperEngine
+    {
+        /// &lt;summary&gt;The switchable operations test.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void SwitchableOperationsTest()
+        {
+            OnetabExperEngine.FnRunJsonOnetabExper(new OnetabOperationsOptions(false));
+            OnetabExperEngine.FnRunJsonOnetabExper(new OnetabOperationsOptions(false));
+            OnetabExperEngine.WriteDataF();
+            EsExperEngine.PlayWithEsTweets();
+        }
+
+        /// &lt;summary&gt;The test onetab json empty state.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestOnetabJsonEmptyState()
+        {
+            var expected = SampleDataProvider.OnetabJsonEmptyState;
+            Assert.Equal(expected, OnetabExperEngine.FnRunJsonOnetabExper(new OnetabOperationsOptions(false)));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,88,1],[22,13,22,88,1],[23,13,23,44,1],[24,13,24,46,1],[25,9,25,10,1],[30,9,30,10,1],[31,13,31,68,1],[32,13,32,112,1],[33,9,33,10,1]]);
+    </script>
+  </body>
+</html>

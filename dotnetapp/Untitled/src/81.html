@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\actornodebaseimpl.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using DnsLib.AbstractArchitecture.AseArchitecture;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    internal class ActorNodeBaseImpl : IVirtualActorNode
+    {
+        public ActorNodeBaseImpl(string name, List&lt;IVirtualActorNode&gt; connectionsList = null)
+        {
+            Name = name;
+            ConnectionsList = connectionsList ?? new List&lt;IVirtualActorNode&gt;();
+        }
+
+        public List&lt;IVirtualActorNode&gt; ConnectionsList { get; set; }
+
+        public string Name { get; }
+
+        public void RegisterAsEventHandler(IVirtualActorNode eventSource)
+        {
+            ConnectionsList.Add(eventSource);
+        }
+
+        public override string ToString()
+        {
+            var s = base.ToString();
+            s += Environment.NewLine + $&quot;\t{Name} - NodeCount: {ConnectionsList.Count}&quot;;
+            return s;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,9,9,94,1],[10,9,10,10,1],[11,13,11,25,1],[12,13,12,80,1],[13,9,13,10,1],[15,58,15,62,1],[15,63,15,67,1],[17,30,17,34,1],[20,9,20,10,1],[21,13,21,46,1],[22,9,22,10,1],[25,9,25,10,1],[26,13,26,37,1],[27,13,27,89,1],[28,13,28,22,1],[29,9,29,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\services\s22000operation.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+
+namespace DnsLib.FactoryFloor.Services
+{
+    /// &lt;summary&gt;The s 22000 * alpha 22 23 multi nginx * operation.&lt;/summary&gt;
+    public static class S22000Operation
+    {
+        /// &lt;summary&gt;The get statement 1.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;string&quot; /&gt;.&lt;/returns&gt;
+        public static string GetStatement1()
+        {
+            const string stmt = &quot;200 rq/s ist 17 mio rq/d&quot;;
+            return stmt;
+        }
+
+        // internal static void fetch_s22000(string requestUriString, string dataDResultTxt, string callParams = null)
+        // {
+        // Debug.WriteLine($&quot;fetch_s22000 w/ {requestUriString} .. {dataDResultTxt} .. {callParams}&quot;);
+        // var r1 = &quot;&quot;;
+        // var r2 = &quot;n/a&quot;;
+        // var r3 = &quot;n/a&quot;;
+        // var sstart = DateTime.Now;
+        // if (null != callParams)
+        // {
+        // WebResponse Target1() =&gt; Get1(requestUriString, callParams);
+        // WebResponse myResponse1;
+        // var t1 = new Thread(() =&gt;
+        // {
+        // myResponse1 = Target1();
+        ////            if (myResponse1?.GetResponseStream() == null) return;
+        // var rst = myResponse1.GetResponseStream();
+        // if (rst == null) return;
+        // using (var sr = new StreamReader(rst))
+        // {
+        // r1 = sr.ReadToEnd();
+        // sr.Close();
+        // }
+        // });
+        // t1.Start();
+        // t1.Join();
+        // }
+        // else
+        // {
+        // WebResponse Target1() =&gt; Get1(requestUriString, &quot;?1&quot;);
+        // WebResponse Target2() =&gt; Get1(requestUriString, &quot;?2&quot;);
+        // WebResponse Target3() =&gt; Get1(requestUriString, &quot;?3&quot;);
+        // WebResponse myResponse1, myResponse2, myResponse3;
+        // var t1 = new Thread(() =&gt;
+        // {
+        // myResponse1 = Target1();
+        ////            if (myResponse1?.GetResponseStream() == null) return;
+        // var rst = myResponse1.GetResponseStream();
+        // if (rst == null) return;
+        // using (var sr = new StreamReader(rst))
+        // {
+        // r1 = sr.ReadToEnd();
+        // sr.Close();
+        // }
+        // });
+        // var t2 = new Thread(() =&gt;
+        // {
+        // myResponse2 = Target2();
+        // var rst = myResponse2.GetResponseStream();
+        // if (rst == null) return;
+        // using (var sr = new StreamReader(rst))
+        // {
+        // r2 = sr.ReadToEnd();
+        // sr.Close();
+        // }
+        // });
+        // var t3 = new Thread(() =&gt;
+        // {
+        // myResponse3 = Target3();
+        // var rst = myResponse3.GetResponseStream();
+        // if (rst == null) return;
+        // using (var sr = new StreamReader(rst))
+        // {
+        // r3 = sr.ReadToEnd();
+        // sr.Close();
+        // }
+        // });
+        // t1.Start();
+        // t2.Start();
+        // t3.Start();
+        // t1.Join();
+        // t2.Join();
+        // t3.Join();
+        // }
+        // var sfin = DateTime.Now;
+        // var sdur = sfin - sstart;
+        // using (var sw = new StreamWriter(dataDResultTxt))
+        // {
+        // sw.WriteLine(get_statement_1());
+        // sw.WriteLine($&quot;{DateTimeOffset.Now} - result&quot;);
+        // sw.WriteLine($&quot;start: {sstart} / sstart.ticks: {sstart.Ticks}&quot;);
+        // sw.WriteLine($&quot;fin: {sfin} / sfin.ticks: {sfin.Ticks}&quot;);
+        // sw.WriteLine($&quot;dur: {sdur.Ticks} ticks, ({sdur.Ticks / 10000} milliseconds)&quot;);
+        // sw.WriteLine($&quot;r1: {r1}&quot;);
+        // sw.WriteLine($&quot;r2: {r2}&quot;);
+        // sw.WriteLine($&quot;r3: {r3}&quot;);
+        // }
+        // }
+        /// &lt;summary&gt;The get 1.&lt;/summary&gt;
+        /// &lt;param name=&quot;requestUriString&quot;&gt;The request uri string.&lt;/param&gt;
+        /// &lt;param name=&quot;s&quot;&gt;The s.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;WebResponse&quot; /&gt;.&lt;/returns&gt;
+        public static WebResponse Get1(string requestUriString, string s)
+        {
+            var myRequest = WebRequest.Create($&quot;{requestUriString}{s}&quot;);
+            var myResponse = myRequest.GetResponse();
+            return myResponse;
+        }
+    }
+
+    /// &lt;summary&gt;The api.&lt;/summary&gt;
+    public static class S22000Api
+    {
+        /// &lt;summary&gt;The call params key.&lt;/summary&gt;
+        private const string CallParamsKey = &quot;call_params_key&quot;;
+
+        /// &lt;summary&gt;The result file path key.&lt;/summary&gt;
+        public const string ResultFilePathKey = &quot;result_file_path_key&quot;;
+
+        /// &lt;summary&gt;The uri key.&lt;/summary&gt;
+        private const string UriKey = &quot;uri_key&quot;;
+
+        // fetch_s22000_p(options[UriKey], options[ResultFilePathKey], options[CallParamsKey]);
+        // {
+
+        // public static void Fetch(Dictionary&lt;string, string&gt; options)
+        // }
+        public static void Fetch(Dictionary&lt;string, string&gt; options)
+        {
+            var uristring = options[UriKey];
+            var s = options[CallParamsKey];
+            // Get the response.
+            var response = S22000Operation.Get1(uristring, s);
+            // Display the status.
+            Console.WriteLine(((HttpWebResponse) response).StatusDescription);
+            // Get the stream containing content returned by the server.
+            var dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            // ReSharper disable once AssignNullToNotNullAttribute
+            var reader = new StreamReader(dataStream);
+            // Read the content.
+            var responseFromServer = reader.ReadToEnd();
+            // Display the content.
+            Console.WriteLine(responseFromServer);
+            // Clean up the streams.
+//            reader.Close();
+//            dataStream.Close();
+//            response.Close();
+            Console.WriteLine(1);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,10,0],[16,13,16,25,0],[17,9,17,10,0],[111,9,111,10,0],[112,13,112,73,0],[113,13,113,54,0],[114,13,114,31,0],[115,9,115,10,0],[136,9,136,10,0],[137,13,137,45,0],[138,13,138,44,0],[140,13,140,63,0],[142,13,142,79,0],[144,13,144,59,0],[147,13,147,55,0],[149,13,149,57,0],[151,13,151,51,0],[156,13,156,34,0],[157,9,157,10,0]]);
+    </script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DnsLib.FactoryFloor.MqComponent;
-using DnsLib.OperatorApps.SysRes;
+using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 

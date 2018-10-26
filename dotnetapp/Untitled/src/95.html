@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\processlayertestcomponent.designer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.ComponentModel;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.Utility;
+
+namespace DnsLib.TestDriving.Trainer
+{
+    partial class ProcessLayerTestComponent
+    {
+        /// &lt;summary&gt;
+        /// Required designer variable.
+        /// &lt;/summary&gt;
+        private IContainer components = null;
+
+        /// &lt;summary&gt; 
+        /// Clean up any resources being used.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;disposing&quot;&gt;true if managed resources should be disposed; otherwise, false.&lt;/param&gt;
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing &amp;&amp; (this.components != null))
+            {
+                this.components.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// &lt;summary&gt;
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// &lt;/summary&gt;
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this._standardEngineOne1 = new StandardEngineOne(this.components);
+            this.processLayerSample1 = new ProcessLayerSample(this.components);
+            // 
+            // _standardEngineOne1
+            // 
+            this._standardEngineOne1.EvAfterFinalizing += new System.EventHandler(this.EngineSample1EvFin);
+            // 
+            // processLayerSample1
+            // 
+            this.processLayerSample1.StandardEngineOne = this._standardEngineOne1;
+
+        }
+
+        #endregion
+
+        private ProcessLayerSample processLayerSample1;
+        private StandardEngineOne _standardEngineOne1;
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,46,1],[12,9,12,46,0],[19,9,19,10,1],[20,13,20,56,1],[21,13,21,14,0],[22,17,22,43,0],[23,13,23,14,0],[25,13,25,37,1],[26,9,26,10,1],[35,9,35,10,1],[36,13,36,69,1],[37,13,37,79,1],[38,13,38,80,1],[42,13,42,108,1],[46,13,46,83,1],[48,9,48,10,1]]);
+    </script>
+  </body>
+</html>

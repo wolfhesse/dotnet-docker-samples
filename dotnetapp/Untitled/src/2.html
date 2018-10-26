@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\core\factoryfloortests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using DnsLib.SysRes;
+using Xunit;
+using Assert = Xunit.Assert;
+
+namespace DnsLib.TestDriving.Core
+{
+    public sealed class FactoryFloorTests
+    {
+        [Fact(Timeout = 2500)]
+        /* rogera // xunit tests sind die stillen */
+        public static void FactoryFloorCircuitBreakerTest()
+        {
+            /*
+             * purpose: prepare factory floor offline stage tests
+             * to run only the abstract code
+             *
+             * is-a mode
+             */
+
+            var messages = new List&lt;string&gt;();
+
+            // get FactoryFloor Instance to register Eventhandlers
+            FactoryFloorController.Instance.EvStageOnline += (sender, e) =&gt;
+            {
+                messages.Add(FactoryFloorController.CurrentStageOnlineCondition);
+            };
+            FactoryFloorController.Instance.EvStageOffline += (sender, args) =&gt;
+            {
+                messages.Add(FactoryFloorController.CurrentStageOnlineCondition);
+            };
+
+
+            Assert.False(FactoryFloorController.IsStageOnline());
+            FactoryFloorController.SetStageOffline();
+            Assert.False(FactoryFloorController.IsStageOnline());
+            FactoryFloorController.SetStageOnline();
+            Assert.True(FactoryFloorController.IsStageOnline());
+
+            Assert.Equal(&quot;FactoryFloorController: STAGE == ONLINE&quot;,
+                FactoryFloorController.CurrentStageOnlineCondition);
+
+            FactoryFloorController.SetStageOffline();
+            Assert.Equal(&quot;FactoryFloorController: STAGE == OFFLINE&quot;,
+                FactoryFloorController.CurrentStageOnlineCondition);
+            messages.Add(FactoryFloorController.CurrentStageOnlineCondition);
+
+            // dump messages...
+            messages.ForEach(FactoryFloorController.FnTweetMessage);
+            // stdout
+            messages.ForEach(x =&gt; Console.Out.WriteLine($&quot;sysout: {x}&quot;));
+            // xunit writer
+            messages.ForEach(x =&gt; EnvironmentManager.WriteLine($&quot;xunitw: {x}&quot;));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,10,1],[22,13,22,47,1],[25,13,26,13,1],[26,13,26,14,1],[26,14,27,17,1],[27,17,27,82,1],[27,82,28,13,1],[28,13,28,14,1],[28,14,28,15,1],[25,13,28,15,1],[29,13,30,13,1],[30,13,30,14,1],[30,14,31,17,1],[31,17,31,82,1],[31,82,32,13,1],[32,13,32,14,1],[32,14,32,15,1],[29,13,32,15,1],[35,13,35,66,1],[36,13,36,54,1],[37,13,37,66,1],[38,13,38,53,1],[39,13,39,65,1],[41,13,42,69,1],[44,13,44,54,1],[45,13,46,69,1],[47,13,47,78,1],[50,13,50,69,1],[52,13,52,35,1],[52,35,52,72,1],[52,72,52,74,1],[52,13,52,74,1],[54,13,54,35,1],[54,35,54,79,1],[54,79,54,81,1],[54,13,54,81,1],[55,9,55,10,1]]);
+    </script>
+  </body>
+</html>

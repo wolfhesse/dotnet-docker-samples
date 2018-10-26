@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\lab\demoauthengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.ComponentLibrary.Authentication;
+using DnsLib.SysRes;
+
+namespace DnsLib.ComponentLibrary.Lab
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The demo wordpress adapter.&lt;/summary&gt;
+    public class DemoAuthEngine
+    {
+        /// &lt;summary&gt;The entry point.&lt;/summary&gt;
+        /// &lt;param name=&quot;args&quot;&gt;The args.&lt;/param&gt;
+        public static void EntryPoint(string[] args)
+        {
+            Console.Out.WriteLine(typeof(DemoAuthEngine));
+            FnScratchpad();
+        }
+
+        /// &lt;summary&gt;The fn scratchpad.&lt;/summary&gt;
+        private static void FnScratchpad()
+        {
+            var ac = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs2ConsumerAuthInto(ac);
+            Console.Out.WriteLine(&quot;ac = {0}&quot;, ac.ToDumpString());
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,9,17,10,1],[18,13,18,59,1],[19,13,19,28,1],[20,9,20,10,1],[24,9,24,10,1],[25,13,25,42,1],[26,13,26,64,1],[27,13,27,66,1],[28,9,28,10,1]]);
+    </script>
+  </body>
+</html>

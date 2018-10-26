@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\shopcomponent\woostuffauthadapter.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.ComponentLibrary.Authentication;
+using DnsLib.SysRes;
+using WooCommerceNET;
+
+namespace DnsLib.FactoryFloor.ShopComponent
+{
+    /// &lt;summary&gt;The woo stuff auth adapter.&lt;/summary&gt;
+    public static class WooStuffAuthAdapter
+    {
+        /// &lt;summary&gt;The fn auth for rcs 1.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;AuthContainer&quot; /&gt;.&lt;/returns&gt;
+        public static AuthContainer FnAuthForRcs1()
+        {
+            var auth = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs1ConsumerAuthInto(auth);
+            return auth;
+        }
+
+        /// &lt;summary&gt;The fn auth for rcs 2.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;AuthContainer&quot; /&gt;.&lt;/returns&gt;
+        public static AuthContainer FnAuthForRcs2()
+        {
+            var auth = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs2ConsumerAuthInto(auth);
+            return auth;
+        }
+
+        /// &lt;summary&gt;The fn auth for test apo r 1.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;AuthContainer&quot; /&gt;.&lt;/returns&gt;
+        public static AuthContainer FnAuthForRcs2Wrong()
+        {
+            var auth = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs2WrongConsumerAuthInto(auth);
+            return auth;
+        }
+
+        /// &lt;summary&gt;The fn rest api rcs 1.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;RestAPI&quot; /&gt;.&lt;/returns&gt;
+        public static RestAPI FnRestApiRcs1()
+        {
+            var auth = FnAuthForRcs1();
+            var restApi = new RestAPI(PlatformSysGen.Rcs1RestApiEndpoint, $&quot;{auth.Key}&quot;, $&quot;{auth.Secret}&quot;);
+            return restApi;
+        }
+
+        public static RestAPI FnRestApiRcs2()
+        {
+            var auth = FnAuthForRcs2();
+            var restApi = new RestAPI(PlatformSysGen.Rcs2RestApiEndpoint, $&quot;{auth.Key}&quot;, $&quot;{auth.Secret}&quot;);
+            return restApi;
+        }
+
+        /// &lt;summary&gt;The rest api default.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApiEndpoint&quot;&gt;The rest api endpoint.&lt;/param&gt;
+        /// &lt;param name=&quot;auth&quot;&gt;The auth.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;RestAPI&quot; /&gt;.&lt;/returns&gt;
+        public static RestAPI RestApiDefault(string restApiEndpoint = null, AuthContainer auth = null)
+        {
+            restApiEndpoint = restApiEndpoint ?? PlatformSysGen.Rcs2RestApiEndpoint;
+            auth = auth ?? FnAuthForRcs2();
+
+            return new RestAPI(restApiEndpoint, $&quot;{auth.Key}&quot;, $&quot;{auth.Secret}&quot;);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,10,0],[14,13,14,44,0],[15,13,15,66,0],[16,13,16,25,0],[17,9,17,10,0],[22,9,22,10,1],[23,13,23,44,1],[24,13,24,66,1],[25,13,25,25,1],[26,9,26,10,1],[31,9,31,10,0],[32,13,32,44,0],[33,13,33,71,0],[34,13,34,25,0],[35,9,35,10,0],[40,9,40,10,0],[41,13,41,40,0],[42,13,42,108,0],[43,13,43,28,0],[44,9,44,10,0],[47,9,47,10,1],[48,13,48,40,1],[49,13,49,108,1],[50,13,50,28,1],[51,9,51,10,1],[58,9,58,10,1],[59,13,59,85,1],[60,13,60,44,1],[62,13,62,82,1],[63,9,63,10,1]]);
+    </script>
+  </body>
+</html>

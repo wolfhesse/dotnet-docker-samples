@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\datescontaineroperations.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.IO;
+using DnsLib.AbstractArchitecture.AseArchitecture.ProgramSetup;
+using DnsLib.FactoryFloor.Utility;
+
+namespace DnsLib.TestDriving.Trainer
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The dates container operations.&lt;/summary&gt;
+    public static class DatesContainerOperations
+    {
+        /// &lt;summary&gt;Gets or sets the port.&lt;/summary&gt;
+        public static PresenterBase Port { get; set; }
+    }
+
+    /// &lt;summary&gt;The controller.&lt;/summary&gt;
+    public class Controller
+    {
+        /// &lt;summary&gt;The engine setup.&lt;/summary&gt;
+        private readonly EngineSetup _engineSetup;
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;Controller&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;engineSetup&quot;&gt;The engine setup.&lt;/param&gt;
+        /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+        public Controller(EngineSetup engineSetup, TextWriter textWriter)
+        {
+            DatesContainerOperations.Port = new PresenterBase {TextWriter = textWriter};
+            DatesContainerOperations.Port.TextWriter.WriteLine(&quot;controller initialization...&quot;);
+
+            _engineSetup = engineSetup;
+
+            DatesContainerOperations.Port.TextWriter.WriteLine(&quot;controller initialized...&quot;);
+        }
+
+        /// &lt;summary&gt;The after action.&lt;/summary&gt;
+        public event EventHandler AfterAction;
+
+        /// &lt;summary&gt;The action batch.&lt;/summary&gt;
+        public void ActionBatch()
+        {
+            _engineSetup.DatesContainerModel.CreateDates();
+            _engineSetup.DatesContainerModel.InsertTimestamp();
+            _engineSetup.DatesContainerModel.Sort();
+            OnAfterAction();
+        }
+
+        /// &lt;summary&gt;The on after action.&lt;/summary&gt;
+        protected virtual void OnAfterAction()
+        {
+            AfterAction?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,44,16,48,0],[16,49,16,53,0],[28,9,28,74,0],[29,9,29,10,0],[30,13,30,89,0],[31,13,31,96,0],[33,13,33,40,0],[35,13,35,93,0],[36,9,36,10,0],[43,9,43,10,0],[44,13,44,60,0],[45,13,45,64,0],[46,13,46,53,0],[47,13,47,29,0],[48,9,48,10,0],[52,9,52,10,0],[53,13,53,56,0],[54,9,54,10,0]]);
+    </script>
+  </body>
+</html>

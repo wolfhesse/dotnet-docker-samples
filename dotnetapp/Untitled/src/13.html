@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\shopcomponent\asewoocommercenet\woocommerceconfiguration.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using WooCommerceNET;
+
+namespace DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The woo commerce configuration.&lt;/summary&gt;
+    public class WooCommerceConfiguration : IShopConfiguration
+    {
+        /// &lt;summary&gt;The rest api.&lt;/summary&gt;
+        private readonly RestAPI _restApi;
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;WooCommerceConfiguration&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        public WooCommerceConfiguration(RestAPI restApi)
+        {
+            _restApi = restApi;
+        }
+
+        public string ConfigName =&gt; _restApi.Url;
+
+        /// &lt;summary&gt;The configure.&lt;/summary&gt;
+        /// &lt;param name=&quot;adapter&quot;&gt;The adapter.&lt;/param&gt;
+        /// &lt;exception cref=&quot;Exception&quot;&gt;&lt;/exception&gt;
+        public void Configure(IShopAdapter adapter)
+        {
+            if (adapter is WooCommerceAdapter sa) sa.SetRestApi(_restApi);
+            else
+                throw new Exception(
+                    &quot;incompatible adapter: &quot; + typeof(WooCommerceAdapter) + &quot; for configuration: &quot;
+                    + typeof(WooCommerceConfiguration));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,57,1],[19,9,19,10,1],[20,13,20,32,1],[21,9,21,10,1],[23,37,23,49,0],[29,9,29,10,1],[30,13,30,50,1],[30,51,30,75,1],[32,17,34,57,0],[35,9,35,10,1]]);
+    </script>
+  </body>
+</html>

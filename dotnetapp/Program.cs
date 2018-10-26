@@ -17,7 +17,7 @@ namespace DotnetApp
 
     #endregion
 
-    public class BusinessCartridge
+    public static class BusinessCartridge
     {
         /// <summary>The tweets counter.</summary>
         public static int TweetsCounter = 0;
@@ -26,8 +26,8 @@ namespace DotnetApp
 
         /// <summary>The build tweet.</summary>
         /// <param name="message">The message.</param>
-        /// <returns>The <see cref="InteropTypes.TweetModel" />.</returns>
-        public static async Task<InteropTypes.TweetModel> StoreMessageToEsIndexTask(string message)
+        /// <returns>The <see cref="TweetModel" />.</returns>
+        public static async Task<TweetModel> StoreMessageToEsIndexTask(string message)
         {
             var t0 = TweetEngine.FnCreateTweet(message);
             t0.User = typeof(Program).ToString();
@@ -68,6 +68,7 @@ namespace DotnetApp
                     // add product
                     var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
 
+                    // ReSharper disable once UnusedVariable
                     var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
                         new WooCommerceConfiguration(
                             WooStuffAuthAdapter.FnRestApiRcs1()));
@@ -82,7 +83,7 @@ namespace DotnetApp
                         {
                             _flipFlop = !_flipFlop;
                             // var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
-                            var shopEngine = _flipFlop ? shopEngine2 : shopEngine2;
+                            var shopEngine = shopEngine2;
 
                             EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
                             EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
@@ -118,7 +119,7 @@ namespace DotnetApp
     }
 
     /// <summary>The program.</summary>
-    public class Program
+    public static class Program
     {
         /// <summary>The process product created message.</summary>
         /// <param name="sender">The sender.</param>

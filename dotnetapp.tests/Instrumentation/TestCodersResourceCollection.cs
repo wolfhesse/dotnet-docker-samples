@@ -1,4 +1,4 @@
-using DnsLib.ComponentLibrary.Lab.Components;
+using DnsLib.ComponentLibrary.Lab;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 

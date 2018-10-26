@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\s13000operationtests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.FactoryFloor.Services;
+using DnsLib.SysRes;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Trainer
+{
+    public class S13000OperationTests
+    {
+        /// &lt;summary&gt;The request uri string.&lt;/summary&gt;
+        private const string RequestUriString = &quot;http://s13000.base.wolfspool.at:13000/&quot;;
+
+        /// &lt;summary&gt;The data d result txt f.&lt;/summary&gt;
+        private static readonly string DataDResultTxtF =
+            EnvironmentManager.GetDataD() + &quot;/S13000OperationTests.res.txt&quot;;
+
+
+        [Fact(Timeout = 2500, Skip = &quot;need s13000&quot;)]
+        public void ApiTestS13K()
+        {
+            var options = new Dictionary&lt;string, string&gt;
+            {
+                {Api.ResultFilePathKey, DataDResultTxtF},
+                {Api.UriKey, RequestUriString},
+                {Api.CallParamsKey, &quot;?apitest&quot;}
+            };
+            Api.Fetch(options);
+        }
+
+        /// &lt;summary&gt;The get stmt test.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public void GetStmtTest()
+        {
+            Assert.NotNull(S13000Operation.GetStatement1());
+        }
+
+        [Fact(Timeout = 2500)]
+        public void S13000OperationsTest()
+        {
+            Assert.NotNull(S13000Operation.GetStatement1());
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,16,77,1],[21,9,21,10,0],[22,13,27,15,0],[28,13,28,32,0],[29,9,29,10,0],[34,9,34,10,1],[35,13,35,61,1],[36,9,36,10,1],[40,9,40,10,1],[41,13,41,61,1],[42,9,42,10,1]]);
+    </script>
+  </body>
+</html>

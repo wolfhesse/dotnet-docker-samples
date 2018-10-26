@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\networkadapter\testhuginn.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Threading;
+using RestSharp;
+using Xunit;
+
+namespace DnsLib.FloorPlaan.PkgCt.NetworkAdapter
+{
+    public class TestHuginn
+    {
+        [Fact(Timeout = 2500, Skip = &quot;enable for interaction&quot;)]
+        public static void TestGenerateWebhookCall()
+        {
+            // s002WhInfluxClassLibrary1
+            var url = &quot;http://s16002.base.wolfspool.at/users/2/web_requests/41/1boris&quot;;
+            var client = new RestClient(url);
+            for (int i = 0; i &lt; 40_0; i++)
+            {
+                var request = new RestRequest(Method.POST);
+                var payload = new {payload = new {ts = DateTimeOffset.Now, name = &quot;Roger Andel&quot;, currentNumber = i}};
+                request.AddJsonBody(payload);
+                Thread.Sleep(TimeSpan.FromSeconds(30));
+                client.Execute(request);
+            }
+
+//            var response = client.Execute(request);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,0],[14,13,14,88,0],[15,13,15,46,0],[16,18,16,27,0],[16,29,16,37,0],[16,39,16,42,0],[17,13,17,14,0],[18,17,18,60,0],[19,17,19,118,0],[20,17,20,46,0],[21,17,21,56,0],[22,17,22,41,0],[23,13,23,14,0],[26,9,26,10,0]]);
+    </script>
+  </body>
+</html>

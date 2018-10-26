@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\lab\inmemorytodoengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.FactoryFloor.TodoComponent;
+
+namespace DnsLib.ComponentLibrary.Lab
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;inheritdoc /&gt;
+    /// &lt;summary&gt;The in memory task repository configuration.&lt;/summary&gt;
+    public class InMemoryTodoEngine : TodoController
+    {
+        /// &lt;summary&gt;The init.&lt;/summary&gt;
+        public static void Init()
+        {
+            TodoRepository = TodoRepository ?? new InMemoryTodoRepository();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,1],[16,13,16,77,1],[17,9,17,10,1]]);
+    </script>
+  </body>
+</html>

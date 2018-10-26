@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\shopcomponent\asewoocommercenet\usecases\getproducts.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DnsLib.FactoryFloor.ShopComponent.Entity;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET.UseCases
+{
+    /// &lt;summary&gt;The get products.&lt;/summary&gt;
+    public static class GetProducts
+    {
+        /// &lt;summary&gt;The exec get products.&lt;/summary&gt;
+        /// &lt;param name=&quot;pPage&quot;&gt;The p page.&lt;/param&gt;
+        /// &lt;param name=&quot;pPerPage&quot;&gt;The p per page.&lt;/param&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;param name=&quot;pIncludeProductIds&quot;&gt;The p include product ids.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Task&quot; /&gt;.&lt;/returns&gt;
+        public static async Task&lt;List&lt;Product&gt;&gt; ExecGetProducts(
+            string pPage,
+            string pPerPage,
+            RestAPI restApi,
+            string pIncludeProductIds = null)
+        {
+            var p = await FnGetProductsByIncludePerPagePage(restApi, pPage, pPerPage, pIncludeProductIds);
+            return p;
+        }
+
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;param name=&quot;pName&quot;&gt;The p Name.&lt;/param&gt;
+        /// &lt;param name=&quot;pPage&quot;&gt;The p page.&lt;/param&gt;
+        /// &lt;param name=&quot;pPerPage&quot;&gt;The p per page.&lt;/param&gt;
+        /// &lt;param name=&quot;pIncludeProductIds&quot;&gt;The p include product ids.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;List{T}&quot; /&gt;.&lt;/returns&gt;
+        public static List&lt;Product&gt; Execute(
+            RestAPI restApi,
+            string pName = null,
+            string pPage = null,
+            string pPerPage = null,
+            string pIncludeProductIds = null)
+        {
+            if (null == pName) pName = &quot;ignored&quot;;
+
+            if (null == pPage) pPage = &quot;1&quot;;
+            if (null == pPerPage) pPerPage = &quot;10&quot;;
+
+            var products = ExecGetProducts(pPage, pPerPage, restApi, pIncludeProductIds).Result;
+
+            Console.Out.WriteLine(
+                $&quot;{DateTimeOffset.Now} {pName} action: fetched {products.Count} products in {typeof(GetProducts)}\n\n&quot;);
+            ProductFuture.FnLogging(products);
+            return products;
+        }
+
+        /// &lt;summary&gt;The fn get products by include per page page.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;param name=&quot;pPage&quot;&gt;The p page.&lt;/param&gt;
+        /// &lt;param name=&quot;pPerPage&quot;&gt;The p per page.&lt;/param&gt;
+        /// &lt;param name=&quot;pIncludeProductIds&quot;&gt;The p include product ids.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Task&quot; /&gt;.&lt;/returns&gt;
+        public static async Task&lt;List&lt;Product&gt;&gt; FnGetProductsByIncludePerPagePage(
+            RestAPI restApi,
+            string pPage,
+            string pPerPage,
+            string pIncludeProductIds = null)
+        {
+            var wc = new WCObject(restApi);
+
+            var dictionary = new Dictionary&lt;string, string&gt; {{&quot;per_page&quot;, pPerPage}, {&quot;page&quot;, pPage}};
+            if (null != pIncludeProductIds) dictionary.Add(&quot;include&quot;, pIncludeProductIds);
+
+            var p = await wc.Product.GetAll(dictionary);
+            return p;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[24,9,24,10,1],[25,13,25,107,1],[26,13,26,22,1],[27,9,27,10,1],[42,9,42,10,1],[43,13,43,31,1],[43,32,43,50,1],[45,13,45,31,1],[45,32,45,44,1],[46,13,46,34,1],[46,35,46,51,1],[48,13,48,97,1],[50,13,51,121,1],[52,13,52,47,1],[53,13,53,29,1],[54,9,54,10,1],[67,9,67,10,1],[68,13,68,44,1],[70,13,70,103,1],[71,13,71,44,1],[71,45,71,91,1],[73,13,73,57,1],[74,13,74,22,1],[75,9,75,10,1]]);
+    </script>
+  </body>
+</html>

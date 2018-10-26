@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\requirements\dss11fixture.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.TodoComponent;
+using DnsLib.SysRes;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Requirements
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The dss 11 fixture.&lt;/summary&gt;
+    public class Dss11Fixture
+    {
+        /// &lt;summary&gt;The dss 11 extend.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        [AseTestMethod]
+        public static void Dss11Extend()
+        {
+            // say something
+            InMemoryTodoEngine.Init();
+            TodoController.AddTodo(&quot;1&quot;);
+            TodoController.AddTodo(&quot;1&quot;);
+            TodoController.AddTodo(&quot;1&quot;);
+            var t = TodoController.TodoRepository.FindTodo(2);
+            Console.Out.WriteLine(&quot;t = {0}&quot;, t.CreatedAt);
+        }
+
+        /// &lt;summary&gt;The dss 11 test here.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        [AseTestMethod]
+        public static void Dss11TestHere()
+        {
+            // ref
+            // touched..
+            var sampleTweet = EnvironmentManager.SampleTweet;
+            Assert.NotNull(sampleTweet.Version);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,10,1],[24,13,24,39,1],[25,13,25,41,1],[26,13,26,41,1],[27,13,27,41,1],[28,13,28,63,1],[29,13,29,59,1],[30,9,30,10,1],[36,9,36,10,1],[39,13,39,62,1],[40,13,40,49,1],[41,9,41,10,1]]);
+    </script>
+  </body>
+</html>

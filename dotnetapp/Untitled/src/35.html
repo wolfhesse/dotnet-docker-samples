@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\operationsindex.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.MqComponent;
+using DnsLib.SysRes;
+using DnsLib.TestDriving.Operations;
+using Xunit;
+
+
+namespace DnsLib.TestDriving
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The operation tests.&lt;/summary&gt;
+    public sealed class OperationsIndex
+    {
+        /// &lt;summary&gt;The mkidx test.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void MkidxTest()
+        {
+            EnvironmentManager.WriteLine(&quot;.&quot;);
+            var tweets = EsOperationsEngine.EsWriteAndDupTweet(EnvironmentManager.SampleTweet);
+            Assert.Equal(tweets[0].User, tweets[1].User);
+        }
+
+        /// &lt;summary&gt;The rabbit mq send demo queue a bunch of messages test.&lt;/summary&gt;
+        [Fact(Timeout = 3000)]
+        public static void RabbitMqSendDemoQueueABunchOfMessagesTest()
+        {
+            EnvironmentManager.WriteLine(&quot;.&quot;);
+
+            // ReSharper disable once UnusedVariable
+            ProgramsEnvironment env = new ProcessMessagesProgramSample();
+
+//            var messageCount = 200000;
+            var messageCount = 150;
+
+            new MqOperationsEngine().QueueABunchOfMessages(messageCount, false);
+            EnvironmentManager.WriteLine(@&quot;done&quot;);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,47,1],[22,13,22,96,1],[23,13,23,58,1],[24,9,24,10,1],[29,9,29,10,1],[30,13,30,47,1],[33,13,33,74,1],[36,13,36,36,1],[38,13,38,81,1],[39,13,39,51,1],[40,9,40,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\businesspackagedistribution\syncplatform.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.SysRes;
+
+namespace DnsLib.FloorPlaan.PkgCt.BusinessPackageDistribution
+{
+    public class SyncPlatform
+    {
+        private readonly Dictionary&lt;string, object&gt; _memoryBank;
+
+        public SyncPlatform()
+        {
+            _memoryBank = new Dictionary&lt;string, object&gt;();
+        }
+
+        public Dictionary&lt;string, object&gt; FindAccount(
+            (string sourceSystem, string targetSystem) syncTaskDescriptor)
+        {
+            _memoryBank[nameof(ServiceAccessPoint.MemorySlot.Done)] = false;
+            // fetch sourceSystemAccount
+            _memoryBank[nameof(ServiceAccessPoint.MemorySlot.FindAccountForOpCount)] = 0;
+
+
+            new FindAccountForOp(syncTaskDescriptor.sourceSystem, _memoryBank)
+                .Execute(ServiceAccessPoint.MemorySlot.SourceSystemAccount);
+
+            new FindAccountForOp(syncTaskDescriptor.targetSystem, _memoryBank)
+                .Execute(ServiceAccessPoint.MemorySlot.TargetSystemAccount);
+
+            var config = (memoryBank: _memoryBank, sender: PlatformDeveloperSection.SystemUser.Rogera);
+
+            new ServiceAccessPoint(_memoryBank).CountServiceProvision(config);
+            _memoryBank[nameof(ServiceAccessPoint.MemorySlot.Done)] = true;
+            return _memoryBank;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,30,1],[12,9,12,10,1],[13,13,13,60,1],[14,9,14,10,1],[18,9,18,10,1],[19,13,19,77,1],[21,13,21,90,1],[24,13,25,77,1],[27,13,28,77,1],[30,13,30,104,1],[32,13,32,79,1],[33,13,33,76,1],[34,13,34,32,1],[35,9,35,10,1]]);
+    </script>
+  </body>
+</html>

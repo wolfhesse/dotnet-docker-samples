@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\shopcomponent\asewoocommercenet\woocommerceadapter.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Threading.Tasks;
+using DnsLib.SysRes;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The woo commerce adapter.&lt;/summary&gt;
+    public class WooCommerceAdapter : IShopAdapter
+    {
+        /// &lt;summary&gt;The rest api.&lt;/summary&gt;
+        private RestAPI _restApi;
+
+        /// &lt;summary&gt;The add product.&lt;/summary&gt;
+        /// &lt;param name=&quot;product&quot;&gt;The product.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Product&quot; /&gt;.&lt;/returns&gt;
+        public Product AddProduct(Product product)
+        {
+            var s = InternalAddProductTask(_restApi, product).Result;
+            return s;
+        }
+
+        /// &lt;summary&gt;The set rest api.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        public void SetRestApi(RestAPI restApi)
+        {
+            _restApi = restApi;
+        }
+
+        /// &lt;summary&gt;The internal add product task.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;param name=&quot;p&quot;&gt;The p.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Task&quot; /&gt;.&lt;/returns&gt;
+        private static async Task&lt;Product&gt; InternalAddProductTask(RestAPI restApi, Product p)
+        {
+            var resProduct = new Product
+            {
+                name = &quot;software-internal: unprocessed product created;&quot;
+            };
+
+            // create unique TaskId
+            var taskId = Guid.NewGuid();
+
+            // var start = DateTime.Now;
+            var wc = new WCObject(restApi);
+            Console.WriteLine($@&quot;		{typeof(WooCommerceAdapter)} before wc.Product.Add
+	TaskId: {taskId}&quot;);
+            try
+            {
+                resProduct = await wc.Product.Add(p);
+                Console.WriteLine($@&quot;product created {resProduct.name}&quot;);
+            }
+            catch (TimeoutException timeout)
+            {
+                EnvironmentManager.WriteLine(&quot;timeout: &quot; + timeout);
+            }
+            catch (Exception ex)
+            {
+                EnvironmentManager.WriteLine(&quot;general exception: &quot; + ex);
+            }
+
+            Console.WriteLine($@&quot;		{typeof(WooCommerceAdapter)} after wc.Product.Add
+	TaskId: {taskId}&quot;);
+
+            // var duration = DateTime.Now - start;
+            // Console.WriteLine($&quot;duration to add product: {duration}&quot;);
+            return resProduct;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[23,9,23,10,1],[24,13,24,70,1],[25,13,25,22,1],[26,9,26,10,1],[31,9,31,10,1],[32,13,32,32,1],[33,9,33,10,1],[40,9,40,10,1],[41,13,44,15,1],[47,13,47,41,1],[50,13,50,44,1],[51,13,52,21,1],[54,13,54,14,1],[55,17,55,54,1],[56,17,56,74,1],[57,13,57,14,1],[58,13,58,45,0],[59,13,59,14,0],[60,17,60,69,0],[61,13,61,14,0],[62,13,62,33,0],[63,13,63,14,0],[64,17,64,74,0],[65,13,65,14,0],[67,13,68,21,1],[72,13,72,31,1],[73,9,73,10,1]]);
+    </script>
+  </body>
+</html>

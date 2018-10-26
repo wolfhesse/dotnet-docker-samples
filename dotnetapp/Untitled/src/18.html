@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\todocomponent\todocontroller.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace DnsLib.FactoryFloor.TodoComponent
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;
+    ///     The todo controller. component
+    /// &lt;/summary&gt;
+    public abstract class TodoController
+    {
+        /// &lt;summary&gt;
+        ///     Gets the task repository.
+        /// &lt;/summary&gt;
+        public static AbstractTodoRepository TodoRepository { get; protected set; }
+
+        /// &lt;summary&gt;The add task.&lt;/summary&gt;
+        /// &lt;param name=&quot;title&quot;&gt;The title.&lt;/param&gt;
+        public static void AddTodo(string title)
+        {
+            Console.Out.WriteLine(typeof(TodoController) + &quot;.AddTodo&quot;);
+            TodoComponent.AddTodo.Execute(title);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,63,17,67,1],[17,68,17,82,1],[22,9,22,10,1],[23,13,23,72,1],[24,13,24,50,1],[25,9,25,10,1]]);
+    </script>
+  </body>
+</html>

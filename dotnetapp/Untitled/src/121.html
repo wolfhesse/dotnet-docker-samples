@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\testlabor\testlaborctbridge.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Linq;
+using DnsLib.FloorPlaan.PkgCt.BusinessPackageCustomer;
+using DnsLib.FloorPlaan.PkgCt.CustomerProviderLib;
+using DnsLib.FloorPlaan.PkgCt.EntityLib;
+using DnsLib.FloorPlaan.PkgCt.TypeUtilities;
+using Newtonsoft.Json;
+using Xunit;
+
+
+namespace DnsLib.FloorPlaan.PkgCt.Testlabor
+{
+    public sealed class TestlaborCtBridge : IDisposable
+    {
+        private CustomerRepository _customerRepository;
+
+        public TestlaborCtBridge()
+        {
+            _customerRepository = new CustomerRepository(new InMemoryCustomerProvider());
+        }
+
+        [Fact(Timeout = 2500)]
+        public void LoadTest()
+        {
+            for (int i = 0; i &lt; 2_500; i++)
+                _customerRepository.Save(
+                    new CtCustomer
+                    {
+                        Name = $&quot;CtCustomer-{i}&quot;
+                    });
+
+            Console.Out.WriteLine(&quot;_repo = {0}&quot;, _customerRepository.CustomerCount());
+        }
+
+        [Fact(Timeout = 2500)]
+        public void PersistCustomerTest()
+        {
+            var c = new CtCustomer(&quot;Roger Andel&quot;);
+            _customerRepository.Save(c);
+        }
+
+        [Fact(Timeout = 2500)]
+        public void Tuple2Test()
+        {
+            Prepare();
+            _customerRepository.DumpCustomers();
+
+            void Prepare()
+            {
+                var record = (id: 1, name: &quot;Roger Andel&quot;, balance: -1);
+                var c = CtCustomer.CustomerFrom(record);
+
+                var record2 = (id: 2, name: &quot;Heinz Frischer&quot;,
+                    description: &quot;Naechster Bundespraesident von Oesterreich&quot;);
+                var c2 = CtCustomer.CustomerFrom(record2);
+                _customerRepository.Save(c);
+                _customerRepository.Save(c2);
+            }
+        }
+
+        [Fact(Timeout = 2500)]
+        public void TupleTest()
+        {
+            var d = (a: 1, b: 2, c: 3);
+            Console.Out.WriteLine(d.a);
+#pragma warning disable IDE0033 // Use explicitly provided tuple name
+            Console.Out.WriteLine(d.Item2);
+#pragma warning restore IDE0033 // Use explicitly provided tuple name
+            Console.Out.WriteLine(d.c);
+            // ReSharper disable once UnusedVariable
+            (int e, int f, int g) = d;
+            Console.Out.WriteLine((e, f));
+            Console.Out.WriteLine(JsonConvert.SerializeObject((d.a, d.c)));
+
+            var dcfa = new DataContainerFuerAustauschCustomerAccount
+            {
+                CustomerName = &quot;eins&quot;
+            };
+            var c1 = new CtCustomer {Name = &quot;Roger Andel&quot;};
+            var c2 = new CtCustomer {Name = &quot;Heinz Fischer&quot;};
+            var a1 = new CtAccount
+            {
+                CtCustomer = c1,
+                AccountNo = 0,
+                Balance = 100
+            };
+            var a2 = new CtAccount {CtCustomer = c2, AccountNo = 1, Balance = 11};
+            var a3 = new CtAccount {CtCustomer = c2, AccountNo = 2, Balance = 2};
+
+            new[] {a1, a2, a3}.ToList().ForEach(x =&gt; dcfa.Accounts.Add(x));
+            dcfa.ComputeBalance();
+            Console.Out.WriteLine(JsonConvert.SerializeObject(dcfa));
+        }
+
+        [Fact(Timeout = 2500)]
+        public void WorkWithRepository()
+        {
+            var createCustomerAction = new CreateCustomerAction(_customerRepository, &quot;Roger Andel&quot;);
+            Assert.Equal(CreateCustomerAction.Results.Success, createCustomerAction.Status);
+            var customer = _customerRepository.GetCustomer(&quot;Roger Andel&quot;);
+            customer.Description = &quot;Beispiel1beschreibung&quot;;
+            customer = _customerRepository.Save(customer);
+            customer.Description = &quot;Beispiel2beschreibung&quot;;
+            customer = _customerRepository.Save(customer);
+
+
+            Assert.Equal(&quot;Roger Andel&quot;, customer.Name);
+            Console.Out.WriteLine(&quot;customer = {0}&quot;, JsonConvert.SerializeObject(customer));
+        }
+
+        #region Implementation of IDisposable
+
+        public void Dispose()
+        {
+//            Dispose(true);
+//            GC.SuppressFinalize(this);
+            Console.Write($@&quot;disposing {this} finished.&quot;);
+        }
+
+        #endregion
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,9,17,35,1],[18,9,18,10,1],[19,13,19,90,1],[20,9,20,10,1],[24,9,24,10,1],[25,18,25,27,1],[25,29,25,38,1],[25,40,25,43,1],[26,17,30,24,1],[32,13,32,87,1],[33,9,33,10,1],[37,9,37,10,1],[38,13,38,51,1],[39,13,39,41,1],[40,9,40,10,1],[44,9,44,10,1],[45,13,45,23,1],[46,13,46,49,1],[49,13,49,14,1],[50,17,50,72,1],[51,17,51,57,1],[53,17,54,80,1],[55,17,55,59,1],[56,17,56,45,1],[57,17,57,46,1],[58,13,58,14,1],[59,9,59,10,1],[63,9,63,10,1],[64,13,64,40,1],[65,13,65,40,1],[67,13,67,44,1],[69,13,69,40,1],[71,13,71,39,1],[72,13,72,43,1],[73,13,73,76,1],[75,13,78,15,1],[79,13,79,60,1],[80,13,80,62,1],[81,13,86,15,1],[87,13,87,83,1],[88,13,88,82,1],[90,13,90,54,1],[90,54,90,74,1],[90,74,90,76,1],[90,13,90,76,1],[91,13,91,35,1],[92,13,92,70,1],[93,9,93,10,1],[97,9,97,10,1],[98,13,98,101,1],[99,13,99,93,1],[100,13,100,75,1],[101,13,101,60,1],[102,13,102,59,1],[103,13,103,60,1],[104,13,104,59,1],[107,13,107,56,1],[108,13,108,92,1],[109,9,109,10,1],[114,9,114,10,1],[117,13,117,59,1],[118,9,118,10,1]]);
+    </script>
+  </body>
+</html>

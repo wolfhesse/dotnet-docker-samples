@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\processlayertestcomponent.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using Xunit;
+
+namespace DnsLib.TestDriving.Trainer
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The process layer test component.&lt;/summary&gt;
+    public partial class ProcessLayerTestComponent : Component
+    {
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;ProcessLayerTestComponent&quot; /&gt; class.&lt;/summary&gt;
+        public ProcessLayerTestComponent()
+        {
+            InitializeComponent();
+        }
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;ProcessLayerTestComponent&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;container&quot;&gt;The container.&lt;/param&gt;
+        public ProcessLayerTestComponent(IContainer container)
+        {
+            container.Add(this);
+
+            InitializeComponent();
+        }
+
+        public class InternalTestClass
+        {
+            /// &lt;summary&gt;
+            ///     The one process layer test.
+            /// &lt;/summary&gt;
+            [Fact(Timeout = 2500)]
+            public static void SampleProcessLayerTest()
+            {
+                new ProcessLayerTestComponent()._standardEngineOne1.Start();
+            }
+        }
+
+        /// &lt;summary&gt;The engine one 1_ ev fin.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;The e.&lt;/param&gt;
+        [SuppressMessage(
+            &quot;StyleCop.CSharp.DocumentationRules&quot;,
+            &quot;SA1650:ElementDocumentationMustBeSpelledCorrectly&quot;,
+            Justification = &quot;Reviewed. Suppression is OK here.&quot;)]
+        [SuppressMessage(
+            &quot;StyleCop.CSharp.NamingRules&quot;,
+            &quot;SA1300:ElementMustBeginWithUpperCaseLetter&quot;,
+            Justification = &quot;Reviewed. Suppression is OK here.&quot;)]
+#pragma warning disable IDE1006 // Naming Styles
+        private void EngineSample1EvFin(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
+        {
+            Console.Out.WriteLine(&quot;2sender = {0}&quot;, sender);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,43,1],[17,9,17,10,1],[18,13,18,35,1],[19,9,19,10,1],[23,9,23,63,0],[24,9,24,10,0],[25,13,25,33,0],[27,13,27,35,0],[28,9,28,10,0],[37,13,37,14,1],[38,17,38,77,1],[39,13,39,14,1],[56,9,56,10,1],[57,13,57,60,1],[58,9,58,10,1]]);
+    </script>
+  </body>
+</html>

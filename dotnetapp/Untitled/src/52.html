@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\core\tweetenginetests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.SysRes;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Core
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The tweet factory tests.&lt;/summary&gt;
+    public sealed class TweetEngineTests : IDisposable
+    {
+        /// &lt;summary&gt;The setup.&lt;/summary&gt;
+        public TweetEngineTests()
+        {
+            EnvironmentManager.AddSampleTweetWasRequestedEventHandler(ConsoleOutSampleTweetWasRequested);
+        }
+
+        public void Dispose()
+        {
+            EnvironmentManager.WriteLine($&quot;{typeof(TweetEngineTests)}&quot;, &quot;Dispose&quot;);
+        }
+
+        /// &lt;summary&gt;The build tweet test.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void BuildTweetTest()
+        {
+            Assert.Equal(EnvironmentManager.SampleTweet.User,
+                TweetEngine.BuildTweet(&quot;rogeraaut&quot;).User);
+            Console.Out.WriteLine(&quot;zweiter aufruf: sample tweet: = {0}&quot;, EnvironmentManager.SampleTweet);
+        }
+
+        /// &lt;summary&gt;The interface need sample tweet has version.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void InterfaceNeedSampleTweetHasVersion()
+        {
+            var t = EnvironmentManager.SampleTweet;
+            Assert.NotNull(t.Version);
+            var tweet = t as INeedSampleTweet;
+            Assert.True(tweet != null);
+            Assert.NotNull((t as INeedSampleTweet).Version);
+        }
+
+
+        /// &lt;summary&gt;The console out sample tweet was requested.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;eventArgs&quot;&gt;The event args.&lt;/param&gt;
+        private void ConsoleOutSampleTweetWasRequested(object sender, EventArgs eventArgs)
+        {
+            Console.Out.WriteLine(&quot;Ev: sample tweet was requested&quot;);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,34,0],[17,9,17,10,0],[18,13,18,106,0],[19,9,19,10,0],[22,9,22,10,0],[23,13,23,84,0],[24,9,24,10,0],[29,9,29,10,1],[30,13,31,59,1],[32,13,32,106,1],[33,9,33,10,1],[38,9,38,10,1],[39,13,39,52,1],[40,13,40,39,1],[41,13,41,47,1],[42,13,42,40,1],[43,13,43,61,1],[44,9,44,10,1],[51,9,51,10,0],[52,13,52,69,0],[53,9,53,10,0]]);
+    </script>
+  </body>
+</html>

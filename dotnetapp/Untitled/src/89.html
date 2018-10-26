@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\core\formalasedynamicstagestests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.AbstractArchitecture.AseArchitecture;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Core
+{
+    /// &lt;summary&gt;The formal ase dynamic stages tests.&lt;/summary&gt;
+    public class FormalAseDynamicStagesTests
+    {
+        public Dynamics.ProcessingStage Stage { get; set; }
+
+        /// &lt;summary&gt;The processing stages test.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public void ProcessingStagesTest()
+        {
+            Stage = Dynamics.ProcessingStage.Abended;
+            Stage = Dynamics.ProcessingStage.Abnormed;
+            Stage = Dynamics.ProcessingStage.Cancelled;
+            Stage = Dynamics.ProcessingStage.Idle;
+            Stage = Dynamics.ProcessingStage.InflightProcessing;
+            Stage = Dynamics.ProcessingStage.InflightPublishing;
+            Stage = Dynamics.ProcessingStage.InflightReading;
+            Stage = Dynamics.ProcessingStage.Waiting;
+
+            Assert.True(8 == (int) Dynamics.ProcessingStage.LastInLine);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,49,10,53,0],[10,54,10,58,1],[15,9,15,10,1],[16,13,16,54,1],[17,13,17,55,1],[18,13,18,56,1],[19,13,19,51,1],[20,13,20,65,1],[21,13,21,65,1],[22,13,22,62,1],[23,13,23,54,1],[25,13,25,73,1],[26,9,26,10,1]]);
+    </script>
+  </body>
+</html>

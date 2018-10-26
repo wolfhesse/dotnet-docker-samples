@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\esoperationsengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.FactoryFloor.ElasticSearchComponent;
+using Elasticsearch.Net;
+using Nest;
+
+namespace DnsLib.SysRes
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The es operations engine.&lt;/summary&gt;
+    public static class EsOperationsEngine
+    {
+        /// &lt;summary&gt;The client.&lt;/summary&gt;
+        private static ElasticClient _client;
+
+        /// &lt;summary&gt;The client.&lt;/summary&gt;
+        public static ElasticClient Client =&gt; _client ?? (_client = InitElasticClient());
+
+        /// &lt;summary&gt;The es write and readback tweet.&lt;/summary&gt;
+        /// &lt;param name=&quot;pTweet&quot;&gt;The p tweet.&lt;/param&gt;
+        /// &lt;param name=&quot;esIndexName&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;List{T}&quot; /&gt;.&lt;/returns&gt;
+        public static List&lt;TweetModel&gt; EsWriteAndDupTweet(TweetModel pTweet,
+            string esIndexName = &quot;rtest.current&quot;)
+        {
+            return WriteAndDupEsTweet.Execute(pTweet, Client, esIndexName);
+        }
+
+        /// &lt;summary&gt;The init elastic client.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;ElasticClient&quot; /&gt;.&lt;/returns&gt;
+        private static ElasticClient InitElasticClient()
+        {
+            var nodes = new[] {new Uri(DefinitionZulu.ElasticOnMachDd)};
+
+            var pool = new StaticConnectionPool(nodes);
+            var settings = new ConnectionSettings(pool);
+            _client = new ElasticClient(settings);
+            return _client;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,47,21,89,1],[29,9,29,10,1],[30,13,30,76,1],[31,9,31,10,1],[36,9,36,10,1],[37,13,37,73,1],[39,13,39,56,1],[40,13,40,57,1],[41,13,41,51,1],[42,13,42,28,1],[43,9,43,10,1]]);
+    </script>
+  </body>
+</html>

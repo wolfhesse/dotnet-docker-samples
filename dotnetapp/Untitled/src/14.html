@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\todocomponent\todobuilder.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace DnsLib.FactoryFloor.TodoComponent
+{
+    /// &lt;summary&gt;The task builder.&lt;/summary&gt;
+    public class TodoBuilder
+    {
+        /// &lt;summary&gt;The build task.&lt;/summary&gt;
+        /// &lt;param name=&quot;title&quot;&gt;The title.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;TodoItem&quot; /&gt;.&lt;/returns&gt;
+        public static TodoItem BuildTodo(string title)
+        {
+            var t = new TodoItem(title) {ExtraCreatorInfo = typeof(TodoBuilder)};
+            return t;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,1],[11,13,11,82,1],[12,13,12,22,1],[13,9,13,10,1]]);
+    </script>
+  </body>
+</html>

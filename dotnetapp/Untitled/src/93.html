@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\core\backlog.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using DnsLib.AbstractArchitecture.AseArchitecture;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET.UseCases;
+using DnsLib.TestDriving.Operations;
+using WooCommerceNET.WooCommerce.v2;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Core
+{
+    /// &lt;summary&gt;The backlog.&lt;/summary&gt;
+    public class Backlog : IBacklog
+    {
+        /// &lt;summary&gt;The fetch specific products.&lt;/summary&gt;
+        [Fact(Timeout = 5500)]
+        public static void FetchSpecificProducts()
+        {
+            var restApi = WooStuffAuthAdapter.RestApiDefault();
+            GetProducts.Execute(
+                restApi,
+                pPage: &quot;1&quot;,
+                pPerPage: &quot;10&quot;,
+                pIncludeProductIds: &quot;3277, 62, 73, 82, 3109, 3108, 3110, 3111&quot;);
+            var breakHere = 1;
+            Assert.True(breakHere == 1);
+        }
+
+        /// &lt;summary&gt;The test create products rcs 2 via api var 1.&lt;/summary&gt;
+        [Fact(Timeout = 13500)]
+        public static void TestCreateProductsRcs2ViaApiVar1()
+        {
+            var restApi = WooStuffAuthAdapter.RestApiDefault();
+
+            var productsToInsert = new List&lt;Product&gt;();
+
+            for (var i = 0; i &lt; 1; i++)
+                productsToInsert.Add(
+                    new Product
+                    {
+                        description = $&quot;test product from {typeof(CreateProductsForTest)}&quot;,
+                        price = 8.0M,
+                        categories =
+                            new List&lt;ProductCategoryLine&gt;
+                            {
+                                new ProductCategoryLine {name = &quot;testing&quot;},
+                                new ProductCategoryLine {name = &quot;pcl-cat0&quot;},
+                                new ProductCategoryLine {name = &quot;pcl-cat1&quot;},
+                                new ProductCategoryLine
+                                {
+                                    name =
+                                        &quot;ase-internal&quot;
+                                }
+                            },
+                        name =
+                            $&quot;test product {DateTimeOffset.Now.LocalDateTime}.{DateTimeOffset.Now.Millisecond}&quot;,
+                        short_description = $@&quot;testing {i}-of-{1}&quot;
+                    });
+
+            CreateProductsForTest.Execute(restApi, productsToInsert);
+
+            var breakHere = 1;
+            Assert.True(breakHere == 1);
+        }
+
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestDemoAuthEngine()
+        {
+            DemoAuthEngine.EntryPoint(null);
+        }
+
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestDemoDatesEngine()
+        {
+            DatesEngine.EntryPoint(null);
+        }
+
+        /// &lt;summary&gt;The test woo use case.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestWooUseCase()
+        {
+            var restApi = WooStuffAuthAdapter.RestApiDefault();
+            // ReSharper disable once UnusedVariable
+            var products = GetProducts.Execute(restApi);
+            var breakHere = 1;
+            Assert.True(breakHere == 1);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,64,1],[22,13,26,81,1],[27,13,27,31,1],[28,13,28,41,1],[29,9,29,10,1],[34,9,34,10,1],[35,13,35,64,1],[37,13,37,56,1],[39,18,39,27,1],[39,29,39,34,1],[39,36,39,39,1],[40,17,60,24,1],[62,13,62,70,1],[64,13,64,31,1],[65,13,65,41,1],[66,9,66,10,1],[71,9,71,10,1],[72,13,72,45,1],[73,9,73,10,1],[78,9,78,10,1],[79,13,79,42,1],[80,9,80,10,1],[85,9,85,10,1],[86,13,86,64,1],[88,13,88,57,1],[89,13,89,31,1],[90,13,90,41,1],[91,9,91,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\serviceaccesspoint.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+
+namespace DnsLib.SysRes
+{
+    public class ServiceAccessPoint
+    {
+        private Dictionary&lt;string, object&gt; _memoryBank;
+
+        public ServiceAccessPoint(Dictionary&lt;string, object&gt; memoryBank)
+        {
+            _memoryBank = memoryBank;
+        }
+
+        public enum MemorySlot
+        {
+            SourceSystemAccount,
+            TargetSystemAccount,
+            SourceSystemAuth,
+            FindAccountForOp,
+            Done,
+            SystemAuth,
+            FindAccountForOpCount
+        }
+
+        public bool CountServiceProvision(
+            (Dictionary&lt;string, object&gt; memoryBank, PlatformDeveloperSection.SystemUser sender) config)
+        {
+            _memoryBank = config.memoryBank;
+            /* klammer contract
+               protocol: _memoryBank[nameof( klass//obj )]
+               */
+            _memoryBank[nameof(CountServiceProvision)] = 0;
+
+
+            var counter = 1;
+            _memoryBank[nameof(CountServiceProvision)] = counter;
+            return true;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,73,1],[11,9,11,10,1],[12,13,12,38,1],[13,9,13,10,1],[28,9,28,10,1],[29,13,29,45,1],[33,13,33,60,1],[36,13,36,29,1],[37,13,37,66,1],[38,13,38,25,1],[39,9,39,10,1]]);
+    </script>
+  </body>
+</html>

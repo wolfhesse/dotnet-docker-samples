@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\macrolib\tweetmodel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.SysRes;
+
+namespace DnsLib.ComponentLibrary.Macrolib
+{
+    /// &lt;summary&gt;The tweet model.&lt;/summary&gt;
+    public class TweetModel : INeedSampleTweet
+    {
+        /// &lt;summary&gt;Gets the schema.&lt;/summary&gt;
+        public static string Schema { get; } = &quot;V1&quot;;
+
+        // public string _id { get; set; }
+        // public int? Id { get; set; }
+        /// &lt;summary&gt;Gets or sets the id.&lt;/summary&gt;
+        public string Id { get; set; }
+
+        /// &lt;summary&gt;Gets or sets the post date time.&lt;/summary&gt;
+        public DateTimeOffset PostDateTime { get; set; }
+
+        /// &lt;summary&gt;Gets or sets the user.&lt;/summary&gt;
+        public string User { get; set; }
+
+        /// &lt;summary&gt;Gets or sets the value.&lt;/summary&gt;
+        public string Value { get; set; }
+
+        /// &lt;summary&gt;Gets the version.&lt;/summary&gt;
+        public string Version { get; } = typeof(TweetModel).AssemblyQualifiedName;
+
+        /// &lt;summary&gt;The to string.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;string&quot; /&gt;.&lt;/returns&gt;
+        public override string ToString()
+        {
+            var res = base.ToString();
+
+            // res += $&quot;\n \\.. _id          : {_id}&quot;;
+            res += $&quot;\n \\.. id           : {Id}&quot;;
+            res += $&quot;\n \\.. user         : {User}&quot;;
+            res += $&quot;\n \\.. postDateTime : {PostDateTime}&quot;;
+            res += $&quot;\n \\.. value        : {Value}&quot;;
+            res += $&quot;\n \\.. version        : {Version}&quot;;
+            res += &quot;\n \\.. ]&quot;;
+            return res;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,39,10,43,0],[10,48,10,52,1],[15,28,15,32,1],[15,33,15,37,1],[18,46,18,50,1],[18,51,18,55,1],[21,30,21,34,1],[21,35,21,39,1],[24,31,24,35,1],[24,36,24,40,1],[27,33,27,37,1],[27,42,27,82,1],[32,9,32,10,1],[33,13,33,39,1],[36,13,36,51,1],[37,13,37,53,1],[38,13,38,61,1],[39,13,39,54,1],[40,13,40,58,1],[41,13,41,32,1],[42,13,42,24,1],[43,9,43,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\operatorapps\program.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.FactoryFloor.MqComponent;
+using DnsLib.FactoryFloor.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
+using DnsLib.SysRes;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.OperatorApps
+{
+    /// &lt;summary&gt;The program.&lt;/summary&gt;
+    public static class Program
+    {
+        /// &lt;summary&gt;The tweets counter.&lt;/summary&gt;
+        public static int TweetsCounter = 0;
+
+        private static bool _flipFlop;
+
+        /// &lt;summary&gt;The main.&lt;/summary&gt;
+        /// &lt;param name=&quot;args&quot;&gt;The args.&lt;/param&gt;
+        public static void Main(string[] args)
+        {
+            var mqOperationsEngine = new MqOperationsEngine();
+            // server, grace time, limit, queue name
+            mqOperationsEngine.Configure(new List&lt;string&gt;
+                {&quot;192.168.99.100&quot;, /* grace time */ &quot;30&quot;, /* limit */ &quot;50&quot;, &quot;hello&quot;});
+            mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(ProgramCustomization.HandleProductCreationRequest,
+                ProgramCustomization.HandleTweetCreationRequest).Execute(mqOperationsEngine);
+        }
+
+        private class ProgramCustomization
+        {
+            /// &lt;summary&gt;The process product created message.&lt;/summary&gt;
+            /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+            /// &lt;param name=&quot;eventArgs&quot;&gt;The event args.&lt;/param&gt;
+            public static async void HandleProductCreationRequest(object sender, AseMessageEventArgs eventArgs)
+            {
+                await CreateWooProductTask(sender, eventArgs);
+            }
+
+            /// &lt;summary&gt;The create tweet handler.&lt;/summary&gt;
+            /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+            /// &lt;param name=&quot;aseMessageEventArgs&quot;&gt;The ase message event args.&lt;/param&gt;
+            public static async void HandleTweetCreationRequest(object sender, AseMessageEventArgs aseMessageEventArgs)
+            {
+                // create &#39;tweet&#39; in elasticsearch
+                await Task.Run(() =&gt;
+                        EsOperationsEngine.EsWriteAndDupTweet(BuildTweet(aseMessageEventArgs.Message))
+                            .ForEach(TweetEngine.DumpTweet))
+                    .ConfigureAwait(false);
+                EnvironmentManager.WriteLine(aseMessageEventArgs.Message);
+
+                // ## rq: DescriptionUseCase ##     new AddDescription(aseMessageEventArgs.Message);
+
+                TweetModel BuildTweet(string message)
+                {
+                    var t0 = TweetEngine.FnCreateTweet(message);
+                    t0.User = typeof(Program).ToString();
+                    return t0;
+                }
+            }
+
+            /// &lt;summary&gt;The receive_ ev message async.&lt;/summary&gt;
+            /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+            /// &lt;param name=&quot;e&quot;&gt;The e.&lt;/param&gt;
+            /// &lt;returns&gt;The &lt;see cref=&quot;Task&quot; /&gt;.&lt;/returns&gt;
+            private static async Task CreateWooProductTask(object sender, AseMessageEventArgs e)
+            {
+                EnvironmentManager.WriteLine(
+                    $&quot;{typeof(Program)}: got message from {sender} @ {DateTimeOffset.Now}&quot;);
+                try
+                {
+                    // since Version 0.1.11 dup: tweet first (just to see, if anythink happens)
+                    // since Version 0.1.13 sync ops
+                    var t = TweetEngine.BuildTweet(e.Message);
+
+                    // Task.Run(() =&gt;
+                    await Task.Run(
+                        () =&gt;
+                        {
+                            EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet);
+//                        EnvironmentManager.WriteLine(e.Message);
+                            EnvironmentManager.WriteLine(&quot;after tweet creation [inTask]&quot;);
+                        });
+                    EnvironmentManager.WriteLine(&quot;after tweet creation [aftTask]&quot;);
+
+                    // add product
+                    var p = new Product {name = e.Message, description = &quot;demo produkt fuer V &quot; + VersionInfo.Version};
+
+                    // ReSharper disable once UnusedVariable
+                    var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
+                        new WooCommerceConfiguration(
+                            WooStuffAuthAdapter.FnRestApiRcs1()));
+                    var shopEngine2 = new ShopEngine(new WooCommerceAdapter(),
+                        new WooCommerceConfiguration(
+                            WooStuffAuthAdapter.FnRestApiRcs2()));
+
+                    EnvironmentManager.WriteLine(&quot;\t\t\t--- 1 --- before product creation&quot;);
+                    // Task.Run(() =&gt;
+                    await Task.Run(
+                        () =&gt;
+                        {
+                            _flipFlop = !_flipFlop;
+                            //var shopEngine = _flipFlop ? shopEngine1 : shopEngine2;
+                            var shopEngine = shopEngine2;
+
+                            EnvironmentManager.WriteLine(
+                                &quot;\t\t\t--- 2 --- before product creation [inTask]&quot;);
+                            EnvironmentManager.WriteLine(
+                                $&quot;\t\t\t          ::::: {shopEngine.Configuration.ConfigName}&quot;);
+
+                            var startTs = DateTime.Now;
+                            var p2 = shopEngine.AddProduct(p);
+                            var duration = DateTime.Now - startTs;
+                            EnvironmentManager.WriteLine(
+                                $&quot;product created: {p2.name}&quot; + $&quot;{Environment.NewLine}&quot;
+                                                              + $&quot;\tduration: {duration.TotalSeconds} s&quot;);
+                            EnvironmentManager.WriteLine(
+                                &quot;\t\t\t\t\t\t--- 2 --- after product creation [inTask]&quot;);
+                            EnvironmentManager.WriteLine(
+                                $&quot;\t\t\t\t\t\t          ::::: {shopEngine.Configuration.ConfigName}&quot;);
+                        });
+                    EnvironmentManager.WriteLine(&quot;\t\t\t\t\t\t--- 1 --- after product creation&quot;);
+
+                    // ## rq: DescriptionUseCase ##     new AddDescription(&quot;product :&quot; + p.description);
+                    // }
+                }
+                catch (Exception ex)
+                {
+                    /*
+                                var t = BuildTweet(ex.Message);
+                //                 Task.Run(() =&gt;
+                                await Task.Run(() =&gt;
+                                    EsOperationsEngine.EsWriteAndReadbackTweet(t).ForEach(EsOperationsEngine.DumpTweet));
+                               */
+                    EnvironmentManager.WriteLine(ex.Message);
+                    EnvironmentManager.WriteLine(&quot;after tweet creating in catch-&quot;);
+                }
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,45,0],[25,9,25,10,0],[26,13,26,63,0],[28,13,29,87,0],[30,13,31,94,0],[32,9,32,10,0],[40,13,40,14,0],[41,17,41,63,0],[42,13,42,14,0],[48,13,48,14,0],[50,17,51,25,0],[51,25,52,60,0],[52,60,53,44,0],[50,17,53,44,0],[54,17,54,75,0],[59,17,59,18,0],[60,21,60,65,0],[61,21,61,58,0],[62,21,62,31,0],[63,17,63,18,0],[64,13,64,14,0],[71,13,71,14,0],[72,17,73,93,0],[75,17,75,18,0],[78,21,78,63,0],[81,21,83,25,0],[83,25,83,26,0],[83,26,84,29,0],[84,29,84,101,0],[84,101,86,29,0],[86,29,86,91,0],[86,91,87,25,0],[87,25,87,26,0],[87,26,87,28,0],[81,21,87,28,0],[88,21,88,84,0],[91,21,91,120,0],[94,21,96,67,0],[97,21,99,67,0],[101,21,101,93,0],[103,21,105,25,0],[105,25,105,26,0],[105,26,106,29,0],[106,29,106,52,0],[106,52,108,29,0],[108,29,108,58,0],[108,58,110,29,0],[110,29,111,85,0],[111,85,112,29,0],[112,29,113,97,0],[113,97,115,29,0],[115,29,115,56,0],[115,56,116,29,0],[116,29,116,63,0],[116,63,117,29,0],[117,29,117,67,0],[117,67,118,29,0],[118,29,120,107,0],[120,107,121,29,0],[121,29,122,90,0],[122,90,123,29,0],[123,29,124,103,0],[124,103,125,25,0],[125,25,125,26,0],[125,26,125,28,0],[103,21,125,28,0],[126,21,126,98,0],[130,17,130,18,0],[131,17,131,37,0],[132,17,132,18,0],[139,21,139,62,0],[140,21,140,84,0],[141,17,141,18,0],[142,13,142,14,0]]);
+    </script>
+  </body>
+</html>

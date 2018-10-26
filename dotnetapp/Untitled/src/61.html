@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\todocomponent\addtodo.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace DnsLib.FactoryFloor.TodoComponent
+{
+    /// &lt;summary&gt;
+    ///     The add task.
+    /// &lt;/summary&gt;
+    public static class AddTodo
+    {
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        /// &lt;param name=&quot;title&quot;&gt;The title.&lt;/param&gt;
+        public static void Execute(string title)
+        {
+            var task = TodoBuilder.BuildTodo(title);
+            TodoController.TodoRepository.Persist(task);
+        }
+
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        /// &lt;param name=&quot;todoRepository&quot;&gt;The task repository.&lt;/param&gt;
+        /// &lt;param name=&quot;todoItem&quot;&gt;The todo task.&lt;/param&gt;
+        internal static void Execute(AbstractTodoRepository todoRepository, TodoItem todoItem)
+        {
+            todoRepository.Persist(todoItem);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,10,1],[12,13,12,53,1],[13,13,13,57,1],[14,9,14,10,1],[20,9,20,10,0],[21,13,21,46,0],[22,9,22,10,0]]);
+    </script>
+  </body>
+</html>

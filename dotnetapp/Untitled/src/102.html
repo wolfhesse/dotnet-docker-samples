@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\businesspackagecustomer\createcustomeraction.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace DnsLib.FloorPlaan.PkgCt.BusinessPackageCustomer
+{
+    public class CreateCustomerAction
+    {
+        public CreateCustomerAction(CustomerRepository customerRepository, string name)
+        {
+            customerRepository.CreateCustomer(name);
+            Status = Results.Success;
+        }
+
+        public enum Results
+        {
+            Success,
+            Failure
+        }
+
+        public Results Status { get; set; }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[5,9,5,88,1],[6,9,6,10,1],[7,13,7,53,1],[8,13,8,38,1],[9,9,9,10,1],[17,33,17,37,1],[17,38,17,42,1]]);
+    </script>
+  </body>
+</html>

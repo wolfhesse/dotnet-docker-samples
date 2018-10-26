@@ -1,7 +1,7 @@
 using System;
 using DnsLib.ComponentLibrary.Lab;
 using DnsLib.FactoryFloor.TodoComponent;
-using DnsLib.OperatorApps.SysRes;
+using DnsLib.SysRes;
 using DotnetApp.CustomSetup;
 using DotnetApp.Tests.ClassLibrary;
 using Xunit;

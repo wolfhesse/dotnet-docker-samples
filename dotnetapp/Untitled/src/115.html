@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\networkadapter\markdownextension.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using HeyRed.MarkdownSharp;
+using ReverseMarkdown;
+
+namespace DnsLib.FloorPlaan.PkgCt.NetworkAdapter
+{
+    public static class MarkdownExtension
+    {
+        public static string ConcatenateToMarkdown(string html, string markdown)
+        {
+            var md = new Markdown(new MarkdownOptions
+            {
+                AutoNewLines = true,
+                DisableHr = true,
+                DisableHeaders = false
+            });
+            var converter = new Converter(new Config(removeComments: true));
+
+            return converter.Convert(
+                md.Transform(
+                    converter.Convert(html) + Environment.NewLine + markdown));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,1],[11,13,16,16,1],[17,13,17,77,1],[19,13,21,80,1],[22,9,22,10,1]]);
+    </script>
+  </body>
+</html>

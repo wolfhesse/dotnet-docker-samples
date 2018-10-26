@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\todobusiness\taskcreation.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.FactoryFloor.TodoComponent;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.TodoBusiness
+{
+    public class TaskCreation
+    {
+        /// &lt;summary&gt;The test task created at.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestTaskCreatedAt()
+        {
+            var task = TodoBuilder.BuildTodo(&quot;Sample TodoItem&quot;);
+            Assert.True(task.CreatedAt.LocalDateTime.ToShortDateString().Length &gt; 0);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,1],[13,13,13,65,1],[14,13,14,86,1],[15,9,15,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\testlabor\pkgct\ctbridge.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.FloorPlaan.PkgCt.InterfaceLib;
+using DnsLib.SysRes;
+
+namespace DnsLib.FloorPlaan.PkgCt.Testlabor.PkgCt
+{
+    public class CtBridge
+    {
+        // use a ct service
+        public static List&lt;TweetModel&gt; PutCustomerToEsIndex(ICustomer customer)
+        {
+            var message = customer.Name;
+            var t = TweetEngine.BuildTweet(message);
+            var result = EsOperationsEngine.EsWriteAndDupTweet(t);
+            return result;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,1],[13,13,13,41,1],[14,13,14,53,1],[15,13,15,67,1],[16,13,16,27,1],[17,9,17,10,1]]);
+    </script>
+  </body>
+</html>

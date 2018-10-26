@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\todocomponent\todoitem.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace DnsLib.FactoryFloor.TodoComponent
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The task item.&lt;/summary&gt;
+    public class TodoItem
+    {
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;TodoItem&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;title&quot;&gt;The title.&lt;/param&gt;
+        public TodoItem(string title)
+        {
+            CreatedAt = DateTimeOffset.Now;
+            Title = title;
+        }
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;TodoItem&quot; /&gt; class.&lt;/summary&gt;
+        internal TodoItem()
+        {
+        }
+
+        /// &lt;summary&gt;Gets or sets the created at.&lt;/summary&gt;
+        public DateTimeOffset CreatedAt { get; set; }
+
+        /// &lt;summary&gt;Gets or sets the extra creator info.&lt;/summary&gt;
+        public Type ExtraCreatorInfo { get; set; }
+
+        /// &lt;summary&gt;Gets or sets the id.&lt;/summary&gt;
+        public int Id { get; set; }
+
+        /// &lt;summary&gt;Gets or sets the title.&lt;/summary&gt;
+        public string Title { get; set; }
+
+        /// &lt;summary&gt;The is valid.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;bool&quot; /&gt;.&lt;/returns&gt;
+        public bool IsValid()
+        {
+            return Title.Trim().Length &gt; 0;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,38,1],[15,9,15,10,1],[16,13,16,44,1],[17,13,17,27,1],[18,9,18,10,1],[21,9,21,28,0],[22,9,22,10,0],[23,9,23,10,0],[26,43,26,47,1],[26,48,26,52,1],[29,40,29,44,0],[29,45,29,49,1],[32,25,32,29,1],[32,30,32,34,1],[35,31,35,35,0],[35,36,35,40,1],[40,9,40,10,0],[41,13,41,44,0],[42,9,42,10,0]]);
+    </script>
+  </body>
+</html>

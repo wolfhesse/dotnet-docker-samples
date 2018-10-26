@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\businesspackagecustomer\customerrepository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using DnsLib.FloorPlaan.PkgCt.InterfaceLib;
+using Newtonsoft.Json;
+
+namespace DnsLib.FloorPlaan.PkgCt.BusinessPackageCustomer
+{
+    public class CustomerRepository : ICustomerRepository
+    {
+        private static ICustomerProvider _customerProvider;
+
+        public CustomerRepository(ICustomerProvider customerProvider)
+        {
+            _customerProvider = customerProvider;
+        }
+
+        public void CreateCustomer(string name)
+        {
+            _customerProvider.CreateCustomer(name);
+        }
+
+        public int CustomerCount()
+        {
+            return _customerProvider.CustomerCount();
+        }
+
+        public void DumpCustomers()
+        {
+            var customers = _customerProvider.Load();
+            Console.Out.WriteLine(&quot;customers = {0}&quot;,
+                JsonConvert.SerializeObject(
+                    customers, Formatting.Indented));
+        }
+
+        public ICustomer GetCustomer(string name)
+        {
+            return _customerProvider.GetCustomer(name);
+        }
+
+        public List&lt;ICustomer&gt; GetCustomers()
+        {
+            return _customerProvider.Load();
+        }
+
+        public ICustomer Save(ICustomer customer)
+        {
+            return
+                _customerProvider.Save(customer);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,70,1],[13,9,13,10,1],[14,13,14,50,1],[15,9,15,10,1],[18,9,18,10,1],[19,13,19,52,1],[20,9,20,10,1],[23,9,23,10,1],[24,13,24,54,1],[25,9,25,10,1],[28,9,28,10,1],[29,13,29,54,1],[30,13,32,54,1],[33,9,33,10,1],[36,9,36,10,1],[37,13,37,56,1],[38,9,38,10,1],[41,9,41,10,0],[42,13,42,45,0],[43,9,43,10,0],[46,9,46,10,1],[47,13,48,50,1],[49,9,49,10,1]]);
+    </script>
+  </body>
+</html>

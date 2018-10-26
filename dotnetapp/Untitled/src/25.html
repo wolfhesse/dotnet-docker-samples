@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\shopengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.FactoryFloor.ShopComponent;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.SysRes
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The shop engine.&lt;/summary&gt;
+    public class ShopEngine
+    {
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;ShopEngine&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;adapter&quot;&gt;The adapter.&lt;/param&gt;
+        /// &lt;param name=&quot;configuration&quot;&gt;The configuration.&lt;/param&gt;
+        public ShopEngine(IShopAdapter adapter, IShopConfiguration configuration)
+        {
+            Adapter = adapter;
+            Configuration = configuration;
+            configuration.Configure(adapter);
+        }
+
+        /// &lt;summary&gt;Prevents a default instance of the &lt;see cref=&quot;ShopEngine&quot; /&gt; class from being created.&lt;/summary&gt;
+        // ReSharper disable once UnusedMember.Local
+        private ShopEngine()
+        {
+        }
+
+        /// &lt;summary&gt;Gets the adapter.&lt;/summary&gt;
+        public IShopAdapter Adapter { get; }
+
+        /// &lt;summary&gt;Gets the configuration.&lt;/summary&gt;
+        public IShopConfiguration Configuration { get; }
+
+        /// &lt;summary&gt;The add product.&lt;/summary&gt;
+        /// &lt;param name=&quot;product&quot;&gt;The product.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Product&quot; /&gt;.&lt;/returns&gt;
+        public Product AddProduct(Product product)
+        {
+            return FactoryFloor.ShopComponent.AseWooCommerceNET.UseCases.AddProduct.Execute(Adapter, product);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,82,1],[17,9,17,10,1],[18,13,18,31,1],[19,13,19,43,1],[20,13,20,46,1],[21,9,21,10,1],[25,9,25,29,0],[26,9,26,10,0],[27,9,27,10,0],[30,39,30,43,1],[33,51,33,55,0],[39,9,39,10,1],[40,13,40,111,1],[41,9,41,10,1]]);
+    </script>
+  </body>
+</html>

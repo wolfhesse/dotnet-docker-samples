@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\lab\environmentoutputadapter.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.IO;
+using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.SysRes;
+
+namespace DnsLib.ComponentLibrary.Lab
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;inheritdoc /&gt;
+    /// &lt;summary&gt;
+    ///     The environment output adapter.
+    /// &lt;/summary&gt;
+    public class EnvironmentOutputAdapter : IWriteLineSupport
+    {
+        /// &lt;summary&gt;
+        ///     The _text writer.
+        /// &lt;/summary&gt;
+        private readonly TextWriter _textWriter;
+
+        /// &lt;summary&gt;
+        ///     The _write line support implementation.
+        /// &lt;/summary&gt;
+        private readonly IWriteLineSupport _writeLineSupportImplementation;
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;EnvironmentOutputAdapter&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+        /// &lt;param name=&quot;otherWriteLineSupportImplementation&quot;&gt;The other Write Line Support Implementation.&lt;/param&gt;
+        public EnvironmentOutputAdapter(
+            TextWriter textWriter,
+            IWriteLineSupport otherWriteLineSupportImplementation = null)
+        {
+            _textWriter = textWriter;
+            _writeLineSupportImplementation = otherWriteLineSupportImplementation;
+        }
+
+        /// &lt;inheritdoc /&gt;
+        /// &lt;summary&gt;
+        ///     The write line.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;message&quot;&gt;
+        ///     The message.
+        /// &lt;/param&gt;
+        public void WriteLine(object message)
+        {
+            if (EnvironmentManager.TestOutputHelper != null)
+                EnvironmentManager.TestOutputHelper.WriteLine(message.ToString());
+            else if (null != _textWriter) _textWriter.WriteLine(message);
+            else if (_writeLineSupportImplementation != null)
+                _writeLineSupportImplementation?.WriteLine(message);
+            else EnvironmentManager.WriteLine(message.ToString());
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[30,9,32,74,0],[33,9,33,10,0],[34,13,34,38,0],[35,13,35,83,0],[36,9,36,10,0],[46,9,46,10,0],[47,13,47,61,0],[48,17,48,83,0],[49,18,49,42,0],[49,43,49,74,0],[50,18,50,62,0],[51,17,51,69,0],[52,18,52,67,0],[53,9,53,10,0]]);
+    </script>
+  </body>
+</html>

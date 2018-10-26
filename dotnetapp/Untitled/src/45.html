@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\mqcomponent\mqoperationsengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.MqComponent.Processor;
+using DnsLib.FactoryFloor.MqComponent.UseCase;
+using RabbitMQ.Client;
+
+namespace DnsLib.FactoryFloor.MqComponent
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The mq operations engine.&lt;/summary&gt;
+    public class MqOperationsEngine : IMqOperationsEngine, ILimiterSupport
+    {
+        /// &lt;summary&gt;The programs environment.&lt;/summary&gt;
+        private readonly ProgramsEnvironment _programsEnvironment;
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;MqOperationsEngine&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;environment&quot;&gt;The environment.&lt;/param&gt;
+        public MqOperationsEngine(ProgramsEnvironment environment = null)
+        {
+            _programsEnvironment = environment;
+        }
+
+        /// &lt;summary&gt;Gets a value indicating whether configured state.&lt;/summary&gt;
+        public bool ConfiguredState { get; private set; }
+
+        /// &lt;summary&gt;Gets or sets the connection factory.&lt;/summary&gt;
+        public ConnectionFactory ConnectionFactory { get; set; }
+
+        public int GracetimeSeconds { get; private set; }
+        public int Limit { get; private set; }
+        public string QueueName { get; private set; }
+
+        /// &lt;summary&gt;The configure.&lt;/summary&gt;
+        /// &lt;param name=&quot;config&quot;&gt;The config.&lt;/param&gt;
+        public void Configure(List&lt;string&gt; config)
+        {
+            ConnectionFactory =
+                new ConnectionFactory {HostName = config[0], UserName = &quot;rogera&quot;, Password = &quot;1boris&quot;};
+            // Console.WriteLine(ConnectionFactory);
+            // Debug.WriteLine(ConnectionFactory);
+
+            GracetimeSeconds = short.Parse(config[1]);
+            Limit = short.Parse(config[2]);
+            QueueName = config[3];
+
+            ConfiguredState = true;
+        }
+
+        /// &lt;summary&gt;The configure message handlers.&lt;/summary&gt;
+        /// &lt;param name=&quot;handleProductCreationRequest&quot;&gt;The handle product creation request.&lt;/param&gt;
+        /// &lt;param name=&quot;handleTweetCreationRequest&quot;&gt;The handle tweet creation request.&lt;/param&gt;
+        /// &lt;exception cref=&quot;Exception&quot;&gt;&lt;/exception&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;ConsumeMqMessagesLoop&quot; /&gt;.&lt;/returns&gt;
+        public ConsumeMqMessagesLoop ConfigureMqMessagesLoopMessageHandlers(
+            ConsumeMqMessagesLoop.AseMessageHandler handleProductCreationRequest,
+            ConsumeMqMessagesLoop.AseMessageHandler handleTweetCreationRequest)
+        {
+            var consumeMqMessagesLoop = new ConsumeMqMessagesLoop();
+            if (ConfiguredState)
+            {
+                // routing
+                // product created  -&gt; create product in dependent store
+                // both cases: create &#39;tweet&#39; is es-index
+                consumeMqMessagesLoop.EvRqTweetProductCreateMessage += handleProductCreationRequest;
+                consumeMqMessagesLoop.EvRqTweetProductCreateMessage += handleTweetCreationRequest;
+
+                consumeMqMessagesLoop.EvRqTweetMessage += handleTweetCreationRequest;
+
+                // ConsumeMqMessagesLoop.Execute(this);
+            }
+            else
+            {
+                throw new Exception(&quot;missing configuration&quot;);
+            }
+
+            return consumeMqMessagesLoop;
+        }
+
+        /// &lt;summary&gt;The create connection.&lt;/summary&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;IConnection&quot; /&gt;.&lt;/returns&gt;
+        public IConnection CreateConnection()
+        {
+            return ConnectionFactory.CreateConnection();
+        }
+
+        /// &lt;summary&gt;The process message.&lt;/summary&gt;
+        /// &lt;param name=&quot;message&quot;&gt;The message.&lt;/param&gt;
+        /// &lt;param name=&quot;messageLoop&quot;&gt;The message Loop.&lt;/param&gt;
+        public async Task&lt;int&gt; ProcessMessageAsync(string message, ConsumeMqMessagesLoop messageLoop)
+        {
+            var rcStatus = 0;
+
+            if (message.Contains(&quot;product created&quot;) || message.Contains(&quot;TEST_MESSAGE&quot;))
+            {
+                var args = new AseMessageEventArgs(message);
+                await Task.Run(() =&gt; messageLoop.OnEvRqTweetProductCreateMessage(args)).ConfigureAwait(false);
+                rcStatus++;
+            }
+            else
+            {
+                var args = new AseMessageEventArgs(message);
+                await Task.Run(() =&gt; messageLoop.OnEvRqTweetMessage(args)).ConfigureAwait(false);
+                rcStatus++;
+            }
+
+            return rcStatus;
+        }
+
+        /// &lt;summary&gt;The queue a bunch of messages.&lt;/summary&gt;
+        /// &lt;param name=&quot;messageCount&quot;&gt;The message count.&lt;/param&gt;
+        /// &lt;param name=&quot;withThreadSleepFlag&quot;&gt;&lt;/param&gt;
+        public void QueueABunchOfMessages(int messageCount, bool withThreadSleepFlag)
+        {
+            _programsEnvironment?.Execute(ProgramsEnvironment.Hook.MainProgramBeforeHook);
+
+            var mqhost = &quot;s0.wolfslab.wolfspool.at&quot;;
+
+            // server, graceTimeSeconds, limit, queue-name
+            Configure(new List&lt;string&gt; {mqhost, &quot;30&quot;, &quot;10&quot;, &quot;hello&quot;});
+
+            QueueMessagesUseCase.Execute(messageCount, this, withThreadSleepFlag);
+            _programsEnvironment?.Execute(ProgramsEnvironment.Hook.MainProgramAfterHook);
+        }
+    }
+
+    public interface ILimiterSupport
+    {
+        int Limit { get; }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[24,9,24,74,1],[25,9,25,10,1],[26,13,26,48,1],[27,9,27,10,1],[30,39,30,43,0],[30,44,30,56,1],[33,54,33,58,1],[33,59,33,63,1],[35,39,35,43,0],[35,44,35,56,1],[36,28,36,32,0],[36,33,36,45,1],[37,35,37,39,1],[37,40,37,52,1],[42,9,42,10,1],[43,13,44,104,1],[48,13,48,55,1],[49,13,49,44,1],[50,13,50,35,1],[52,13,52,36,1],[53,9,53,10,1],[63,9,63,10,0],[64,13,64,69,0],[65,13,65,33,0],[66,13,66,14,0],[70,17,70,101,0],[71,17,71,99,0],[73,17,73,86,0],[76,13,76,14,0],[78,13,78,14,0],[79,17,79,62,0],[82,13,82,42,0],[83,9,83,10,0],[88,9,88,10,1],[89,13,89,57,1],[90,9,90,10,1],[96,9,96,10,0],[97,13,97,30,0],[99,13,99,89,0],[100,13,100,14,0],[101,17,101,61,0],[102,17,102,38,0],[102,38,102,87,0],[102,87,102,111,0],[102,17,102,111,0],[103,17,103,28,0],[104,13,104,14,0],[106,13,106,14,0],[107,17,107,61,0],[108,17,108,38,0],[108,38,108,74,0],[108,74,108,98,0],[108,17,108,98,0],[109,17,109,28,0],[110,13,110,14,0],[112,13,112,29,0],[113,9,113,10,0],[119,9,119,10,1],[120,13,120,91,1],[122,13,122,53,1],[125,13,125,71,1],[127,13,127,83,1],[128,13,128,90,1],[129,9,129,10,1]]);
+    </script>
+  </body>
+</html>

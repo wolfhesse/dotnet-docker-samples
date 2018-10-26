@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\pkgct\networkadapter\testcatalogaccessinoper.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.FloorPlaan.PkgCt.BusinessPackageCustomer;
+using DnsLib.FloorPlaan.PkgCt.CustomerProviderLib;
+using DnsLib.FloorPlaan.PkgCt.InterfaceLib;
+using DnsLib.SysRes;
+using Newtonsoft.Json.Linq;
+using RestSharp;
+using Xunit;
+
+namespace DnsLib.FloorPlaan.PkgCt.NetworkAdapter
+{
+    // todo s16001 :inoper
+    public class TestCatalogAccessInoper
+    {
+        private CustomerRepository _customerRepository;
+        private RestClient _restClient;
+        private readonly string _userToken;
+
+
+        public TestCatalogAccessInoper()
+        {
+            _userToken = &quot;account-ac2d57e5c9d3a2d28ca7e2a8eefa10&quot;;
+            _restClient = new RestClient(&quot;http://s16001.base.wolfspool.at&quot;);
+        }
+
+        [Fact(Skip = &quot;s16001 :inoper&quot;)]
+        public void TestAccess()
+        {
+            var restRequest = new RestRequest(&quot;/api/collections/get/Umsatz&quot;);
+            restRequest.AddParameter(&quot;token&quot;, _userToken);
+
+            // execute the request
+            IRestResponse response = _restClient.Execute(restRequest);
+            var content = response.Content; // raw content as string
+
+            dynamic c = JObject.Parse(content);
+
+
+            // ReSharper disable once RedundantAssignment
+            int breakHere = 1;
+
+//            Console.Out.WriteLine(JsonConvert.SerializeObject(c));
+
+            _customerRepository = new CustomerRepository(new InMemoryCustomerProvider());
+            foreach (var entry in c.entries)
+            {
+                Console.Out.WriteLine(entry);
+
+                var recordTuple = (entry.ClientName,
+                    entry.VendorName);
+
+                Console.Out.WriteLine(&quot;t = {0}&quot;, recordTuple);
+//                new CreateCustomerAction(_customerRepository, entry.ClientName.ToString());
+                var createCustomerAction =
+                    new CreateCustomerAction(_customerRepository, recordTuple.ClientName.ToString());
+                EnvironmentManager.WriteLine(createCustomerAction.Status);
+            }
+
+            breakHere = 2;
+
+            _customerRepository.DumpCustomers();
+            Console.Out.WriteLine(&quot;breakHere = {0}&quot;, breakHere);
+        }
+
+
+        [Fact(Timeout = 2500)]
+        public void TestBelastung()
+        {
+            int breakHere = -1;
+
+            for (int zaehler = 0; zaehler &lt; 40; zaehler++)
+            {
+                var restRequest = new RestRequest($&quot;/api/collections/save/Umsatz/?token={_userToken}&quot;, Method.POST);
+
+                Console.Out.WriteLine(&quot;zaehler = {0}&quot;, zaehler);
+                var tuple = (Eins: 1, Zwo: 2, Generator: nameof(TestBelastung)
+                    , breakHere: zaehler);
+
+
+                var data = new
+                {
+                    data = new
+                    {
+                        VendorName = &quot;Roger Andel&quot;,
+                        ClientName = $&quot;Kunde-{zaehler}&quot;,
+                        v1AccessKey = DateTimeOffset.Now,
+                        Rechnungsbetrag = 23 + zaehler,
+//                        Payload = new {Eins = 1, Zwo = 2, Generator = nameof(TestBelastungAsync), breakHere = zaehler}
+//                        Payload = tuple
+                        Payload = new
+                        {
+                            tuple.Eins,
+                            tuple.Zwo,
+                            tuple.Generator,
+                            tuple.breakHere
+                        }
+                    }
+                };
+                restRequest.AddJsonBody(data);
+                Console.Out.WriteLine(&quot;data = {0}&quot;, data);
+
+
+//                var content = response.Content; // raw content as string
+//
+//                dynamic c = JObject.Parse(content);
+                breakHere = zaehler;
+
+                var response = _restClient.Execute(restRequest);
+                EnvironmentManager.WriteLine(response);
+            }
+
+            Console.Out.WriteLine(&quot;breakHere = {0}&quot;, breakHere);
+//            Thread.Sleep(5000);
+        }
+
+        [Fact(Skip = &quot;s16001 :inoper&quot;)]
+        public void TestLoeschen()
+        {
+            TestAccess();
+//            _customerRepository = new CustomerRepository(new InMemoryCustomerProvider());
+//            _customerRepository.GetCustomers().ForEach(async customer =&gt; await DeleteCustomer(customer));
+            _customerRepository.GetCustomers().ForEach(customer =&gt; DeleteCustomer(customer));
+//            Thread.Sleep(TimeSpan.FromSeconds(3));
+
+//            async Task DeleteCustomer(ICustomer customer)
+            void DeleteCustomer(ICustomer customer)
+            {
+                Console.Out.WriteLine($&quot;delete customer {customer.Name}&quot;);
+                var filter = new {filter = new {ClientName = customer.Name}};
+
+                var restRequest = new RestRequest($&quot;/api/collections/remove/Umsatz/?token={_userToken}&quot;, Method.POST);
+                restRequest.AddJsonBody(filter);
+                // execute the request
+//                await Task.Run(() =&gt;
+//                {
+                IRestResponse response = _restClient.Execute(restRequest);
+                var content = response.Content; // raw content as string
+                Console.Out.WriteLine(&quot;content = {0}&quot;, content);
+//                });
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,41,1],[21,9,21,10,1],[22,13,22,67,1],[23,13,23,77,1],[24,9,24,10,1],[28,9,28,10,0],[29,13,29,78,0],[30,13,30,59,0],[33,13,33,71,0],[34,13,34,44,0],[36,13,36,48,0],[40,13,40,31,0],[44,13,44,90,0],[45,13,45,20,0],[45,22,45,31,0],[45,32,45,34,0],[45,35,45,44,0],[46,13,46,14,0],[47,17,47,46,0],[49,17,50,39,0],[52,17,52,63,0],[54,17,55,102,0],[56,17,56,75,0],[57,13,57,14,0],[59,13,59,27,0],[61,13,61,49,0],[62,13,62,65,0],[63,9,63,10,0],[68,9,68,10,1],[69,13,69,32,1],[71,18,71,33,1],[71,35,71,47,1],[71,49,71,58,1],[72,13,72,14,1],[73,17,73,117,1],[75,17,75,65,1],[76,17,77,43,1],[80,17,98,19,1],[99,17,99,47,1],[100,17,100,59,1],[106,17,106,37,1],[108,17,108,65,1],[109,17,109,56,1],[110,13,110,14,1],[112,13,112,65,1],[114,9,114,10,1],[118,9,118,10,0],[119,13,119,26,0],[122,13,122,68,0],[122,68,122,92,0],[122,92,122,94,0],[122,13,122,94,0],[127,13,127,14,0],[128,17,128,75,0],[129,17,129,78,0],[131,17,131,119,0],[132,17,132,49,0],[136,17,136,75,0],[137,17,137,48,0],[138,17,138,65,0],[140,13,140,14,0],[141,9,141,10,0]]);
+    </script>
+  </body>
+</html>

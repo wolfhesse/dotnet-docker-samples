@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\platformsysgen.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.AbstractArchitecture.AseArchitecture.ProgramSetup;
+
+namespace DnsLib.SysRes
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The platform info.&lt;/summary&gt;
+    [NvramRef(NvramRefAttribute.Stage.Candidate)]
+    public static class PlatformSysGen
+    {
+        /// &lt;summary&gt;The api endpoint products.&lt;/summary&gt;
+        public static string ApiEndpointProducts =&gt; &quot;wp-json/wc/v2/products&quot;;
+
+        /// &lt;summary&gt;The json path data d content.&lt;/summary&gt;
+        public static string JsonPathDataDContent =&gt;
+            Environment.GetFolderPath(Environment.SpecialFolder.Personal) + &quot;/data.d/DNS/content.json&quot;;
+
+        /// &lt;summary&gt;The json path data d products.&lt;/summary&gt;
+        public static string JsonPathDataDProducts =&gt;
+            Environment.GetFolderPath(Environment.SpecialFolder.Personal) + &quot;/data.d/DNS/products.json&quot;;
+
+        /// &lt;summary&gt;The rcs 2 json api endpoint.&lt;/summary&gt;
+        public static string Rcs1JsonApiEndpoint =&gt; &quot;https://rcs1.base.wolfspool.at/wp-json&quot;;
+
+        /// &lt;summary&gt;The rcs 2 rest api endpoint.&lt;/summary&gt;
+        public static string Rcs1RestApiEndpoint =&gt; &quot;https://rcs1.base.wolfspool.at/wp-json/wc/v2/&quot;;
+
+        public static string Rcs2JsonApiEndpoint =&gt; &quot;http://rcs2.base.wolfspool.at/wp-json&quot;;
+        public static string Rcs2RestApiEndpoint =&gt; &quot;http://rcs2.base.wolfspool.at/wp-json/wc/v2/&quot;;
+
+        /// &lt;summary&gt;The url rcs 1.&lt;/summary&gt;
+        public static string UrlRcs1 =&gt; &quot;https://rcs1.base.wolfspool.at&quot;;
+
+        /// &lt;summary&gt;The url rcs 2.&lt;/summary&gt;
+        public static string UrlRcs2 =&gt; &quot;http://rcs2.base.wolfspool.at&quot;;
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,53,15,77,1],[19,13,19,103,1],[23,13,23,104,1],[26,53,26,93,0],[29,53,29,100,0],[31,53,31,92,1],[32,53,32,99,1],[35,41,35,73,1],[38,41,38,72,1]]);
+    </script>
+  </body>
+</html>

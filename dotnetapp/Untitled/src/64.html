@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\shopcomponent\asewoocommercenet\usecases\getproduct.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET.UseCases
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The get product.&lt;/summary&gt;
+    public class GetProduct
+    {
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        /// &lt;param name=&quot;pId&quot;&gt;The p id.&lt;/param&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Task&quot; /&gt;.&lt;/returns&gt;
+        public static async Task&lt;Product&gt; Execute(string pId, RestAPI restApi)
+        {
+            var p = await FnGetProductsById(pId, restApi);
+            return p;
+        }
+
+        /// &lt;summary&gt;The fn get products by id.&lt;/summary&gt;
+        /// &lt;param name=&quot;pId&quot;&gt;The p id.&lt;/param&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Task&quot; /&gt;.&lt;/returns&gt;
+        public static async Task&lt;Product&gt; FnGetProductsById(string pId, RestAPI restApi)
+        {
+            var wc = new WCObject(restApi);
+            var p = await wc.Product.GetAll(new Dictionary&lt;string, string&gt; {{&quot;include&quot;, pId}});
+
+            return 0 &lt; p.Count ? p[0] : new Product();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,59,1],[22,13,22,22,1],[23,9,23,10,1],[30,9,30,10,1],[31,13,31,44,1],[32,13,32,96,1],[34,13,34,55,1],[35,9,35,10,1]]);
+    </script>
+  </body>
+</html>

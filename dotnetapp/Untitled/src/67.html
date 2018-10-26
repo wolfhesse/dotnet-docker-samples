@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\tweetengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.ComponentLibrary.Macrolib;
+
+namespace DnsLib.SysRes
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The tweet factory.&lt;/summary&gt;
+    public static class TweetEngine
+    {
+        /// &lt;summary&gt;The ev sample tweet was requested.&lt;/summary&gt;
+        public static event EventHandler EvSampleTweetWasRequested;
+
+        /// &lt;summary&gt;The build tweet.&lt;/summary&gt;
+        /// &lt;param name=&quot;user&quot;&gt;The user.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;TweetModel&quot; /&gt;.&lt;/returns&gt;
+        public static TweetModel BuildTweet(string user)
+        {
+            return new TweetModel
+            {
+                User = user,
+                PostDateTime = DateTimeOffset.Now
+            };
+        }
+
+        /// &lt;summary&gt;The dump tweet.&lt;/summary&gt;
+        /// &lt;param name=&quot;obj&quot;&gt;The obj.&lt;/param&gt;
+        public static void DumpTweet(TweetModel obj)
+        {
+//            Console.WriteLine(null != obj ? $&quot;dumpTweet: {obj.Id} : {obj.User} // {obj.Value}&quot; : &quot;obj is null&quot;);
+            // reduce output
+            Console.WriteLine(null != obj ? $&quot;dumpTweet: {obj.Id} : {obj.User}&quot; : &quot;obj is null&quot;);
+        }
+
+        /// &lt;summary&gt;The fn create tweet.&lt;/summary&gt;
+        /// &lt;param name=&quot;message&quot;&gt;The message.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;TweetModel&quot; /&gt;.&lt;/returns&gt;
+        public static TweetModel FnCreateTweet(string message)
+        {
+            var t = new TweetModel
+            {
+                PostDateTime = DateTimeOffset.Now.DateTime,
+
+                // Id = tweets++,
+                User = typeof(ProgramsEnvironment).ToString(),
+                Value = message
+            };
+            return t;
+        }
+
+        /// &lt;summary&gt;The get sample tweet for.&lt;/summary&gt;
+        /// &lt;param name=&quot;klass&quot;&gt;The klass.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;TweetModel&quot; /&gt;.&lt;/returns&gt;
+        public static TweetModel GetSampleTweetFor(INeedSampleTweet klass)
+        {
+            // todo: EvSampleTweetReqeuestedBy..
+            OnEvSampleTweetWasRequested(klass);
+
+            var pTweet = new TweetModel
+            {
+                Id =
+                    null, // typeof(InteropTypes.V1.TweetModel) + &quot;.GetSampleTweetFor&quot;,
+                // Id = 1,
+                User = &quot;rogeraaut&quot;,
+                // todo DSS-14
+                PostDateTime = DateTime.Now,
+                Value =
+                    $&quot;Trying out NEST, so far so good? \n{typeof(TweetModel)}.GetSampleTweetFor @ {DateTimeOffset.Now}&quot;
+            };
+            return pTweet;
+        }
+
+        /// &lt;summary&gt;The on ev sample tweet was requested.&lt;/summary&gt;
+        /// &lt;param name=&quot;klass&quot;&gt;The klass.&lt;/param&gt;
+        public static void OnEvSampleTweetWasRequested(INeedSampleTweet klass)
+        {
+            EvSampleTweetWasRequested?.Invoke(klass, EventArgs.Empty);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,10,1],[22,13,26,15,1],[27,9,27,10,1],[32,9,32,10,0],[35,13,35,98,0],[36,9,36,10,0],[42,9,42,10,0],[43,13,50,15,0],[51,13,51,22,0],[52,9,52,10,0],[58,9,58,10,1],[60,13,60,48,1],[62,13,72,15,1],[73,13,73,27,1],[74,9,74,10,1],[79,9,79,10,1],[80,13,80,71,1],[81,9,81,10,1]]);
+    </script>
+  </body>
+</html>

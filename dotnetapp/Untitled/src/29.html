@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\elasticsearchcomponent\esexperengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.SysRes;
+
+namespace DnsLib.FactoryFloor.ElasticSearchComponent
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The es exper engine.&lt;/summary&gt;
+    public static class EsExperEngine
+    {
+        /// &lt;summary&gt;The play with es tweets.&lt;/summary&gt;
+        /// &lt;returns&gt;
+        ///     The
+        ///     &lt;see&gt;
+        ///         &lt;cref&gt;List&lt;/cref&gt;
+        ///     &lt;/see&gt;
+        ///     .
+        /// &lt;/returns&gt;
+        public static List&lt;TweetModel&gt; PlayWithEsTweets()
+        {
+            var sampleTweet = EnvironmentManager.SampleTweet;
+            var tweets = EsOperationsEngine.EsWriteAndDupTweet(sampleTweet);
+            var sw = EnvironmentManager.GetResultStreamWriter();
+            sw.WriteLine(new string(&#39;-&#39;, 72));
+            sw.WriteLine(&quot;play w/ tweets (es)&quot;);
+            sw.WriteLine(tweets[1]);
+            sw.Close();
+            return tweets;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[23,9,23,10,1],[24,13,24,62,1],[25,13,25,77,1],[26,13,26,65,1],[27,13,27,47,1],[28,13,28,49,1],[29,13,29,37,1],[30,13,30,24,1],[31,13,31,27,1],[32,9,32,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\enginesetup.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace DnsLib.FactoryFloor.Utility
+{
+    /// &lt;summary&gt;The engine setup.&lt;/summary&gt;
+    public class EngineSetup
+    {
+        /// &lt;summary&gt;The dates container model.&lt;/summary&gt;
+        public readonly DatesContainerModel DatesContainerModel;
+
+        /// &lt;summary&gt;The view.&lt;/summary&gt;
+        // ReSharper disable once NotAccessedField.Local
+        private readonly IView _view;
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;EngineSetup&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;datesContainerModel&quot;&gt;The dates container model.&lt;/param&gt;
+        /// &lt;param name=&quot;view&quot;&gt;The view.&lt;/param&gt;
+        public EngineSetup(DatesContainerModel datesContainerModel, IView view)
+        {
+            DatesContainerModel = datesContainerModel;
+            _view = view;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,80,0],[17,9,17,10,0],[18,13,18,55,0],[19,13,19,26,0],[20,9,20,10,0]]);
+    </script>
+  </body>
+</html>

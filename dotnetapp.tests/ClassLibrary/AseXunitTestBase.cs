@@ -1,4 +1,4 @@
-﻿using DnsLib.OperatorApps.SysRes;
+﻿using DnsLib.SysRes;
 using Xunit.Abstractions;
 
 namespace DotnetApp.Tests.ClassLibrary

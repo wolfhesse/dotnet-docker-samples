@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\codediary.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using DnsLib.SysRes;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    public static class CodeDiary
+    {
+        public static readonly Dictionary&lt;string, string&gt; Entries = new Dictionary&lt;string, string&gt;();
+
+        public static void Create(string eintragsmarker, string eintragstext)
+        {
+            Entries[eintragsmarker] = eintragstext;
+        }
+
+        public static void Dump()
+        {
+            EnvironmentManager.WriteLine(&quot;Dump of CodeDiary&quot;);
+            foreach (var entry in Entries) EnvironmentManager.WriteLine(entry.Value, entry.Key);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,102,1],[11,9,11,10,1],[12,13,12,52,1],[13,9,13,10,1],[16,9,16,10,1],[17,13,17,63,1],[18,13,18,20,1],[18,22,18,31,1],[18,32,18,34,1],[18,35,18,42,1],[18,44,18,97,1],[19,9,19,10,1]]);
+    </script>
+  </body>
+</html>

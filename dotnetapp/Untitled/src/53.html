@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\operations\processmessagesprogramsample.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
+using DnsLib.ComponentLibrary.Lab;
+using DnsLib.FactoryFloor.MqComponent;
+using DnsLib.FactoryFloor.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
+using DnsLib.SysRes;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.TestDriving.Operations
+{
+    /// &lt;inheritdoc /&gt;
+    /// &lt;summary&gt;The programs environment.&lt;/summary&gt;
+    public class ProcessMessagesProgramSample : ProgramsEnvironment
+    {
+        public override void Execute(Hook hook)
+        {
+            Console.Out.WriteLine($&quot;{this} cmd = {0}&quot;, hook);
+            switch (hook)
+            {
+                case Hook.Main:
+                    var mqOperationsEngine = new MqOperationsEngine(this);
+                    mqOperationsEngine.Configure(new List&lt;string&gt; {&quot;192.168.99.100&quot;, &quot;30&quot;, &quot;10&quot;, &quot;hello&quot;});
+                    mqOperationsEngine.ConfigureMqMessagesLoopMessageHandlers(
+                        HandleProductCreationRequest,
+                        HandleTweetCreationRequest).Execute(mqOperationsEngine);
+                    break;
+                case Hook.MainProgramAfterHook:
+                    break;
+                case Hook.MainProgramBeforeHook:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(hook), hook, null);
+            }
+        }
+
+        /// &lt;summary&gt;The handle product creation request.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;eventArgs&quot;&gt;The event args.&lt;/param&gt;
+        private static async void HandleProductCreationRequest(object sender, AseMessageEventArgs eventArgs)
+        {
+            try
+            {
+                var demoProduct = new Product {name = eventArgs.Message, description = &quot;demo produkt&quot;};
+                await Task.Run(
+                    () =&gt;
+                    {
+                        var shopEngine = new ShopEngine(
+                            new WooCommerceAdapter(),
+                            new WooCommerceConfiguration(WooStuffAuthAdapter.RestApiDefault())).AddProduct(demoProduct);
+                        Console.WriteLine($@&quot;product created: {shopEngine.name}&quot;);
+                    }).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                var t = TweetEngine.FnCreateTweet(message);
+                await Task.Run(() =&gt; EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet))
+                    .ConfigureAwait(false);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// &lt;summary&gt;The handle tweet creation request.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;The e.&lt;/param&gt;
+        private static async void HandleTweetCreationRequest(object sender, AseMessageEventArgs e)
+#pragma warning restore CS1998 // Async method lacks &#39;await&#39; operators and will run synchronously
+        {
+            // create &#39;tweet&#39; in elasticsearch
+            var t = TweetEngine.FnCreateTweet(e.Message);
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+            await Task.Run(() =&gt; { EsOperationsEngine.EsWriteAndDupTweet(t).ForEach(TweetEngine.DumpTweet); })
+                .ConfigureAwait(true);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,10,0],[20,13,20,62,0],[21,13,21,26,0],[24,21,24,75,0],[25,21,25,108,0],[26,21,28,81,0],[29,21,29,27,0],[31,21,31,27,0],[33,21,33,27,0],[35,21,35,85,0],[37,9,37,10,0],[43,9,43,10,0],[45,13,45,14,0],[46,17,46,104,0],[47,17,49,21,0],[49,21,49,22,0],[49,22,50,25,0],[50,25,52,121,0],[52,121,53,25,0],[53,25,53,83,0],[53,83,54,21,0],[54,21,54,22,0],[54,22,54,46,0],[47,17,54,46,0],[55,13,55,14,0],[56,13,56,33,0],[57,13,57,14,0],[58,17,58,42,0],[59,17,59,60,0],[60,17,60,38,0],[60,38,60,109,0],[60,109,61,44,0],[60,17,61,44,0],[62,17,62,47,0],[63,13,63,14,0],[64,9,64,10,0],[71,9,71,10,0],[73,13,73,58,0],[76,13,77,39,0],[76,34,76,35,0],[76,36,76,108,0],[76,109,76,110,0],[79,13,79,42,0],[80,9,80,10,0]]);
+    </script>
+  </body>
+</html>

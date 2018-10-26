@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\view.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.IO;
+using DnsLib.FactoryFloor.Utility;
+
+namespace DnsLib.TestDriving.Trainer
+{
+    /// &lt;summary&gt;The view.&lt;/summary&gt;
+    public class View : IView
+    {
+        /// &lt;summary&gt;The dates container model.&lt;/summary&gt;
+        private readonly DatesContainerModel _datesContainerModel;
+
+        /// &lt;summary&gt;The counter.&lt;/summary&gt;
+        private int _counter;
+
+        // private DatesView()
+        // {
+        // }
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;View&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;datesContainerModel&quot;&gt;The dates container model.&lt;/param&gt;
+        public View(DatesContainerModel datesContainerModel)
+        {
+            _datesContainerModel = datesContainerModel;
+
+            _datesContainerModel.ModelChanged += (sender, args) =&gt;
+            {
+                DatesContainerOperations.Port.TextWriter.WriteLine(&quot;Ev DatesContainerModel.ModelChanged Handling&quot;);
+                Render();
+                DatesContainerOperations.Port.TextWriter.WriteLine(Environment.NewLine);
+            };
+
+            _datesContainerModel.ModelSorted += (sender, args) =&gt;
+            {
+                DatesContainerOperations.Port.TextWriter.WriteLine(&quot;Ev DatesContainerModel.ModelSorted Handling&quot;);
+                DatesContainerOperations.Port.TextWriter.WriteLine(&quot;=== datesContainerModel Dates are SortedSet ===&quot;);
+                DatesContainerOperations.Port.TextWriter.WriteLine(Environment.NewLine);
+            };
+
+            _datesContainerModel.EvWarning += (sender, args) =&gt;
+            {
+                // datesContainerModel fired a warning; dump it to Port and cleanup
+                // if (_datesContainerModel.SysWarnings == null) return;
+                foreach (var modelSysWarning in _datesContainerModel.SysWarnings)
+                    DatesContainerOperations.Port.TextWriter.WriteLine(modelSysWarning);
+                _datesContainerModel.SysWarnings.Clear();
+            };
+        }
+
+        /// &lt;summary&gt;The render.&lt;/summary&gt;
+        public void Render()
+        {
+            Helper.FnOutSeparator72(DatesContainerOperations.Port.TextWriter, &#39;=&#39;);
+            DatesContainerOperations.Port.TextWriter.WriteLine(DateTimeOffset.Now.LocalDateTime);
+            DatesContainerOperations.Port.TextWriter.WriteLine($&quot;{this}.Render # {_counter++}&quot;);
+            DatesContainerOperations.Port.TextWriter.WriteLine($&quot;{this}.Render -&gt;  {_datesContainerModel}&quot;);
+
+            DumpDates(DatesContainerOperations.Port.TextWriter, _datesContainerModel.Dates);
+
+            Helper.FnOutSeparator72(DatesContainerOperations.Port.TextWriter);
+        }
+
+        /// &lt;summary&gt;The dump dates.&lt;/summary&gt;
+        /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+        /// &lt;param name=&quot;dates&quot;&gt;The dates.&lt;/param&gt;
+        private void DumpDates(TextWriter textWriter, IEnumerable&lt;DateTimeOffset&gt; dates)
+        {
+            Helper.FnOutSeparator72(textWriter, &#39;-&#39;);
+            textWriter.WriteLine($&quot;{this}.DumpDates: +++ dates: min, now, max&quot;);
+            Helper.FnOutSeparator72(textWriter, &#39;-&#39;);
+            foreach (var dateTimeOffset in dates) textWriter.WriteLine($&quot;=== dates-item: {dateTimeOffset}&quot;);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,61,0],[23,9,23,10,0],[24,13,24,56,0],[26,13,27,13,0],[27,13,27,14,0],[27,14,28,17,0],[28,17,28,116,0],[28,116,29,17,0],[29,17,29,26,0],[29,26,30,17,0],[30,17,30,89,0],[30,89,31,13,0],[31,13,31,14,0],[31,14,31,15,0],[26,13,31,15,0],[33,13,34,13,0],[34,13,34,14,0],[34,14,35,17,0],[35,17,35,115,0],[35,115,36,17,0],[36,17,36,119,0],[36,119,37,17,0],[37,17,37,89,0],[37,89,38,13,0],[38,13,38,14,0],[38,14,38,15,0],[33,13,38,15,0],[40,13,41,13,0],[41,13,41,14,0],[41,14,44,17,0],[44,17,44,24,0],[44,24,44,26,0],[44,26,44,45,0],[44,45,44,46,0],[44,46,44,48,0],[44,48,44,49,0],[44,49,44,81,0],[44,81,45,21,0],[45,21,45,89,0],[45,89,46,17,0],[46,17,46,58,0],[46,58,47,13,0],[47,13,47,14,0],[47,14,47,15,0],[40,13,47,15,0],[48,9,48,10,0],[52,9,52,10,0],[53,13,53,84,0],[54,13,54,98,0],[55,13,55,97,0],[56,13,56,109,0],[58,13,58,93,0],[60,13,60,79,0],[61,9,61,10,0],[67,9,67,10,0],[68,13,68,54,0],[69,13,69,81,0],[70,13,70,54,0],[71,13,71,20,0],[71,22,71,40,0],[71,41,71,43,0],[71,44,71,49,0],[71,51,71,109,0],[72,9,72,10,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\operations\createproductsfortest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using DnsLib.FactoryFloor.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
+using DnsLib.SysRes;
+using WooCommerceNET;
+using WooCommerceNET.WooCommerce.v2;
+
+namespace DnsLib.TestDriving.Operations
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The create products for test.&lt;/summary&gt;
+    public class CreateProductsForTest
+    {
+        /// &lt;summary&gt;The execute.&lt;/summary&gt;
+        /// &lt;param name=&quot;restApi&quot;&gt;The rest api.&lt;/param&gt;
+        /// &lt;param name=&quot;productsToInsert&quot;&gt;&lt;/param&gt;
+        public static void Execute(RestAPI restApi, List&lt;Product&gt; productsToInsert)
+        {
+            IShopAdapter adapter = new WooCommerceAdapter();
+            IShopConfiguration configuration = new WooCommerceConfiguration(restApi);
+
+            productsToInsert.ForEach(
+                product =&gt; Console.Out.WriteLine(
+                    $&quot;{DateTimeOffset.Now}/{DateTimeOffset.Now.LocalDateTime.Millisecond} -&gt; Product: {new ShopEngine(adapter, configuration).AddProduct(product).name}&quot;));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,10,1],[23,13,23,61,1],[24,13,24,86,1],[26,13,27,28,1],[27,28,28,170,1],[28,170,28,172,1],[26,13,28,172,1],[29,9,29,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\trainer\testclientinteractionrestapi.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using DnsLib.ComponentLibrary.Authentication;
+using DnsLib.FactoryFloor.ShopComponent;
+using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET.UseCases;
+using DnsLib.SysRes;
+using Newtonsoft.Json;
+using RestSharp;
+using WooCommerceNET;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Trainer
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;The test client interaction rest api.&lt;/summary&gt;
+    public static class TestClientInteractionRestApi
+    {
+        // TODO : create product w/ attributes
+        /// &lt;summary&gt;The test auth initial.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestAuthInitial()
+        {
+            Scratchpad();
+            var authContainer = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs2ConsumerAuthInto(authContainer);
+            Assert.NotNull(authContainer.Key);
+            Console.WriteLine(authContainer.FnBasicAuthHeader());
+        }
+
+        /// &lt;summary&gt;The test connect system rcs 2 write win content.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestConnectSystemRcs2WriteWinContent()
+        {
+            Scratchpad();
+            var auth = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs2ConsumerAuthInto(auth);
+            var client = new RestClient(PlatformSysGen.Rcs2JsonApiEndpoint);
+            var request = new RestRequest(&quot;wc/v2&quot;);
+            var response = client.Execute(request);
+            var content = response.Content;
+            Assert.NotNull(content);
+//            Console.Out.WriteLine(content);
+
+            // content is json
+            var contentDeserialized = JsonConvert.DeserializeObject(content);
+//            Console.Out.WriteLine(contentDeserialized);
+
+            // schreibs in eine json datei
+            Console.Out.WriteLine(&quot;PlatformSysGen.JsonPathDataDContent = {0}&quot;, PlatformSysGen.JsonPathDataDContent);
+
+            using (var writer = new StreamWriter(File.OpenWrite(PlatformSysGen.JsonPathDataDContent)))
+            {
+                writer.Write(contentDeserialized);
+
+                // writer.Close();
+            }
+        }
+
+        /// &lt;summary&gt;The test fn fetch products rcs 2.&lt;/summary&gt;
+        [Fact(Timeout = 13500)]
+        public static void TestFnFetchProductsRcs2()
+        {
+            Scratchpad();
+            var restApi = WooStuffAuthAdapter.FnRestApiRcs2();
+            var start = DateTime.Now;
+            GetProducts.Execute(restApi, pPerPage: &quot;1&quot;, pPage: &quot;10&quot;);
+            Console.WriteLine($@&quot;duration: took {DateTime.Now - start} &quot;);
+        }
+
+        /// &lt;summary&gt;The test fn fetch products test apo r 1.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+//        [ExpectedException(typeof(AggregateException))]
+        public static void TestFnFetchProductsTestRcs2()
+        {
+            Scratchpad();
+            // var restApi = PlatformSysGen.WooStuffAuthAdapter.FnRestApiTestApoR1();
+
+//            var restApi = WooStuffAuthAdapter.RestApiDefault(
+//                PlatformSysGen.Rcs2RestApiEndpoint,
+//                WooStuffAuthAdapter.FnAuthForRcs2Wrong());
+            var restApi = WooStuffAuthAdapter.RestApiDefault(
+                PlatformSysGen.Rcs2RestApiEndpoint,
+                WooStuffAuthAdapter.FnAuthForRcs2());
+
+
+            var start = DateTime.Now;
+            GetProducts.Execute(restApi, pName: null, pPage: &quot;1&quot;, pPerPage: &quot;10&quot;,
+                pIncludeProductIds: &quot;62, 73, 82, 3109, 3108, 3110, 3111&quot;);
+            Debug.WriteLine($&quot;duration: took {DateTime.Now - start} &quot;);
+        }
+
+        /// &lt;summary&gt;The test get product specific rcs 23109.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestGetProduct3109SpecificRcs2()
+        {
+            Scratchpad();
+            var auth = WooStuffAuthAdapter.FnAuthForRcs2();
+            var restApi = new RestAPI(PlatformSysGen.Rcs2RestApiEndpoint, $&quot;{auth.Key}&quot;, $&quot;{auth.Secret}&quot;);
+
+            var start = DateTime.Now;
+            var p = GetProduct.Execute(&quot;3109&quot;, restApi);
+            Console.WriteLine(JsonConvert.SerializeObject(p.Result));
+            Debug.WriteLine($&quot;\n\nduration: took {DateTime.Now - start} &quot;);
+        }
+
+        /// &lt;summary&gt;The test get product specific rcs 23516.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestGetProduct3516SpecificRcs2()
+        {
+            Scratchpad();
+            var auth = WooStuffAuthAdapter.FnAuthForRcs2();
+            var restApi = new RestAPI(PlatformSysGen.Rcs2RestApiEndpoint, $&quot;{auth.Key}&quot;, $&quot;{auth.Secret}&quot;);
+
+            var start = DateTime.Now;
+            var p = GetProduct.Execute(&quot;3516&quot;, restApi);
+            EnvironmentManager.WriteLine(JsonConvert.SerializeObject(p.Result));
+            Debug.WriteLine($&quot;\n\nduration: took {DateTime.Now - start} &quot;);
+        }
+
+        /// &lt;summary&gt;The test get products authorized rcs 1.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestGetProductsAuthorizedRcs1()
+        {
+            Scratchpad();
+            var auth = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs1ConsumerAuthInto(auth);
+            var request = new RestRequest(PlatformSysGen.ApiEndpointProducts);
+            var client = new RestClient(PlatformSysGen.UrlRcs1);
+            request.BuildOAuth1QueryString(client, auth.Key, auth.Secret);
+            var response = client.Execute(request);
+            var content = response.Content;
+            Assert.NotNull(content);
+            EnvironmentManager.WriteLine(content);
+        }
+
+        /// &lt;summary&gt;The test get productss authorized rcs 2.&lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public static void TestGetProductssAuthorizedRcs2()
+        {
+            Scratchpad();
+            var auth = new AuthContainer();
+            AseAuthVaultForTesting.PutRcs2ConsumerAuthInto(auth);
+            var client = new RestClient(PlatformSysGen.UrlRcs2);
+            var request = new RestRequest(PlatformSysGen.ApiEndpointProducts);
+
+
+            request.BuildOAuth1QueryString(client, auth.Key, auth.Secret);
+
+            var response = client.Execute(request);
+            var content = response.Content;
+            Assert.NotNull(content);
+
+            InspectResponseHeaders(response.Headers);
+            Console.Out.WriteLine(content);
+        }
+
+        private static void InspectResponseHeaders(IList&lt;Parameter&gt; responseHeaders)
+        {
+            Scratchpad();
+
+            var selected = responseHeaders.Where(x =&gt; { return x.Name.StartsWith(&quot;X-W&quot;); });
+            foreach (var parameter in selected.AsParallel()) Console.Out.WriteLine(&quot;parameter = {0}&quot;, parameter);
+        }
+
+        private static void Scratchpad()
+        {
+            // client.Authenticator = new SimpleAuthenticator(&quot;username&quot;, auth.Key, &quot;password&quot;, auth.Secret);
+            // request.AddHeader(&quot;Authorization&quot;, $&quot;Basic {auth.FnBasicAuthHeader()}&quot;);
+            // var authenticator = new HttpBasicAuthenticator(auth.Key,auth.Secret);
+            // authenticator.Authenticate(client, request);
+            // client.Authenticator = authenticator;
+            // client.Authenticator = OAuth1Authenticator.ForRequestToken(auth.Key, auth.Secret);
+            // client.Authenticator.Authenticate(client,request    );
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[29,9,29,10,1],[30,13,30,26,1],[31,13,31,53,1],[32,13,32,75,1],[33,13,33,47,1],[34,13,34,66,1],[35,9,35,10,1],[40,9,40,10,1],[41,13,41,26,1],[42,13,42,44,1],[43,13,43,66,1],[44,13,44,77,1],[45,13,45,52,1],[46,13,46,52,1],[47,13,47,44,1],[48,13,48,37,1],[52,13,52,78,1],[56,13,56,117,1],[58,20,58,102,1],[59,13,59,14,1],[60,17,60,51,1],[63,13,63,14,1],[64,9,64,10,1],[69,9,69,10,1],[70,13,70,26,1],[71,13,71,63,1],[72,13,72,38,1],[73,13,73,70,1],[74,13,74,75,1],[75,9,75,10,1],[81,9,81,10,1],[82,13,82,26,1],[88,13,90,54,1],[93,13,93,38,1],[94,13,95,75,1],[96,13,96,72,1],[97,9,97,10,1],[102,9,102,10,1],[103,13,103,26,1],[104,13,104,60,1],[105,13,105,108,1],[107,13,107,38,1],[108,13,108,57,1],[109,13,109,70,1],[110,13,110,76,1],[111,9,111,10,1],[116,9,116,10,1],[117,13,117,26,1],[118,13,118,60,1],[119,13,119,108,1],[121,13,121,38,1],[122,13,122,57,1],[123,13,123,81,1],[124,13,124,76,1],[125,9,125,10,1],[130,9,130,10,1],[131,13,131,26,1],[132,13,132,44,1],[133,13,133,66,1],[134,13,134,79,1],[135,13,135,65,1],[136,13,136,75,1],[137,13,137,52,1],[138,13,138,44,1],[139,13,139,37,1],[140,13,140,51,1],[141,9,141,10,1],[146,9,146,10,1],[147,13,147,26,1],[148,13,148,44,1],[149,13,149,66,1],[150,13,150,65,1],[151,13,151,79,1],[154,13,154,75,1],[156,13,156,52,1],[157,13,157,44,1],[158,13,158,37,1],[160,13,160,54,1],[161,13,161,44,1],[162,9,162,10,1],[165,9,165,10,1],[166,13,166,26,1],[168,13,168,55,1],[168,55,168,56,1],[168,56,168,57,1],[168,57,168,89,1],[168,89,168,90,1],[168,90,168,91,1],[168,91,168,93,1],[168,13,168,93,1],[169,13,169,20,1],[169,22,169,35,1],[169,36,169,38,1],[169,39,169,60,1],[169,62,169,114,1],[170,9,170,10,1],[173,9,173,10,1],[181,9,181,10,1]]);
+    </script>
+  </body>
+</html>

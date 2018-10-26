@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\todocomponent\abstracttodorepository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace DnsLib.FactoryFloor.TodoComponent
+{
+    /// &lt;summary&gt;The TodoRepository interface.&lt;/summary&gt;
+    public abstract class AbstractTodoRepository
+    {
+        /// &lt;summary&gt;The task added event handler.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;The e.&lt;/param&gt;
+        public delegate void TodoAddedEventHandler(object sender, TodoEventArgs e);
+
+        /// &lt;summary&gt;The ev task added.&lt;/summary&gt;
+        public event TodoAddedEventHandler EvTodoAdded;
+
+        /// &lt;summary&gt;Gets the count.&lt;/summary&gt;
+        public abstract int Count { get; }
+
+        /// &lt;summary&gt;The find task.&lt;/summary&gt;
+        /// &lt;param name=&quot;taskId&quot;&gt;The task id.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;TodoItem&quot; /&gt;.&lt;/returns&gt;
+        public abstract TodoItem FindTodo(int taskId);
+
+        /// &lt;summary&gt;The persist.&lt;/summary&gt;
+        /// &lt;param name=&quot;t&quot;&gt;The t.&lt;/param&gt;
+        public abstract void Persist(TodoItem t);
+
+        /// &lt;summary&gt;The on ev task added.&lt;/summary&gt;
+        /// &lt;param name=&quot;todoItem&quot;&gt;The task item.&lt;/param&gt;
+        protected void OnEvTaskAdded(TodoItem todoItem)
+        {
+            var eventArgs = new TodoEventArgs(todoItem);
+            EvTodoAdded?.Invoke(this, eventArgs);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[29,9,29,10,1],[30,13,30,57,1],[31,13,31,50,1],[32,9,32,10,1]]);
+    </script>
+  </body>
+</html>

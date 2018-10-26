@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\standardengineone.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;
+    ///     The engine one.
+    /// &lt;/summary&gt;
+    public sealed class StandardEngineOne : Component, IStandardEngineOne
+    {
+        /// &lt;summary&gt;The configuration segment.&lt;/summary&gt;
+        private const string ConfigurationSegment = &quot;configurationSegment&quot;;
+
+        /// &lt;summary&gt;The extension segment.&lt;/summary&gt;
+        private const string ExtensionSegment = &quot;extensionSegment&quot;;
+
+        /// &lt;summary&gt;
+        ///     The memorysegment.
+        /// &lt;/summary&gt;
+        private const string PayloadSegment = &quot;payloadSegment&quot;;
+
+        /// &lt;summary&gt;The memory segment bank 0.&lt;/summary&gt;
+        private const string MemorySegmentBank0 = &quot;bank0&quot;;
+
+        /// &lt;summary&gt;The memory segment bank 1.&lt;/summary&gt;
+        private const string MemorySegmentBank1 = &quot;bank1&quot;;
+
+        /// &lt;summary&gt;The memory segment bank 2.&lt;/summary&gt;
+        private const string MemorySegmentBank2 = &quot;bank2&quot;;
+
+        /// &lt;summary&gt;
+        ///     The internal memory banks.
+        /// &lt;/summary&gt;
+        private Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt; _internalMemoryBanks;
+
+        /// &lt;summary&gt;
+        ///     The memory.
+        /// &lt;/summary&gt;
+        private Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt; _memory;
+
+        /// &lt;summary&gt;
+        ///     Required designer variable.
+        /// &lt;/summary&gt;
+        // ReSharper disable once NotAccessedField.Local
+        private IContainer components;
+
+        /// &lt;summary&gt;
+        ///     Initializes a new instance of the &lt;see cref=&quot;StandardEngineOne&quot; /&gt; class.
+        /// &lt;/summary&gt;
+        public StandardEngineOne()
+        {
+            InitInternalMemoryBanks();
+
+            InitializeComponent();
+        }
+
+        /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;StandardEngineOne&quot; /&gt; class.&lt;/summary&gt;
+        /// &lt;param name=&quot;container&quot;&gt;The container.&lt;/param&gt;
+        public StandardEngineOne(IContainer container)
+        {
+            InitInternalMemoryBanks();
+
+            container.Add(this);
+
+            InitializeComponent();
+        }
+
+        /// &lt;summary&gt;The ev after finalizing.&lt;/summary&gt;
+        public event EventHandler EvAfterFinalizing;
+
+        /// &lt;summary&gt;The ev before finalizing.&lt;/summary&gt;
+        public event EventHandler EvBeforeFinalizing;
+
+        /// &lt;summary&gt;
+        ///     Gets a value indicating whether result.
+        /// &lt;/summary&gt;
+        public static bool Result { get; private set; }
+
+        /// &lt;summary&gt;Gets or sets a value indicating whether result.&lt;/summary&gt;
+        bool IStandardEngineOne.Result
+        {
+            get =&gt; Result;
+            set =&gt; Result = value;
+        }
+
+        /// &lt;summary&gt;
+        ///     The start.
+        /// &lt;/summary&gt;
+        public void Start()
+        {
+            GetSegment(ConfigurationSegment)[&quot;version&quot;] = &quot;2.0&quot;;
+            GetSegment(PayloadSegment)[&quot;engineState&quot;] = &quot;started&quot;;
+            GetSegment(PayloadSegment)[&quot;engineState&quot;] = &quot;processing&quot;;
+            OnEvBeforeFinalizing();
+            GetSegment(PayloadSegment)[&quot;engineState&quot;] = &quot;finalizing&quot;;
+            OnEvAfterFinanlizing();
+            GetSegment(PayloadSegment)[&quot;engineState&quot;] = &quot;finalized&quot;;
+        }
+
+        /// &lt;summary&gt;
+        ///     The to string.
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;
+        ///     The &lt;see cref=&quot;string&quot; /&gt;.
+        /// &lt;/returns&gt;
+        public override string ToString()
+        {
+            var r = base.ToString();
+            r += Environment.NewLine;
+            r += &quot;\t&quot; + &quot;Memory Dump:&quot; + Environment.NewLine;
+
+            r += JsonConvert.SerializeObject(_internalMemoryBanks, Formatting.Indented);
+            return r;
+        }
+
+        /// &lt;summary&gt;The get segment.&lt;/summary&gt;
+        /// &lt;param name=&quot;memorySegment&quot;&gt;The memory segment name.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;Dictionary{TKey,TValue}&quot; /&gt;.&lt;/returns&gt;
+        private Dictionary&lt;string, string&gt; GetSegment(string memorySegment)
+        {
+            return _internalMemoryBanks[memorySegment];
+        }
+
+        /// &lt;summary&gt;
+        ///     Required method for Designer support - do not modify
+        ///     the contents of this method with the code editor.
+        /// &lt;/summary&gt;
+        private void InitializeComponent()
+        {
+            components = new Container();
+        }
+
+        /// &lt;summary&gt;The init internal memory banks.&lt;/summary&gt;
+        private void InitInternalMemoryBanks()
+        {
+            _memory = new Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt;();
+            _internalMemoryBanks = new Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt;();
+            _memory[MemorySegmentBank0] = new Dictionary&lt;string, string&gt;();
+
+            _memory[MemorySegmentBank1] = new Dictionary&lt;string, string&gt;();
+            _memory[MemorySegmentBank2] = new Dictionary&lt;string, string&gt;();
+
+            // aliasing of memory banks
+            _internalMemoryBanks[ConfigurationSegment] = _memory[MemorySegmentBank0];
+            _internalMemoryBanks[PayloadSegment] = _memory[MemorySegmentBank1];
+            _internalMemoryBanks[ExtensionSegment] = _memory[MemorySegmentBank2];
+        }
+
+        /// &lt;summary&gt;
+        ///     The on ev fin.
+        /// &lt;/summary&gt;
+        [SuppressMessage(
+            &quot;StyleCop.CSharp.DocumentationRules&quot;,
+            &quot;SA1650:ElementDocumentationMustBeSpelledCorrectly&quot;,
+            Justification = &quot;Reviewed. Suppression is OK here.&quot;)]
+        private void OnEvAfterFinanlizing()
+        {
+            EvAfterFinalizing?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;The on ev before finalizing.&lt;/summary&gt;
+        private void OnEvBeforeFinalizing()
+        {
+            EvBeforeFinalizing?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[57,9,57,35,1],[58,9,58,10,1],[59,13,59,39,1],[61,13,61,35,1],[62,9,62,10,1],[66,9,66,55,1],[67,9,67,10,1],[68,13,68,39,1],[70,13,70,33,1],[72,13,72,35,1],[73,9,73,10,1],[84,37,84,41,1],[84,42,84,54,1],[89,20,89,26,0],[90,20,90,34,1],[97,9,97,10,1],[98,13,98,65,1],[99,13,99,67,1],[100,13,100,70,1],[101,13,101,36,1],[102,13,102,70,1],[103,13,103,36,1],[104,13,104,69,1],[105,9,105,10,1],[114,9,114,10,1],[115,13,115,37,1],[116,13,116,38,1],[117,13,117,62,1],[119,13,119,89,1],[120,13,120,22,1],[121,9,121,10,1],[127,9,127,10,1],[128,13,128,56,1],[129,9,129,10,1],[136,9,136,10,1],[137,13,137,42,1],[138,9,138,10,1],[142,9,142,10,1],[143,13,143,76,1],[144,13,144,89,1],[145,13,145,76,1],[147,13,147,76,1],[148,13,148,76,1],[151,13,151,86,1],[152,13,152,80,1],[153,13,153,82,1],[154,9,154,10,1],[164,9,164,10,1],[165,13,165,62,1],[166,9,166,10,1],[170,9,170,10,1],[171,13,171,63,1],[172,9,172,10,1]]);
+    </script>
+  </body>
+</html>

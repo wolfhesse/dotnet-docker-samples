@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\lab\codersresourcecollection.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Text;
+using Newtonsoft.Json;
+
+namespace DnsLib.ComponentLibrary.Lab
+{
+    /// &lt;summary&gt;The coders resource collection.&lt;/summary&gt;
+    public static class CodersResourceCollection
+    {
+        // class as object
+        /// &lt;summary&gt;Gets the resource list.&lt;/summary&gt;
+        private static Dictionary&lt;string, List&lt;string&gt;&gt; ResourceData =&gt; new Dictionary&lt;string, List&lt;string&gt;&gt;
+        {
+            [&quot;https://8thlight.com/process/&quot;]
+                =
+                new
+                    List
+                    &lt;
+                        string
+                    &gt;
+                    {
+                        &quot;programmer&quot;
+                    },
+            [&quot;https://www.google.com&quot;]
+                =
+                new
+                    List
+                    &lt;string
+                    &gt;
+                    {
+                        &quot;knowledge&quot;,
+                        &quot;programmer&quot;
+                    },
+            [&quot;http://rcs1.base.wolfspool.at/ase-hello.php&quot;]
+                = new
+                    List
+                    &lt;string
+                    &gt;
+                    {
+                        &quot;business&quot;,
+                        &quot;programmer&quot;
+                    },
+            [&quot;this is some invalid resource&quot;]
+                = new
+                    List
+                    &lt;string
+                    &gt;
+                    {
+                        &quot;business&quot;,
+                        &quot;programmer&quot;,
+                        &quot;tuple:(invalid, yes)&quot;
+                    },
+            [&quot;http://rcs1.base.wolfspool.at/ase-ping.php&quot;]
+                = new
+                    List
+                    &lt;string
+                    &gt;
+                    {
+                        &quot;business&quot;,
+                        &quot;programmer&quot;,
+                        &quot;tuple:(staging,yes)&quot;
+                    },
+            [&quot;https://www.facebook.com&quot;]
+                = new
+                    List
+                    &lt;string
+                    &gt;
+                    {
+                        &quot;programmer&quot;,
+                        &quot;notuple:(value,10)&quot;
+                    }
+        };
+
+        /// &lt;summary&gt;The get element.&lt;/summary&gt;
+        /// &lt;param name=&quot;s&quot;&gt;The s.&lt;/param&gt;
+        /// &lt;returns&gt;
+        ///     The
+        ///     &lt;see&gt;
+        ///         &lt;cref&gt;List&lt;/cref&gt;
+        ///     &lt;/see&gt;
+        ///     .
+        /// &lt;/returns&gt;
+        public static List&lt;string&gt; GetElement(string s)
+        {
+            return ResourceData[s];
+        }
+
+        /// &lt;summary&gt;The get programmer resources list.&lt;/summary&gt;
+        /// &lt;returns&gt;
+        ///     The
+        ///     &lt;see&gt;
+        ///         &lt;cref&gt;List&lt;/cref&gt;
+        ///     &lt;/see&gt;
+        ///     .
+        /// &lt;/returns&gt;
+        public static List&lt;string&gt; GetProgrammerResourcesList()
+        {
+            var resultList = new List&lt;string&gt;();
+
+            foreach (var keyValuePair in ResourceData)
+                if (keyValuePair.Value.Contains(&quot;programmer&quot;))
+                    resultList.Add(keyValuePair.Key);
+            return resultList;
+        }
+
+        /// &lt;summary&gt;The parse for possible tuple.&lt;/summary&gt;
+        /// &lt;param name=&quot;possibleTuple&quot;&gt;The possible tuple.&lt;/param&gt;
+        /// &lt;param name=&quot;resourceKey&quot;&gt;The resource key.&lt;/param&gt;
+        public static void ParseForPossibleTuple(string possibleTuple, string resourceKey)
+        {
+            // Console.Out.WriteLine(&quot;possibleTuple = {0}&quot;, possibleTuple);
+            if (possibleTuple.StartsWith(&quot;tuple:&quot;))
+            {
+                var tuple = possibleTuple.Split(&#39;:&#39;)[1];
+
+                // aber jetzt brauch ich den key (context)
+                Console.Out.WriteLine(&quot;     tuple: {0} fuer key: {1}&quot;, JsonConvert.SerializeObject(tuple), resourceKey);
+
+                // make a web request
+                foreach (var keyValuePair in FetchResourceAndBenchmark(resourceKey))
+
+                    // Console.Out.WriteLine(&quot;k/v:&quot;);
+                    Console.Out.WriteLine(keyValuePair.Key + &quot; / &quot; + keyValuePair.Value);
+
+                // Console.Out.WriteLine(&quot;---&quot;);
+            }
+            else
+            {
+                Console.Out.WriteLine(
+                    &quot;kein tuple: &quot; + JsonConvert.SerializeObject(possibleTuple) + &quot; fuer key {0}&quot;,
+                    resourceKey);
+            }
+        }
+
+        /// &lt;summary&gt;The fetch resource.&lt;/summary&gt;
+        /// &lt;param name=&quot;resource&quot;&gt;The resource.&lt;/param&gt;
+        /// &lt;returns&gt;
+        ///     The
+        ///     &lt;see&gt;
+        ///         &lt;cref&gt;Dictionary&lt;/cref&gt;
+        ///     &lt;/see&gt;
+        ///     .
+        /// &lt;/returns&gt;
+        private static Dictionary&lt;string, string&gt; FetchResourceAndBenchmark(string resource)
+        {
+            var processInfo = new Dictionary&lt;string, string&gt;();
+
+            var c = new WebClient();
+            Stream assertedResultStream;
+
+            var start = DateTime.Now;
+            try
+            {
+                var resourceResultStream = c.OpenRead(resource);
+
+                processInfo[&quot;1/ duration(ms)&quot;] = string.Empty + (DateTime.Now - start).TotalMilliseconds;
+                assertedResultStream = resourceResultStream ?? throw new InvalidOperationException();
+            }
+            catch (Exception exception)
+            {
+                var sb = new StringBuilder();
+                sb.Append($&quot;exception when fetching {resource}&quot;);
+                processInfo[&quot;exception&quot;] = exception.Message;
+
+                // convert string to stream
+                var byteArray = Encoding.UTF8.GetBytes(sb.ToString());
+
+                // byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+                assertedResultStream = new MemoryStream(byteArray);
+            }
+
+            var result = new StreamReader(assertedResultStream).ReadToEnd();
+            processInfo[&quot;2/ duration(ms)&quot;] = string.Empty + (DateTime.Now - start).TotalMilliseconds;
+            processInfo[&quot;length&quot;] = result.Length.ToString();
+
+            return processInfo;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,73,75,10,1],[87,9,87,10,1],[88,13,88,36,1],[89,9,89,10,1],[100,9,100,10,1],[101,13,101,49,1],[103,13,103,20,1],[103,22,103,38,1],[103,39,103,41,1],[103,42,103,54,1],[104,17,104,63,1],[105,21,105,54,1],[106,13,106,31,1],[107,9,107,10,1],[113,9,113,10,1],[115,13,115,52,1],[116,13,116,14,1],[117,17,117,57,1],[120,17,120,121,1],[123,17,123,24,1],[123,26,123,42,1],[123,43,123,45,1],[123,46,123,84,1],[126,21,126,90,1],[129,13,129,14,1],[131,13,131,14,1],[132,17,134,34,1],[135,13,135,14,1],[136,9,136,10,1],[148,9,148,10,1],[149,13,149,64,1],[151,13,151,37,1],[154,13,154,38,1],[156,13,156,14,1],[157,17,157,65,1],[159,17,159,106,1],[160,17,160,102,1],[161,13,161,14,1],[162,13,162,40,1],[163,13,163,14,1],[164,17,164,46,1],[165,17,165,66,1],[166,17,166,62,1],[169,17,169,71,1],[172,17,172,68,1],[173,13,173,14,1],[175,13,175,77,1],[176,13,176,102,1],[177,13,177,62,1],[179,13,179,32,1],[180,9,180,10,1]]);
+    </script>
+  </body>
+</html>

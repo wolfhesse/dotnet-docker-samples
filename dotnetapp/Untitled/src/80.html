@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\sysres\aseauthvaultfortesting.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using DnsLib.ComponentLibrary.Authentication;
+
+namespace DnsLib.SysRes
+{
+    public static class AseAuthVaultForTesting
+    {
+        /// &lt;summary&gt;The rcs 1 consumer auth.&lt;/summary&gt;
+        /// &lt;param name=&quot;auth&quot;&gt;The auth.&lt;/param&gt;
+        public static void PutRcs1ConsumerAuthInto(AuthContainer auth = null)
+        {
+            const string consumerKey = &quot;ck_8af73fd4343087b439f26432d6b464474e40a047&quot;;
+            const string consumerSecret = &quot;cs_73f65bcf757cd30d94e79fec4fcfceb35ca5046d&quot;;
+            AuthContainer.FillAuthContainer(auth, consumerKey, consumerSecret);
+        }
+
+        /// &lt;summary&gt;The rcs 2 consumer auth.&lt;/summary&gt;
+        /// &lt;param name=&quot;auth&quot;&gt;The auth.&lt;/param&gt;
+        public static void PutRcs2ConsumerAuthInto(AuthContainer auth = null)
+        {
+            const string consumerKey = &quot;ck_a0d5623debbb726a8e8a87d94281c382163b8b67&quot;;
+            const string consumerSecret = &quot;cs_729ab21a31113511aa1bfb28091b4047e336ebf2&quot;;
+            AuthContainer.FillAuthContainer(auth, consumerKey, consumerSecret);
+        }
+
+
+        public static void PutRcs2WrongConsumerAuthInto(AuthContainer auth = null)
+        {
+            const string consumerKey = &quot;ck_56cf1ec961a9e96398ccc0e60062d42a54c6ed6a&quot;;
+            const string consumerSecret = &quot;cs_ea4526d2e0e3711057fe9d25eeec20e917284f52&quot;;
+            AuthContainer.FillAuthContainer(auth, consumerKey, consumerSecret);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,1],[13,13,13,80,1],[14,9,14,10,1],[19,9,19,10,1],[22,13,22,80,1],[23,9,23,10,1],[27,9,27,10,0],[30,13,30,80,0],[31,9,31,10,0]]);
+    </script>
+  </body>
+</html>

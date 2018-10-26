@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\lab\datesengine.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using DnsLib.AbstractArchitecture.AseArchitecture.ProgramSetup;
+using DnsLib.FactoryFloor.Utility;
+using DnsLib.SysRes;
+
+namespace DnsLib.ComponentLibrary.Lab
+{
+    #region using directives
+
+    #endregion
+
+    
+    public static class DatesEngine
+    {
+        /// &lt;summary&gt;The engine output channel.&lt;/summary&gt;
+        public static readonly StringWriter EngineOutputChannel = new StringWriter(new StringBuilder());
+
+        /// &lt;summary&gt;The entry point.&lt;/summary&gt;
+        /// &lt;param name=&quot;args&quot;&gt;The args.&lt;/param&gt;
+        public static void EntryPoint(string[] args)
+        {
+            var m = new DatesContainerModel();
+            var v = new DatesOperationsCartridge.DatesView(m);
+
+            var engineSetup = new DatesEngineSetup(m, v);
+
+            var controller = new DatesOperationsCartridge.DatesController(engineSetup, EngineOutputChannel);
+
+            controller.EvAfterActionHookEventHandler += (sender, eventArgs) =&gt;
+            {
+                EngineOutputChannel.WriteLine(&quot;Ev DatesController.AfterAction Handling&quot;);
+            };
+
+            controller.StartActionBatch();
+
+            Console.Write(EngineOutputChannel.ToString());
+
+            // debug: v
+#pragma warning disable CS0219 // Variable is assigned but its value is never used
+            var breakHere = 1;
+#pragma warning restore CS0219 // Variable is assigned but its value is never used
+        }
+
+        /// &lt;summary&gt;
+        ///     The dates container operations.
+        /// &lt;/summary&gt;
+        static class DatesOperationsCartridge
+        {
+            /// &lt;summary&gt;
+            ///     Gets or sets the port.
+            /// &lt;/summary&gt;
+            static PresenterBase Port { get; set; }
+
+            /// &lt;inheritdoc /&gt;
+            /// &lt;summary&gt;
+            ///     The controller.
+            /// &lt;/summary&gt;
+            public class DatesController : IDisposable
+            {
+                /// &lt;summary&gt;
+                ///     The dates engine setup.
+                /// &lt;/summary&gt;
+                private readonly DatesEngineSetup _datesEngineSetup;
+
+                /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;DatesController&quot; /&gt; class.&lt;/summary&gt;
+                /// &lt;param name=&quot;datesEngineSetup&quot;&gt;The dates engine setup.&lt;/param&gt;
+                /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+                public DatesController(DatesEngineSetup datesEngineSetup, TextWriter textWriter)
+                {
+                    Port = new PresenterBase {TextWriter = textWriter};
+                    Port.TextWriter.WriteLine(&quot;controller initialization...&quot;);
+
+                    _datesEngineSetup = datesEngineSetup;
+
+                    Port.TextWriter.WriteLine(&quot;controller initialized...&quot;);
+                }
+
+                /// &lt;summary&gt;
+                ///     The after action.
+                /// &lt;/summary&gt;
+                public event EventHandler EvAfterActionHookEventHandler;
+
+                /// &lt;summary&gt;
+                ///     The ev post processing hook.
+                /// &lt;/summary&gt;
+                public event EventHandler EvPostProcessingHook;
+
+                /// &lt;summary&gt;
+                ///     Modify &#39;DatesOperationsCartridge.DatesController.Dispose()&#39;
+                ///     so that it calls Dispose(true), then calls GC.SuppressFinalize
+                ///     on the current object instance (&#39;this&#39; or &#39;Me&#39; in Visual Basic),
+                ///     and then returns. (#Dispose())
+                /// &lt;/summary&gt;
+                public void Dispose()
+                {
+                    Dispose(true);
+                    GC.SuppressFinalize(this);
+                    Console.Write($@&quot;disposing {this} finished.&quot;);
+                }
+
+                /// &lt;summary&gt;
+                ///     The fire post processing.
+                /// &lt;/summary&gt;
+                // ReSharper disable once UnusedMember.Local
+                public void FirePostProcessing()
+                {
+                    OnEvPostProcessingHook();
+                }
+
+                /// &lt;summary&gt;
+                ///     The action batch.
+                /// &lt;/summary&gt;
+                public void StartActionBatch()
+                {
+                    _datesEngineSetup.StartActionBatch();
+                    OnEvAfterActionHookEventHandler();
+                }
+
+                /// &lt;summary&gt;
+                ///     The on ev after action hook event handler.
+                /// &lt;/summary&gt;
+                protected virtual void OnEvAfterActionHookEventHandler()
+                {
+                    EvAfterActionHookEventHandler?.Invoke(this, EventArgs.Empty);
+                }
+
+                /// &lt;summary&gt;
+                ///     The on ev post processing hook.
+                /// &lt;/summary&gt;
+                protected virtual void OnEvPostProcessingHook()
+                {
+                    EvPostProcessingHook?.Invoke(this, EventArgs.Empty);
+                }
+
+                /// &lt;summary&gt;
+                ///     Provide an overridable implementation of Dispose(bool)
+                ///     on &#39;DatesOperationsCartridge.DatesController&#39; or mark
+                ///     the type as sealed. A call to Dispose(false) should
+                ///     only clean up native resources. A call to Dispose(true) s
+                ///     hould clean up both managed and native resources.
+                /// &lt;/summary&gt;
+                /// &lt;param name=&quot;b&quot;&gt;&lt;/param&gt;
+                protected static void Dispose(bool b)
+                {
+                    if (b)
+                    {
+                        EnvironmentManager.WriteLine(&quot;disposing w/ true&quot;);
+                    }
+                    else
+                    {
+                        EnvironmentManager.WriteLine(&quot;disposing w/ false&quot;);
+                    }
+
+                    // nothing to do
+                }
+            }
+
+            /// &lt;summary&gt;
+            ///     The datesView.
+            /// &lt;/summary&gt;
+            internal class DatesView : IView
+            {
+                /// &lt;summary&gt;
+                ///     The _dates container model.
+                /// &lt;/summary&gt;
+                private readonly DatesContainerModel _datesContainerModel;
+
+                /// &lt;summary&gt;
+                ///     The _counter.
+                /// &lt;/summary&gt;
+                private int _counter;
+
+                /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;DatesView&quot; /&gt; class.&lt;/summary&gt;
+                /// &lt;param name=&quot;datesContainerModel&quot;&gt;The dates container model.&lt;/param&gt;
+                public DatesView(DatesContainerModel datesContainerModel)
+                {
+                    _datesContainerModel = datesContainerModel;
+
+                    _datesContainerModel.ModelChanged += (sender, args) =&gt;
+                    {
+                        Port.TextWriter.WriteLine(&quot;Ev DatesContainerModel.ModelChanged Handling&quot;);
+                        Render();
+                        Port.TextWriter.WriteLine(Environment.NewLine);
+                    };
+
+                    _datesContainerModel.ModelSorted += (sender, args) =&gt;
+                    {
+                        Port.TextWriter.WriteLine(&quot;Ev DatesContainerModel.ModelSorted Handling&quot;);
+                        Port.TextWriter.WriteLine(&quot;=== datesContainerModel Dates are SortedSet ===&quot;);
+                        Port.TextWriter.WriteLine(Environment.NewLine);
+                    };
+                    _datesContainerModel.EvWarning += (sender, args) =&gt;
+                    {
+                        // datesContainerModel fired a warning; dump it to Port and cleanup
+                        // if (_datesContainerModel.SysWarnings == null) return;
+                        foreach (var modelSysWarning in _datesContainerModel.SysWarnings)
+                        {
+                            Port.TextWriter.WriteLine(modelSysWarning);
+
+                            // ReSharper disable once ObjectCreationAsStatement
+                            new WarningWrittenHook(this);
+                        }
+
+                        _datesContainerModel.SysWarnings.Clear();
+                        var unused = new SysWarningsClearedHook(this);
+                    };
+                }
+
+                // private DatesView()
+                // {
+                // }
+
+                /// &lt;summary&gt;
+                ///     The ev sys warnings cleard.
+                /// &lt;/summary&gt;
+                public event EventHandler EvSysWarningsCleared;
+
+                /// &lt;summary&gt;
+                ///     The ev warning written.
+                /// &lt;/summary&gt;
+                public event EventHandler EvWarningWritten;
+
+                /// &lt;summary&gt;
+                ///     The render.
+                /// &lt;/summary&gt;
+                public void Render()
+                {
+                    Helper.FnOutSeparator72(Port.TextWriter, &#39;=&#39;);
+                    Port.TextWriter.WriteLine(DateTimeOffset.Now.LocalDateTime);
+                    Port.TextWriter.WriteLine($&quot;{this}.Render # {_counter++}&quot;);
+                    Port.TextWriter.WriteLine($&quot;{this}.Render -&gt;  {_datesContainerModel}&quot;);
+
+                    DumpDates(Port.TextWriter, _datesContainerModel.Dates);
+
+                    Helper.FnOutSeparator72(Port.TextWriter);
+                }
+
+                /// &lt;summary&gt;
+                ///     The on ev sys warnings cleard.
+                /// &lt;/summary&gt;
+                protected virtual void OnEvSysWarningsCleared()
+                {
+                    EvSysWarningsCleared?.Invoke(this, EventArgs.Empty);
+                }
+
+                /// &lt;summary&gt;
+                ///     The on ev warning written.
+                /// &lt;/summary&gt;
+                protected virtual void OnEvWarningWritten()
+                {
+                    EvWarningWritten?.Invoke(this, EventArgs.Empty);
+                }
+
+                /// &lt;summary&gt;The dump dates.&lt;/summary&gt;
+                /// &lt;param name=&quot;textWriter&quot;&gt;The text writer.&lt;/param&gt;
+                /// &lt;param name=&quot;dates&quot;&gt;The dates.&lt;/param&gt;
+                private void DumpDates(TextWriter textWriter, IEnumerable&lt;DateTimeOffset&gt; dates)
+                {
+                    Helper.FnOutSeparator72(textWriter, &#39;-&#39;);
+                    textWriter.WriteLine($&quot;{this}.DumpDates: +++ dates: min, now, max&quot;);
+                    Helper.FnOutSeparator72(textWriter, &#39;-&#39;);
+                    foreach (var dateTimeOffset in dates) textWriter.WriteLine($&quot;=== dates-item: {dateTimeOffset}&quot;);
+                }
+
+                /// &lt;summary&gt;
+                ///     The sys warnings cleared hook.
+                /// &lt;/summary&gt;
+                class SysWarningsClearedHook
+                {
+                    /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;SysWarningsClearedHook&quot; /&gt; class.&lt;/summary&gt;
+                    /// &lt;param name=&quot;datesView&quot;&gt;The datesView.&lt;/param&gt;
+                    /// &lt;exception cref=&quot;NotImplementedException&quot;&gt;&lt;/exception&gt;
+                    public SysWarningsClearedHook(DatesView datesView)
+                    {
+                        datesView.OnEvSysWarningsCleared();
+                    }
+                }
+
+                /// &lt;summary&gt;
+                ///     The warning written hook.
+                /// &lt;/summary&gt;
+                class WarningWrittenHook
+                {
+                    /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;WarningWrittenHook&quot; /&gt; class.&lt;/summary&gt;
+                    /// &lt;param name=&quot;datesView&quot;&gt;The datesView.&lt;/param&gt;
+                    /// &lt;exception cref=&quot;NotImplementedException&quot;&gt;&lt;/exception&gt;
+                    public WarningWrittenHook(DatesView datesView)
+                    {
+                        datesView.OnEvWarningWritten();
+                    }
+                }
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,105,1],[24,9,24,10,1],[25,13,25,47,1],[26,13,26,63,1],[28,13,28,58,1],[30,13,30,109,1],[32,13,33,13,1],[33,13,33,14,1],[33,14,34,17,1],[34,17,34,90,1],[34,90,35,13,1],[35,13,35,14,1],[35,14,35,15,1],[32,13,35,15,1],[37,13,37,43,1],[39,13,39,59,1],[43,13,43,31,1],[45,9,45,10,1],[55,41,55,45,1],[55,46,55,50,1],[71,17,71,97,1],[72,17,72,18,1],[73,21,73,72,1],[74,21,74,79,1],[76,21,76,58,1],[78,21,78,76,1],[79,17,79,18,1],[98,17,98,18,0],[99,21,99,35,0],[100,21,100,47,0],[101,21,101,67,0],[102,17,102,18,0],[109,17,109,18,0],[110,21,110,46,0],[111,17,111,18,0],[117,17,117,18,1],[118,21,118,58,1],[119,21,119,55,1],[120,17,120,18,1],[126,17,126,18,1],[127,21,127,82,1],[128,17,128,18,1],[134,17,134,18,0],[135,21,135,73,0],[136,17,136,18,0],[147,17,147,18,0],[148,21,148,27,0],[149,21,149,22,0],[150,25,150,75,0],[151,21,151,22,0],[153,21,153,22,0],[154,25,154,76,0],[155,21,155,22,0],[158,17,158,18,0],[178,17,178,74,1],[179,17,179,18,1],[180,21,180,64,1],[182,21,183,21,1],[183,21,183,22,1],[183,22,184,25,1],[184,25,184,99,1],[184,99,185,25,1],[185,25,185,34,1],[185,34,186,25,1],[186,25,186,72,1],[186,72,187,21,1],[187,21,187,22,1],[187,22,187,23,1],[182,21,187,23,1],[189,21,190,21,1],[190,21,190,22,1],[190,22,191,25,1],[191,25,191,98,1],[191,98,192,25,1],[192,25,192,102,1],[192,102,193,25,1],[193,25,193,72,1],[193,72,194,21,1],[194,21,194,22,1],[194,22,194,23,1],[189,21,194,23,1],[195,21,196,21,1],[196,21,196,22,1],[196,22,199,25,1],[199,25,199,32,1],[199,32,199,34,1],[199,34,199,53,1],[199,53,199,54,1],[199,54,199,56,1],[199,56,199,57,1],[199,57,199,89,1],[199,89,200,25,1],[200,25,200,26,1],[200,26,201,29,1],[201,29,201,72,1],[201,72,204,29,1],[204,29,204,58,1],[204,58,205,25,1],[205,25,205,26,1],[205,26,207,25,1],[207,25,207,66,1],[207,66,208,25,1],[208,25,208,71,1],[208,71,209,21,1],[209,21,209,22,1],[209,22,209,23,1],[195,21,209,23,1],[210,17,210,18,1],[230,17,230,18,1],[231,21,231,67,1],[232,21,232,81,1],[233,21,233,80,1],[234,21,234,92,1],[236,21,236,76,1],[238,21,238,62,1],[239,17,239,18,1],[245,17,245,18,1],[246,21,246,73,1],[247,17,247,18,1],[253,17,253,18,1],[254,21,254,69,1],[255,17,255,18,1],[261,17,261,18,1],[262,21,262,62,1],[263,21,263,89,1],[264,21,264,62,1],[265,21,265,28,1],[265,30,265,48,1],[265,49,265,51,1],[265,52,265,57,1],[265,59,265,117,1],[266,17,266,18,1],[276,21,276,71,1],[277,21,277,22,1],[278,25,278,60,1],[279,21,279,22,1],[290,21,290,67,1],[291,21,291,22,1],[292,25,292,56,1],[293,21,293,22,1]]);
+    </script>
+  </body>
+</html>

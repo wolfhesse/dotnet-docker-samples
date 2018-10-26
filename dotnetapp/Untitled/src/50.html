@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\abstractarchitecture\thecleanarchitecture\controller.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using DnsLib.AbstractArchitecture.AseArchitecture;
+using DnsLib.AbstractArchitecture.AseArchitecture.Meta;
+
+#pragma warning disable 169
+
+namespace DnsLib.AbstractArchitecture.TheCleanArchitecture
+{
+    /// &lt;summary&gt;The controller.&lt;/summary&gt;
+    [MvvmType]
+    public abstract class Controller
+    {
+        /// &lt;summary&gt;The _backlog.&lt;/summary&gt;
+        private IBacklog _backlog;
+
+        /// &lt;summary&gt;The _input port.&lt;/summary&gt;
+#pragma warning disable 169
+        private IUseCaseInputPort _inputPort;
+#pragma warning restore 169
+
+        /// &lt;summary&gt;The execute use case interactor.&lt;/summary&gt;
+        /// &lt;param name=&quot;useCaseInputPort&quot;&gt;The use case input port.&lt;/param&gt;
+        /// &lt;exception cref=&quot;NotImplementedException&quot;&gt;&lt;/exception&gt;
+        protected virtual void ExecuteUseCaseInteractor(IUseCaseInputPort useCaseInputPort)
+        {
+            // todo r20171116 unit test this flow..
+
+            // the use-case-input-port is super to interactor
+            // new View(interactor.presenter).render : active call
+            // OR
+            // bind presenter.events to view
+            // env.outputStream.AddObservable(View)..
+            // sect: view, outputstream :: syscontrol: attach/detach OR PubSub
+            throw new NotImplementedException();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[25,9,25,10,0],[34,13,34,49,0]]);
+    </script>
+  </body>
+</html>

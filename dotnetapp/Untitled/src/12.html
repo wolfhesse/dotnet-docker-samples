@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\componentlibrary\authentication\extrarestrequestextensions.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using RestSharp;
+using RestSharp.Authenticators;
+using RestSharp.Authenticators.OAuth;
+
+namespace DnsLib.ComponentLibrary.Authentication
+{
+    /// &lt;summary&gt;
+    ///     The extra rest request extensions.
+    /// &lt;/summary&gt;
+    public static class ExtraRestRequestExtensions
+    {
+        /// &lt;summary&gt;The build o auth 1 query string.&lt;/summary&gt;
+        /// &lt;param name=&quot;request&quot;&gt;The request.&lt;/param&gt;
+        /// &lt;param name=&quot;client&quot;&gt;The client.&lt;/param&gt;
+        /// &lt;param name=&quot;consumerKey&quot;&gt;The consumer key.&lt;/param&gt;
+        /// &lt;param name=&quot;consumerSecret&quot;&gt;The consumer secret.&lt;/param&gt;
+        /// &lt;returns&gt;The &lt;see cref=&quot;RestRequest&quot; /&gt;.&lt;/returns&gt;
+        public static RestRequest BuildOAuth1QueryString(
+            this RestRequest request,
+            RestClient client,
+            string consumerKey,
+            string consumerSecret)
+        {
+            var auth = OAuth1Authenticator.ForRequestToken(consumerKey, consumerSecret);
+            auth.ParameterHandling = OAuthParameterHandling.UrlOrPostParameters;
+            auth.Authenticate(client, request);
+
+            // convert all these oauth params from cookie to querystring
+            request.Parameters.ForEach(
+                x =&gt;
+                {
+                    if (x.Name.StartsWith(&quot;oauth_&quot;)) x.Type = ParameterType.QueryString;
+                });
+            return request;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[23,9,23,10,1],[24,13,24,89,1],[25,13,25,81,1],[26,13,26,48,1],[29,13,31,17,1],[31,17,31,18,1],[31,18,32,21,1],[32,21,32,53,1],[32,53,32,54,1],[32,54,32,89,1],[32,89,33,17,1],[33,17,33,18,1],[33,18,33,20,1],[29,13,33,20,1],[34,13,34,28,1],[35,9,35,10,1]]);
+    </script>
+  </body>
+</html>

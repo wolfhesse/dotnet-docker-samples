@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\factoryfloor\utility\datescontainermodel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using DnsLib.SysRes;
+
+namespace DnsLib.FactoryFloor.Utility
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;
+    ///     The dates container model.
+    /// &lt;/summary&gt;
+    public class DatesContainerModel
+    {
+        /// &lt;summary&gt;
+        ///     The ev warning.
+        /// &lt;/summary&gt;
+        public event EventHandler EvWarning;
+
+        /// &lt;summary&gt;
+        ///     The model changed.
+        /// &lt;/summary&gt;
+        public event EventHandler ModelChanged;
+
+        /// &lt;summary&gt;
+        ///     The model sorted.
+        /// &lt;/summary&gt;
+        public event EventHandler ModelSorted;
+
+        /// &lt;summary&gt;
+        ///     Gets the dates.
+        /// &lt;/summary&gt;
+        public MySortedSet&lt;DateTimeOffset&gt; Dates { get; private set; }
+
+        /// &lt;summary&gt;
+        ///     The sys warnings.
+        /// &lt;/summary&gt;
+        public IList&lt;string&gt; SysWarnings =&gt; Dates.SysWarnings;
+
+        /// &lt;summary&gt;
+        ///     The create dates.
+        /// &lt;/summary&gt;
+        public void CreateDates()
+        {
+            EnvironmentManager.WriteLine($&quot;{this}.CreateDates&quot;);
+            Dates =
+                new MySortedSet&lt;DateTimeOffset&gt;
+                {
+                    DateTimeOffset.MinValue.LocalDateTime,
+                    DateTimeOffset.MaxValue.LocalDateTime
+                };
+            Dates.EvWarning += DatesEvWarning;
+            OnModelChanged();
+        }
+
+        /// &lt;summary&gt;
+        ///     The insert timestamp.
+        /// &lt;/summary&gt;
+        public void InsertTimestamp()
+        {
+            EnvironmentManager.WriteLine($&quot;{this}.InsertTimestamp&quot;);
+            var ts0 = DateTimeOffset.Now.LocalDateTime;
+            var ts1 = DateTimeOffset.Now;
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts0);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+            Dates.Add(ts1);
+
+            OnModelChanged();
+        }
+
+        /// &lt;summary&gt;
+        ///     The sort.
+        /// &lt;/summary&gt;
+        public void Sort()
+        {
+            EnvironmentManager.WriteLine($&quot;{this}.Sort&quot;);
+
+            // todo TODO need deprecation notice; this.Dates is now SortedSet
+            Dates.Sort();
+
+            // wird aus Sort ausgeloest    OnEvWarning();
+            OnModelSorted();
+            OnModelChanged();
+        }
+
+        /// &lt;summary&gt;
+        ///     The on ev warning.
+        /// &lt;/summary&gt;
+        protected virtual void OnEvWarning()
+        {
+            EvWarning?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;
+        ///     The on model changed.
+        /// &lt;/summary&gt;
+        protected virtual void OnModelChanged()
+        {
+            ModelChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;
+        ///     The on model sorted.
+        /// &lt;/summary&gt;
+        protected virtual void OnModelSorted()
+        {
+            ModelSorted?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// &lt;summary&gt;The dates_ ev warning.&lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;The sender.&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;The e.&lt;/param&gt;
+        private void DatesEvWarning(object sender, EventArgs e)
+        {
+            // weiterreichen
+            OnEvWarning();
+        }
+
+        /// &lt;summary&gt;derive from SortedSet to put deprecation notice into &#39;Sort&#39; method&lt;/summary&gt;
+        /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;
+        [Serializable]
+        public class MySortedSet&lt;T&gt; : SortedSet&lt;T&gt;
+        {
+            /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;MySortedSet{T}&quot; /&gt; class.&lt;/summary&gt;
+            public MySortedSet()
+            {
+            }
+
+            /// &lt;summary&gt;Initializes a new instance of the &lt;see cref=&quot;MySortedSet{T}&quot; /&gt; class.&lt;/summary&gt;
+            /// &lt;param name=&quot;info&quot;&gt;The info.&lt;/param&gt;
+            /// &lt;param name=&quot;context&quot;&gt;The context.&lt;/param&gt;
+            protected MySortedSet(SerializationInfo info, StreamingContext context)
+                : base(info, context)
+            {
+                // todo r20171116 : work with context and info.
+            }
+
+            /// &lt;summary&gt;
+            ///     The ev warning.
+            /// &lt;/summary&gt;
+            public event EventHandler EvWarning;
+
+            /// &lt;summary&gt;
+            ///     Gets the sys warnings.
+            /// &lt;/summary&gt;
+            public IList&lt;string&gt; SysWarnings { get; } = new List&lt;string&gt;();
+
+            /// &lt;summary&gt;
+            ///     The sort.
+            /// &lt;/summary&gt;
+            internal void Sort()
+            {
+                SysWarnings.Add(
+                    $&quot;{this}\n\t - deprecation notice: Dates is now a SortedSet; not need to call Sort&quot;);
+                OnEvWarning();
+            }
+
+            /// &lt;summary&gt;
+            ///     The on ev warning.
+            /// &lt;/summary&gt;
+            private void OnEvWarning()
+            {
+                EvWarning?.Invoke(this, EventArgs.Empty);
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[35,52,35,56,1],[35,57,35,69,1],[40,45,40,62,1],[46,9,46,10,1],[47,13,47,65,1],[48,13,53,19,1],[54,13,54,47,1],[55,13,55,30,1],[56,9,56,10,1],[62,9,62,10,1],[63,13,63,69,1],[64,13,64,56,1],[65,13,65,42,1],[66,13,66,28,1],[67,13,67,28,1],[68,13,68,28,1],[69,13,69,28,1],[70,13,70,28,1],[71,13,71,28,1],[72,13,72,28,1],[73,13,73,28,1],[74,13,74,28,1],[75,13,75,28,1],[76,13,76,28,1],[77,13,77,28,1],[79,13,79,30,1],[80,9,80,10,1],[86,9,86,10,1],[87,13,87,58,1],[90,13,90,26,1],[93,13,93,29,1],[94,13,94,30,1],[95,9,95,10,1],[101,9,101,10,1],[102,13,102,54,1],[103,9,103,10,1],[109,9,109,10,1],[110,13,110,57,1],[111,9,111,10,1],[117,9,117,10,1],[118,13,118,56,1],[119,9,119,10,1],[125,9,125,10,1],[127,13,127,27,1],[128,9,128,10,1],[136,13,136,33,1],[137,13,137,14,1],[138,13,138,14,1],[144,19,144,38,0],[145,13,145,14,0],[147,13,147,14,0],[157,48,157,52,1],[157,57,157,75,1],[157,57,157,75,0],[163,13,163,14,1],[164,17,165,106,1],[166,17,166,31,1],[167,13,167,14,1],[173,13,173,14,1],[174,17,174,58,1],[175,13,175,14,1]]);
+    </script>
+  </body>
+</html>

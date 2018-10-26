@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\rogera\source\repos\dotnetstd\dnslib\testdriving\core\environmentmanagertests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using DnsLib.SysRes;
+using Xunit;
+
+
+namespace DnsLib.TestDriving.Core
+{
+    #region using directives
+
+    #endregion
+
+    /// &lt;summary&gt;
+    ///     The environment manager tests.
+    /// &lt;/summary&gt;
+    public class EnvironmentManagerTests
+    {
+        [Fact(Timeout = 2500)]
+        public static void CallEnvironmentManagerFun()
+        {
+            var environmentManager = new EnvironmentManager();
+            Console.Out.WriteLine(&quot;environmentManager = {0}&quot;, environmentManager);
+            Console.Out.WriteLine(&quot;environmentManager.Version = {0}&quot;, environmentManager.Version);
+        }
+
+        /// &lt;summary&gt;
+        ///     The get ase data d test.
+        /// &lt;/summary&gt;
+        [SuppressMessage(
+            &quot;StyleCop.CSharp.DocumentationRules&quot;,
+            &quot;SA1650:ElementDocumentationMustBeSpelledCorrectly&quot;,
+            Justification = &quot;Reviewed. Suppression is OK here.&quot;)]
+        [Fact(Timeout = 2500)]
+        public static void GetAseDataDTest()
+        {
+            Assert.Equal(EnvironmentManager.AseDataD, EnvironmentManager.GetDataD());
+        }
+
+        /// &lt;summary&gt;
+        ///     The get configuration.
+        /// &lt;/summary&gt;
+        [Fact(Timeout = 2500)]
+        public void GetConfigurationTest()
+        {
+            // object GetConfiguration(string key)
+            IDictionary&lt;string, object&gt; dictionary = new Dictionary&lt;string, object&gt; {[&quot;eins&quot;] = 1, [&quot;zwo&quot;] = 2};
+
+            // return dictionary[key];
+            var expected = dictionary[&quot;eins&quot;];
+            var configuration = EnvironmentManager.Configuration;
+            var actual = configuration[&quot;eins&quot;];
+            Assert.Equal(expected, actual);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,10,1],[22,13,22,63,1],[23,13,23,83,1],[24,13,24,99,1],[25,9,25,10,1],[36,9,36,10,1],[37,13,37,86,1],[38,9,38,10,1],[45,9,45,10,1],[47,13,47,113,1],[50,13,50,47,1],[51,13,51,66,1],[52,13,52,48,1],[53,13,53,44,1],[54,9,54,10,1]]);
+    </script>
+  </body>
+</html>
