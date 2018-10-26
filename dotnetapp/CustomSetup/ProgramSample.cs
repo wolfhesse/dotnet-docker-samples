@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using DnsLib.ComponentLibrary.Lab;
 using DnsLib.FactoryFloor.TodoComponent;
-using DnsLib.OperatorApps.SysRes;
+using DnsLib.SysRes;
 using Newtonsoft.Json;
 
 namespace DotnetApp.CustomSetup

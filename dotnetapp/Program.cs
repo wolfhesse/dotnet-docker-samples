@@ -7,7 +7,7 @@ using DnsLib.ComponentLibrary.Macrolib;
 using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.FactoryFloor.ShopComponent;
 using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
-using DnsLib.OperatorApps.SysRes;
+using DnsLib.SysRes;
 using Newtonsoft.Json;
 using WooCommerceNET.WooCommerce.v2;
 
