@@ -26,6 +26,7 @@ namespace DotnetApp.Tests.ClassLibrary
         /// <summary>Initializes a new instance of the <see cref="AseXunitTestBase" /> class.</summary>
         protected AseXunitTestBase()
         {
+            EnvironmentManager.WriteLine(typeof(AseXunitTestBase));
         }
 
         public bool OutputHelperComparison { get; }
