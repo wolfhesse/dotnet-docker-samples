@@ -10,15 +10,18 @@ using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;
 using DnsLib.SysRes;
 using Newtonsoft.Json;
 using WooCommerceNET.WooCommerce.v2;
+using Xunit;
 
 namespace DotnetApp
 {
-    #region using directives
-
-    #endregion
-
     public static class BusinessCartridge
     {
+        [Fact]
+        public static void Complete()
+        {
+            EnvironmentManager.WriteLine("Complete");
+        }
+
         /// <summary>The tweets counter.</summary>
         public static int TweetsCounter = 0;
 
@@ -66,7 +69,7 @@ namespace DotnetApp
                 if (randomVar < 1)
                 {
                     // add product
-                    var p = new Product { name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version };
+                    var p = new Product {name = e.Message, description = "demo produkt fuer V " + VersionInfo.Version};
 
                     // ReSharper disable once UnusedVariable
                     var shopEngine1 = new ShopEngine(new WooCommerceAdapter(),
@@ -86,7 +89,8 @@ namespace DotnetApp
                             var shopEngine = shopEngine2;
 
                             EnvironmentManager.WriteLine($"\t\t\t--- 2 --- before product creation [inTask]");
-                            EnvironmentManager.WriteLine($"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
+                            EnvironmentManager.WriteLine(
+                                $"\t\t\t          ::::: {shopEngine.Configuration.ConfigName}");
 
                             var startTs = DateTime.Now;
                             var p2 = shopEngine.AddProduct(p);

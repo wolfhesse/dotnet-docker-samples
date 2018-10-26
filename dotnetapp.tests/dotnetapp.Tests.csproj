@@ -33,6 +33,11 @@
     <PackageReference Include="Npgsql" Version="4.0.3" />
     <PackageReference Include="NUnit" Version="3.11.0" />
     <PackageReference Include="xunit" Version="2.4.1-pre.build.4071" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1-pre.build.4071" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.1-pre.build.4071">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
