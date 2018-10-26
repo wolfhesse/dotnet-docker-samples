@@ -15,10 +15,10 @@ namespace DotnetApp.Tests.Instrumentation
         }
 
         /// <summary>The test program.</summary>
-        [Fact]
+        [Fact(Timeout = 3500,Skip = "interactive only")]
         public void TestProgram()
         {
-            Program.Main(null);
+                        Program.Main(null);
         }
     }
 }
