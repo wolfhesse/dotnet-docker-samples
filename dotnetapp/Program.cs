@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using WooCommerceNET.WooCommerce.v2;
 using Xunit;
 
-namespace DotnetApp
+namespace AseFrameworkApp
 {
     public static class BusinessCartridge
     {

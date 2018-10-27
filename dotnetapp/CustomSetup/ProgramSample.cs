@@ -7,7 +7,7 @@ using DnsLib.FactoryFloor.TodoComponent;
 using DnsLib.SysRes;
 using Newtonsoft.Json;
 
-namespace DotnetApp.CustomSetup
+namespace AseFrameworkApp.CustomSetup
 {
     #region using directives
 

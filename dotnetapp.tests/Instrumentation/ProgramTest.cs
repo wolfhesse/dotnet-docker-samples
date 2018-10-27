@@ -1,12 +1,12 @@
 ﻿using System;
+using AseFrameworkApp.CustomSetup;
+using AseFrameworkApp.Tests.ClassLibrary;
 using DnsLib.SysRes;
-using DotnetApp.CustomSetup;
-using DotnetApp.Tests.ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests.Instrumentation
+namespace AseFrameworkApp.Tests.Instrumentation
 {
     #region using directives
 

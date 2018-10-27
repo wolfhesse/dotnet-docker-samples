@@ -1,13 +1,13 @@
 using System;
+using AseFrameworkApp.CustomSetup;
+using AseFrameworkApp.Tests.ClassLibrary;
 using DnsLib.ComponentLibrary.Lab;
 using DnsLib.FactoryFloor.TodoComponent;
 using DnsLib.SysRes;
-using DotnetApp.CustomSetup;
-using DotnetApp.Tests.ClassLibrary;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests.Instrumentation
+namespace AseFrameworkApp.Tests.Instrumentation
 {
     /// <inheritdoc />
     /// <summary>
@@ -18,7 +18,7 @@ namespace DotnetApp.Tests.Instrumentation
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the
-        ///     <see cref="T:DotnetApp.Tests.Instrumentation.SubsystemTaskManagementXunitTest" /> class.
+        ///     <see cref="T:AseFrameworkApp.Tests.Instrumentation.SubsystemTaskManagementXunitTest" /> class.
         /// </summary>
         /// <param name="testOutputHelper">The test output helper.</param>
         public SubsystemTaskManagementXunitTest(ITestOutputHelper testOutputHelper)

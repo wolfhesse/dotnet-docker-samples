@@ -6,7 +6,7 @@ using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WooCommerceNET.WooCommerce.v2;
 
-namespace DotnetApp.Tests.ClassLibrary
+namespace AseFrameworkApp.Tests.ClassLibrary
 {
     #region using directives
 

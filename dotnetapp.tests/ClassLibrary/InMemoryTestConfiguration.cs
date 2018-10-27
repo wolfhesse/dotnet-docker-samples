@@ -1,7 +1,7 @@
 using DnsLib.ComponentLibrary.Lab;
 using DnsLib.FactoryFloor.TodoComponent;
 
-namespace DotnetApp.Tests.ClassLibrary
+namespace AseFrameworkApp.Tests.ClassLibrary
 {
     /// <summary>
     ///     The in memory test configuration.

@@ -4,7 +4,7 @@ using DnsLib.FactoryFloor.TodoComponent;
 using DnsLib.SysRes;
 using NUnit.Framework;
 
-namespace DotnetApp.CustomSetup
+namespace AseFrameworkApp.CustomSetup
 {
     #region using directives
 

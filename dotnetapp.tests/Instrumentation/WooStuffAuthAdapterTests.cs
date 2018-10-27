@@ -2,7 +2,7 @@
 using DnsLib.FactoryFloor.ShopComponent;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests.Instrumentation
+namespace AseFrameworkApp.Tests.Instrumentation
 {
     /// <summary>The woo stuff auth adapter tests.</summary>
     [TestFixture]

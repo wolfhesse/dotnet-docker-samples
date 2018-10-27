@@ -1,7 +1,7 @@
 ﻿using DnsLib.SysRes;
 using Xunit.Abstractions;
 
-namespace DotnetApp.Tests.ClassLibrary
+namespace AseFrameworkApp.Tests.ClassLibrary
 {
     #region using directives
 

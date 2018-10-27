@@ -1,7 +1,7 @@
 ﻿using DnsLib.SysRes;
 using NUnit.Framework;
 
-namespace DotnetApp.Tests.Instrumentation
+namespace AseFrameworkApp.Tests.Instrumentation
 {
     #region using directives
 

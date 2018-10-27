@@ -1,7 +1,7 @@
 ﻿using DnsLib;
 using Xunit;
 
-namespace DotnetApp.Tests.Instrumentation
+namespace AseFrameworkApp.Tests.Instrumentation
 {
     /// <summary>The release zulu.</summary>
     public class ReleaseZulu
@@ -15,10 +15,10 @@ namespace DotnetApp.Tests.Instrumentation
         }
 
         /// <summary>The test program.</summary>
-        [Fact(Timeout = 3500,Skip = "interactive only")]
+        [Fact(Timeout = 3500, Skip = "interactive only")]
         public void TestProgram()
         {
-                        Program.Main(null);
+            Program.Main(null);
         }
     }
 }

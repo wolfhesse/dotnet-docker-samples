@@ -4,8 +4,7 @@ using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
-namespace DotnetApp.Tests.Instrumentation
+namespace AseFrameworkApp.Tests.Instrumentation
 {
     #region using directives
 
