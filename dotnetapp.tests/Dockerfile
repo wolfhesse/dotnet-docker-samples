@@ -1,5 +1,5 @@
-FROM microsoft/dotnet:2.0-runtime
+FROM microsoft/dotnet:2.2-runtime
 ARG source
 WORKDIR /app
 COPY ${source:-obj/Docker/publish} .
-ENTRYPOINT ["dotnet", "dotnetapp.Tests.dll"]
+ENTRYPOINT ["dotnet", "AseFrameworkApp.Tests.dll"]
