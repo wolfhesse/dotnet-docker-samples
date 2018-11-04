@@ -27,32 +27,32 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DnsLib" Version="1.1.1-CI-20181104-143059" />
+    <PackageReference Include="DnsLib" Version="1.1.1-CI-20181104-152750" />
     <PackageReference Include="JetBrains.DotMemoryUnit" Version="3.0.20171219.105559" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0-beta" />
     <PackageReference Include="Npgsql" Version="4.0.3" />
     <PackageReference Include="NUnit" Version="3.11.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
     <PackageReference Include="WooCommerceNET" Version="0.7.5" />
-    <PackageReference Include="xunit" Version="2.4.1-pre.build.4071" />
+    <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.abstractions" Version="2.0.3" />
-    <PackageReference Include="xunit.assert" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.console" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.core" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.extensibility.core" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.runner.console" Version="2.4.1-pre.build.4071">
+    <PackageReference Include="xunit.assert" Version="2.4.1" />
+    <PackageReference Include="xunit.console" Version="2.4.1" />
+    <PackageReference Include="xunit.core" Version="2.4.1" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="xunit.runner.msbuild" Version="2.4.1-pre.build.4071">
+    <PackageReference Include="xunit.runner.msbuild" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="xunit.runner.reporters" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.runner.utility" Version="2.4.1-pre.build.4071" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1-pre.build.4071">
+    <PackageReference Include="xunit.runner.reporters" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.utility" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

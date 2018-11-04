@@ -155,7 +155,8 @@ namespace AseFrameworkApp
             mqOperationsEngine.Configure(new List<string>
             {
 //                "s0.wolfslab.wolfspool.at", "30", "10", "hello"
-                "s0.wolfslab.wolfspool.at",
+//                "s0.wolfslab.wolfspool.at",
+                "cc.base.wolfspool.at",
 //                "192.168.99.100",
                 "30",
                 "10000",
