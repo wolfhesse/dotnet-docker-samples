@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DnsLib" Version="1.1.1-CI-20181026-234253" />
+    <PackageReference Include="DnsLib" Version="1.1.1-CI-20181104-143059" />
     <PackageReference Include="JetBrains.dotMemoryUnit" Version="3.0.20171219.105559" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0-beta" />
