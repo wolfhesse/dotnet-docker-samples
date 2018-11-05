@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DnsLib;
 using DnsLib.AbstractArchitecture.AseArchitecture.Definitions;
 using DnsLib.ComponentLibrary.Macrolib;
+using DnsLib.FactoryFloor.ElasticSearchComponent;
 using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.FactoryFloor.ShopComponent;
 using DnsLib.FactoryFloor.ShopComponent.AseWooCommerceNET;

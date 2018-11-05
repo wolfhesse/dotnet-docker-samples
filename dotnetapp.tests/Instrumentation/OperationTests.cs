@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DnsLib.FactoryFloor.ElasticSearchComponent;
 using DnsLib.FactoryFloor.MqComponent;
 using DnsLib.SysRes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
